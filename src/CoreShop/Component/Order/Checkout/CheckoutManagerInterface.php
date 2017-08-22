@@ -67,10 +67,11 @@ interface CheckoutManagerInterface
     /**
      * @param CheckoutStepInterface $step
      * @param CartInterface $cart
+     * @param Request $request
      *
      * @return array
      */
-    public function prepareStep(CheckoutStepInterface $step, CartInterface $cart): array;
+    public function prepareStep(CheckoutStepInterface $step, CartInterface $cart, Request $request): array;
 
     /**
      * @param CartInterface $cart

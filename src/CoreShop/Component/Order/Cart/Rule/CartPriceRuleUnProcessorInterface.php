@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Order\Cart\Rule;
 
@@ -19,10 +19,10 @@ interface CartPriceRuleUnProcessorInterface
 {
     /**
      * @param CartPriceRuleInterface $cartPriceRule
-     * @param string                 $usedCode
-     * @param CartInterface          $cart
+     * @param string $usedCode
+     * @param CartInterface $cart
      *
      * @return mixed
      */
-    public function unProcess(CartPriceRuleInterface $cartPriceRule, $usedCode, CartInterface $cart);
+    public function unProcess(CartPriceRuleInterface $cartPriceRule, $usedCode, CartInterface $cart): bool;
 }

@@ -16,7 +16,7 @@ final class ObjectCloner
      *
      * @return Concrete
      */
-    public function cloneObject(Concrete $object, $parent, $key)
+    public function cloneObject(Concrete $object, $parent, $key): Concrete
     {
         Service::loadAllObjectFields($object);
 

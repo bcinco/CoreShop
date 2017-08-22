@@ -40,7 +40,7 @@ class ShipmentStateChecker extends AbstractConditionChecker
     /**
      * {@inheritdoc}
      */
-    public function isNotificationRuleValid($subject, $params, array $configuration)
+    public function isNotificationRuleValid($subject, $params, array $configuration): bool
     {
         $shipmentState = $configuration['shipmentState'];
 

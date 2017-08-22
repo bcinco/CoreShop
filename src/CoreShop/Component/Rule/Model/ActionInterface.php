@@ -17,22 +17,26 @@ use CoreShop\Component\Resource\Model\ResourceInterface;
 interface ActionInterface extends ResourceInterface
 {
     /**
-     * @param string $type
-     */
-    public function setType($type);
-
-    /**
-     * @param array $configuration
-     */
-    public function setConfiguration(array $configuration);
-
-    /**
      * @return string
      */
-    public function getType();
+    public function getType(): ?string;
+
+    /**
+     * @param string $type
+     *
+     * @return static
+     */
+    public function setType(string $type): ActionInterface;
 
     /**
      * @return array
      */
-    public function getConfiguration();
+    public function getConfiguration(): array;
+
+    /**
+     * @param array $configuration
+     *
+     * @return static
+     */
+    public function setConfiguration(array $configuration): ActionInterface;
 }

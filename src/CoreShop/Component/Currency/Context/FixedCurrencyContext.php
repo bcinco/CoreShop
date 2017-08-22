@@ -32,7 +32,7 @@ final class FixedCurrencyContext implements CurrencyContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCurrency()
+    public function getCurrency(): CurrencyInterface
     {
         if ($this->currency instanceof CurrencyInterface) {
             return $this->currency;

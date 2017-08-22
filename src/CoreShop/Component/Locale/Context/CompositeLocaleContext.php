@@ -38,7 +38,7 @@ final class CompositeLocaleContext implements LocaleContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getLocaleCode()
+    public function getLocaleCode(): string
     {
         $lastException = null;
 

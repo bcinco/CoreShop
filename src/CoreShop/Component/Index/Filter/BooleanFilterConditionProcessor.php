@@ -25,7 +25,7 @@ class BooleanFilterConditionProcessor implements FilterConditionProcessorInterfa
     /**
      * {@inheritdoc}
      */
-    public function prepareValuesForRendering(FilterConditionInterface $condition, FilterInterface $filter, ListingInterface $list, $currentFilter)
+    public function prepareValuesForRendering(FilterConditionInterface $condition, FilterInterface $filter, ListingInterface $list, $currentFilter): array
     {
         $rawValues = [];
         $currentValues = $currentFilter[File::getValidFilename($condition->getLabel())];
@@ -66,7 +66,7 @@ class BooleanFilterConditionProcessor implements FilterConditionProcessorInterfa
     /**
      * {@inheritdoc}
      */
-    public function addCondition(FilterConditionInterface $condition, FilterInterface $filter, ListingInterface $list, $currentFilter, ParameterBag $parameterBag, $isPrecondition = false)
+    public function addCondition(FilterConditionInterface $condition, FilterInterface $filter, ListingInterface $list, $currentFilter, ParameterBag $parameterBag, $isPrecondition = false): array
     {
         $definedValues = (array) $condition->getField(); //Todo: Don't think that this works...
 
@@ -122,7 +122,7 @@ class BooleanFilterConditionProcessor implements FilterConditionProcessorInterfa
      *
      * @return bool
      */
-    private function isInFilterMode($definedValues, $parameterBag)
+    private function isInFilterMode($definedValues, $parameterBag): bool
     {
         foreach ($definedValues as $d) {
             if ($parameterBag->has($d)) {

@@ -20,14 +20,14 @@ interface CheckoutStepInterface
     /**
      * @return string
      */
-    public function getIdentifier();
+    public function getIdentifier(): string;
 
     /**
      * Determines if this step should be forward if valid.
      *
      * @return bool
      */
-    public function doAutoForward();
+    public function doAutoForward(): bool;
 
     /**
      * Check if Checkout Step is valid.
@@ -36,7 +36,7 @@ interface CheckoutStepInterface
      *
      * @return bool
      */
-    public function validate(CartInterface $cart);
+    public function validate(CartInterface $cart): bool;
 
     /**
      * Commit Step from Request (validate form or whatever).
@@ -52,8 +52,9 @@ interface CheckoutStepInterface
      * Prepare Checkout Step.
      *
      * @param CartInterface $cart
+     * @param Request $request
      *
      * @return array $params for the view
      */
-    public function prepareStep(CartInterface $cart);
+    public function prepareStep(CartInterface $cart, Request $request): array;
 }

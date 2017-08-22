@@ -38,7 +38,7 @@ final class CachedStoreContext implements StoreContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getStore()
+    public function getStore(): StoreInterface
     {
         if (null === $this->cachedStore) {
             $this->cachedStore = $this->requestBasedStoreContext->getStore();

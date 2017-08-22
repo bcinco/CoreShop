@@ -8,11 +8,11 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Core\Configuration;
 
-use CoreShop\Component\Configuration\Model\ConfigurationInterface;
+use CoreShop\Component\Core\Model\ConfigurationInterface;
 use CoreShop\Component\Configuration\Service\ConfigurationService as BaseConfigurationService;
 use CoreShop\Component\Core\Repository\ConfigurationRepositoryInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
@@ -29,17 +29,18 @@ class ConfigurationService extends BaseConfigurationService implements Configura
     protected $storeContext;
 
     /**
-     * @param EntityManagerInterface           $entityManager
+     * @param EntityManagerInterface $entityManager
      * @param ConfigurationRepositoryInterface $configurationRepository
-     * @param FactoryInterface                 $configurationFactory
-     * @param StoreContextInterface            $storeContext
+     * @param FactoryInterface $configurationFactory
+     * @param StoreContextInterface $storeContext
      */
     public function __construct(
         EntityManagerInterface $entityManager,
         ConfigurationRepositoryInterface $configurationRepository,
         FactoryInterface $configurationFactory,
         StoreContextInterface $storeContext
-    ) {
+    )
+    {
         parent::__construct($entityManager, $configurationRepository, $configurationFactory);
 
         $this->storeContext = $storeContext;
@@ -74,7 +75,7 @@ class ConfigurationService extends BaseConfigurationService implements Configura
     /**
      * {@inheritdoc}
      */
-    public function setForStore($key, $data, StoreInterface $store = null)
+    public function setForStore($key, $data, StoreInterface $store = null): ConfigurationServiceInterface
     {
         if (null === $store) {
             $store = $this->getStore();
@@ -92,12 +93,14 @@ class ConfigurationService extends BaseConfigurationService implements Configura
         $config->setStore($store);
         $this->entityManager->persist($config);
         $this->entityManager->flush();
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeForStore($key, StoreInterface $store = null)
+    public function removeForStore($key, StoreInterface $store = null): ConfigurationServiceInterface
     {
         if (null === $store) {
             $store = $this->getStore();
@@ -109,12 +112,14 @@ class ConfigurationService extends BaseConfigurationService implements Configura
             $this->entityManager->remove($config);
             $this->entityManager->flush();
         }
+
+        return $this;
     }
 
     /**
      * @return \CoreShop\Component\Store\Model\StoreInterface|null
      */
-    protected function getStore()
+    protected function getStore(): ?StoreInterface
     {
         try {
             return $this->storeContext->getStore();

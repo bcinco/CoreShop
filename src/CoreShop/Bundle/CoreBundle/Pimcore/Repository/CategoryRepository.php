@@ -22,7 +22,7 @@ class CategoryRepository extends BaseCategoryRepository implements CategoryRepos
     /**
      * {@inheritdoc}
      */
-    public function findForStore(StoreInterface $store)
+    public function findForStore(StoreInterface $store): array
     {
         return $this->findBy([["condition" => "stores LIKE ?", "variable" => "%" . $store->getId() . "%"]]);
     }
@@ -30,7 +30,7 @@ class CategoryRepository extends BaseCategoryRepository implements CategoryRepos
     /**
      * {@inheritdoc}
      */
-    public function findFirstLevelForStore(StoreInterface $store)
+    public function findFirstLevelForStore(StoreInterface $store): array
     {
         $list = $this->getList();
         $list->setCondition("parentCategory__id is null AND stores LIKE '%," . $store->getId().",%'");
@@ -41,7 +41,7 @@ class CategoryRepository extends BaseCategoryRepository implements CategoryRepos
     /**
      * {@inheritdoc}
      */
-    public function findChildCategoriesForStore(CategoryInterface $category, StoreInterface $store)
+    public function findChildCategoriesForStore(CategoryInterface $category, StoreInterface $store): array
     {
         $list = $this->getList();
         $list->setCondition("parentCategory__id = ? AND stores LIKE '%," . $store->getId().",%'", [$category->getId()]);

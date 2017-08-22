@@ -36,7 +36,7 @@ class FilterProcessor implements FilterProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function processConditions(FilterInterface $filter, ListingInterface $list, ParameterBag $parameterBag)
+    public function processConditions(FilterInterface $filter, ListingInterface $list, ParameterBag $parameterBag): array
     {
         $currentFilter = [];
         $conditions = $filter->getConditions();
@@ -60,7 +60,7 @@ class FilterProcessor implements FilterProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function prepareConditionsForRendering(FilterInterface $filter, ListingInterface $list, $currentFilter)
+    public function prepareConditionsForRendering(FilterInterface $filter, ListingInterface $list, $currentFilter): array
     {
         $conditions = $filter->getConditions();
         $preparedConditions = [];

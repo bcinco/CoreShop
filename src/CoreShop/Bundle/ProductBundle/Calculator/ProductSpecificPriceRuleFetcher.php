@@ -19,10 +19,9 @@ use Webmozart\Assert\Assert;
 class ProductSpecificPriceRuleFetcher implements ProductPriceRuleFetcherInterface
 {
     /**
-     * @param ProductInterface $subject
-     * @return PriceRuleInterface[]
+     * {@inheritdoc}
      */
-    public function getPriceRules(ProductInterface $subject) {
+    public function getPriceRules(ProductInterface $subject): array {
         /**
          * @var $subject ProductInterface
          */

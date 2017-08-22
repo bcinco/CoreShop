@@ -20,7 +20,7 @@ final class MoneyFormatter implements MoneyFormatterInterface
     /**
      * {@inheritdoc}
      */
-    public function format($amount, $currency, $locale = 'en')
+    public function format(int $amount, string $currency, string $locale = 'en'): string
     {
         $formatter = new \NumberFormatter($locale, \NumberFormatter::CURRENCY);
 

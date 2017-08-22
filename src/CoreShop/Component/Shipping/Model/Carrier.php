@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Shipping\Model;
 
@@ -73,7 +73,7 @@ class Carrier implements CarrierInterface
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -81,15 +81,17 @@ class Carrier implements CarrierInterface
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(string $name): CarrierInterface
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -97,15 +99,17 @@ class Carrier implements CarrierInterface
     /**
      * {@inheritdoc}
      */
-    public function setLabel($label)
+    public function setLabel(string $label): CarrierInterface
     {
         $this->label = $label;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getTrackingUrl()
+    public function getTrackingUrl(): ?string
     {
         return $this->trackingUrl;
     }
@@ -113,15 +117,17 @@ class Carrier implements CarrierInterface
     /**
      * {@inheritdoc}
      */
-    public function setTrackingUrl($trackingUrl)
+    public function setTrackingUrl(string $trackingUrl): CarrierInterface
     {
         $this->trackingUrl = $trackingUrl;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getIsFree()
+    public function getIsFree(): ?bool
     {
         return $this->isFree;
     }
@@ -129,15 +135,17 @@ class Carrier implements CarrierInterface
     /**
      * {@inheritdoc}
      */
-    public function setIsFree($isFree)
+    public function setIsFree(bool $isFree): CarrierInterface
     {
         $this->isFree = $isFree;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getRangeBehaviour()
+    public function getRangeBehaviour(): ?string
     {
         return $this->rangeBehaviour;
     }
@@ -145,15 +153,17 @@ class Carrier implements CarrierInterface
     /**
      * {@inheritdoc}
      */
-    public function setRangeBehaviour($rangeBehaviour)
+    public function setRangeBehaviour(string $rangeBehaviour): CarrierInterface
     {
         $this->rangeBehaviour = $rangeBehaviour;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getShippingRules()
+    public function getShippingRules(): Collection
     {
         return $this->shippingRules;
     }
@@ -161,7 +171,7 @@ class Carrier implements CarrierInterface
     /**
      * {@inheritdoc}
      */
-    public function hasShippingRules()
+    public function hasShippingRules(): bool
     {
         return !$this->shippingRules->isEmpty();
     }
@@ -169,30 +179,34 @@ class Carrier implements CarrierInterface
     /**
      * {@inheritdoc}
      */
-    public function addShippingRule(ShippingRuleGroupInterface $shippingRuleGroup)
+    public function addShippingRule(ShippingRuleGroupInterface $shippingRuleGroup): CarrierInterface
     {
         if (!$this->hasShippingRule($shippingRuleGroup)) {
             $this->shippingRules->add($shippingRuleGroup);
 
             $shippingRuleGroup->setCarrier($this);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeShippingRule(ShippingRuleGroupInterface $shippingRuleGroup)
+    public function removeShippingRule(ShippingRuleGroupInterface $shippingRuleGroup): CarrierInterface
     {
         if ($this->hasShippingRule($shippingRuleGroup)) {
             $this->shippingRules->removeElement($shippingRuleGroup);
             $shippingRuleGroup->setCarrier(null);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasShippingRule(ShippingRuleGroupInterface $shippingRuleGroup)
+    public function hasShippingRule(ShippingRuleGroupInterface $shippingRuleGroup): bool
     {
         return $this->shippingRules->contains($shippingRuleGroup);
     }

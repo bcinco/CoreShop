@@ -14,6 +14,7 @@ namespace CoreShop\Bundle\CustomerBundle\Pimcore\Repository;
 
 use CoreShop\Bundle\ResourceBundle\Pimcore\PimcoreRepository;
 
+use CoreShop\Component\Customer\Model\CustomerInterface;
 use CoreShop\Component\Customer\Repository\CustomerRepositoryInterface;
 
 class CustomerRepository extends PimcoreRepository implements CustomerRepositoryInterface
@@ -21,7 +22,7 @@ class CustomerRepository extends PimcoreRepository implements CustomerRepository
     /**
      * {@inheritdoc}
      */
-    public function findByResetToken($resetToken)
+    public function findByResetToken($resetToken): ?CustomerInterface
     {
         $list = $this->getList();
         $list->setCondition('passwordResetHash = ?', [$resetToken]);
@@ -37,7 +38,7 @@ class CustomerRepository extends PimcoreRepository implements CustomerRepository
     /**
      * {@inheritdoc}
      */
-    public function findUniqueByEmail($email, $isGuest)
+    public function findUniqueByEmail($email, $isGuest): ?CustomerInterface
     {
         $list = $this->getList();
 
@@ -60,13 +61,13 @@ class CustomerRepository extends PimcoreRepository implements CustomerRepository
             return $users[0];
         }
 
-        return false;
+        return null;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function findGuestByEmail($email)
+    public function findGuestByEmail($email): ?CustomerInterface
     {
         return $this->findUniqueByEmail($email, true);
     }
@@ -74,7 +75,7 @@ class CustomerRepository extends PimcoreRepository implements CustomerRepository
     /**
      * {@inheritdoc}
      */
-    public function findCustomerByEmail($email)
+    public function findCustomerByEmail($email): ?CustomerInterface
     {
         return $this->findUniqueByEmail($email, false);
     }

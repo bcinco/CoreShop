@@ -31,7 +31,7 @@ class Action implements ActionInterface
     /**
      * @var array
      */
-    protected $configuration;
+    protected $configuration = [];
 
     /**
      * {@inheritdoc}
@@ -44,7 +44,15 @@ class Action implements ActionInterface
     /**
      * {@inheritdoc}
      */
-    public function setType($type)
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setType(string $type): ActionInterface
     {
         $this->type = $type;
 
@@ -54,26 +62,18 @@ class Action implements ActionInterface
     /**
      * {@inheritdoc}
      */
-    public function setConfiguration(array $configuration)
+    public function getConfiguration(): array
+    {
+        return $this->configuration;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setConfiguration(array $configuration): ActionInterface
     {
         $this->configuration = $configuration;
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfiguration()
-    {
-        return $this->configuration;
     }
 }

@@ -17,30 +17,36 @@ interface ConditionInterface
     /**
      * @return string
      */
-    public function getType();
+    public function getType(): string;
 
     /**
      * @param string $type
+     *
+     * @return static
      */
-    public function setType($type);
+    public function setType($type): ConditionInterface;
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getValues();
+    public function getValues(): array;
 
     /**
-     * @param mixed $values
+     * @param array $values
+     *
+     * @return static
      */
-    public function setValues($values);
+    public function setValues($values): ConditionInterface;
 
     /**
      * @return string
      */
-    public function getFieldName();
+    public function getFieldName(): string;
 
     /**
      * @param string $fieldName
+     *
+     * @return static
      */
-    public function setFieldName($fieldName);
+    public function setFieldName($fieldName): ConditionInterface;
 }

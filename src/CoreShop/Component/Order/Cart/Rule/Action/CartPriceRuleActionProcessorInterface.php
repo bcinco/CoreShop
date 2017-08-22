@@ -24,7 +24,7 @@ interface CartPriceRuleActionProcessorInterface
      *
      * @return bool
      */
-    public function applyRule(CartInterface $cart, array $configuration);
+    public function applyRule(CartInterface $cart, array $configuration): bool;
 
     /**
      * Remove Rule from Cart.
@@ -34,7 +34,7 @@ interface CartPriceRuleActionProcessorInterface
      *
      * @return bool
      */
-    public function unApplyRule(CartInterface $cart, array $configuration);
+    public function unApplyRule(CartInterface $cart, array $configuration): bool;
 
     /**
      * Calculate discount.
@@ -45,5 +45,5 @@ interface CartPriceRuleActionProcessorInterface
      *
      * @return int
      */
-    public function getDiscount(CartInterface $cart, $withTax, array $configuration);
+    public function getDiscount(CartInterface $cart, $withTax, array $configuration): int;
 }

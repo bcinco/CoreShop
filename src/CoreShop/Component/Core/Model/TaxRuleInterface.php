@@ -20,20 +20,24 @@ interface TaxRuleInterface extends BaseTaxRuleInterface
     /**
      * @return CountryInterface
      */
-    public function getCountry();
+    public function getCountry(): ?CountryInterface;
 
     /**
      * @param CountryInterface|null $country
+     *
+     * @return static
      */
-    public function setCountry(CountryInterface $country = null);
+    public function setCountry(?CountryInterface $country): TaxRuleInterface;
 
     /**
      * @return StateInterface
      */
-    public function getState();
+    public function getState(): ?StateInterface;
 
     /**
      * @param StateInterface|null $state
+     *
+     * @return static
      */
-    public function setState(StateInterface $state = null);
+    public function setState(?StateInterface $state): TaxRuleInterface;
 }

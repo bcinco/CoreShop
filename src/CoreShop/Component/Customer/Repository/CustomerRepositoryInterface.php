@@ -21,9 +21,9 @@ interface CustomerRepositoryInterface extends PimcoreRepositoryInterface
      * Find customer by reset token
      *
      * @param $resetToken
-     * @return CustomerInterface|null
+     * @return null|CustomerInterface
      */
-    public function findByResetToken($resetToken);
+    public function findByResetToken($resetToken): ?CustomerInterface;
 
     /**
      * Find Customer by email.
@@ -31,25 +31,25 @@ interface CustomerRepositoryInterface extends PimcoreRepositoryInterface
      * @param $email
      * @param $isGuest
      *
-     * @return mixed
+     * @return null|CustomerInterface
      */
-    public function findUniqueByEmail($email, $isGuest);
+    public function findUniqueByEmail($email, $isGuest): ?CustomerInterface;
 
     /**
      * Find Guest Customer by Email.
      *
      * @param $email
      *
-     * @return mixed
+     * @return null|CustomerInterface
      */
-    public function findGuestByEmail($email);
+    public function findGuestByEmail($email): ?CustomerInterface;
 
     /**
      * Find Customer by Email.
      *
      * @param $email
      *
-     * @return mixed
+     * @return null|CustomerInterface
      */
-    public function findCustomerByEmail($email);
+    public function findCustomerByEmail($email): ?CustomerInterface;
 }

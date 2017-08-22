@@ -49,7 +49,7 @@ class CheckoutManager implements CheckoutManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getSteps()
+    public function getSteps(): array
     {
         return array_map(function(CheckoutStepInterface $step) {
             return $step->getIdentifier();
@@ -59,7 +59,7 @@ class CheckoutManager implements CheckoutManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getStep($identifier)
+    public function getStep($identifier): CheckoutStepInterface
     {
         return $this->serviceRegistry->get($identifier);
     }
@@ -67,7 +67,7 @@ class CheckoutManager implements CheckoutManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getNextStep($identifier)
+    public function getNextStep($identifier): CheckoutStepInterface
     {
         return $this->serviceRegistry->getNextTo($identifier);
     }
@@ -75,7 +75,7 @@ class CheckoutManager implements CheckoutManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getPreviousStep($identifier)
+    public function getPreviousStep($identifier): CheckoutStepInterface
     {
         return $this->serviceRegistry->getPreviousTo($identifier);
     }
@@ -83,7 +83,7 @@ class CheckoutManager implements CheckoutManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getPreviousSteps($identifier)
+    public function getPreviousSteps($identifier): array
     {
         $previousSteps = $this->serviceRegistry->getAllPreviousTo($identifier);
 
@@ -93,7 +93,7 @@ class CheckoutManager implements CheckoutManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function validateStep(CheckoutStepInterface $step, CartInterface $cart)
+    public function validateStep(CheckoutStepInterface $step, CartInterface $cart): bool
     {
         return $step->validate($cart);
     }
@@ -101,7 +101,7 @@ class CheckoutManager implements CheckoutManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function prepareStep(CheckoutStepInterface $step, CartInterface $cart)
+    public function prepareStep(CheckoutStepInterface $step, CartInterface $cart): array
     {
         return $step->prepareStep($cart);
     }
@@ -109,7 +109,7 @@ class CheckoutManager implements CheckoutManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getCurrentStep(CartInterface $cart)
+    public function getCurrentStep(CartInterface $cart): CheckoutStepInterface
     {
         return $this->serviceRegistry->get($cart->getCurrentStep());
     }
@@ -117,7 +117,7 @@ class CheckoutManager implements CheckoutManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getCurrentStepIndex($identifier)
+    public function getCurrentStepIndex($identifier): int
     {
         return $this->serviceRegistry->getIndex($identifier) + 1; //Checkout Steps are 1 based
     }

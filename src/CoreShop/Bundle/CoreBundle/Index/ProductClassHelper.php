@@ -13,7 +13,7 @@ class ProductClassHelper implements ClassHelperInterface
     /**
      * {@inheritdoc}
      */
-    public function getSystemColumns()
+    public function getSystemColumns(): array
     {
         return [
             'categoryIds' => IndexColumnInterface::FIELD_TYPE_STRING,
@@ -27,7 +27,7 @@ class ProductClassHelper implements ClassHelperInterface
     /**
      * {@inheritdoc}
      */
-    public function getLocalizedSystemColumns()
+    public function getLocalizedSystemColumns(): array
     {
         return [];
     }
@@ -35,7 +35,7 @@ class ProductClassHelper implements ClassHelperInterface
     /**
      * {@inheritdoc}
      */
-    public function getIndexColumns(IndexableInterface $indexable)
+    public function getIndexColumns(IndexableInterface $indexable): array
     {
         if ($indexable instanceof ProductInterface) {
             $categoryIds = [];

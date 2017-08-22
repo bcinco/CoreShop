@@ -15,7 +15,7 @@ namespace CoreShop\Component\Address\Model;
 use CoreShop\Component\Resource\Model\AbstractTranslation;
 use CoreShop\Component\Resource\Model\TimestampableTrait;
 
-class StateTranslation extends AbstractTranslation implements CountryTranslationInterface
+class StateTranslation extends AbstractTranslation implements StateTranslationInterface
 {
     use TimestampableTrait;
 
@@ -40,7 +40,7 @@ class StateTranslation extends AbstractTranslation implements CountryTranslation
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -48,8 +48,10 @@ class StateTranslation extends AbstractTranslation implements CountryTranslation
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName($name): StateTranslationInterface
     {
         $this->name = $name;
+
+        return $this;
     }
 }

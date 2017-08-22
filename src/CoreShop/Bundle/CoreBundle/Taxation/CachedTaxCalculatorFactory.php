@@ -18,6 +18,7 @@ use CoreShop\Component\Address\Model\StateInterface;
 use CoreShop\Component\Core\Model\TaxRuleGroupInterface;
 
 use CoreShop\Component\Core\Taxation\TaxCalculatorFactoryInterface;
+use CoreShop\Component\Taxation\Calculator\TaxCalculatorInterface;
 
 
 class CachedTaxCalculatorFactory implements TaxCalculatorFactoryInterface
@@ -43,7 +44,7 @@ class CachedTaxCalculatorFactory implements TaxCalculatorFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getTaxCalculatorForAddress(TaxRuleGroupInterface $taxRuleGroup, AddressInterface $address)
+    public function getTaxCalculatorForAddress(TaxRuleGroupInterface $taxRuleGroup, AddressInterface $address): TaxCalculatorInterface
     {
         $cacheIdentifier = sprintf('%s.%s.%s',
             $taxRuleGroup->getId(),

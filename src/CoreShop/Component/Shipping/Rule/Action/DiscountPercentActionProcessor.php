@@ -21,7 +21,7 @@ class DiscountPercentActionProcessor implements CarrierPriceActionProcessorInter
     /**
      * {@inheritdoc}
      */
-    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, array $configuration)
+    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, array $configuration): int
     {
         return false;
     }
@@ -29,7 +29,7 @@ class DiscountPercentActionProcessor implements CarrierPriceActionProcessorInter
     /**
      * {@inheritdoc}
      */
-    public function getModification(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, $price, array $configuration)
+    public function getModification(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, int $price, array $configuration): int
     {
         return (int) round(-1 * ($price * ($configuration['percent'] / 100)));
     }

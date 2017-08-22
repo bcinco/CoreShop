@@ -20,7 +20,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Controller\ControllerReference;
 use Symfony\Component\HttpKernel\Fragment\FragmentRendererInterface;
 
-class OrderDocumentPdfRenderer implements OrderDocumentRendererInterface
+final class OrderDocumentPdfRenderer implements OrderDocumentRendererInterface
 {
     /**
      * @var FragmentRendererInterface
@@ -52,7 +52,7 @@ class OrderDocumentPdfRenderer implements OrderDocumentRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderDocumentPdf(OrderDocumentInterface $orderDocument)
+    public function renderDocumentPdf(OrderDocumentInterface $orderDocument): string
     {
         $params = [
             'id' => $orderDocument->getId(),

@@ -19,68 +19,76 @@ use Doctrine\Common\Collections\Collection;
 interface RuleInterface extends ResourceInterface, TimestampableInterface
 {
     /**
-     * @return mixed
+     * @return string
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
-     * @param $name
+     * @param string $name
      *
-     * @return mixed
+     * @return RuleInterface
      */
-    public function setName($name);
+    public function setName(string $name): RuleInterface;
 
     /**
      * @return Collection|ConditionInterface[]
      */
-    public function getConditions();
+    public function getConditions(): Collection;
 
     /**
      * @return bool
      */
-    public function hasConditions();
+    public function hasConditions(): bool;
 
     /**
      * @param ConditionInterface $conditions
      *
      * @return bool
      */
-    public function hasCondition(ConditionInterface $conditions);
+    public function hasCondition(ConditionInterface $conditions): bool;
 
     /**
      * @param ConditionInterface $conditions
+     *
+     * @return static
      */
-    public function addCondition(ConditionInterface $conditions);
+    public function addCondition(ConditionInterface $conditions): RuleInterface;
 
     /**
      * @param ConditionInterface $conditions
+     *
+     * @return static
      */
-    public function removeCondition(ConditionInterface $conditions);
+    public function removeCondition(ConditionInterface $conditions): RuleInterface;
 
     /**
      * @return Collection|ActionInterface[]
      */
-    public function getActions();
+    public function getActions(): Collection;
 
     /**
      * @return bool
      */
-    public function hasActions();
+    public function hasActions(): bool;
 
     /**
      * @param ActionInterface $action
      *
      * @return bool
      */
-    public function hasAction(ActionInterface $action);
+    public function hasAction(ActionInterface $action): bool;
 
     /**
      * @param ActionInterface $action
+     *
+     * @return static
      */
-    public function addAction(ActionInterface $action);
+    public function addAction(ActionInterface $action): RuleInterface;
 
     /**
      * @param ActionInterface $action
+     *
+     * @return static
      */
-    public function removeAction(ActionInterface $action);
+    public function removeAction(ActionInterface $action): RuleInterface;
 }

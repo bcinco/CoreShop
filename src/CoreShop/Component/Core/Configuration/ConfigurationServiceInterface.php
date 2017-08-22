@@ -32,15 +32,15 @@ interface ConfigurationServiceInterface extends BaseConfigurationServiceInterfac
      * @param $data
      * @param StoreInterface|null $store
      *
-     * @return ConfigurationInterface
+     * @return static
      */
-    public function setForStore($key, $data, StoreInterface $store = null);
+    public function setForStore($key, $data, StoreInterface $store = null): ConfigurationServiceInterface;
 
     /**
      * @param $key
      * @param StoreInterface|null $store
      *
-     * @return ConfigurationInterface
+     * @return static
      */
-    public function removeForStore($key, StoreInterface $store = null);
+    public function removeForStore($key, StoreInterface $store = null): ConfigurationServiceInterface;
 }

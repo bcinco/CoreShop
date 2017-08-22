@@ -20,20 +20,24 @@ interface NotificationRuleInterface extends RuleInterface, ToggleableInterface
     /**
      * @return string
      */
-    public function getType();
+    public function getType(): ?string;
 
     /**
      * @param string $type
+     *
+     * @return static
      */
-    public function setType($type);
+    public function setType(string $type): NotificationRuleInterface;
 
     /**
      * @return int
      */
-    public function getSort();
+    public function getSort(): ?int;
 
      /**
       * @param int $sort
+      *
+      * @return static
       */
-     public function setSort($sort);
+     public function setSort(int $sort): NotificationRuleInterface;
 }

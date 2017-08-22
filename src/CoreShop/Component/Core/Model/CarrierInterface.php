@@ -15,18 +15,17 @@ namespace CoreShop\Component\Core\Model;
 use CoreShop\Component\Shipping\Model\CarrierInterface as BaseCarrierInterface;
 use CoreShop\Component\Store\Model\StoresAwareInterface;
 
-
 interface CarrierInterface extends BaseCarrierInterface, StoresAwareInterface
 {
     /**
      * @return TaxRuleGroupInterface
      */
-    public function getTaxRule();
+    public function getTaxRule(): ?TaxRuleGroupInterface;
 
     /**
      * @param TaxRuleGroupInterface $taxRule
      *
      * @return mixed
      */
-    public function setTaxRule(TaxRuleGroupInterface $taxRule);
+    public function setTaxRule(TaxRuleGroupInterface $taxRule): CarrierInterface;
 }

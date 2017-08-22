@@ -102,7 +102,7 @@ final class CartManager implements CartManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getCart()
+    public function getCart(): CartInterface
     {
         if ($this->hasCart()) {
             return $this->getSessionCart();
@@ -118,7 +118,7 @@ final class CartManager implements CartManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function hasCart()
+    public function hasCart(): bool
     {
         return $this->getSessionCart() instanceof CartInterface;
     }
@@ -146,22 +146,24 @@ final class CartManager implements CartManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function setCurrentCart(CartInterface $cart)
+    public function setCurrentCart(CartInterface $cart): CartManagerInterface
     {
         if ($cart->getId() > 0) {
             $this->getBag()->set(self::CART_ID_IDENTIFIER, $cart->getId());
         } else {
             $this->getBag()->set(self::CART_OBJ_IDENTIFIER, $cart);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function createCart($name, $customer = null, $store = null, $currency = null, $persist = false)
+    public function createCart($name, $customer = null, $store = null, $currency = null, $persist = false): CartInterface
     {
         /**
-         * @var CartInterface
+         * @var $cart CartInterface
          */
         $cart = $this->cartFactory->createNew();
 
@@ -181,7 +183,7 @@ final class CartManager implements CartManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getStoredCarts($customer)
+    public function getStoredCarts($customer): array
     {
         return $this->cartRepository->findForCustomer($customer);
     }
@@ -189,7 +191,7 @@ final class CartManager implements CartManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getByName($customer, $name)
+    public function getByName($customer, $name): array
     {
         return $this->cartRepository->findNamedForCustomer($customer, $name);
     }
@@ -197,17 +199,19 @@ final class CartManager implements CartManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function deleteCart($cart)
+    public function deleteCart($cart): bool
     {
         if ($cart instanceof CartInterface) {
             $cart->delete();
         }
+
+        return true;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function persistCart(CartInterface $cart)
+    public function persistCart(CartInterface $cart): CartManagerInterface
     {
         if ($this->getBag()->has(self::CART_OBJ_IDENTIFIER)) {
             $this->getBag()->remove(self::CART_OBJ_IDENTIFIER);
@@ -225,5 +229,7 @@ final class CartManager implements CartManagerInterface
         $cart->save();
 
         $this->setCurrentCart($cart);
+
+        return $this;
     }
 }

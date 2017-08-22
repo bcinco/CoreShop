@@ -20,40 +20,48 @@ interface CurrencyInterface extends ResourceInterface, TimestampableInterface
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * @param $name
+     *
+     * @return static
      */
-    public function setName($name);
+    public function setName(string $name): CurrencyInterface;
 
     /**
      * @return string
      */
-    public function getIsoCode();
+    public function getIsoCode(): ?string;
 
     /**
      * @param mixed $isoCode
+     *
+     * @return static
      */
-    public function setIsoCode($isoCode);
+    public function setIsoCode(string $isoCode): CurrencyInterface;
 
     /**
      * @return int
      */
-    public function getNumericIsoCode();
+    public function getNumericIsoCode(): ?int;
 
     /**
      * @param int $numericIsoCode
+     *
+     * @return static
      */
-    public function setNumericIsoCode($numericIsoCode);
+    public function setNumericIsoCode(int $numericIsoCode): CurrencyInterface;
 
     /**
      * @return string
      */
-    public function getSymbol();
+    public function getSymbol(): ?string;
 
     /**
      * @param string $symbol
+     *
+     * @return static
      */
-    public function setSymbol($symbol);
+    public function setSymbol(string $symbol): CurrencyInterface;
 }

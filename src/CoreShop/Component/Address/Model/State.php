@@ -48,7 +48,7 @@ class State extends AbstractResource implements StateInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf('%s (%s)', $this->getName(), $this->getId());
     }
@@ -64,7 +64,7 @@ class State extends AbstractResource implements StateInterface
     /**
      * {@inheritdoc}
      */
-    public function getIsoCode()
+    public function getIsoCode(): ?string
     {
         return $this->isoCode;
     }
@@ -72,7 +72,7 @@ class State extends AbstractResource implements StateInterface
     /**
      * {@inheritdoc}
      */
-    public function setIsoCode($isoCode)
+    public function setIsoCode(string $isoCode): StateInterface
     {
         $this->isoCode = $isoCode;
 
@@ -82,7 +82,7 @@ class State extends AbstractResource implements StateInterface
     /**
      * {@inheritdoc}
      */
-    public function getName($language = null)
+    public function getName(?string $language = null): ?string
     {
         return $this->getTranslation($language)->getName();
     }
@@ -90,7 +90,7 @@ class State extends AbstractResource implements StateInterface
     /**
      * {@inheritdoc}
      */
-    public function setName($name, $language = null)
+    public function setName(string $name, ?string $language = null): StateInterface
     {
         $this->getTranslation($language, false)->setName($name);
 
@@ -100,7 +100,7 @@ class State extends AbstractResource implements StateInterface
     /**
      * {@inheritdoc}
      */
-    public function getCountry()
+    public function getCountry(): ?CountryInterface
     {
         return $this->country;
     }
@@ -108,7 +108,7 @@ class State extends AbstractResource implements StateInterface
     /**
      * {@inheritdoc}
      */
-    public function setCountry(CountryInterface $country)
+    public function setCountry(CountryInterface $country): StateInterface
     {
         $this->country = $country;
 
@@ -118,7 +118,7 @@ class State extends AbstractResource implements StateInterface
     /**
      * {@inheritdoc}
      */
-    public function getCountryName()
+    public function getCountryName(): ?string
     {
         return $this->getCountry() instanceof CountryInterface ? $this->getCountry()->getName() : '';
     }
@@ -126,7 +126,7 @@ class State extends AbstractResource implements StateInterface
     /**
      * {@inheritdoc}
      */
-    protected function createTranslation()
+    protected function createTranslation(): StateTranslationInterface
     {
         return new StateTranslation();
     }

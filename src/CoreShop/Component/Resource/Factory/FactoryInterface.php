@@ -12,10 +12,12 @@
 
 namespace CoreShop\Component\Resource\Factory;
 
+use CoreShop\Component\Resource\Model\ResourceInterface;
+
 interface FactoryInterface
 {
     /**
-    * @return mixed
+    * @return ResourceInterface
     */
-   public function createNew();
+   public function createNew(): ResourceInterface;
 }

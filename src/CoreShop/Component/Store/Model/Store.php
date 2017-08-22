@@ -49,13 +49,13 @@ class Store extends AbstractResource implements StoreInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf('%s (%s)', $this->getName(), $this->getId());
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -73,66 +73,74 @@ class Store extends AbstractResource implements StoreInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
+     * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(string $name): StoreInterface
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getTemplate()
+    public function getTemplate(): ?string
     {
         return $this->template;
     }
 
     /**
-     * @param string $template
+     * {@inheritdoc}
      */
-    public function setTemplate($template)
+    public function setTemplate(string $template): StoreInterface
     {
         $this->template = $template;
+
+        return $this;
     }
 
     /**
-     * @return bool
+     * {@inheritdoc}
      */
-    public function getIsDefault()
+    public function getIsDefault(): ?bool
     {
         return $this->isDefault;
     }
 
     /**
-     * @param bool $isDefault
+     * {@inheritdoc}
      */
-    public function setIsDefault($isDefault)
+    public function setIsDefault(bool $isDefault): StoreInterface
     {
         $this->isDefault = $isDefault;
+
+        return $this;
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
-    public function getSiteId()
+    public function getSiteId(): ?int
     {
         return $this->siteId;
     }
 
     /**
-     * @param int $siteId
+     * {@inheritdoc}
      */
-    public function setSiteId($siteId)
+    public function setSiteId(?int $siteId): StoreInterface
     {
         $this->siteId = $siteId;
+
+        return $this;
     }
 }

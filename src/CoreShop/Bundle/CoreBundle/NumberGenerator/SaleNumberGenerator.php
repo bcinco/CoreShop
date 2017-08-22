@@ -56,7 +56,7 @@ final class SaleNumberGenerator implements NumberGeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generate(ResourceInterface $model)
+    public function generate(ResourceInterface $model): string
     {
         return sprintf('%s%s%s', $this->configurationService->getForStore($this->prefixConfigurationKey), $this->numberGenerator->generate($model), $this->configurationService->getForStore($this->suffixConfigurationKey));
     }

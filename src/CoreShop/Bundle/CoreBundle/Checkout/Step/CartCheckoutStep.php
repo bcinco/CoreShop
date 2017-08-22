@@ -21,7 +21,7 @@ class CartCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function getIdentifier()
+    public function getIdentifier(): string
     {
         return 'cart';
     }
@@ -29,7 +29,7 @@ class CartCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function doAutoForward()
+    public function doAutoForward(): bool
     {
         return true;
     }
@@ -37,7 +37,7 @@ class CartCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function validate(CartInterface $cart)
+    public function validate(CartInterface $cart): bool
     {
         return count($cart->getItems()) > 0;
     }
@@ -53,8 +53,10 @@ class CartCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function prepareStep(CartInterface $cart)
+    public function prepareStep(CartInterface $cart, Request $request): array
     {
         //nothing to do here
+
+        return [];
     }
 }

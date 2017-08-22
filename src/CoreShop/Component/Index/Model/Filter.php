@@ -78,7 +78,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -86,7 +86,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(string $name): FilterInterface
     {
         $this->name = $name;
 
@@ -96,7 +96,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function getResultsPerPage()
+    public function getResultsPerPage(): ?int
     {
         return $this->resultsPerPage;
     }
@@ -104,7 +104,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function setResultsPerPage($resultsPerPage)
+    public function setResultsPerPage(int $resultsPerPage): FilterInterface
     {
         $this->resultsPerPage = $resultsPerPage;
 
@@ -114,7 +114,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function getOrderDirection()
+    public function getOrderDirection(): ?string
     {
         return $this->orderDirection;
     }
@@ -122,7 +122,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function setOrderDirection($orderDirection)
+    public function setOrderDirection(string $orderDirection): FilterInterface
     {
         $this->orderDirection = $orderDirection;
 
@@ -132,7 +132,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function getOrderKey()
+    public function getOrderKey(): ?string
     {
         return $this->orderKey;
     }
@@ -140,7 +140,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function setOrderKey($orderKey)
+    public function setOrderKey(string $orderKey): FilterInterface
     {
         $this->orderKey = $orderKey;
 
@@ -150,7 +150,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function getIndex()
+    public function getIndex(): ?IndexInterface
     {
         return $this->index;
     }
@@ -158,7 +158,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function setIndex(IndexInterface $index)
+    public function setIndex(IndexInterface $index): FilterInterface
     {
         $this->index = $index;
 
@@ -168,7 +168,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function getPreConditions()
+    public function getPreConditions(): Collection
     {
         return $this->preConditions;
     }
@@ -176,7 +176,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function hasPreConditions()
+    public function hasPreConditions(): bool
     {
         return !$this->preConditions->isEmpty();
     }
@@ -184,27 +184,31 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function addPreCondition(FilterConditionInterface $preCondition)
+    public function addPreCondition(FilterConditionInterface $preCondition): FilterInterface
     {
         if (!$this->hasPreCondition($preCondition)) {
             $this->preConditions->add($preCondition);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removePreCondition(FilterConditionInterface $preCondition)
+    public function removePreCondition(FilterConditionInterface $preCondition): FilterInterface
     {
         if ($this->hasPreCondition($preCondition)) {
             $this->preConditions->removeElement($preCondition);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasPreCondition(FilterConditionInterface $preCondition)
+    public function hasPreCondition(FilterConditionInterface $preCondition): bool
     {
         return $this->preConditions->contains($preCondition);
     }
@@ -212,7 +216,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function getConditions()
+    public function getConditions(): Collection
     {
         return $this->conditions;
     }
@@ -220,7 +224,7 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function hasConditions()
+    public function hasConditions(): bool
     {
         return !$this->conditions->isEmpty();
     }
@@ -228,27 +232,31 @@ class Filter extends AbstractResource implements FilterInterface
     /**
      * {@inheritdoc}
      */
-    public function addCondition(FilterConditionInterface $condition)
+    public function addCondition(FilterConditionInterface $condition): FilterInterface
     {
         if (!$this->hasCondition($condition)) {
             $this->conditions->add($condition);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeCondition(FilterConditionInterface $condition)
+    public function removeCondition(FilterConditionInterface $condition): FilterInterface
     {
         if ($this->hasCondition($condition)) {
             $this->conditions->removeElement($condition);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasCondition(FilterConditionInterface $condition)
+    public function hasCondition(FilterConditionInterface $condition): bool
     {
         return $this->conditions->contains($condition);
     }

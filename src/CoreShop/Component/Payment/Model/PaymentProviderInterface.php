@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Payment\Model;
 
@@ -19,61 +19,71 @@ use CoreShop\Component\Resource\Model\TranslatableInterface;
 interface PaymentProviderInterface extends ToggleableInterface, TranslatableInterface, TimestampableInterface
 {
     /**
-     * @return mixed
+     * @return string
      */
-    public function getIdentifier();
+    public function getIdentifier(): ?string;
 
     /**
-     * @param null $identifier
+     * @param string $identifier
+     *
+     * @return static
      */
-    public function setIdentifier($identifier);
+    public function setIdentifier(string $identifier): PaymentProviderInterface;
 
     /**
-     * @param null $language
+     * @param string|null $language
      *
      * @return string
      */
-    public function getName($language = null);
+    public function getName(?string $language = null): ?string;
 
     /**
      * @param string $name
-     * @param null   $language
+     * @param string|null $language
+     *
+     * @return static
      */
-    public function setName($name, $language = null);
+    public function setName(string $name, ?string $language = null): PaymentProviderInterface;
 
     /**
-     * @param null $language
+     * @param string|null $language
      *
      * @return string
      */
-    public function getDescription($language = null);
+    public function getDescription(?string $language = null): ?string;
 
     /**
      * @param string $description
-     * @param null   $language
+     * @param string|null $language
+     *
+     * @return static
      */
-    public function setDescription($description, $language = null);
+    public function setDescription(string $description, ?string $language = null): PaymentProviderInterface;
 
     /**
-     * @param null $language
+     * @param string|null $language
      *
      * @return string
      */
-    public function getInstructions($language = null);
+    public function getInstructions(?string $language = null): ?string;
 
     /**
      * @param string $instructions
-     * @param null   $language
+     * @param string|null $language
+     *
+     * @return static
      */
-    public function setInstructions($instructions, $language = null);
+    public function setInstructions(string $instructions, ?string $language = null): PaymentProviderInterface;
 
     /**
      * @return int
      */
-    public function getPosition();
+    public function getPosition(): ?int;
 
     /**
      * @param int $position
+     *
+     * @return static
      */
-    public function setPosition($position);
+    public function setPosition(int $position): PaymentProviderInterface;
 }

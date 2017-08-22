@@ -12,6 +12,7 @@
 
 namespace CoreShop\Component\Store\Context\RequestBased;
 
+use CoreShop\Component\Store\Model\StoreInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Zend\Stdlib\PriorityQueue;
 
@@ -39,7 +40,7 @@ final class CompositeRequestResolver implements RequestResolverInterface
     /**
      * {@inheritdoc}
      */
-    public function findStore(Request $request)
+    public function findStore(Request $request): ?StoreInterface
     {
         foreach ($this->requestResolvers as $requestResolver) {
             $store = $requestResolver->findStore($request);

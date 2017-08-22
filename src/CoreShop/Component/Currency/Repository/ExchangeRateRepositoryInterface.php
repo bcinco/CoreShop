@@ -14,5 +14,5 @@ interface ExchangeRateRepositoryInterface extends RepositoryInterface
      *
      * @return ExchangeRateInterface|null
      */
-    public function findOneWithCurrencyPair(CurrencyInterface $fromCurrency, CurrencyInterface $toCurrency);
+    public function findOneWithCurrencyPair(CurrencyInterface $fromCurrency, CurrencyInterface $toCurrency): ?ExchangeRateInterface;
 }

@@ -19,5 +19,5 @@ interface SequenceGeneratorInterface
      *
      * @return int
      */
-    public function getNextSequenceForType($type);
+    public function getNextSequenceForType(string $type): int;
 }

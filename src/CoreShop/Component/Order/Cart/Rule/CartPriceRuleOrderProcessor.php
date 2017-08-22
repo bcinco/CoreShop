@@ -67,7 +67,7 @@ class CartPriceRuleOrderProcessor implements CartPriceRuleOrderProcessorInterfac
     /**
      * {@inheritdoc}
      */
-    public function process(CartPriceRuleInterface $cartPriceRule, $usedCode, CartInterface $cart, SaleInterface $sale)
+    public function process(CartPriceRuleInterface $cartPriceRule, $usedCode, CartInterface $cart, SaleInterface $sale): bool
     {
         $voucherCode = $this->voucherCodeRepository->findByCode($usedCode);
 

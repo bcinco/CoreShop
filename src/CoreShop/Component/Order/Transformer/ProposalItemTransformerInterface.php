@@ -26,5 +26,5 @@ interface ProposalItemTransformerInterface
      *
      * @return mixed
      */
-    public function transform(ProposalInterface $proposal, ProposalItemInterface $fromProposalItem, ProposalItemInterface $toProposal);
+    public function transform(ProposalInterface $proposal, ProposalItemInterface $fromProposalItem, ProposalItemInterface $toProposal): ProposalItemInterface;
 }

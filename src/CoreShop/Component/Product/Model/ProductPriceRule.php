@@ -41,7 +41,7 @@ class ProductPriceRule implements ProductPriceRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function getDescription()
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -49,7 +49,7 @@ class ProductPriceRule implements ProductPriceRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function setDescription($description)
+    public function setDescription(string $description): ProductPriceRuleInterface
     {
         $this->description = $description;
 

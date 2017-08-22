@@ -20,30 +20,36 @@ interface TaxRuleInterface extends ResourceInterface, TimestampableInterface
     /**
      * @return int
      */
-    public function getBehavior();
+    public function getBehavior(): ?int;
 
     /**
      * @param int $behavior
+     *
+     * @return static
      */
-    public function setBehavior($behavior);
+    public function setBehavior(int $behavior): TaxRuleInterface;
 
     /**
      * @return TaxRuleGroupInterface
      */
-    public function getTaxRuleGroup();
+    public function getTaxRuleGroup(): ?TaxRuleGroupInterface;
 
     /**
-     * @param TaxRuleGroupInterface|null $taxRuleGroup
+     * @param TaxRuleGroupInterface $taxRuleGroup
+     *
+     * @return static
      */
-    public function setTaxRuleGroup(TaxRuleGroupInterface $taxRuleGroup = null);
+    public function setTaxRuleGroup(TaxRuleGroupInterface $taxRuleGroup): TaxRuleInterface;
 
     /**
      * @return TaxRateInterface
      */
-    public function getTaxRate();
+    public function getTaxRate(): ?TaxRateInterface;
 
     /**
      * @param TaxRateInterface $tax
+     *
+     * @return static
      */
-    public function setTaxRate(TaxRateInterface $tax);
+    public function setTaxRate(TaxRateInterface $tax): TaxRuleInterface;
 }

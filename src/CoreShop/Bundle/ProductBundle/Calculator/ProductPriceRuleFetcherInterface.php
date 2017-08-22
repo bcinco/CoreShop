@@ -21,5 +21,5 @@ interface ProductPriceRuleFetcherInterface
      * @param ProductInterface $subject
      * @return PriceRuleInterface[]
      */
-    public function getPriceRules(ProductInterface $subject);
+    public function getPriceRules(ProductInterface $subject): array;
 }

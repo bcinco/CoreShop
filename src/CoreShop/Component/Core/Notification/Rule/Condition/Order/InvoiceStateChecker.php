@@ -40,7 +40,7 @@ class InvoiceStateChecker extends AbstractConditionChecker
     /**
      * {@inheritdoc}
      */
-    public function isNotificationRuleValid($subject, $params, array $configuration)
+    public function isNotificationRuleValid($subject, $params, array $configuration): bool
     {
         $invoiceType = $configuration['invoiceState'];
 

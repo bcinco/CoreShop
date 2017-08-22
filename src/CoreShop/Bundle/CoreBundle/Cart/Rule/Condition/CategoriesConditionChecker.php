@@ -23,7 +23,7 @@ class CategoriesConditionChecker implements ConditionCheckerInterface
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, array $configuration)
+    public function isValid($subject, array $configuration): bool
     {
         Assert::isInstanceOf($subject, CartInterface::class);
 

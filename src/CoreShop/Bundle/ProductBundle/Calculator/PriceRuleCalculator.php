@@ -57,7 +57,7 @@ final class PriceRuleCalculator implements ProductPriceCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function getPrice(ProductInterface $subject)
+    public function getPrice(ProductInterface $subject): ?int
     {
         $price = 0;
 
@@ -89,13 +89,13 @@ final class PriceRuleCalculator implements ProductPriceCalculatorInterface
             }
         }
 
-        return $price === 0 ? false : $price;
+        return $price === 0 ? null : $price;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getDiscount(ProductInterface $subject, $price)
+    public function getDiscount(ProductInterface $subject, int $price): int
     {
         $discount = 0;
 

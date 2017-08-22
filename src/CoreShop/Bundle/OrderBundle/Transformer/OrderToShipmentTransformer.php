@@ -102,7 +102,7 @@ class OrderToShipmentTransformer implements OrderDocumentTransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform(OrderInterface $order, OrderDocumentInterface $shipment, $itemsToTransform)
+    public function transform(OrderInterface $order, OrderDocumentInterface $shipment, $itemsToTransform): OrderDocumentInterface
     {
         /**
          * @var $cart CartInterface

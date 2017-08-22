@@ -40,7 +40,7 @@ class CountryTranslation extends AbstractTranslation implements CountryTranslati
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -48,8 +48,10 @@ class CountryTranslation extends AbstractTranslation implements CountryTranslati
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName($name): CountryTranslationInterface
     {
         $this->name = $name;
+
+        return $this;
     }
 }

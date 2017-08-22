@@ -36,7 +36,7 @@ final class ProductPriceCalculator implements ProductPriceCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function getPrice(ProductInterface $subject)
+    public function getPrice(ProductInterface $subject): ?int
     {
         $price = false;
 
@@ -54,7 +54,7 @@ final class ProductPriceCalculator implements ProductPriceCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function getDiscount(ProductInterface $subject, $price)
+    public function getDiscount(ProductInterface $subject, int $price): int
     {
         $discount = 0;
 

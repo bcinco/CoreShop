@@ -8,10 +8,11 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Address\Context;
 
+use CoreShop\Component\Address\Model\CountryInterface;
 use Zend\Stdlib\PriorityQueue;
 
 final class CompositeCountryContext implements CountryContextInterface
@@ -28,7 +29,7 @@ final class CompositeCountryContext implements CountryContextInterface
 
     /**
      * @param CountryContextInterface $countryContexts
-     * @param int                     $priority
+     * @param int $priority
      */
     public function addContext(CountryContextInterface $countryContexts, $priority = 0)
     {
@@ -38,7 +39,7 @@ final class CompositeCountryContext implements CountryContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCountry()
+    public function getCountry(): CountryInterface
     {
         foreach ($this->countryContexts as $countryContexts) {
             try {

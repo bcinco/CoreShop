@@ -22,40 +22,42 @@ interface StateInterface extends ResourceInterface, TranslatableInterface, Times
     /**
      * @return string
      */
-    public function getIsoCode();
+    public function getIsoCode(): ?string;
 
     /**
      * @param $isoCode
+     *
+     * @return static
      */
-    public function setIsoCode($isoCode);
+    public function setIsoCode(string $isoCode): StateInterface;
 
     /**
      * @param $language
      *
-     * @return mixed
+     * @return string
      */
-    public function getName($language = null);
+    public function getName(?string $language = null): ?string;
 
     /**
      * @param $name
      * @param $language
      *
-     * @return mixed
+     * @return StateInterface
      */
-    public function setName($name, $language = null);
+    public function setName(string $name, ?string $language = null): StateInterface;
 
     /**
-     * @return CountryInterface
+     * @return CountryInterface|null
      */
-    public function getCountry();
+    public function getCountry(): ?CountryInterface;
 
     /**
      * @param CountryInterface $country
      */
-    public function setCountry(CountryInterface $country);
+    public function setCountry(CountryInterface $country): StateInterface;
 
     /**
      * @return string
      */
-    public function getCountryName();
+    public function getCountryName(): ?string;
 }

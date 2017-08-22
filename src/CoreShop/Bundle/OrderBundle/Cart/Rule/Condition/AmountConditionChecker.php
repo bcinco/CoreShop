@@ -16,12 +16,12 @@ use CoreShop\Component\Order\Model\CartInterface;
 use CoreShop\Component\Rule\Condition\ConditionCheckerInterface;
 use Webmozart\Assert\Assert;
 
-class AmountConditionChecker implements ConditionCheckerInterface
+final class AmountConditionChecker implements ConditionCheckerInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, array $configuration)
+    public function isValid($subject, array $configuration): bool
     {
         /*
          * @var $subject CartInterface

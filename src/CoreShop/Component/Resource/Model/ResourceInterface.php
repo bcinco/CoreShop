@@ -22,7 +22,7 @@ interface ResourceInterface
     /**
      * @param array $data
      *
-     * @return $this
+     * @return static
      */
     public function setValues($data = []);
 
@@ -30,7 +30,7 @@ interface ResourceInterface
      * @param  $key
      * @param  $value
      *
-     * @return $this
+     * @return static
      */
     public function setValue($key, $value);
 }

@@ -23,7 +23,7 @@ class CartToOrderTransformer extends AbstractCartToSaleTransformer
     /**
      * {@inheritdoc}
      */
-    public function transform(ProposalInterface $cart, ProposalInterface $order)
+    public function transform(ProposalInterface $cart, ProposalInterface $order): ProposalInterface
     {
         /**
          * @var $cart CartInterface

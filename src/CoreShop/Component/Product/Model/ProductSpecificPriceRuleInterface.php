@@ -17,34 +17,36 @@ interface ProductSpecificPriceRuleInterface extends PriceRuleInterface
     /**
      * @return bool
      */
-    public function getInherit();
+    public function getInherit(): ?bool;
 
     /**
      * @param bool $inherit
      *
      * @return static
      */
-    public function setInherit($inherit);
+    public function setInherit(bool $inherit): ProductSpecificPriceRuleInterface;
 
     /**
      * @return int
      */
-    public function getPriority();
+    public function getPriority(): ?int;
 
     /**
      * @param int $priority
      *
      * @return static
      */
-    public function setPriority($priority);
+    public function setPriority(int $priority): ProductSpecificPriceRuleInterface;
 
     /**
      * @return int
      */
-    public function getProduct();
+    public function getProduct(): ?int;
 
     /**
      * @param int $id
+     *
+     * @return static
      */
-    public function setProduct($id);
+    public function setProduct(int $id): ProductSpecificPriceRuleInterface;
 }

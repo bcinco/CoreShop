@@ -46,7 +46,7 @@ class TaxCollector implements TaxCollectorInterface
     /**
      * {@inheritdoc}
      */
-    public function collectTaxes(TaxCalculatorInterface $taxCalculator, $price, array $usedTaxes = [])
+    public function collectTaxes(TaxCalculatorInterface $taxCalculator, int $price, array $usedTaxes = []): array
     {
         if ($taxCalculator instanceof TaxCalculatorInterface) {
             $taxesAmount = $taxCalculator->getTaxesAmount($price, true);
@@ -64,7 +64,7 @@ class TaxCollector implements TaxCollectorInterface
     /**
      * {@inheritdoc}
      */
-    public function mergeTaxes(array $taxes1, array $taxes2)
+    public function mergeTaxes(array $taxes1, array $taxes2): array
     {
         foreach ($taxes1 as $id => $tax) {
             $this->addTaxToArray($id, $tax->getAmount(), $taxes2);

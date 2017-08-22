@@ -19,5 +19,5 @@ interface ItemKeyTransformerInterface
      *
      * @return mixed
      */
-    public function transform($string);
+    public function transform($string): string;
 }

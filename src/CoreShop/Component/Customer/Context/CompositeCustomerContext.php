@@ -12,6 +12,7 @@
 
 namespace CoreShop\Component\Customer\Context;
 
+use CoreShop\Component\Customer\Model\CustomerInterface;
 use Zend\Stdlib\PriorityQueue;
 
 final class CompositeCustomerContext implements CustomerContextInterface
@@ -38,7 +39,7 @@ final class CompositeCustomerContext implements CustomerContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCustomer()
+    public function getCustomer(): CustomerInterface
     {
         foreach ($this->customerContexts as $customerContext) {
             try {

@@ -20,5 +20,5 @@ interface ConditionCheckerInterface
      *
      * @return bool
      */
-    public function isValid($subject, array $configuration);
+    public function isValid($subject, array $configuration): bool;
 }

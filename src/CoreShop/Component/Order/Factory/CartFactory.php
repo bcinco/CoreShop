@@ -15,9 +15,10 @@ namespace CoreShop\Component\Order\Factory;
 use CoreShop\Component\Core\Model\CartInterface;
 use CoreShop\Component\Currency\Context\CurrencyContextInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
+use CoreShop\Component\Resource\Model\ResourceInterface;
 use CoreShop\Component\Store\Context\StoreContextInterface;
 
-class CartFactory implements FactoryInterface
+final class CartFactory implements FactoryInterface
 {
     /**
      * @var string
@@ -52,7 +53,7 @@ class CartFactory implements FactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createNew()
+    public function createNew(): ResourceInterface
     {
         $cart = new $this->className();
 

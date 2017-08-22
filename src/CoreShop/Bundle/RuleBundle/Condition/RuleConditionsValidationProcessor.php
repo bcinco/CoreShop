@@ -35,7 +35,7 @@ class RuleConditionsValidationProcessor implements RuleConditionsValidationProce
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, $conditions)
+    public function isValid($subject, $conditions): bool
     {
         if (!count($conditions)) {
             return true;

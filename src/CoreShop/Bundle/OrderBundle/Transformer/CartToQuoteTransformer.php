@@ -22,7 +22,7 @@ class CartToQuoteTransformer extends AbstractCartToSaleTransformer
     /**
      * {@inheritdoc}
      */
-    public function transform(ProposalInterface $cart, ProposalInterface $quote)
+    public function transform(ProposalInterface $cart, ProposalInterface $quote): ProposalInterface
     {
         /**
          * @var $cart CartInterface

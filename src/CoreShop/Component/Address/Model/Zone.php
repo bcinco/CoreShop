@@ -46,13 +46,13 @@ class Zone extends AbstractResource implements ZoneInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf('%s (%s)', $this->getName(), $this->getId());
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -60,19 +60,17 @@ class Zone extends AbstractResource implements ZoneInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param $name
-     *
-     * @return static
+     * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(string $name): ZoneInterface
     {
         $this->name = $name;
 
@@ -82,7 +80,7 @@ class Zone extends AbstractResource implements ZoneInterface
     /**
      * {@inheritdoc}
      */
-    public function getCountries()
+    public function getCountries(): Collection
     {
         return $this->countries;
     }
@@ -90,7 +88,7 @@ class Zone extends AbstractResource implements ZoneInterface
     /**
      * {@inheritdoc}
      */
-    public function hasCountries()
+    public function hasCountries(): bool
     {
         return !$this->countries->isEmpty();
     }
@@ -98,29 +96,33 @@ class Zone extends AbstractResource implements ZoneInterface
     /**
      * {@inheritdoc}
      */
-    public function addCountry(CountryInterface $country)
+    public function addCountry(CountryInterface $country): ZoneInterface
     {
         if (!$this->hasCountry($country)) {
             $this->countries->add($country);
             $country->setZone($this);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeCountry(CountryInterface $country)
+    public function removeCountry(CountryInterface $country): ZoneInterface
     {
         if ($this->hasCountry($country)) {
             $this->countries->removeElement($country);
             $country->setZone(null);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasCountry(CountryInterface $country)
+    public function hasCountry(CountryInterface $country): bool
     {
         return $this->countries->contains($country);
     }

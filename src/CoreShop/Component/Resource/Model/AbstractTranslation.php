@@ -29,7 +29,7 @@ class AbstractTranslation implements TranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function getTranslatable()
+    public function getTranslatable(): TranslatableInterface
     {
         return $this->translatable;
     }
@@ -37,10 +37,10 @@ class AbstractTranslation implements TranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setTranslatable(TranslatableInterface $translatable = null)
+    public function setTranslatable(TranslatableInterface $translatable = null): ?TranslationInterface
     {
         if ($translatable === $this->translatable) {
-            return;
+            return null;
         }
 
         $previousTranslatable = $this->translatable;
@@ -53,12 +53,14 @@ class AbstractTranslation implements TranslationInterface
         if (null !== $translatable) {
             $translatable->addTranslation($this);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getLocale()
+    public function getLocale(): string
     {
         return $this->locale;
     }
@@ -66,8 +68,10 @@ class AbstractTranslation implements TranslationInterface
     /**
      * {@inheritdoc}
      */
-    public function setLocale($locale)
+    public function setLocale($locale): TranslationInterface
     {
         $this->locale = $locale;
+
+        return $this;
     }
 }

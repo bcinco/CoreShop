@@ -19,7 +19,7 @@ class PimcoreSiteHelper implements PimcoreSiteHelperInterface
     /**
      * @return bool
      */
-    public function isSiteRequest()
+    public function isSiteRequest(): bool
     {
         return Site::isSiteRequest();
     }
@@ -27,7 +27,7 @@ class PimcoreSiteHelper implements PimcoreSiteHelperInterface
     /**
      * @return Site
      */
-    public function getCurrentSite()
+    public function getCurrentSite(): ?Site
     {
         return Site::getCurrentSite();
     }

@@ -8,18 +8,18 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Currency\Converter;
 
 interface CurrencyConverterInterface
 {
     /**
-     * @param int    $value
+     * @param int $value
      * @param string $fromCurrencyCode
      * @param string $toCurrencyCode
      *
      * @return int
      */
-    public function convert($value, $fromCurrencyCode, $toCurrencyCode);
+    public function convert(?int $value, string $fromCurrencyCode, string $toCurrencyCode): int;
 }

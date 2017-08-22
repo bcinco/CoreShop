@@ -8,10 +8,11 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Currency\Context;
 
+use CoreShop\Component\Currency\Model\CurrencyInterface;
 use Zend\Stdlib\PriorityQueue;
 
 final class CompositeCurrencyContext implements CurrencyContextInterface
@@ -28,7 +29,7 @@ final class CompositeCurrencyContext implements CurrencyContextInterface
 
     /**
      * @param CurrencyContextInterface $currencyContext
-     * @param int                      $priority
+     * @param int $priority
      */
     public function addContext(CurrencyContextInterface $currencyContext, $priority = 0)
     {
@@ -38,7 +39,7 @@ final class CompositeCurrencyContext implements CurrencyContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCurrency()
+    public function getCurrency(): CurrencyInterface
     {
         $lastException = null;
 

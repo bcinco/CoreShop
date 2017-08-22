@@ -21,7 +21,7 @@ class DiscountAmountActionProcessor implements ProductPriceActionProcessorInterf
     /**
      * {@inheritdoc}
      */
-    public function getDiscount($subject, $price, array $configuration)
+    public function getDiscount($subject, int $price, array $configuration): ?int
     {
         Assert::isInstanceOf($subject, ProductInterface::class);
 
@@ -31,7 +31,7 @@ class DiscountAmountActionProcessor implements ProductPriceActionProcessorInterf
     /**
      * {@inheritdoc}
      */
-    public function getPrice($subject, array $configuration)
+    public function getPrice($subject, array $configuration): ?int
     {
         return null;
     }

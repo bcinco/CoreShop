@@ -57,7 +57,7 @@ class CartPriceRuleProcessor implements CartPriceRuleProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function process(CartPriceRuleInterface $cartPriceRule, $usedCode, CartInterface $cart)
+    public function process(CartPriceRuleInterface $cartPriceRule, $usedCode, CartInterface $cart): bool
     {
         $priceRuleItem = null;
 

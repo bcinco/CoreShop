@@ -34,7 +34,7 @@ class ProcessableOrderItems implements ProcessableInterface
     /**
      * {@inheritdoc}
      */
-    public function getProcessableItems(OrderInterface $order)
+    public function getProcessableItems(OrderInterface $order): array
     {
         $items = $order->getItems();
         $processedItems = $this->getProcessedItems($order);
@@ -66,7 +66,7 @@ class ProcessableOrderItems implements ProcessableInterface
     /**
      * {@inheritdoc}
      */
-    public function getProcessedItems(OrderInterface $order)
+    public function getProcessedItems(OrderInterface $order): array
     {
         $documents = $this->documentsRepository->getDocuments($order);
         $processedItems = [];
@@ -94,7 +94,7 @@ class ProcessableOrderItems implements ProcessableInterface
     /**
      * {@inheritdoc}
      */
-    public function isFullyProcessed(OrderInterface $order)
+    public function isFullyProcessed(OrderInterface $order): bool
     {
         return count($this->getProcessableItems($order)) === 0;
     }

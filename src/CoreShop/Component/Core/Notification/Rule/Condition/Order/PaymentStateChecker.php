@@ -24,7 +24,7 @@ class PaymentStateChecker extends AbstractConditionChecker
     /**
      * {@inheritdoc}
      */
-    public function isNotificationRuleValid($subject, $params, array $configuration)
+    public function isNotificationRuleValid($subject, $params, array $configuration): bool
     {
         if ($subject instanceof OrderInterface) {
             if ($configuration['paymentState'] === self::PAYMENT_TYPE_FULL) {

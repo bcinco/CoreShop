@@ -41,7 +41,7 @@ class Country extends BaseCountry implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function getCurrency()
+    public function getCurrency(): ?CurrencyInterface
     {
         return $this->currency;
     }
@@ -49,7 +49,7 @@ class Country extends BaseCountry implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function setCurrency(CurrencyInterface $currency = null)
+    public function setCurrency(?CurrencyInterface $currency)
     {
         $this->currency = $currency;
 

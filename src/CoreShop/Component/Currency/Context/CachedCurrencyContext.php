@@ -42,7 +42,7 @@ final class CachedCurrencyContext implements CurrencyContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCurrency()
+    public function getCurrency(): CurrencyInterface
     {
         if (null === $this->currency) {
             $this->currency = $this->inner->getCurrency();

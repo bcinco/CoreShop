@@ -22,5 +22,5 @@ interface OrderRepositoryInterface extends PimcoreRepositoryInterface
      * @param CustomerInterface $customer
      * @return OrderInterface[]
      */
-    public function findByCustomer(CustomerInterface $customer);
+    public function findByCustomer(CustomerInterface $customer): array;
 }

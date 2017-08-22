@@ -19,5 +19,5 @@ interface PimcoreRepositoryInterface extends RepositoryInterface
     /**
      * @return Listing
      */
-    public function getList();
+    public function getList(): Listing;
 }

@@ -17,12 +17,12 @@ interface ProductPriceRuleInterface extends PriceRuleInterface
     /**
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): ?string;
 
     /**
      * @param string $description
      *
      * @return static
      */
-    public function setDescription($description);
+    public function setDescription(string $description): ProductPriceRuleInterface;
 }

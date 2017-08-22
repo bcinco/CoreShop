@@ -20,7 +20,7 @@ interface RequestResolverInterface
     /**
      * @param Request $request
      *
-     * @return StoreInterface|null
+     * @return StoreInterface
      */
-    public function findStore(Request $request);
+    public function findStore(Request $request): ?StoreInterface;
 }

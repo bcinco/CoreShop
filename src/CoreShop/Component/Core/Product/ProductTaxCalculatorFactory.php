@@ -18,6 +18,7 @@ use CoreShop\Component\Core\Model\TaxRuleGroupInterface;
 use CoreShop\Component\Core\Taxation\TaxCalculatorFactoryInterface;
 use CoreShop\Component\Order\Model\PurchasableInterface;
 use CoreShop\Component\Resource\Factory\PimcoreFactoryInterface;
+use CoreShop\Component\Taxation\Calculator\TaxCalculatorInterface;
 
 class ProductTaxCalculatorFactory implements ProductTaxCalculatorFactoryInterface
 {
@@ -51,7 +52,7 @@ class ProductTaxCalculatorFactory implements ProductTaxCalculatorFactoryInterfac
     /**
      * {@inheritdoc}
      */
-    public function getTaxCalculator(PurchasableInterface $product, AddressInterface $address = null)
+    public function getTaxCalculator(PurchasableInterface $product, AddressInterface $address = null): TaxCalculatorInterface
     {
         $taxRuleGroup = $product->getTaxRule();
 

@@ -16,12 +16,12 @@ use CoreShop\Component\Product\Model\ProductInterface;
 use CoreShop\Component\Rule\Condition\ConditionCheckerInterface;
 use Webmozart\Assert\Assert;
 
-class ProductsConditionChecker implements ConditionCheckerInterface
+final class ProductsConditionChecker implements ConditionCheckerInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, array $configuration)
+    public function isValid($subject, array $configuration): bool
     {
         Assert::isInstanceOf($subject, ProductInterface::class);
 

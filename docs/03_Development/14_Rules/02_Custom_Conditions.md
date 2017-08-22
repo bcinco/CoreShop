@@ -25,7 +25,7 @@ namespace AcmeBundle\CoreShop;
 
 final class CustomCondition implements \CoreShop\Component\Rule\Condition\ConditionCheckerInterface
 {
-    public function isValid($subject, array $configuration);
+    public function isValid($subject, array $configuration): bool
         //return true if valid, false if not
         return true;
     }

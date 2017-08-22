@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Index\Filter;
 
@@ -26,23 +26,23 @@ interface FilterConditionProcessorInterface
 
     /**
      * @param FilterConditionInterface $condition
-     * @param FilterInterface          $filter
-     * @param ListingInterface         $list
+     * @param FilterInterface $filter
+     * @param ListingInterface $list
      * @param $currentFilter
      * @param ParameterBag $parameterBag
-     * @param bool         $isPrecondition
+     * @param bool $isPrecondition
      *
-     * @return mixed
+     * @return array
      */
-    public function addCondition(FilterConditionInterface $condition, FilterInterface $filter, ListingInterface $list, $currentFilter, ParameterBag $parameterBag, $isPrecondition = false);
+    public function addCondition(FilterConditionInterface $condition, FilterInterface $filter, ListingInterface $list, $currentFilter, ParameterBag $parameterBag, $isPrecondition = false): array;
 
     /**
      * @param FilterConditionInterface $condition
-     * @param FilterInterface          $filter
-     * @param ListingInterface         $list
+     * @param FilterInterface $filter
+     * @param ListingInterface $list
      * @param $currentFilter
      *
      * @return array
      */
-    public function prepareValuesForRendering(FilterConditionInterface $condition, FilterInterface $filter, ListingInterface $list, $currentFilter);
+    public function prepareValuesForRendering(FilterConditionInterface $condition, FilterInterface $filter, ListingInterface $list, $currentFilter): array;
 }

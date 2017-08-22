@@ -11,7 +11,7 @@ class CartRepository extends PimcoreRepository implements CartRepositoryInterfac
     /**
      * {@inheritdoc}
      */
-    public function findForCustomer(CustomerInterface $customer)
+    public function findForCustomer(CustomerInterface $customer): array
     {
         $list = $this->getList();
         $list->setCondition('customer__id = ? AND order__id is null', [$customer->getId()]);
@@ -23,7 +23,7 @@ class CartRepository extends PimcoreRepository implements CartRepositoryInterfac
     /**
      * {@inheritdoc}
      */
-    public function findNamedForCustomer(CustomerInterface $customer, $name)
+    public function findNamedForCustomer(CustomerInterface $customer, $name): array
     {
         $list = $this->getList();
         $list->setCondition('user__id = ? AND name = ? AND order__id is null', [$customer->getId(), $name]);

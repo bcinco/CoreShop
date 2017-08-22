@@ -14,15 +14,16 @@ namespace CoreShop\Component\Resource\Pimcore;
 
 use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
 use Pimcore\Model\Element\ElementInterface;
+use Pimcore\Model\Object\Folder;
 
 interface ObjectServiceInterface
 {
     /**
      * @param $path
      *
-     * @return ElementInterface
+     * @return Folder
      */
-    public function createFolderByPath($path);
+    public function createFolderByPath($path): Folder;
 
     /**
      * Copy all fields from $from to $to.

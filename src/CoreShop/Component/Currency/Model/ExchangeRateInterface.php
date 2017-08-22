@@ -7,32 +7,38 @@ use CoreShop\Component\Resource\Model\ResourceInterface;
 interface ExchangeRateInterface extends ResourceInterface
 {
     /**
-     * @return float
+     * @return int
      */
-    public function getExchangeRate();
+    public function getExchangeRate(): ?int;
 
     /**
-     * @param float $exchangeRate
+     * @param int $exchangeRate
+     *
+     * @return ExchangeRateInterface
      */
-    public function setExchangeRate($exchangeRate);
-
-    /**
-     * @return CurrencyInterface
-     */
-    public function getFromCurrency();
-
-    /**
-     * @param CurrencyInterface $currency
-     */
-    public function setFromCurrency(CurrencyInterface $currency);
+    public function setExchangeRate(int $exchangeRate): ExchangeRateInterface;
 
     /**
      * @return CurrencyInterface
      */
-    public function getToCurrency();
+    public function getFromCurrency(): ?CurrencyInterface;
 
     /**
      * @param CurrencyInterface $currency
+     *
+     * @return static
      */
-    public function setToCurrency(CurrencyInterface $currency);
+    public function setFromCurrency(CurrencyInterface $currency): ExchangeRateInterface;
+
+    /**
+     * @return CurrencyInterface
+     */
+    public function getToCurrency(): ?CurrencyInterface;
+
+    /**
+     * @param CurrencyInterface $currency
+     *
+     * @return static
+     */
+    public function setToCurrency(CurrencyInterface $currency): ExchangeRateInterface;
 }

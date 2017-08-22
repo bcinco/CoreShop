@@ -69,7 +69,7 @@ abstract class AbstractCartItemToSaleItemTransformer implements ProposalItemTran
     /**
      * {@inheritdoc}
      */
-    public function transformSaleItem(ProposalInterface $sale, ProposalItemInterface $cartItem, ProposalItemInterface $saleItem, $type)
+    public function transformSaleItem(ProposalInterface $sale, ProposalItemInterface $cartItem, ProposalItemInterface $saleItem, $type): ProposalItemInterface
     {
         /**
          * @var $sale SaleInterface

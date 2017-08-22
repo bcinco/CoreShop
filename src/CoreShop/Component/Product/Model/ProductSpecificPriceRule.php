@@ -51,7 +51,7 @@ class ProductSpecificPriceRule implements ProductSpecificPriceRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function getProduct()
+    public function getProduct(): ?int
     {
         return $this->product;
     }
@@ -59,7 +59,7 @@ class ProductSpecificPriceRule implements ProductSpecificPriceRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function setProduct($product)
+    public function setProduct(int $product): ProductSpecificPriceRuleInterface
     {
         $this->product = $product;
 
@@ -69,7 +69,7 @@ class ProductSpecificPriceRule implements ProductSpecificPriceRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function getInherit()
+    public function getInherit(): ?bool
     {
         return $this->inherit;
     }
@@ -77,7 +77,7 @@ class ProductSpecificPriceRule implements ProductSpecificPriceRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function setInherit($inherit)
+    public function setInherit(bool $inherit): ProductSpecificPriceRuleInterface
     {
         $this->inherit = $inherit;
 
@@ -87,7 +87,7 @@ class ProductSpecificPriceRule implements ProductSpecificPriceRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
@@ -95,7 +95,7 @@ class ProductSpecificPriceRule implements ProductSpecificPriceRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function setPriority($priority)
+    public function setPriority(int $priority): ProductSpecificPriceRuleInterface
     {
         $this->priority = $priority;
 

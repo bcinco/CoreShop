@@ -13,10 +13,14 @@
 namespace CoreShop\Component\Core\Context;
 
 use CoreShop\Component\Address\Context\CountryContextInterface;
+use CoreShop\Component\Address\Model\CountryInterface;
 use CoreShop\Component\Currency\Context\CurrencyContextInterface;
+use CoreShop\Component\Currency\Model\CurrencyInterface;
 use CoreShop\Component\Customer\Context\CustomerContextInterface;
+use CoreShop\Component\Customer\Model\CustomerInterface;
 use CoreShop\Component\Locale\Context\LocaleContextInterface;
 use CoreShop\Component\Store\Context\StoreContextInterface;
+use CoreShop\Component\Store\Model\StoreInterface;
 
 class ShopperContext implements ShopperContextInterface
 {
@@ -69,7 +73,7 @@ class ShopperContext implements ShopperContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getStore()
+    public function getStore(): StoreInterface
     {
         return $this->storeContext->getStore();
     }
@@ -77,7 +81,7 @@ class ShopperContext implements ShopperContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCurrency()
+    public function getCurrency(): CurrencyInterface
     {
         return $this->currencyContext->getCurrency();
     }
@@ -85,7 +89,7 @@ class ShopperContext implements ShopperContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getLocaleCode()
+    public function getLocaleCode(): string
     {
         return $this->localeContext->getLocaleCode();
     }
@@ -93,7 +97,7 @@ class ShopperContext implements ShopperContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCountry()
+    public function getCountry() : CountryInterface
     {
         return $this->countryContext->getCountry();
     }
@@ -101,7 +105,7 @@ class ShopperContext implements ShopperContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCustomer()
+    public function getCustomer(): CustomerInterface
     {
         return $this->customerContext->getCustomer();
     }

@@ -38,7 +38,7 @@ class ShippingRuleActionProcessor implements ShippingRuleActionProcessorInterfac
     /**
      * {@inheritdoc}
      */
-    public function getPrice(ShippingRuleInterface $shippingRule, CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address)
+    public function getPrice(ShippingRuleInterface $shippingRule, CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address): int
     {
         $price = 0;
 
@@ -56,7 +56,7 @@ class ShippingRuleActionProcessor implements ShippingRuleActionProcessorInterfac
     /**
      * {@inheritdoc}
      */
-    public function getModification(ShippingRuleInterface $shippingRule, CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, $price)
+    public function getModification(ShippingRuleInterface $shippingRule, CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, int $price): int
     {
         $modifications = 0;
 

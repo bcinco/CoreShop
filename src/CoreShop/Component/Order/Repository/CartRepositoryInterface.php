@@ -12,12 +12,12 @@ interface CartRepositoryInterface extends PimcoreRepositoryInterface
      * @param CustomerInterface $customer
      * @return CartInterface[]
      */
-    public function findForCustomer(CustomerInterface $customer);
+    public function findForCustomer(CustomerInterface $customer): array;
 
     /**
      * @param CustomerInterface $customer
      * @param string $name
      * @return CartInterface[]
      */
-    public function findNamedForCustomer(CustomerInterface $customer, $name);
+    public function findNamedForCustomer(CustomerInterface $customer, $name): array;
 }

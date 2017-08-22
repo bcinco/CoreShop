@@ -16,7 +16,7 @@ use CoreShop\Component\Rule\Condition\ConditionCheckerInterface;
 use CoreShop\Component\Store\Context\StoreContextInterface;
 use CoreShop\Component\Store\Model\StoreInterface;
 
-class StoresConditionChecker implements ConditionCheckerInterface
+final class StoresConditionChecker implements ConditionCheckerInterface
 {
     /**
      * @var StoreContextInterface
@@ -34,7 +34,7 @@ class StoresConditionChecker implements ConditionCheckerInterface
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, array $configuration)
+    public function isValid($subject, array $configuration): bool
     {
         $store = $this->storeContext->getStore();
 

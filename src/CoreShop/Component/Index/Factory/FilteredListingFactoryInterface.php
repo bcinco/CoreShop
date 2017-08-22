@@ -24,5 +24,5 @@ interface FilteredListingFactoryInterface
      *
      * @return ListingInterface
      */
-    public function createList(FilterInterface $filter, ParameterBag $parameterBag);
+    public function createList(FilterInterface $filter, ParameterBag $parameterBag): ListingInterface;
 }

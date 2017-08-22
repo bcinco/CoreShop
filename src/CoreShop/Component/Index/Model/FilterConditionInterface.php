@@ -20,72 +20,72 @@ interface FilterConditionInterface extends ResourceInterface, TimestampableInter
     /**
      * @return string
      */
-    public function getType();
+    public function getType(): ?string;
 
     /**
      * @param string $type
      *
      * @return static
      */
-    public function setType($type);
+    public function setType(string $type): FilterConditionInterface;
 
     /**
      * @return string
      */
-    public function getField();
+    public function getField(): ?string;
 
     /**
      * @param string $field
      *
      * @return static
      */
-    public function setField($field);
+    public function setField(string $field): FilterConditionInterface;
 
     /**
      * @return string
      */
-    public function getLabel();
+    public function getLabel(): ?string;
 
     /**
      * @param string $label
      *
      * @return static
      */
-    public function setLabel($label);
+    public function setLabel(string $label): FilterConditionInterface;
 
     /**
      * @return int
      */
-    public function getQuantityUnit();
+    public function getQuantityUnit(): ?int;
 
     /**
      * @param int $quantityUnit
      *
      * @return static
      */
-    public function setQuantityUnit($quantityUnit);
+    public function setQuantityUnit(int $quantityUnit): FilterConditionInterface;
 
     /**
      * @return array
      */
-    public function getConfiguration();
+    public function getConfiguration(): array;
 
     /**
      * @param array $configuration
      *
      * @return static
      */
-    public function setConfiguration($configuration);
+    public function setConfiguration($configuration): FilterConditionInterface;
 
     /**
      * @return FilterInterface
      */
-    public function getFilter();
+    public function getFilter(): ?FilterInterface;
 
     /**
      * @param FilterInterface $filter
      *
      * @return static
      */
-    public function setFilter(FilterInterface $filter);
+    public function setFilter(FilterInterface $filter): FilterConditionInterface;
 }

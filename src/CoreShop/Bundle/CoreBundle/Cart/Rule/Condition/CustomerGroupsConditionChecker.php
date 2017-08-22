@@ -23,7 +23,7 @@ final class CustomerGroupsConditionChecker implements ConditionCheckerInterface
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, array $configuration)
+    public function isValid($subject, array $configuration): bool
     {
         /**
          * @var $subject CartInterface

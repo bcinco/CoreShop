@@ -19,17 +19,22 @@ interface SequenceInterface extends ResourceInterface
     /**
      * @return int
      */
-    public function getIndex();
+    public function getIndex(): ?int;
 
     /**
      * @return mixed
      */
-    public function getType();
+    public function getType(): ?string;
 
     /**
-     * @param $type
+     * @param string $type
+     *
+     * @return static
      */
-    public function setType($type);
+    public function setType(string $type): SequenceInterface;
 
-    public function incrementIndex();
+    /**
+     * @return static
+     */
+    public function incrementIndex(): SequenceInterface;
 }

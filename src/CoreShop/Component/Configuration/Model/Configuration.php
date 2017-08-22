@@ -36,7 +36,7 @@ class Configuration implements ConfigurationInterface
     protected $data;
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -44,23 +44,25 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getKey()
+    public function getKey(): ?string
     {
         return $this->key;
     }
 
     /**
-     * @param string $key
+     * {@inheritdoc}
      */
-    public function setKey($key)
+    public function setKey($key): ConfigurationInterface
     {
         $this->key = $key;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
     public function getData()
     {
@@ -68,10 +70,12 @@ class Configuration implements ConfigurationInterface
     }
 
     /**
-     * @param mixed $data
+     * {@inheritdoc}
      */
-    public function setData($data)
+    public function setData($data): ConfigurationInterface
     {
         $this->data = $data;
+
+        return $this;
     }
 }

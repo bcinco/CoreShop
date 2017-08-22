@@ -23,7 +23,7 @@ interface CarrierPriceCalculatorInterface
      * @param ShippableInterface $shippable
      * @param AddressInterface $address
      *
-     * @return mixed
+     * @return int
      */
-    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address);
+    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address): ?int;
 }

@@ -21,19 +21,19 @@ interface ProcessableInterface
      *
      * @return mixed
      */
-    public function getProcessableItems(OrderInterface $order);
+    public function getProcessableItems(OrderInterface $order): array;
 
     /**
      * @param OrderInterface $order
      *
      * @return mixed
      */
-    public function getProcessedItems(OrderInterface $order);
+    public function getProcessedItems(OrderInterface $order): array;
 
     /**
      * @param OrderInterface $order
      *
      * @return bool
      */
-    public function isFullyProcessed(OrderInterface $order);
+    public function isFullyProcessed(OrderInterface $order): bool;
 }

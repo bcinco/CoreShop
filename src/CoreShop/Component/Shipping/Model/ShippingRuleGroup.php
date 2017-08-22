@@ -51,7 +51,7 @@ class ShippingRuleGroup implements ShippingRuleGroupInterface
     /**
      * {@inheritdoc}
      */
-    public function getCarrier()
+    public function getCarrier(): ?CarrierInterface
     {
         return $this->carrier;
     }
@@ -59,15 +59,17 @@ class ShippingRuleGroup implements ShippingRuleGroupInterface
     /**
      * {@inheritdoc}
      */
-    public function setCarrier(CarrierInterface $carrier = null)
+    public function setCarrier(CarrierInterface $carrier): ShippingRuleGroupInterface
     {
         $this->carrier = $carrier;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getPriority()
+    public function getPriority(): ?int
     {
         return $this->priority;
     }
@@ -75,15 +77,17 @@ class ShippingRuleGroup implements ShippingRuleGroupInterface
     /**
      * {@inheritdoc}
      */
-    public function setPriority($priority)
+    public function setPriority(int $priority): ShippingRuleGroupInterface
     {
         $this->priority = $priority;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getShippingRule()
+    public function getShippingRule(): ?ShippingRuleInterface
     {
         return $this->shippingRule;
     }
@@ -91,8 +95,11 @@ class ShippingRuleGroup implements ShippingRuleGroupInterface
     /**
      * {@inheritdoc}
      */
-    public function setShippingRule(ShippingRuleInterface $shippingRule)
+    public function setShippingRule(ShippingRuleInterface $shippingRule): ShippingRuleGroupInterface
     {
         $this->shippingRule = $shippingRule;
+
+        return $this;
     }
+
 }

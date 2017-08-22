@@ -32,12 +32,12 @@ class Country extends AbstractResource implements CountryInterface
     protected $id;
 
     /**
-     * @var string
+     * @var string|null
      */
     protected $isoCode;
 
     /**
-     * @var ZoneInterface
+     * @var ZoneInterface|null
      */
     protected $zone;
 
@@ -59,7 +59,7 @@ class Country extends AbstractResource implements CountryInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getName();
     }
@@ -75,7 +75,7 @@ class Country extends AbstractResource implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function getIsoCode()
+    public function getIsoCode(): ?string
     {
         return $this->isoCode;
     }
@@ -83,7 +83,7 @@ class Country extends AbstractResource implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function setIsoCode($isoCode)
+    public function setIsoCode(string $isoCode): CountryInterface
     {
         $this->isoCode = $isoCode;
 
@@ -93,7 +93,7 @@ class Country extends AbstractResource implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function getName($language = null)
+    public function getName(?string $language = null): ?string
     {
         return $this->getTranslation($language)->getName();
     }
@@ -101,7 +101,7 @@ class Country extends AbstractResource implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function setName($name, $language = null)
+    public function setName(string $name, ?string $language = null): CountryInterface
     {
         $this->getTranslation($language, false)->setName($name);
 
@@ -111,7 +111,7 @@ class Country extends AbstractResource implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function getAddressFormat()
+    public function getAddressFormat(): ?string
     {
         return $this->addressFormat;
     }
@@ -119,7 +119,7 @@ class Country extends AbstractResource implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function setAddressFormat($addressFormat)
+    public function setAddressFormat($addressFormat): CountryInterface
     {
         $this->addressFormat = $addressFormat;
 
@@ -129,7 +129,7 @@ class Country extends AbstractResource implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function getZone()
+    public function getZone(): ?ZoneInterface
     {
         return $this->zone;
     }
@@ -137,7 +137,7 @@ class Country extends AbstractResource implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function setZone(ZoneInterface $zone = null)
+    public function setZone(?ZoneInterface $zone): CountryInterface
     {
         $this->zone = $zone;
 
@@ -147,7 +147,7 @@ class Country extends AbstractResource implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    public function getZoneName()
+    public function getZoneName(): ?string
     {
         return $this->getZone() instanceof ZoneInterface ? $this->getZone()->getName() : '';
     }
@@ -155,7 +155,7 @@ class Country extends AbstractResource implements CountryInterface
     /**
      * {@inheritdoc}
      */
-    protected function createTranslation()
+    protected function createTranslation(): CountryTranslationInterface
     {
         return new CountryTranslation();
     }

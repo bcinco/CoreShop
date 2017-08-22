@@ -32,7 +32,7 @@ final class FixedCustomerContext implements CustomerContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCustomer()
+    public function getCustomer(): CustomerInterface
     {
         if ($this->customer instanceof CustomerInterface) {
             return $this->customer;

@@ -38,7 +38,7 @@ class PaymentProvider extends BasePaymentProvider implements PaymentProviderInte
     /**
      * {@inheritdoc}
      */
-    public function setGatewayConfig(GatewayConfig $gatewayConfig)
+    public function setGatewayConfig(GatewayConfig $gatewayConfig): PaymentProviderInterface
     {
         $this->gatewayConfig = $gatewayConfig;
     }
@@ -46,7 +46,7 @@ class PaymentProvider extends BasePaymentProvider implements PaymentProviderInte
     /**
      * @return GatewayConfig
      */
-    public function getGatewayConfig()
+    public function getGatewayConfig(): GatewayConfig
     {
         return $this->gatewayConfig;
     }

@@ -13,14 +13,16 @@
 namespace CoreShop\Bundle\CurrencyBundle\Doctrine\ORM;
 
 use CoreShop\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use CoreShop\Component\Currency\Model\CurrencyInterface;
 use CoreShop\Component\Currency\Repository\CurrencyRepositoryInterface;
+use Doctrine\ORM\QueryBuilder;
 
 class CurrencyRepository extends EntityRepository implements CurrencyRepositoryInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder()
+    public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o');
     }
@@ -28,7 +30,7 @@ class CurrencyRepository extends EntityRepository implements CurrencyRepositoryI
     /**
      * {@inheritdoc}
      */
-    public function findActive()
+    public function findActive(): array
     {
         return $this->createQueryBuilder('o')
             ->innerJoin('o.countries', 'c')
@@ -43,7 +45,7 @@ class CurrencyRepository extends EntityRepository implements CurrencyRepositoryI
     /**
      * {@inheritdoc}
      */
-    public function getByCode($currencyCode)
+    public function getByCode($currencyCode): ?CurrencyInterface
     {
         return $this->createQueryBuilder('o')
             ->andWhere('o.isoCode = :currencyCode')

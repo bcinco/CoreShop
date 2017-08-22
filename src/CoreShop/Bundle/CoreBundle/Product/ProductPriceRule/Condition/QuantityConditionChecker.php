@@ -36,9 +36,9 @@ class QuantityConditionChecker implements ConditionCheckerInterface
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, array $configuration)
+    public function isValid($subject, array $configuration): bool
     {
-        /*
+        /**
          * @var $subject ProductInterface
          */
         Assert::isInstanceOf($subject, ProductInterface::class);

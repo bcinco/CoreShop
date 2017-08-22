@@ -58,7 +58,7 @@ class PaymentProviderTranslation extends AbstractTranslation implements PaymentP
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -66,15 +66,17 @@ class PaymentProviderTranslation extends AbstractTranslation implements PaymentP
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(string $name): PaymentProviderTranslationInterface
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getDescription()
+    public function getDescription(): string
     {
         return $this->description;
     }
@@ -82,15 +84,17 @@ class PaymentProviderTranslation extends AbstractTranslation implements PaymentP
     /**
      * {@inheritdoc}
      */
-    public function setDescription($description)
+    public function setDescription(string $description): PaymentProviderTranslationInterface
     {
         $this->description = $description;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getInstructions()
+    public function getInstructions(): string
     {
         return $this->instructions;
     }
@@ -98,8 +102,10 @@ class PaymentProviderTranslation extends AbstractTranslation implements PaymentP
     /**
      * {@inheritdoc}
      */
-    public function setInstructions($instructions)
+    public function setInstructions(string $instructions): PaymentProviderTranslationInterface
     {
         $this->instructions = $instructions;
+
+        return $this;
     }
 }

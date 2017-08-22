@@ -20,7 +20,10 @@ use CoreShop\Component\Core\Repository\TaxRuleRepositoryInterface;
 
 class TaxRuleRepository extends BaseTaxRuleRepository implements TaxRuleRepositoryInterface
 {
-    public function findForCountryAndState(TaxRuleGroupInterface $taxRuleGroup, CountryInterface $country = null, StateInterface $state = null)
+    /**
+     * {@inheritdoc}
+     */
+    public function findForCountryAndState(TaxRuleGroupInterface $taxRuleGroup, CountryInterface $country = null, StateInterface $state = null): array
     {
         return $this->createQueryBuilder('o')
             ->andWhere('o.taxRuleGroup = :taxRuleGroup')

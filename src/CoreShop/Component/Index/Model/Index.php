@@ -67,7 +67,7 @@ class Index extends AbstractResource implements IndexInterface
     /**
      * {@inheritdoc}
      */
-    public function getWorker()
+    public function getWorker(): ?string
     {
         return $this->worker;
     }
@@ -75,15 +75,17 @@ class Index extends AbstractResource implements IndexInterface
     /**
      * {@inheritdoc}
      */
-    public function setWorker($worker)
+    public function setWorker(string $worker): IndexInterface
     {
         $this->worker = $worker;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getClass()
+    public function getClass(): ?string
     {
         return $this->class;
     }
@@ -91,15 +93,17 @@ class Index extends AbstractResource implements IndexInterface
     /**
      * {@inheritdoc}
      */
-    public function setClass($class)
+    public function setClass(string $class): IndexInterface
     {
         $this->class = $class;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -107,15 +111,17 @@ class Index extends AbstractResource implements IndexInterface
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(string $name): IndexInterface
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getConfiguration()
+    public function getConfiguration(): array
     {
         return $this->configuration;
     }
@@ -123,15 +129,17 @@ class Index extends AbstractResource implements IndexInterface
     /**
      * {@inheritdoc}
      */
-    public function setConfiguration($configuration)
+    public function setConfiguration($configuration): IndexInterface
     {
         $this->configuration = $configuration;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getColumns()
+    public function getColumns(): Collection
     {
         return $this->columns;
     }
@@ -139,7 +147,7 @@ class Index extends AbstractResource implements IndexInterface
     /**
      * {@inheritdoc}
      */
-    public function hasColumns()
+    public function hasColumns(): bool
     {
         return !$this->columns->isEmpty();
     }
@@ -147,29 +155,33 @@ class Index extends AbstractResource implements IndexInterface
     /**
      * {@inheritdoc}
      */
-    public function addColumn(IndexColumnInterface $column)
+    public function addColumn(IndexColumnInterface $column): IndexInterface
     {
         if (!$this->hasColumn($column)) {
             $this->columns->add($column);
             $column->setIndex($this);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeColumn(IndexColumnInterface $column)
+    public function removeColumn(IndexColumnInterface $column): IndexInterface
     {
         if ($this->hasColumn($column)) {
             $this->columns->removeElement($column);
             $column->setIndex(null);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasColumn(IndexColumnInterface $column)
+    public function hasColumn(IndexColumnInterface $column): bool
     {
         return $this->columns->contains($column);
     }

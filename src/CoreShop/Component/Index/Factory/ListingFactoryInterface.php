@@ -22,5 +22,5 @@ interface ListingFactoryInterface
      *
      * @return ListingInterface
      */
-    public function createList(IndexInterface $index);
+    public function createList(IndexInterface $index): ListingInterface;
 }

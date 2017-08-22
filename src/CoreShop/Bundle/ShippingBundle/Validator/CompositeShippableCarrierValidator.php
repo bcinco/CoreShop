@@ -44,7 +44,7 @@ class CompositeShippableCarrierValidator implements ShippableCarrierValidatorInt
     /**
      * {@inheritdoc}
      */
-    public function isCarrierValid(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address)
+    public function isCarrierValid(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address): bool
     {
         foreach ($this->shippableCarrierValidator as $shippableCarrierValidator) {
             $isValid = $shippableCarrierValidator->isCarrierValid($carrier, $shippable, $address);

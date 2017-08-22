@@ -32,7 +32,7 @@ final class FixedStoreContext implements StoreContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getStore()
+    public function getStore(): StoreInterface
     {
         if ($this->store instanceof StoreInterface) {
             return $this->store;

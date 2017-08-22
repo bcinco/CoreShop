@@ -31,7 +31,7 @@ class Condition implements ConditionInterface
     /**
      * @var array
      */
-    protected $configuration;
+    protected $configuration = [];
 
     /**
      * {@inheritdoc}
@@ -41,10 +41,19 @@ class Condition implements ConditionInterface
         return $this->id;
     }
 
+
     /**
      * {@inheritdoc}
      */
-    public function setType($type)
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setType(string $type): ConditionInterface
     {
         $this->type = $type;
 
@@ -54,26 +63,18 @@ class Condition implements ConditionInterface
     /**
      * {@inheritdoc}
      */
-    public function setConfiguration(array $configuration)
+    public function getConfiguration(): array
+    {
+        return $this->configuration;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setConfiguration(array $configuration): ConditionInterface
     {
         $this->configuration = $configuration;
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getType()
-    {
-        return $this->type;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getConfiguration()
-    {
-        return $this->configuration;
     }
 }

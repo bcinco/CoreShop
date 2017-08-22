@@ -37,7 +37,7 @@ final class CarrierPriceCalculator implements CarrierPriceCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address)
+    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address): ?int
     {
         $netPrice = 0;
 

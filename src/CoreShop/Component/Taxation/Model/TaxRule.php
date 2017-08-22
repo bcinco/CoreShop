@@ -50,7 +50,7 @@ class TaxRule extends AbstractResource implements TaxRuleInterface
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -60,7 +60,7 @@ class TaxRule extends AbstractResource implements TaxRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function getBehavior()
+    public function getBehavior(): ?int
     {
         return $this->behavior;
     }
@@ -68,7 +68,7 @@ class TaxRule extends AbstractResource implements TaxRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function setBehavior($behavior)
+    public function setBehavior(int $behavior): TaxRuleInterface
     {
         $this->behavior = $behavior;
 
@@ -78,7 +78,7 @@ class TaxRule extends AbstractResource implements TaxRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function getTaxRuleGroup()
+    public function getTaxRuleGroup(): ?TaxRuleGroupInterface
     {
         return $this->taxRuleGroup;
     }
@@ -86,7 +86,7 @@ class TaxRule extends AbstractResource implements TaxRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function setTaxRuleGroup(TaxRuleGroupInterface $taxRuleGroup = null)
+    public function setTaxRuleGroup(TaxRuleGroupInterface $taxRuleGroup): TaxRuleInterface
     {
         $this->taxRuleGroup = $taxRuleGroup;
 
@@ -96,7 +96,7 @@ class TaxRule extends AbstractResource implements TaxRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function getTaxRate()
+    public function getTaxRate(): ?TaxRateInterface
     {
         return $this->taxRate;
     }
@@ -104,7 +104,7 @@ class TaxRule extends AbstractResource implements TaxRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function setTaxRate(TaxRateInterface $taxRate)
+    public function setTaxRate(TaxRateInterface $taxRate): TaxRuleInterface
     {
         $this->taxRate = $taxRate;
 

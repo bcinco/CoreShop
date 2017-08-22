@@ -48,7 +48,7 @@ class PaymentProvider extends AbstractResource implements PaymentProviderInterfa
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return $this->getName();
     }
@@ -64,7 +64,7 @@ class PaymentProvider extends AbstractResource implements PaymentProviderInterfa
     /**
      * {@inheritdoc}
      */
-    public function getIdentifier()
+    public function getIdentifier(): ?string
     {
         return $this->identifier;
     }
@@ -72,15 +72,17 @@ class PaymentProvider extends AbstractResource implements PaymentProviderInterfa
     /**
      * {@inheritdoc}
      */
-    public function setIdentifier($identifier)
+    public function setIdentifier(string $identifier): PaymentProviderInterface
     {
         $this->identifier = $identifier;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getName($language = null)
+    public function getName(?string $language = null): ?string
     {
         return $this->getTranslation($language)->getName();
     }
@@ -88,15 +90,17 @@ class PaymentProvider extends AbstractResource implements PaymentProviderInterfa
     /**
      * {@inheritdoc}
      */
-    public function setName($name, $language = null)
+    public function setName(string $name, ?string $language = null): PaymentProviderInterface
     {
         $this->getTranslation($language)->setName($name);
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getDescription($language = null)
+    public function getDescription(?string $language = null): ?string
     {
         return $this->getTranslation($language)->getDescription();
     }
@@ -104,15 +108,17 @@ class PaymentProvider extends AbstractResource implements PaymentProviderInterfa
     /**
      * {@inheritdoc}
      */
-    public function setDescription($description, $language = null)
+    public function setDescription(string $description, ?string $language = null): PaymentProviderInterface
     {
         $this->getTranslation($language)->setDescription($description);
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getInstructions($language = null)
+    public function getInstructions(?string $language = null): ?string
     {
         return $this->getTranslation($language)->getInstructions();
     }
@@ -120,15 +126,17 @@ class PaymentProvider extends AbstractResource implements PaymentProviderInterfa
     /**
      * {@inheritdoc}
      */
-    public function setInstructions($instructions, $language = null)
+    public function setInstructions(string $instructions, ?string $language = null): PaymentProviderInterface
     {
         $this->getTranslation($language)->setInstructions($instructions);
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getPosition()
+    public function getPosition(): ?int
     {
         return $this->position;
     }
@@ -136,15 +144,17 @@ class PaymentProvider extends AbstractResource implements PaymentProviderInterfa
     /**
      * {@inheritdoc}
      */
-    public function setPosition($position)
+    public function setPosition(int $position): PaymentProviderInterface
     {
         $this->position = $position;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    protected function createTranslation()
+    protected function createTranslation(): PaymentProviderTranslationInterface
     {
         return new PaymentProviderTranslation();
     }

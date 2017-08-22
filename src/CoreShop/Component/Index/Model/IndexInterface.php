@@ -21,75 +21,79 @@ interface IndexInterface extends ResourceInterface, TimestampableInterface
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * @param $name
      *
      * @return static
      */
-    public function setName($name);
+    public function setName(string $name): IndexInterface;
 
     /**
      * @return string
      */
-    public function getWorker();
+    public function getWorker(): ?string;
 
     /**
      * @param string $worker
      *
      * @return static
      */
-    public function setWorker($worker);
+    public function setWorker(string $worker): IndexInterface;
 
     /**
      * @return string
      */
-    public function getClass();
+    public function getClass(): ?string;
 
     /**
      * @param string $class
      *
      * @return static
      */
-    public function setClass($class);
+    public function setClass(string $class): IndexInterface;
 
     /**
      * @return Collection|IndexColumnInterface[]
      */
-    public function getColumns();
+    public function getColumns(): Collection;
 
     /**
      * @return bool
      */
-    public function hasColumns();
+    public function hasColumns(): bool;
 
     /**
      * @param IndexColumnInterface $column
+     *
+     * @return static
      */
-    public function addColumn(IndexColumnInterface $column);
+    public function addColumn(IndexColumnInterface $column): IndexInterface;
 
     /**
      * @param IndexColumnInterface $column
+     *
+     * @return static
      */
-    public function removeColumn(IndexColumnInterface $column);
+    public function removeColumn(IndexColumnInterface $column): IndexInterface;
 
     /**
      * @param IndexColumnInterface $column
      *
      * @return bool
      */
-    public function hasColumn(IndexColumnInterface $column);
+    public function hasColumn(IndexColumnInterface $column): bool;
 
     /**
      * @return array
      */
-    public function getConfiguration();
+    public function getConfiguration(): array;
 
     /**
      * @param $configuration
      *
-     * @return mixed
+     * @return static
      */
-    public function setConfiguration($configuration);
+    public function setConfiguration($configuration): IndexInterface;
 }

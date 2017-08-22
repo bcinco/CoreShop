@@ -17,20 +17,24 @@ interface TranslationInterface
     /**
      * @return TranslatableInterface
      */
-    public function getTranslatable();
+    public function getTranslatable(): TranslatableInterface;
 
     /**
      * @param null|TranslatableInterface $translatable
+     *
+     * @return static
      */
-    public function setTranslatable(TranslatableInterface $translatable = null);
+    public function setTranslatable(TranslatableInterface $translatable = null): ?TranslationInterface;
 
     /**
      * @return string
      */
-    public function getLocale();
+    public function getLocale(): string;
 
     /**
      * @param string $locale
+     *
+     * @return static
      */
-    public function setLocale($locale);
+    public function setLocale($locale): TranslationInterface;
 }

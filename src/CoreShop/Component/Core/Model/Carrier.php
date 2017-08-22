@@ -36,7 +36,7 @@ class Carrier extends BaseCarrier implements CarrierInterface
     /**
      * {@inheritdoc}
      */
-    public function getTaxRule()
+    public function getTaxRule(): ?TaxRuleGroupInterface
     {
         return $this->taxRule;
     }
@@ -44,8 +44,10 @@ class Carrier extends BaseCarrier implements CarrierInterface
     /**
      * {@inheritdoc}
      */
-    public function setTaxRule(TaxRuleGroupInterface $taxRule)
+    public function setTaxRule(TaxRuleGroupInterface $taxRule): CarrierInterface
     {
         $this->taxRule = $taxRule;
+
+        return $this;
     }
 }

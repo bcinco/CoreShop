@@ -20,30 +20,36 @@ interface PaymentProviderTranslationInterface extends ResourceInterface, Timesta
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * @param string $name
+     *
+     * @return static
      */
-    public function setName($name);
+    public function setName(string $name): PaymentProviderTranslationInterface;
 
     /**
      * @return string
      */
-    public function getDescription();
+    public function getDescription(): string;
 
     /**
      * @param string $description
+     *
+     * @return static
      */
-    public function setDescription($description);
+    public function setDescription(string $description): PaymentProviderTranslationInterface;
 
     /**
      * @return string
      */
-    public function getInstructions();
+    public function getInstructions(): string;
 
     /**
      * @param string $instructions
+     *
+     * @return static
      */
-    public function setInstructions($instructions);
+    public function setInstructions(string $instructions): PaymentProviderTranslationInterface;
 }

@@ -23,5 +23,5 @@ interface ProductSpecificPriceRuleRepositoryInterface extends RepositoryInterfac
      *
      * @return ProductSpecificPriceRuleInterface[]
      */
-    public function findForProduct(ProductInterface $product);
+    public function findForProduct(ProductInterface $product): array;
 }

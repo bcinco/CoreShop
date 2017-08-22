@@ -19,7 +19,7 @@ class InvoiceStateChecker extends \CoreShop\Component\Core\Notification\Rule\Con
     /**
      * {@inheritdoc}
      */
-    public function isNotificationRuleValid($subject, $params, array $configuration)
+    public function isNotificationRuleValid($subject, $params, array $configuration): bool
     {
         if ($subject instanceof OrderInvoiceInterface) {
             return parent::isNotificationRuleValid($subject->getOrder(), $params, $configuration);

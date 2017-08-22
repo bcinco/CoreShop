@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Address\Context\RequestBased;
 
@@ -22,5 +22,5 @@ interface RequestResolverInterface
      *
      * @return CountryInterface|null
      */
-    public function findCountry(Request $request);
+    public function findCountry(Request $request): CountryInterface;
 }

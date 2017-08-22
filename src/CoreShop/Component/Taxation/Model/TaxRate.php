@@ -16,6 +16,7 @@ use CoreShop\Component\Resource\Model\AbstractResource;
 use CoreShop\Component\Resource\Model\TimestampableTrait;
 use CoreShop\Component\Resource\Model\ToggleableTrait;
 use CoreShop\Component\Resource\Model\TranslatableTrait;
+use CoreShop\Component\Resource\Model\TranslationInterface;
 
 class TaxRate extends AbstractResource implements TaxRateInterface
 {
@@ -59,7 +60,7 @@ class TaxRate extends AbstractResource implements TaxRateInterface
     /**
      * {@inheritdoc}
      */
-    public function getName($language = null)
+    public function getName(?string $language = null): ?string
     {
         return $this->getTranslation($language)->getName();
     }
@@ -67,7 +68,7 @@ class TaxRate extends AbstractResource implements TaxRateInterface
     /**
      * {@inheritdoc}
      */
-    public function setName($name, $language = null)
+    public function setName(string $name, ?string $language = null): TaxRateInterface
     {
         $this->getTranslation($language, false)->setName($name);
 
@@ -77,7 +78,7 @@ class TaxRate extends AbstractResource implements TaxRateInterface
     /**
      * {@inheritdoc}
      */
-    public function getRate()
+    public function getRate(): ?float
     {
         return $this->rate;
     }
@@ -85,7 +86,7 @@ class TaxRate extends AbstractResource implements TaxRateInterface
     /**
      * {@inheritdoc}
      */
-    public function setRate($rate)
+    public function setRate(float $rate): TaxRateInterface
     {
         $this->rate = $rate;
 
@@ -95,7 +96,7 @@ class TaxRate extends AbstractResource implements TaxRateInterface
     /**
      * {@inheritdoc}
      */
-    protected function createTranslation()
+    protected function createTranslation(): TaxRateTranslationInterface
     {
         return new TaxRateTranslation();
     }

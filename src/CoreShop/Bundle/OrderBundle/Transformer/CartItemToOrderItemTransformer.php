@@ -12,8 +12,6 @@
 
 namespace CoreShop\Bundle\OrderBundle\Transformer;
 
-
-
 use CoreShop\Component\Order\Model\CartItemInterface;
 use CoreShop\Component\Order\Model\OrderInterface;
 use CoreShop\Component\Order\Model\OrderItemInterface;
@@ -21,13 +19,12 @@ use CoreShop\Component\Order\Model\ProposalInterface;
 use CoreShop\Component\Order\Model\ProposalItemInterface;
 use Webmozart\Assert\Assert;
 
-
 class CartItemToOrderItemTransformer extends AbstractCartItemToSaleItemTransformer
 {
     /**
      * {@inheritdoc}
      */
-    public function transform(ProposalInterface $order, ProposalItemInterface $cartItem, ProposalItemInterface $orderItem)
+    public function transform(ProposalInterface $order, ProposalItemInterface $cartItem, ProposalItemInterface $orderItem): ProposalItemInterface
     {
         /**
          * @var $order OrderInterface

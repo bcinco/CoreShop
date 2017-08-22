@@ -19,26 +19,26 @@ interface CartManagerInterface
     /**
      * @param CartInterface $cart
      *
-     * @return mixed
+     * @return static
      */
-    public function setCurrentCart(CartInterface $cart);
+    public function setCurrentCart(CartInterface $cart): CartManagerInterface;
 
     /**
      * @return CartInterface
      */
-    public function getCart();
+    public function getCart(): CartInterface;
 
     /**
      * @return bool
      */
-    public function hasCart();
+    public function hasCart(): bool;
 
     /**
      * @param CartInterface $cart
      *
      * @return mixed
      */
-    public function persistCart(CartInterface $cart);
+    public function persistCart(CartInterface $cart): CartManagerInterface;
 
     /**
      * @param $name
@@ -49,14 +49,14 @@ interface CartManagerInterface
      *
      * @return CartInterface
      */
-    public function createCart($name, $user = null, $store = null, $currency = null, $persist = false);
+    public function createCart($name, $user = null, $store = null, $currency = null, $persist = false): CartInterface;
 
     /**
      * @param $user
      *
      * @return CartInterface[]
      */
-    public function getStoredCarts($user);
+    public function getStoredCarts($user): array;
 
     /**
      * @param $customer
@@ -64,12 +64,12 @@ interface CartManagerInterface
      *
      * @return CartInterface[]
      */
-    public function getByName($customer, $name);
+    public function getByName($customer, $name): array;
 
     /**
      * @param int $id
      *
      * @return bool
      */
-    public function deleteCart($id);
+    public function deleteCart($id): bool;
 }

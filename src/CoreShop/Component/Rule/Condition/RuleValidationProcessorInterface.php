@@ -22,5 +22,5 @@ interface RuleValidationProcessorInterface
      *
      * @return bool
      */
-    public function isValid($subject, RuleInterface $rule);
+    public function isValid($subject, RuleInterface $rule): bool;
 }

@@ -21,7 +21,7 @@ class ProductPriceRuleRepository extends EntityRepository implements ProductPric
     /**
      * {@inheritdoc}
      */
-    public function findActive()
+    public function findActive(): array
     {
         return $this->createQueryBuilder('o')
             ->andWhere('o.active = 1')

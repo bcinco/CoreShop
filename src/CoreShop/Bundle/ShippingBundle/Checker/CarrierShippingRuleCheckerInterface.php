@@ -15,6 +15,7 @@ namespace CoreShop\Bundle\ShippingBundle\Checker;
 use CoreShop\Component\Address\Model\AddressInterface;
 use CoreShop\Component\Shipping\Model\CarrierInterface;
 use CoreShop\Component\Shipping\Model\ShippableInterface;
+use CoreShop\Component\Shipping\Model\ShippingRuleGroupInterface;
 
 interface CarrierShippingRuleCheckerInterface
 {
@@ -23,7 +24,7 @@ interface CarrierShippingRuleCheckerInterface
      * @param ShippableInterface $shippable
      * @param AddressInterface   $address
      *
-     * @return mixed
+     * @return null|ShippingRuleGroupInterface
      */
-    public function isShippingRuleValid(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address);
+    public function getValidShippingRule(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address): ?ShippingRuleGroupInterface;
 }

@@ -21,7 +21,7 @@ class SummaryCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function getIdentifier()
+    public function getIdentifier(): string
     {
         return 'summary';
     }
@@ -29,7 +29,7 @@ class SummaryCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function doAutoForward()
+    public function doAutoForward(): bool
     {
         return false;
     }
@@ -37,7 +37,7 @@ class SummaryCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function validate(CartInterface $cart)
+    public function validate(CartInterface $cart): bool
     {
         return $cart->hasItems();
     }
@@ -53,8 +53,10 @@ class SummaryCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function prepareStep(CartInterface $cart)
+    public function prepareStep(CartInterface $cart, Request $request): array
     {
         //Nothing to do here
+
+        return [];
     }
 }

@@ -22,39 +22,43 @@ interface TaxRuleGroupInterface extends ResourceInterface, TimestampableInterfac
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * @param $name
      *
      * @return static
      */
-    public function setName($name);
+    public function setName(string $name): TaxRuleGroupInterface;
 
     /**
      * @return Collection|TaxRuleInterface[]
      */
-    public function getTaxRules();
+    public function getTaxRules(): Collection;
 
     /**
      * @return bool
      */
-    public function hasTaxRules();
+    public function hasTaxRules(): bool;
 
     /**
      * @param TaxRuleInterface $taxRule
+     *
+     * @return static
      */
-    public function addTaxRule(TaxRuleInterface $taxRule);
+    public function addTaxRule(TaxRuleInterface $taxRule): TaxRuleGroupInterface;
 
     /**
      * @param TaxRuleInterface $taxRule
+     *
+     * @return static
      */
-    public function removeTaxRule(TaxRuleInterface $taxRule);
+    public function removeTaxRule(TaxRuleInterface $taxRule): TaxRuleGroupInterface;
 
     /**
      * @param TaxRuleInterface $taxRule
      *
      * @return bool
      */
-    public function hasTaxRule(TaxRuleInterface $taxRule);
+    public function hasTaxRule(TaxRuleInterface $taxRule): bool;
 }

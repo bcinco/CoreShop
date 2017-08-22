@@ -124,7 +124,7 @@ class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform(OrderInterface $order, OrderDocumentInterface $invoice, $itemsToTransform)
+    public function transform(OrderInterface $order, OrderDocumentInterface $invoice, $itemsToTransform): OrderDocumentInterface
     {
         /*
          * @var $cart CartInterface

@@ -13,6 +13,7 @@
 namespace CoreShop\Bundle\IndexBundle\Factory;
 
 use CoreShop\Component\Index\Factory\ListingFactoryInterface;
+use CoreShop\Component\Index\Listing\ListingInterface;
 use CoreShop\Component\Index\Model\IndexInterface;
 use CoreShop\Component\Index\Worker\WorkerInterface;
 use CoreShop\Component\Registry\ServiceRegistryInterface;
@@ -36,7 +37,7 @@ class ListingFactory implements ListingFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createList(IndexInterface $index)
+    public function createList(IndexInterface $index): ListingInterface
     {
         $worker = $index->getWorker();
 

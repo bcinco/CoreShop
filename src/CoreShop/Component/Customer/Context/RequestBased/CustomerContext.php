@@ -43,7 +43,7 @@ final class CustomerContext implements CustomerContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCustomer()
+    public function getCustomer(): CustomerInterface
     {
         try {
             return $this->getCustomerForRequest($this->getMasterRequest());
@@ -57,7 +57,7 @@ final class CustomerContext implements CustomerContextInterface
      *
      * @return CustomerInterface
      */
-    private function getCustomerForRequest(Request $request)
+    private function getCustomerForRequest(Request $request): CustomerInterface
     {
         $customer = $this->requestResolver->findCustomer($request);
 
@@ -69,7 +69,7 @@ final class CustomerContext implements CustomerContextInterface
     /**
      * @return Request
      */
-    private function getMasterRequest()
+    private function getMasterRequest(): Request
     {
         $masterRequest = $this->requestStack->getMasterRequest();
         if (null === $masterRequest) {

@@ -37,7 +37,7 @@ final class CartToSaleTransformer implements ProposalTransformerInterface
         $this->currencyConverter = $currencyConverter;
     }
 
-    public function transform(ProposalInterface $cart, ProposalInterface $sale)
+    public function transform(ProposalInterface $cart, ProposalInterface $sale): ProposalInterface
     {
          /**
          * @var $cart CartInterface

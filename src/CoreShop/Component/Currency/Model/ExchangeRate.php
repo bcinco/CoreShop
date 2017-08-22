@@ -32,7 +32,7 @@ class ExchangeRate implements ExchangeRateInterface
 
     public function __construct()
     {
-        $this->createdAt = new \DateTime();
+        $this->creationDate = new \DateTime();
     }
 
     /**
@@ -44,50 +44,56 @@ class ExchangeRate implements ExchangeRateInterface
     }
 
     /**
-     * @return float
+     * {@inheritdoc}
      */
-    public function getExchangeRate()
+    public function getExchangeRate(): ?int
     {
         return $this->exchangeRate;
     }
 
     /**
-     * @param float $exchangeRate
+     * {@inheritdoc}
      */
-    public function setExchangeRate($exchangeRate)
+    public function setExchangeRate(int $exchangeRate): ExchangeRateInterface
     {
         $this->exchangeRate = $exchangeRate;
+
+        return $this;
     }
 
     /**
-     * @return CurrencyInterface
+     * {@inheritdoc}
      */
-    public function getFromCurrency()
+    public function getFromCurrency(): ?CurrencyInterface
     {
         return $this->fromCurrency;
     }
 
     /**
-     * @param CurrencyInterface $fromCurrency
+     * {@inheritdoc}
      */
-    public function setFromCurrency(CurrencyInterface $fromCurrency)
+    public function setFromCurrency(CurrencyInterface $fromCurrency): ExchangeRateInterface
     {
         $this->fromCurrency = $fromCurrency;
+
+        return $this;
     }
 
     /**
-     * @return CurrencyInterface
+     * {@inheritdoc}
      */
-    public function getToCurrency()
+    public function getToCurrency(): ?CurrencyInterface
     {
         return $this->toCurrency;
     }
 
     /**
-     * @param CurrencyInterface $toCurrency
+     * {@inheritdoc}
      */
-    public function setToCurrency(CurrencyInterface $toCurrency)
+    public function setToCurrency(CurrencyInterface $toCurrency): ExchangeRateInterface
     {
         $this->toCurrency = $toCurrency;
+
+        return $this;
     }
 }

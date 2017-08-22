@@ -41,7 +41,7 @@ class SequenceNumberGenerator implements NumberGeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function generate(ResourceInterface $model)
+    public function generate(ResourceInterface $model): string
     {
         return $this->sequenceNumberGenerator->getNextSequenceForType($this->type);
     }

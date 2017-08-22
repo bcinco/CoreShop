@@ -27,7 +27,7 @@ interface ShippingRuleActionProcessorInterface
      *
      * @return mixed
      */
-    public function getPrice(ShippingRuleInterface $shippingRule, CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address);
+    public function getPrice(ShippingRuleInterface $shippingRule, CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address): int;
 
     /**
      * @param ShippingRuleInterface $shippingRule
@@ -38,5 +38,5 @@ interface ShippingRuleActionProcessorInterface
      *
      * @return mixed
      */
-    public function getModification(ShippingRuleInterface $shippingRule, CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, $price);
+    public function getModification(ShippingRuleInterface $shippingRule, CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, int $price): int;
 }

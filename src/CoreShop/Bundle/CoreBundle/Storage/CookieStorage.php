@@ -83,7 +83,7 @@ final class CookieStorage implements StorageInterface, EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public function has($name)
+    public function has(string $name): bool
     {
         return !in_array($this->get($name), ['', null], true);
     }
@@ -91,7 +91,7 @@ final class CookieStorage implements StorageInterface, EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public function get($name, $default = null)
+    public function get(string $name, $default = null)
     {
         return $this->responseCookies->get($name, $this->requestCookies->get($name, $default));
     }
@@ -99,23 +99,27 @@ final class CookieStorage implements StorageInterface, EventSubscriberInterface
     /**
      * {@inheritdoc}
      */
-    public function set($name, $value)
+    public function set(string $name, $value): StorageInterface
     {
         $this->responseCookies->set($name, $value);
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function remove($name)
+    public function remove(string $name): StorageInterface
     {
         $this->set($name, null);
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function all()
+    public function all(): array
     {
         return array_merge($this->responseCookies->all(), $this->requestCookies->all());
     }

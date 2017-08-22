@@ -13,6 +13,7 @@
 namespace CoreShop\Component\Core\Model;
 
 use CoreShop\Component\Currency\Model\Currency as BaseCurrency;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 class Currency extends BaseCurrency implements CurrencyInterface
@@ -23,9 +24,17 @@ class Currency extends BaseCurrency implements CurrencyInterface
     protected $countries;
 
     /**
+     * Currency constructor.
+     */
+    public function __construct()
+    {
+        $this->countries = new ArrayCollection();
+    }
+
+    /**
      * {@inheritdoc}
      */
-    public function getCountries()
+    public function getCountries(): Collection
     {
         return $this->countries;
     }
@@ -33,7 +42,7 @@ class Currency extends BaseCurrency implements CurrencyInterface
     /**
      * {@inheritdoc}
      */
-    public function hasCountries()
+    public function hasCountries(): bool
     {
         return !$this->countries->isEmpty();
     }
@@ -41,29 +50,33 @@ class Currency extends BaseCurrency implements CurrencyInterface
     /**
      * {@inheritdoc}
      */
-    public function addCountry(CountryInterface $country)
+    public function addCountry(CountryInterface $country): CurrencyInterface
     {
         if (!$this->hasCountry($country)) {
             $this->countries->add($country);
             $country->setCurrency($this);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeCountry(CountryInterface $country)
+    public function removeCountry(CountryInterface $country): CurrencyInterface
     {
         if ($this->hasCountry($country)) {
             $this->countries->removeElement($country);
             $country->setCurrency(null);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasCountry(CountryInterface $country)
+    public function hasCountry(CountryInterface $country): bool
     {
         return $this->countries->contains($country);
     }

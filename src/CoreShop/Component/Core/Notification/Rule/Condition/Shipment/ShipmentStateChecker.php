@@ -19,7 +19,7 @@ class ShipmentStateChecker extends \CoreShop\Component\Core\Notification\Rule\Co
     /**
      * {@inheritdoc}
      */
-    public function isNotificationRuleValid($subject, $params, array $configuration)
+    public function isNotificationRuleValid($subject, $params, array $configuration): bool
     {
         if ($subject instanceof OrderShipmentInterface) {
             return parent::isNotificationRuleValid($subject->getOrder(), $params, $configuration);

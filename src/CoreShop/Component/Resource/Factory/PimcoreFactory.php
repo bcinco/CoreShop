@@ -12,6 +12,8 @@
 
 namespace CoreShop\Component\Resource\Factory;
 
+use CoreShop\Component\Resource\Model\ResourceInterface;
+
 final class PimcoreFactory implements FactoryInterface, PimcoreFactoryInterface
 {
     /**
@@ -30,7 +32,7 @@ final class PimcoreFactory implements FactoryInterface, PimcoreFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createNew()
+    public function createNew(): ResourceInterface
     {
         return new $this->className();
     }

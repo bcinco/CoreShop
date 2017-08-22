@@ -23,7 +23,7 @@ class PaymentValidator implements ProposalValidatorInterface
     /**
      * {@inheritdoc}
      */
-    public function isValidForState(ProposalInterface $proposal, $currentState, $newState)
+    public function isValidForState(ProposalInterface $proposal, $currentState, $newState): bool
     {
         /**
          * @var $proposal OrderInterface

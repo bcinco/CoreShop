@@ -15,19 +15,19 @@ namespace CoreShop\Component\Product\Rule\Action;
 interface ProductPriceActionProcessorInterface
 {
     /**
-     * @param $subject
-     * @param $price
+     * @param mixed $subject
+     * @param int $price
      * @param array $configuration
      *
      * @return mixed
      */
-    public function getDiscount($subject, $price, array $configuration);
+    public function getDiscount($subject, int $price, array $configuration): ?int;
 
     /**
-     * @param $subject
+     * @param mixed $subject
      * @param array $configuration
      *
      * @return mixed
      */
-    public function getPrice($subject, array $configuration);
+    public function getPrice($subject, array $configuration): ?int;
 }

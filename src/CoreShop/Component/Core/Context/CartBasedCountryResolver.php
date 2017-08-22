@@ -14,6 +14,7 @@ namespace CoreShop\Component\Core\Context;
 
 use CoreShop\Component\Address\Context\RequestBased\RequestResolverInterface;
 use CoreShop\Component\Address\Model\AddressInterface;
+use CoreShop\Component\Address\Model\CountryInterface;
 use CoreShop\Component\Order\Manager\CartManagerInterface;
 use CoreShop\Component\Order\Model\CartInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +34,7 @@ final class CartBasedCountryResolver implements RequestResolverInterface
     /**
      * {@inheritdoc}
      */
-    public function findCountry(Request $request)
+    public function findCountry(Request $request): CountryInterface
     {
         $cart = $this->cartManager->getCart();
 

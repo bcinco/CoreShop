@@ -16,7 +16,7 @@ use CoreShop\Component\Order\Model\OrderDocumentInterface;
 use CoreShop\Component\Order\Renderer\OrderDocumentRendererInterface;
 use Pimcore\Model\Asset;
 
-class AssetOrderDocumentPdfRenderer implements OrderDocumentRendererInterface
+final class AssetOrderDocumentPdfRenderer implements OrderDocumentRendererInterface
 {
     /**
      * @var OrderDocumentRendererInterface
@@ -36,7 +36,7 @@ class AssetOrderDocumentPdfRenderer implements OrderDocumentRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function renderDocumentPdf(OrderDocumentInterface $orderDocument)
+    public function renderDocumentPdf(OrderDocumentInterface $orderDocument): string
     {
         if ($orderDocument->getRenderedAsset() instanceof Asset) {
             return $orderDocument->getRenderedAsset()->getData();

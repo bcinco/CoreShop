@@ -20,12 +20,14 @@ interface ConfigurationInterface extends ResourceInterface, TimestampableInterfa
     /**
      * @return string
      */
-    public function getKey();
+    public function getKey(): ?string;
 
     /**
      * @param string $key
+     *
+     * @return static
      */
-    public function setKey($key);
+    public function setKey($key): ConfigurationInterface;
 
     /**
      * @return mixed
@@ -34,6 +36,8 @@ interface ConfigurationInterface extends ResourceInterface, TimestampableInterfa
 
     /**
      * @param mixed $data
+     *
+     * @return static
      */
-    public function setData($data);
+    public function setData($data): ConfigurationInterface;
 }

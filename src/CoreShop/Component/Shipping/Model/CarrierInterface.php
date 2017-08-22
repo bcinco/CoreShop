@@ -31,77 +31,91 @@ interface CarrierInterface extends ResourceInterface, TimestampableInterface
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * @param string $name
+     *
+     * @return static
      */
-    public function setName($name);
+    public function setName(string $name): CarrierInterface;
 
     /**
      * @return string
      */
-    public function getLabel();
+    public function getLabel(): ?string;
 
     /**
      * @param string $label
+     *
+     * @return static
      */
-    public function setLabel($label);
+    public function setLabel(string $label): CarrierInterface;
 
     /**
      * @return string
      */
-    public function getTrackingUrl();
+    public function getTrackingUrl(): ?string;
 
     /**
      * @param string $trackingUrl
+     *
+     * @return static
      */
-    public function setTrackingUrl($trackingUrl);
+    public function setTrackingUrl(string $trackingUrl): CarrierInterface;
 
     /**
      * @return bool
      */
-    public function getIsFree();
+    public function getIsFree(): ?bool;
 
     /**
      * @param bool $isFree
+     *
+     * @return static
      */
-    public function setIsFree($isFree);
+    public function setIsFree(bool $isFree): CarrierInterface;
 
     /**
-     * @return int
+     * @return string
      */
-    public function getRangeBehaviour();
+    public function getRangeBehaviour(): ?string;
 
     /**
-     * @param int $rangeBehaviour
+     * @param string $rangeBehaviour
+     *
+     * @return static
      */
-    public function setRangeBehaviour($rangeBehaviour);
+    public function setRangeBehaviour(string $rangeBehaviour): CarrierInterface;
 
     /**
      * @return Collection|ShippingRuleGroupInterface[]
      */
-    public function getShippingRules();
+    public function getShippingRules(): Collection;
 
     /**
      * @return bool
      */
-    public function hasShippingRules();
+    public function hasShippingRules(): bool;
 
     /**
      * @param ShippingRuleGroupInterface $shippingRuleGroup
+     *
+     * @return static
      */
-    public function addShippingRule(ShippingRuleGroupInterface $shippingRuleGroup);
+    public function addShippingRule(ShippingRuleGroupInterface $shippingRuleGroup): CarrierInterface;
 
     /**
      * @param ShippingRuleGroupInterface $shippingRuleGroup
+     *
+     * @return static
      */
-    public function removeShippingRule(ShippingRuleGroupInterface $shippingRuleGroup);
+    public function removeShippingRule(ShippingRuleGroupInterface $shippingRuleGroup): CarrierInterface;
 
     /**
      * @param ShippingRuleGroupInterface $shippingRuleGroup
      *
      * @return bool
      */
-    public function hasShippingRule(ShippingRuleGroupInterface $shippingRuleGroup);
+    public function hasShippingRule(ShippingRuleGroupInterface $shippingRuleGroup): bool;
 }

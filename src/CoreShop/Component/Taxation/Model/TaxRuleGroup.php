@@ -52,7 +52,7 @@ class TaxRuleGroup extends AbstractResource implements TaxRuleGroupInterface
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -60,19 +60,17 @@ class TaxRuleGroup extends AbstractResource implements TaxRuleGroupInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param string $name
-     *
-     * @return static
+     * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(string $name): TaxRuleGroupInterface
     {
         $this->name = $name;
 
@@ -82,7 +80,7 @@ class TaxRuleGroup extends AbstractResource implements TaxRuleGroupInterface
     /**
      * {@inheritdoc}
      */
-    public function getTaxRules()
+    public function getTaxRules(): Collection
     {
         return $this->taxRules;
     }
@@ -90,7 +88,7 @@ class TaxRuleGroup extends AbstractResource implements TaxRuleGroupInterface
     /**
      * {@inheritdoc}
      */
-    public function hasTaxRules()
+    public function hasTaxRules(): bool
     {
         return !$this->taxRules->isEmpty();
     }
@@ -98,30 +96,34 @@ class TaxRuleGroup extends AbstractResource implements TaxRuleGroupInterface
     /**
      * {@inheritdoc}
      */
-    public function addTaxRule(TaxRuleInterface $taxRule)
+    public function addTaxRule(TaxRuleInterface $taxRule): TaxRuleGroupInterface
     {
         if (!$this->hasTaxRule($taxRule)) {
             $this->taxRules->add($taxRule);
 
             $taxRule->setTaxRuleGroup($this);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeTaxRule(TaxRuleInterface $taxRule)
+    public function removeTaxRule(TaxRuleInterface $taxRule): TaxRuleGroupInterface
     {
         if ($this->hasTaxRule($taxRule)) {
             $this->taxRules->removeElement($taxRule);
             $taxRule->setTaxRuleGroup(null);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasTaxRule(TaxRuleInterface $taxRule)
+    public function hasTaxRule(TaxRuleInterface $taxRule): bool
     {
         return $this->taxRules->contains($taxRule);
     }

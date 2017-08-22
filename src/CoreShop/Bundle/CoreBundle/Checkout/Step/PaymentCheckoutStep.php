@@ -38,7 +38,7 @@ class PaymentCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function getIdentifier()
+    public function getIdentifier(): string
     {
         return 'payment';
     }
@@ -46,7 +46,7 @@ class PaymentCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function doAutoForward()
+    public function doAutoForward(): bool
     {
         return false;
     }
@@ -54,7 +54,7 @@ class PaymentCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function validate(CartInterface $cart)
+    public function validate(CartInterface $cart): bool
     {
         return $cart->hasItems() && $cart->getPaymentProvider() instanceof PaymentProviderInterface;
     }
@@ -86,7 +86,7 @@ class PaymentCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function prepareStep(CartInterface $cart)
+    public function prepareStep(CartInterface $cart, Request $request): array
     {
         return [
             'form' => $this->createForm($cart)->createView(),

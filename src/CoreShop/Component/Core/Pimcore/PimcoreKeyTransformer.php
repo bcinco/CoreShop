@@ -20,7 +20,7 @@ class PimcoreKeyTransformer implements ItemKeyTransformerInterface
     /**
      * {@inheritdoc}
      */
-    public function transform($string)
+    public function transform($string): string
     {
         return File::getValidFilename($string);
     }

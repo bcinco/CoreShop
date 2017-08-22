@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Address\Context\RequestBased;
 
@@ -32,7 +32,7 @@ final class CountryContext implements CountryContextInterface
 
     /**
      * @param RequestResolverInterface $requestResolver
-     * @param RequestStack             $requestStack
+     * @param RequestStack $requestStack
      */
     public function __construct(RequestResolverInterface $requestResolver, RequestStack $requestStack)
     {
@@ -43,7 +43,7 @@ final class CountryContext implements CountryContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCountry()
+    public function getCountry(): CountryInterface
     {
         try {
             return $this->getCountryForRequest($this->getMasterRequest());
@@ -57,7 +57,7 @@ final class CountryContext implements CountryContextInterface
      *
      * @return CountryInterface
      */
-    private function getCountryForRequest(Request $request)
+    private function getCountryForRequest(Request $request): CountryInterface
     {
         $country = $this->requestResolver->findCountry($request);
 
@@ -69,7 +69,7 @@ final class CountryContext implements CountryContextInterface
     /**
      * @return Request
      */
-    private function getMasterRequest()
+    private function getMasterRequest(): Request
     {
         $masterRequest = $this->requestStack->getMasterRequest();
         if (null === $masterRequest) {

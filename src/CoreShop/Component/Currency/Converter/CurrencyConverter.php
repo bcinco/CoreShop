@@ -48,8 +48,12 @@ final class CurrencyConverter implements CurrencyConverterInterface
     /**
      * {@inheritdoc}
      */
-    public function convert($amount, $fromCurrencyCode, $toCurrencyCode)
+    public function convert(?int $amount, string $fromCurrencyCode, string $toCurrencyCode): int
     {
+        if (null === $amount) {
+            return 0;
+        }
+
         if ($fromCurrencyCode === $toCurrencyCode) {
             return $amount;
         }
@@ -73,7 +77,7 @@ final class CurrencyConverter implements CurrencyConverterInterface
      *
      * @return ExchangeRateInterface
      */
-    private function getExchangeRate($fromCode, $toCode)
+    private function getExchangeRate($fromCode, $toCode): int
     {
         $fromToIndex = $this->createIndex($fromCode, $toCode);
 
@@ -105,7 +109,7 @@ final class CurrencyConverter implements CurrencyConverterInterface
      *
      * @return string
      */
-    private function createIndex($prefix, $suffix)
+    private function createIndex($prefix, $suffix): string
     {
         return sprintf('%s-%s', $prefix, $suffix);
     }

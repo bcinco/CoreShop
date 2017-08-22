@@ -13,6 +13,7 @@
 namespace CoreShop\Component\Core\Model;
 
 use CoreShop\Component\Store\Model\Store as BaseStore;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 
 class Store extends BaseStore implements StoreInterface
@@ -38,9 +39,17 @@ class Store extends BaseStore implements StoreInterface
     protected $taxRuleGroups;
 
     /**
+     * Store constructor.
+     */
+    public function __construct()
+    {
+        $this->configurations = new ArrayCollection();
+    }
+
+    /**
      * {@inheritdoc}
      */
-    public function getConfigurations()
+    public function getConfigurations(): Collection
     {
         return $this->configurations;
     }
@@ -48,7 +57,7 @@ class Store extends BaseStore implements StoreInterface
     /**
      * {@inheritdoc}
      */
-    public function hasConfigurations()
+    public function hasConfigurations(): bool
     {
         return !$this->configurations->isEmpty();
     }
@@ -56,29 +65,33 @@ class Store extends BaseStore implements StoreInterface
     /**
      * {@inheritdoc}
      */
-    public function addConfiguration(ConfigurationInterface $configuration)
+    public function addConfiguration(ConfigurationInterface $configuration): StoreInterface
     {
         if (!$this->hasConfiguration($configuration)) {
             $this->configurations->add($configuration);
             $configuration->setStore($this);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeConfiguration(ConfigurationInterface $configuration)
+    public function removeConfiguration(ConfigurationInterface $configuration): StoreInterface
     {
         if ($this->hasConfiguration($configuration)) {
             $this->configurations->removeElement($configuration);
             $configuration->setStore(null);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function hasConfiguration(ConfigurationInterface $configuration)
+    public function hasConfiguration(ConfigurationInterface $configuration): bool
     {
         return $this->configurations->contains($configuration);
     }
@@ -86,7 +99,7 @@ class Store extends BaseStore implements StoreInterface
     /**
      * {@inheritdoc}
      */
-    public function getBaseCountry()
+    public function getBaseCountry(): ?CountryInterface
     {
         return $this->baseCountry;
     }
@@ -94,8 +107,10 @@ class Store extends BaseStore implements StoreInterface
     /**
      * {@inheritdoc}
      */
-    public function setBaseCountry(CountryInterface $baseCountry)
+    public function setBaseCountry(CountryInterface $baseCountry): StoreInterface
     {
         $this->baseCountry = $baseCountry;
+
+        return $this;
     }
 }

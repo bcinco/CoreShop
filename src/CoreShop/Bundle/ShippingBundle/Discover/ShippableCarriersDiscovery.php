@@ -12,14 +12,10 @@
 
 namespace CoreShop\Bundle\ShippingBundle\Discover;
 
-use CoreShop\Bundle\ShippingBundle\Checker\CarrierShippingRuleCheckerInterface;
-use CoreShop\Bundle\ShippingBundle\Discover\ShippableCarriersDiscoveryInterface;
 use CoreShop\Bundle\ShippingBundle\Validator\ShippableCarrierValidatorInterface;
 use CoreShop\Component\Address\Model\AddressInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
-use CoreShop\Component\Shipping\Model\CarrierInterface;
 use CoreShop\Component\Shipping\Model\ShippableInterface;
-use CoreShop\Component\Shipping\Model\ShippingRuleGroupInterface;
 
 final class ShippableCarriersDiscovery implements ShippableCarriersDiscoveryInterface
 {
@@ -49,7 +45,7 @@ final class ShippableCarriersDiscovery implements ShippableCarriersDiscoveryInte
     /**
      * {@inheritdoc}
      */
-    public function discoverCarriers(ShippableInterface $shippable, AddressInterface $address)
+    public function discoverCarriers(ShippableInterface $shippable, AddressInterface $address): array
     {
         $carriers = $this->carrierRepository->findAll();
         $availableCarriers = [];

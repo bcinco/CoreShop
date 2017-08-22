@@ -43,7 +43,7 @@ final class GiftProductActionProcessor implements CartPriceRuleActionProcessorIn
     /**
      * {@inheritdoc}
      */
-    public function applyRule(CartInterface $cart, array $configuration)
+    public function applyRule(CartInterface $cart, array $configuration): bool
     {
         $product = $this->productRepository->find($configuration['product']);
 
@@ -59,7 +59,7 @@ final class GiftProductActionProcessor implements CartPriceRuleActionProcessorIn
     /**
      * {@inheritdoc}
      */
-    public function unApplyRule(CartInterface $cart, array $configuration)
+    public function unApplyRule(CartInterface $cart, array $configuration): bool
     {
         $product = $this->productRepository->find($configuration['product']);
 
@@ -75,7 +75,7 @@ final class GiftProductActionProcessor implements CartPriceRuleActionProcessorIn
     /**
      * {@inheritdoc}
      */
-    public function getDiscount(CartInterface $cart, $withTax, array $configuration)
+    public function getDiscount(CartInterface $cart, $withTax, array $configuration): int
     {
         return 0;
     }

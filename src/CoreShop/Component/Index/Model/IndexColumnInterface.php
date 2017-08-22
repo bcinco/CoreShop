@@ -50,124 +50,144 @@ interface IndexColumnInterface extends ResourceInterface, TimestampableInterface
     /**
      * @return IndexInterface
      */
-    public function getIndex();
+    public function getIndex(): ?IndexInterface;
 
     /**
-     * @param IndexInterface|null $index
+     * @param IndexInterface $index
      *
      * @return static
      */
-    public function setIndex(IndexInterface $index = null);
+    public function setIndex(IndexInterface $index): IndexColumnInterface;
 
     /**
      * @return string
      */
-    public function getObjectKey();
+    public function getObjectKey(): ?string;
 
     /**
      * @param string $key
+     *
+     * @return static
      */
-    public function setObjectKey($key);
+    public function setObjectKey(string $key): IndexColumnInterface;
 
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * @param string $name
+     *
+     * @return static
      */
-    public function setName($name);
+    public function setName(string $name): IndexColumnInterface;
 
     /**
      * @return string
      */
-    public function getType();
+    public function getType(): ?string;
 
     /**
      * @param string $type
+     *
+     * @return static
      */
-    public function setType($type);
+    public function setType(string $type): IndexColumnInterface;
 
     /**
      * @return string
      */
-    public function getObjectType();
+    public function getObjectType(): ?string;
 
     /**
      * @param string $objectType
+     *
+     * @return static
      */
-    public function setObjectType($objectType);
+    public function setObjectType(string $objectType): IndexColumnInterface;
 
     /**
      * @return string
      */
-    public function getGetter();
+    public function getGetter(): ?string;
 
     /**
      * @param string $getter
+     *
+     * @return static
      */
-    public function setGetter($getter);
+    public function setGetter(string $getter): IndexColumnInterface;
 
     /**
      * @return array
      */
-    public function getGetterConfig();
+    public function getGetterConfig(): array;
 
     /**
      * @param array $getterConfig
+     *
+     * @return static
      */
-    public function setGetterConfig($getterConfig);
+    public function setGetterConfig($getterConfig): IndexColumnInterface;
 
     /**
      * @return string
      */
-    public function getDataType();
+    public function getDataType(): ?string;
 
     /**
      * @param string $dataType
+     *
+     * @return static
      */
-    public function setDataType($dataType);
+    public function setDataType(string $dataType): IndexColumnInterface;
 
     /**
      * @return string
      */
-    public function getInterpreter();
+    public function getInterpreter(): ?string;
 
     /**
      * @param string $interpreter
+     *
+     * @return static
      */
-    public function setInterpreter($interpreter);
+    public function setInterpreter(string $interpreter): IndexColumnInterface;
 
     /**
      * @return array
      */
-    public function getInterpreterConfig();
+    public function getInterpreterConfig(): array;
 
     /**
      * @param array $interpreterConfig
+     *
+     * @return static
      */
-    public function setInterpreterConfig($interpreterConfig);
+    public function setInterpreterConfig($interpreterConfig): IndexColumnInterface;
 
     /**
      * @return string
      */
-    public function getColumnType();
+    public function getColumnType(): ?string;
 
     /**
      * @param string $columnType
+     *
+     * @return static
      */
-    public function setColumnType($columnType);
+    public function setColumnType(string $columnType): IndexColumnInterface;
 
     /**
      * @return array
      */
-    public function getConfiguration();
+    public function getConfiguration(): array;
 
     /**
      * @param array $configuration
      *
      * @return static
      */
-    public function setConfiguration($configuration);
+    public function setConfiguration($configuration): IndexColumnInterface;
 }

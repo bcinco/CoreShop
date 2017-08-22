@@ -21,7 +21,7 @@ class Tool
      *
      * @return bool
      */
-    public static function classExists($class)
+    public static function classExists($class): bool
     {
         return self::classInterfaceExists($class, 'class');
     }
@@ -33,7 +33,7 @@ class Tool
      *
      * @return bool
      */
-    public static function interfaceExists($class)
+    public static function interfaceExists($class): bool
     {
         return self::classInterfaceExists($class, 'interface');
     }

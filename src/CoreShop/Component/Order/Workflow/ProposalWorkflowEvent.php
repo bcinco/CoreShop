@@ -50,48 +50,60 @@ class ProposalWorkflowEvent extends Event
     /**
      * @return ProposalInterface
      */
-    public function getProposal()
+    public function getProposal(): ProposalInterface
     {
         return $this->proposal;
     }
 
     /**
      * @param ProposalInterface $proposal
+     *
+     * @return static
      */
-    public function setProposal($proposal)
+    public function setProposal($proposal): ProposalWorkflowEvent
     {
         $this->proposal = $proposal;
+
+        return $this;
     }
 
     /**
      * @return string
      */
-    public function getNewState()
+    public function getNewState(): string
     {
         return $this->newState;
     }
 
     /**
      * @param string $newState
+     *
+     * @return static
      */
-    public function setNewState($newState)
+    public function setNewState($newState): ProposalWorkflowEvent
     {
         $this->newState = $newState;
+
+        return $this;
     }
 
     /**
      * @return string
      */
-    public function getOldState()
+    public function getOldState(): string
     {
         return $this->oldState;
     }
 
     /**
      * @param string $oldState
+     *
+     * @return static
      */
-    public function setOldState($oldState)
+    public function setOldState($oldState): ProposalWorkflowEvent
     {
         $this->oldState = $oldState;
+
+        return $this;
     }
 }

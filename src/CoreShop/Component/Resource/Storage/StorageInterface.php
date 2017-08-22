@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Resource\Storage;
 
@@ -19,29 +19,33 @@ interface StorageInterface
      *
      * @return bool
      */
-    public function has($name);
+    public function has(string $name): bool;
 
     /**
      * @param string $name
-     * @param mixed  $default
+     * @param mixed $default
      *
      * @return mixed
      */
-    public function get($name, $default = null);
+    public function get(string $name, $default = null);
 
     /**
      * @param string $name
-     * @param mixed  $value
+     * @param mixed $value
+     *
+     * @return static
      */
-    public function set($name, $value);
+    public function set(string $name, $value): StorageInterface;
 
     /**
      * @param string $name
+     *
+     * @return static
      */
-    public function remove($name);
+    public function remove(string $name): StorageInterface;
 
     /**
      * @return array
      */
-    public function all();
+    public function all(): array;
 }

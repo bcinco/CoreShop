@@ -21,7 +21,7 @@ class ArrayHelper
     /**
      * @return array
      */
-    public static function array_diff_assoc_recursive()
+    public static function array_diff_assoc_recursive(): array
     {
         $args = func_get_args();
         $diff = [];
@@ -58,7 +58,7 @@ class ArrayHelper
      *
      * @return array|false
      */
-    public static function objectToArray(AbstractObject $object, $fieldDefintions = null)
+    public static function objectToArray(AbstractObject $object, $fieldDefintions = null): array
     {
         //if the given object is an array then loop through each element
         if (is_array($object)) {

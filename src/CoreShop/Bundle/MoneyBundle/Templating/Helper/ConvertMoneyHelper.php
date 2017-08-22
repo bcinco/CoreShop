@@ -33,7 +33,7 @@ class ConvertMoneyHelper extends Helper implements ConvertMoneyHelperInterface
     /**
      * {@inheritdoc}
      */
-    public function convertAmount($amount, $sourceCurrencyCode, $targetCurrencyCode)
+    public function convertAmount(int $amount, string $sourceCurrencyCode, string $targetCurrencyCode): int
     {
         return $this->currencyConverter->convert($amount, $sourceCurrencyCode, $targetCurrencyCode);
     }

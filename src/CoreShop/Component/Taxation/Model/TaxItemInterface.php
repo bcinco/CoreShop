@@ -17,14 +17,12 @@ use CoreShop\Component\Resource\Model\ResourceInterface;
 interface TaxItemInterface extends ResourceInterface
 {
     /**
-     * @return mixed
+     * @return string
      */
     public function getName();
 
     /**
      * @param $name
-     *
-     * @return mixed
      */
     public function setName($name);
 

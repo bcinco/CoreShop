@@ -18,7 +18,7 @@ final class Db extends \Pimcore\Db
      * @param string $table
      * @return array
      */
-    public static function getColumns($table)
+    public static function getColumns($table): array
     {
         $db = static::get();
 
@@ -38,7 +38,7 @@ final class Db extends \Pimcore\Db
      * @param $table
      * @return bool
      */
-    public static function tableExists($table)
+    public static function tableExists($table): bool
     {
         $db = static::get();
 

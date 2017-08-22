@@ -12,6 +12,7 @@
 
 namespace CoreShop\Component\Store\Context\RequestBased;
 
+use CoreShop\Component\Store\Model\StoreInterface;
 use CoreShop\Component\Store\Repository\StoreRepositoryInterface;
 use Pimcore\Model\Site;
 use Symfony\Component\HttpFoundation\Request;
@@ -34,7 +35,7 @@ final class SiteBasedRequestResolver implements RequestResolverInterface
     /**
      * {@inheritdoc}
      */
-    public function findStore(Request $request)
+    public function findStore(Request $request): StoreInterface
     {
         if (Site::isSiteRequest()) {
             return $this->storeRepository->findOneBySite(Site::getCurrentSite()->getId());

@@ -15,6 +15,7 @@ namespace CoreShop\Component\Core\Currency\Context;
 use CoreShop\Component\Core\Currency\CurrencyStorageInterface;
 use CoreShop\Component\Currency\Context\CurrencyContextInterface;
 use CoreShop\Component\Currency\Context\CurrencyNotFoundException;
+use CoreShop\Component\Currency\Model\CurrencyInterface;
 use CoreShop\Component\Store\Context\StoreContextInterface;
 use CoreShop\Component\Store\Model\StoreInterface;
 
@@ -43,7 +44,7 @@ final class StorageBasedCurrencyContext implements CurrencyContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCurrency()
+    public function getCurrency(): CurrencyInterface
     {
         /** @var StoreInterface $store */
         $store = $this->storeContext->getStore();

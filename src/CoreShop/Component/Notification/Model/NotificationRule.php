@@ -46,7 +46,7 @@ class NotificationRule implements NotificationRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -54,7 +54,7 @@ class NotificationRule implements NotificationRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function setType($type)
+    public function setType(string $type): NotificationRuleInterface
     {
         $this->type = $type;
 
@@ -64,7 +64,7 @@ class NotificationRule implements NotificationRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function getSort()
+    public function getSort(): ?int
     {
         return $this->sort;
     }
@@ -72,8 +72,10 @@ class NotificationRule implements NotificationRuleInterface
     /**
      * {@inheritdoc}
      */
-    public function setSort($sort)
+    public function setSort(int $sort): NotificationRuleInterface
     {
         $this->sort = $sort;
+
+        return $this;
     }
 }

@@ -29,5 +29,5 @@ interface ShippableCarrierValidatorInterface
      * @param AddressInterface $address
      * @return boolean
      */
-    public function isCarrierValid(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address);
+    public function isCarrierValid(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address): bool;
 }

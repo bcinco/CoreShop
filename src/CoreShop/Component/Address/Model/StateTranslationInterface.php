@@ -19,10 +19,12 @@ interface StateTranslationInterface extends ResourceInterface
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): string;
 
     /**
      * @param string $name
+     *
+     * @return static
      */
-    public function setName($name);
+    public function setName($name): StateTranslationInterface;
 }

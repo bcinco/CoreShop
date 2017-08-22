@@ -17,7 +17,7 @@ use CoreShop\Component\Shipping\Calculator\CarrierPriceCalculatorInterface;
 use CoreShop\Component\Shipping\Model\CarrierInterface;
 use CoreShop\Component\Shipping\Model\ShippableInterface;
 
-class CompositePriceCalculator implements CarrierPriceCalculatorInterface
+final class CompositePriceCalculator implements CarrierPriceCalculatorInterface
 {
     /**
      * @var CarrierPriceCalculatorInterface[]
@@ -35,7 +35,7 @@ class CompositePriceCalculator implements CarrierPriceCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address)
+    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address): ?int
     {
         $price = false;
 

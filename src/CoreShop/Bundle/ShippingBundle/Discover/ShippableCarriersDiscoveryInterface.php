@@ -24,5 +24,5 @@ interface ShippableCarriersDiscoveryInterface
      *
      * @return CarrierInterface[]
      */
-    public function discoverCarriers(ShippableInterface $shippable, AddressInterface $address);
+    public function discoverCarriers(ShippableInterface $shippable, AddressInterface $address): array;
 }

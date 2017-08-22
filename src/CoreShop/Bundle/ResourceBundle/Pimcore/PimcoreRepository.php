@@ -16,6 +16,7 @@ use CoreShop\Component\Resource\Metadata\MetadataInterface;
 use CoreShop\Component\Resource\Model\ResourceInterface;
 use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
+use Pimcore\Model\Object\Listing;
 use Symfony\Component\Intl\Exception\NotImplementedException;
 
 class PimcoreRepository implements PimcoreRepositoryInterface
@@ -60,7 +61,7 @@ class PimcoreRepository implements PimcoreRepositoryInterface
     /**
      * {@inheritdoc}
      */
-    public function getList()
+    public function getList(): Listing
     {
         $className = $this->metadata->getClass('model');
 

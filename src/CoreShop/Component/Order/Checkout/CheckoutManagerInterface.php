@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Order\Checkout;
 
@@ -24,74 +24,72 @@ interface CheckoutManagerInterface
     public function addCheckoutStep(CheckoutStepInterface $step, $priority);
 
     /**
-     * @return mixed
+     * @return array
      */
-    public function getSteps();
+    public function getSteps(): array;
 
     /**
      * @param $identifier
      *
-     * @return mixed
+     * @return CheckoutStepInterface
      */
-    public function getStep($identifier);
+    public function getStep($identifier): CheckoutStepInterface;
 
     /**
      * @param $identifier
      *
-     * @return mixed
+     * @return CheckoutStepInterface
      */
-    public function getNextStep($identifier);
+    public function getNextStep($identifier): CheckoutStepInterface;
 
     /**
      * @param $identifier
      *
-     * @return mixed
+     * @return CheckoutStepInterface
      */
-    public function getPreviousStep($identifier);
+    public function getPreviousStep($identifier): CheckoutStepInterface;
 
     /**
      * @param $identifier
      *
      * @return CheckoutStepInterface[]
      */
-    public function getPreviousSteps($identifier);
+    public function getPreviousSteps($identifier): array;
 
     /**
      * @param CheckoutStepInterface $step
-     * @param CartInterface         $cart
+     * @param CartInterface $cart
      *
-     * @return mixed
+     * @return bool
      */
-    public function validateStep(CheckoutStepInterface $step, CartInterface $cart);
+    public function validateStep(CheckoutStepInterface $step, CartInterface $cart): bool;
 
     /**
      * @param CheckoutStepInterface $step
-     * @param CartInterface         $cart
+     * @param CartInterface $cart
      *
-     * @return mixed
+     * @return array
      */
-    public function prepareStep(CheckoutStepInterface $step, CartInterface $cart);
+    public function prepareStep(CheckoutStepInterface $step, CartInterface $cart): array;
 
     /**
      * @param CartInterface $cart
      *
-     * @return mixed
+     * @return CheckoutStepInterface
      */
-    public function getCurrentStep(CartInterface $cart);
+    public function getCurrentStep(CartInterface $cart): CheckoutStepInterface;
 
     /**
      * @param $identifier
      *
-     * @return mixed
+     * @return int
      */
-    public function getCurrentStepIndex($identifier);
+    public function getCurrentStepIndex($identifier): int;
 
     /**
      * @param CheckoutStepInterface $step
-     * @param CartInterface         $cart
-     * @param Request               $request
-     *
-     * @return mixed
+     * @param CartInterface $cart
+     * @param Request $request
      */
     public function commitStep(CheckoutStepInterface $step, CartInterface $cart, Request $request);
 }

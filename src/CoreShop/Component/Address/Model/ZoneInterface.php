@@ -22,39 +22,43 @@ interface ZoneInterface extends ResourceInterface, TimestampableInterface, Toggl
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * @param $name
      *
      * @return static
      */
-    public function setName($name);
+    public function setName(string $name): ZoneInterface;
 
     /**
      * @return Collection|CountryInterface[]
      */
-    public function getCountries();
+    public function getCountries(): Collection;
 
     /**
      * @return bool
      */
-    public function hasCountries();
+    public function hasCountries(): bool;
 
     /**
      * @param CountryInterface $country
+     *
+     * @return static
      */
-    public function addCountry(CountryInterface $country);
+    public function addCountry(CountryInterface $country): ZoneInterface;
 
     /**
      * @param CountryInterface $country
+     *
+     * @return static
      */
-    public function removeCountry(CountryInterface $country);
+    public function removeCountry(CountryInterface $country): ZoneInterface;
 
     /**
      * @param CountryInterface $country
      *
      * @return bool
      */
-    public function hasCountry(CountryInterface $country);
+    public function hasCountry(CountryInterface $country): bool;
 }

@@ -16,7 +16,7 @@ use CoreShop\Component\Core\Model\CurrencyInterface;
 use CoreShop\Component\Currency\Context\CurrencyContextInterface;
 use CoreShop\Component\Rule\Condition\ConditionCheckerInterface;
 
-class CurrenciesConditionChecker implements ConditionCheckerInterface
+final class CurrenciesConditionChecker implements ConditionCheckerInterface
 {
     /**
      * @var CurrencyContextInterface
@@ -34,7 +34,7 @@ class CurrenciesConditionChecker implements ConditionCheckerInterface
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, array $configuration)
+    public function isValid($subject, array $configuration): bool
     {
         $currency = $this->currencyContext->getCurrency();
 

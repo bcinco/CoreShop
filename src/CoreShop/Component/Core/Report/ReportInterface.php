@@ -22,5 +22,5 @@ interface ReportInterface
      * @param ParameterBag $parameterBag
      * @return array
      */
-    public function getData(ParameterBag $parameterBag);
+    public function getData(ParameterBag $parameterBag): array;
 }

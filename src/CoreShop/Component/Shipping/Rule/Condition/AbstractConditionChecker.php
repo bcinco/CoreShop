@@ -17,7 +17,7 @@ abstract class AbstractConditionChecker implements ShippingConditionCheckerInter
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, array $configuration)
+    public function isValid($subject, array $configuration): bool
     {
         if (!is_array($subject)) {
             throw new \InvalidArgumentException('Shipping Rule Condition $subject needs to be an array with values shippable, address and carrier');

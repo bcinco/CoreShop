@@ -28,14 +28,14 @@ interface ConfigurationServiceInterface
      * @param $key
      * @param $data
      *
-     * @return ConfigurationInterface
+     * @return static
      */
-    public function set($key, $data);
+    public function set($key, $data): ConfigurationServiceInterface;
 
     /**
      * @param $key
      *
-     * @return ConfigurationInterface
+     * @return static
      */
-    public function remove($key);
+    public function remove($key): ConfigurationServiceInterface;
 }

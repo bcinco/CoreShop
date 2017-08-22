@@ -20,37 +20,43 @@ interface StoreInterface extends BaseStoreInterface
     /**
      * @return CountryInterface
      */
-    public function getBaseCountry();
+    public function getBaseCountry(): ?CountryInterface;
 
     /**
      * @param CountryInterface $baseCurrency
+     *
+     * @return static
      */
-    public function setBaseCountry(CountryInterface $baseCurrency);
+    public function setBaseCountry(CountryInterface $baseCurrency): StoreInterface;
 
     /**
      * @return Collection|ConfigurationInterface[]
      */
-    public function getConfigurations();
+    public function getConfigurations(): Collection;
 
     /**
      * @return bool
      */
-    public function hasConfigurations();
+    public function hasConfigurations(): bool;
 
     /**
      * @param ConfigurationInterface $configuration
+     *
+     * @return static
      */
-    public function addConfiguration(ConfigurationInterface $configuration);
+    public function addConfiguration(ConfigurationInterface $configuration): StoreInterface;
 
     /**
      * @param ConfigurationInterface $configuration
+     *
+     * @return static
      */
-    public function removeConfiguration(ConfigurationInterface $configuration);
+    public function removeConfiguration(ConfigurationInterface $configuration): StoreInterface;
 
     /**
      * @param ConfigurationInterface $configuration
      *
      * @return bool
      */
-    public function hasConfiguration(ConfigurationInterface $configuration);
+    public function hasConfiguration(ConfigurationInterface $configuration): bool;
 }

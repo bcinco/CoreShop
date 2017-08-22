@@ -11,7 +11,7 @@ class OrderRepository extends PimcoreRepository implements OrderRepositoryInterf
     /**
      * {@inheritdoc}
      */
-    public function findByCustomer(CustomerInterface $customer)
+    public function findByCustomer(CustomerInterface $customer): array
     {
         $list = $this->getList();
         $list->setCondition('customer__id = ?', [$customer->getId()]);

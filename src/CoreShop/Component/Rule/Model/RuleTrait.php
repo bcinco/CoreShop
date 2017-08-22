@@ -47,7 +47,7 @@ trait RuleTrait
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf('%s (%s)', $this->getName(), $this->getId());
     }
@@ -60,7 +60,7 @@ trait RuleTrait
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -68,15 +68,17 @@ trait RuleTrait
     /**
      * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(string $name): RuleInterface
     {
         $this->name = $name;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getConditions()
+    public function getConditions(): Collection
     {
         return $this->conditions;
     }
@@ -84,7 +86,7 @@ trait RuleTrait
     /**
      * {@inheritdoc}
      */
-    public function hasConditions()
+    public function hasConditions(): bool
     {
         return !$this->conditions->isEmpty();
     }
@@ -92,7 +94,7 @@ trait RuleTrait
     /**
      * {@inheritdoc}
      */
-    public function hasCondition(ConditionInterface $condition)
+    public function hasCondition(ConditionInterface $condition): bool
     {
         return $this->conditions->contains($condition);
     }
@@ -100,25 +102,29 @@ trait RuleTrait
     /**
      * {@inheritdoc}
      */
-    public function addCondition(ConditionInterface $condition)
+    public function addCondition(ConditionInterface $condition): RuleInterface
     {
         if (!$this->hasCondition($condition)) {
             $this->conditions->add($condition);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeCondition(ConditionInterface $condition)
+    public function removeCondition(ConditionInterface $condition): RuleInterface
     {
         $this->conditions->removeElement($condition);
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getActions()
+    public function getActions(): Collection
     {
         return $this->actions;
     }
@@ -126,7 +132,7 @@ trait RuleTrait
     /**
      * {@inheritdoc}
      */
-    public function hasActions()
+    public function hasActions(): bool
     {
         return !$this->actions->isEmpty();
     }
@@ -134,7 +140,7 @@ trait RuleTrait
     /**
      * {@inheritdoc}
      */
-    public function hasAction(ActionInterface $action)
+    public function hasAction(ActionInterface $action): bool
     {
         return $this->actions->contains($action);
     }
@@ -142,18 +148,22 @@ trait RuleTrait
     /**
      * {@inheritdoc}
      */
-    public function addAction(ActionInterface $action)
+    public function addAction(ActionInterface $action): RuleInterface
     {
         if (!$this->hasAction($action)) {
             $this->actions->add($action);
         }
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function removeAction(ActionInterface $action)
+    public function removeAction(ActionInterface $action): RuleInterface
     {
         $this->actions->removeElement($action);
+
+        return $this;
     }
 }

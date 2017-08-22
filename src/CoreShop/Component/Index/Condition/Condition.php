@@ -49,9 +49,9 @@ class Condition implements ConditionInterface
      * @param $fieldName
      * @param $array
      *
-     * @return Condition
+     * @return ConditionInterface
      */
-    public static function in($fieldName, $array)
+    public static function in($fieldName, $array): ConditionInterface
     {
         return new self($fieldName, 'in', $array);
     }
@@ -63,9 +63,9 @@ class Condition implements ConditionInterface
      * @param $fromRange
      * @param $toRange
      *
-     * @return Condition
+     * @return ConditionInterface
      */
-    public static function range($fieldName, $fromRange, $toRange)
+    public static function range($fieldName, $fromRange, $toRange): ConditionInterface
     {
         return new self($fieldName, 'range', ['from' => $fromRange, 'to' => $toRange]);
     }
@@ -77,9 +77,9 @@ class Condition implements ConditionInterface
      * @param Condition[] $conditions
      * @param string      $operator   ("AND", "OR")
      *
-     * @return Condition
+     * @return ConditionInterface
      */
-    public static function concat($fieldName, $conditions, $operator)
+    public static function concat($fieldName, $conditions, $operator): ConditionInterface
     {
         return new self($fieldName, 'concat', ['operator' => $operator, 'conditions' => $conditions]);
     }
@@ -91,9 +91,9 @@ class Condition implements ConditionInterface
      * @param $value
      * @param $patternPosition ("left", "right", "both")
      *
-     * @return Condition
+     * @return ConditionInterface
      */
-    public static function like($fieldName, $value, $patternPosition)
+    public static function like($fieldName, $value, $patternPosition): ConditionInterface
     {
         return new self($fieldName, 'like', ['value' => $value, 'pattern' => $patternPosition]);
     }
@@ -104,9 +104,9 @@ class Condition implements ConditionInterface
      * @param $fieldName
      * @param $value
      *
-     * @return Condition
+     * @return ConditionInterface
      */
-    public static function match($fieldName, $value)
+    public static function match($fieldName, $value): ConditionInterface
     {
         return static::compare($fieldName, $value, '=');
     }
@@ -117,9 +117,9 @@ class Condition implements ConditionInterface
      * @param $fieldName
      * @param $value
      *
-     * @return Condition
+     * @return ConditionInterface
      */
-    public static function notMatch($fieldName, $value)
+    public static function notMatch($fieldName, $value): ConditionInterface
     {
         return static::compare($fieldName, $value, '!=');
     }
@@ -130,9 +130,9 @@ class Condition implements ConditionInterface
      * @param $fieldName
      * @param $value
      *
-     * @return Condition
+     * @return ConditionInterface
      */
-    public static function lt($fieldName, $value)
+    public static function lt($fieldName, $value): ConditionInterface
     {
         return static::compare($fieldName, $value, '<');
     }
@@ -143,9 +143,9 @@ class Condition implements ConditionInterface
      * @param $fieldName
      * @param $value
      *
-     * @return Condition
+     * @return ConditionInterface
      */
-    public static function lte($fieldName, $value)
+    public static function lte($fieldName, $value): ConditionInterface
     {
         return static::compare($fieldName, $value, '<=');
     }
@@ -156,9 +156,9 @@ class Condition implements ConditionInterface
      * @param $fieldName
      * @param $value
      *
-     * @return Condition
+     * @return ConditionInterface
      */
-    public static function gt($fieldName, $value)
+    public static function gt($fieldName, $value): ConditionInterface
     {
         return static::compare($fieldName, $value, '>');
     }
@@ -169,9 +169,9 @@ class Condition implements ConditionInterface
      * @param $fieldName
      * @param $value
      *
-     * @return Condition
+     * @return ConditionInterface
      */
-    public static function gte($fieldName, $value)
+    public static function gte($fieldName, $value): ConditionInterface
     {
         return static::compare($fieldName, $value, '>=');
     }
@@ -183,23 +183,23 @@ class Condition implements ConditionInterface
      * @param $value
      * @param $operator
      *
-     * @return Condition
+     * @return ConditionInterface
      */
-    public static function compare($fieldName, $value, $operator)
+    public static function compare($fieldName, $value, $operator): ConditionInterface
     {
         return new self($fieldName, 'compare', ['value' => $value, 'operator' => $operator]);
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return $this->type;
     }
 
     /**
-     * @param string $type
+     * {@inheritdoc}
      */
     public function setType($type)
     {
@@ -207,34 +207,38 @@ class Condition implements ConditionInterface
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
-    public function getValues()
+    public function getValues(): array
     {
         return $this->values;
     }
 
     /**
-     * @param mixed $values
+     * {@inheritdoc}
      */
-    public function setValues($values)
+    public function setValues($values): ConditionInterface
     {
         $this->values = $values;
+
+        return $this;
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getFieldName()
+    public function getFieldName(): string
     {
         return $this->fieldName;
     }
 
     /**
-     * @param string $fieldName
+     * {@inheritdoc}
      */
-    public function setFieldName($fieldName)
+    public function setFieldName($fieldName): ConditionInterface
     {
         $this->fieldName = $fieldName;
+
+        return $this;
     }
 }

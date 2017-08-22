@@ -23,5 +23,5 @@ interface NotificationConditionCheckerInterface extends ConditionCheckerInterfac
      *
      * @return bool
      */
-    public function isNotificationRuleValid($subject, $params, array $configuration);
+    public function isNotificationRuleValid($subject, $params, array $configuration): bool;
 }

@@ -14,6 +14,7 @@ namespace CoreShop\Component\Resource\Pimcore;
 
 use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
 use Pimcore\Model\Object\Concrete;
+use Pimcore\Model\Object\Folder;
 use Pimcore\Model\Object\Service;
 use Webmozart\Assert\Assert;
 
@@ -22,7 +23,7 @@ class ObjectService implements ObjectServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function createFolderByPath($path)
+    public function createFolderByPath($path): Folder
     {
         return Service::createFolderByPath($path);
     }

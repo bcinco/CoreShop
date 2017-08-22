@@ -12,6 +12,8 @@
 
 namespace CoreShop\Component\Resource\Factory;
 
+use CoreShop\Component\Resource\Model\ResourceInterface;
+
 final class Factory implements FactoryInterface
 {
     /**
@@ -30,7 +32,7 @@ final class Factory implements FactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createNew()
+    public function createNew(): ResourceInterface
     {
         return new $this->className();
     }

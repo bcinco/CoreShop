@@ -13,14 +13,16 @@
 namespace CoreShop\Bundle\TaxationBundle\Doctrine\ORM;
 
 use CoreShop\Bundle\ResourceBundle\Doctrine\ORM\EntityRepository;
+use CoreShop\Component\Core\Model\TaxRuleInterface;
 use CoreShop\Component\Taxation\Repository\TaxRuleRepositoryInterface;
+use Doctrine\ORM\QueryBuilder;
 
 class TaxRuleRepository extends EntityRepository implements TaxRuleRepositoryInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function createListQueryBuilder()
+    public function createListQueryBuilder(): QueryBuilder
     {
         return $this->createQueryBuilder('o');
     }
@@ -28,7 +30,7 @@ class TaxRuleRepository extends EntityRepository implements TaxRuleRepositoryInt
     /**
      * {@inheritdoc}
      */
-    public function getByGroupId($taxRuleGroupId)
+    public function findByGroupId($taxRuleGroupId): array
     {
         return $this->createQueryBuilder('o')
             ->andWhere('o.taxRuleGroup = :taxRuleGroupId')

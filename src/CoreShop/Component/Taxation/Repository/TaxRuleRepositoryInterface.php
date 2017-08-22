@@ -21,5 +21,5 @@ interface TaxRuleRepositoryInterface extends RepositoryInterface
      *
      * @return mixed
      */
-    public function getByGroupId($groupId);
+    public function findByGroupId($groupId): array;
 }

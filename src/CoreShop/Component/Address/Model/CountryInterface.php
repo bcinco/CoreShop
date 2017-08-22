@@ -22,21 +22,21 @@ interface CountryInterface extends ResourceInterface, TranslatableInterface, Tim
     /**
      * @return string
      */
-    public function getIsoCode();
+    public function getIsoCode(): ?string;
 
     /**
      * @param $isoCode
      *
      * @return static
      */
-    public function setIsoCode($isoCode);
+    public function setIsoCode(string $isoCode): CountryInterface;
 
    /**
      * @param $language
      *
      * @return mixed
      */
-    public function getName($language = null);
+    public function getName(?string $language = null): ?string;
 
     /**
      * @param $name
@@ -44,34 +44,34 @@ interface CountryInterface extends ResourceInterface, TranslatableInterface, Tim
      *
      * @return mixed
      */
-    public function setName($name, $language = null);
+    public function setName(string $name, ?string $language = null): CountryInterface;
 
     /**
      * @return ZoneInterface
      */
-    public function getZone();
+    public function getZone(): ?ZoneInterface;
 
     /**
      * @param ZoneInterface|null $zone
      *
      * @return static
      */
-    public function setZone(ZoneInterface $zone = null);
+    public function setZone(?ZoneInterface $zone): CountryInterface;
 
     /**
      * @return string
      */
-    public function getZoneName();
+    public function getZoneName(): ?string;
 
     /**
      * @return string
      */
-    public function getAddressFormat();
+    public function getAddressFormat(): ?string;
 
     /**
      * @param string $addressFormat
      *
      * @return static
      */
-    public function setAddressFormat($addressFormat);
+    public function setAddressFormat($addressFormat): CountryInterface;
 }

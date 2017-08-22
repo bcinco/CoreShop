@@ -22,19 +22,19 @@ interface CategoryRepositoryInterface extends BaseCategoryRepositoryInterface
      * @param StoreInterface $store
      * @return CategoryInterface[]
      */
-    public function findForStore(StoreInterface $store);
+    public function findForStore(StoreInterface $store): array;
 
     /**
      * @param StoreInterface $store
      *
      * @return CategoryInterface[]
      */
-    public function findFirstLevelForStore(StoreInterface $store);
+    public function findFirstLevelForStore(StoreInterface $store): array;
 
     /**
      * @param CategoryInterface $category
      * @param StoreInterface $store
      * @return CategoryInterface[]
      */
-    public function findChildCategoriesForStore(CategoryInterface $category, StoreInterface $store);
+    public function findChildCategoriesForStore(CategoryInterface $category, StoreInterface $store): array;
 }

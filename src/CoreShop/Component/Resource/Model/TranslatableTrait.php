@@ -13,6 +13,7 @@
 namespace CoreShop\Component\Resource\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\PersistentCollection;
 
 trait TranslatableTrait
@@ -50,12 +51,9 @@ trait TranslatableTrait
     }
 
     /**
-     * @param string|null $locale
-     * @param bool $useFallbackTranslation
-     *
-     * @return TranslationInterface
+     * {@inheritdoc}
      */
-    public function getTranslation($locale = null, $useFallbackTranslation = true)
+    public function getTranslation(?string $locale, bool $useFallbackTranslation = true): TranslationInterface
     {
         $locale = $locale ?: $this->currentLocale;
         if (null === $locale) {
@@ -93,27 +91,25 @@ trait TranslatableTrait
     }
 
     /**
-     * @return TranslationInterface[]
+     * {@inheritdoc}
      */
-    public function getTranslations()
+    public function getTranslations(): Collection
     {
         return $this->translations;
     }
 
     /**
-     * @param TranslationInterface $translation
-     *
-     * @return bool
+     * {@inheritdoc}
      */
-    public function hasTranslation(TranslationInterface $translation)
+    public function hasTranslation(TranslationInterface $translation): bool
     {
         return isset($this->translationsCache[$translation->getLocale()]) || $this->translations->containsKey($translation->getLocale());
     }
 
     /**
-     * @param TranslationInterface $translation
+     * {@inheritdoc}
      */
-    public function addTranslation(TranslationInterface $translation)
+    public function addTranslation(TranslationInterface $translation): TranslatableInterface
     {
         if (!$this->hasTranslation($translation)) {
             $this->translationsCache[$translation->getLocale()] = $translation;
@@ -121,34 +117,42 @@ trait TranslatableTrait
             $this->translations->set($translation->getLocale(), $translation);
             $translation->setTranslatable($this);
         }
+
+        return $this;
     }
 
     /**
-     * @param TranslationInterface $translation
+     * {@inheritdoc}
      */
-    public function removeTranslation(TranslationInterface $translation)
+    public function removeTranslation(TranslationInterface $translation): TranslatableInterface
     {
         if ($this->translations->removeElement($translation)) {
             unset($this->translationsCache[$translation->getLocale()]);
 
             $translation->setTranslatable(null);
         }
+
+        return $this;
     }
 
     /**
-     * @param string $currentLocale
+     * {@inheritdoc}
      */
-    public function setCurrentLocale($currentLocale)
+    public function setCurrentLocale($currentLocale): TranslatableInterface
     {
         $this->currentLocale = $currentLocale;
+
+        return $this;
     }
 
     /**
-     * @param string $fallbackLocale
+     * {@inheritdoc}
      */
-    public function setFallbackLocale($fallbackLocale)
+    public function setFallbackLocale($fallbackLocale): TranslatableInterface
     {
         $this->fallbackLocale = $fallbackLocale;
+
+        return $this;
     }
 
     /**

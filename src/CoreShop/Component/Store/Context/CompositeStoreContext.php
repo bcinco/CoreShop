@@ -12,6 +12,7 @@
 
 namespace CoreShop\Component\Store\Context;
 
+use CoreShop\Component\Store\Model\StoreInterface;
 use Zend\Stdlib\PriorityQueue;
 
 final class CompositeStoreContext implements StoreContextInterface
@@ -38,7 +39,7 @@ final class CompositeStoreContext implements StoreContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getStore()
+    public function getStore(): StoreInterface
     {
         foreach ($this->storeContexts as $storeContext) {
             try {

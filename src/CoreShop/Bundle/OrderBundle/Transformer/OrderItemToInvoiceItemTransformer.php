@@ -77,7 +77,7 @@ class OrderItemToInvoiceItemTransformer implements OrderDocumentItemTransformerI
     /**
      * {@inheritdoc}
      */
-    public function transform(OrderDocumentInterface $invoice, OrderItemInterface $orderItem, OrderDocumentItemInterface $invoiceItem, $quantity)
+    public function transform(OrderDocumentInterface $invoice, OrderItemInterface $orderItem, OrderDocumentItemInterface $invoiceItem, $quantity): OrderDocumentItemInterface
     {
         /**
          * @var $invoice OrderInvoiceInterface

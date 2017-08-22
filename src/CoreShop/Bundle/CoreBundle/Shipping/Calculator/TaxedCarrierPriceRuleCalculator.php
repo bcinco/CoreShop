@@ -54,7 +54,7 @@ final class TaxedCarrierPriceRuleCalculator implements TaxedShippingCalculatorIn
     /**
      * {@inheritdoc}
      */
-    public function getPrice(BaseCarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, $withTax = true)
+    public function getPrice(BaseCarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, $withTax = true): int
     {
         $netPrice = $this->carrierPriceCalculator->getPrice($carrier, $shippable, $address);
 
@@ -72,7 +72,7 @@ final class TaxedCarrierPriceRuleCalculator implements TaxedShippingCalculatorIn
     /**
      * {@inheritdoc}
      */
-    private function getTaxCalculator(CoreCarrierInterface $carrier, AddressInterface $address)
+    private function getTaxCalculator(CoreCarrierInterface $carrier, AddressInterface $address): ?TaxCalculatorInterface
     {
         if (is_null($this->taxCalculator)) {
             $taxRuleGroup = $carrier->getTaxRule();

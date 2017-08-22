@@ -20,32 +20,38 @@ interface CartPriceRuleVoucherCodeInterface extends ResourceInterface, Timestamp
     /**
      * @return string
      */
-    public function getCode();
+    public function getCode(): string;
 
     /**
      * @param string $code
+     *
+     * @return static
      */
-    public function setCode($code);
+    public function setCode($code): CartPriceRuleVoucherCodeInterface;
 
     /**
      * @return bool
      */
-    public function getUsed();
+    public function getUsed(): bool;
 
     /**
      * @param bool $used
+     *
+     * @return static
      */
-    public function setUsed($used);
+    public function setUsed($used): CartPriceRuleVoucherCodeInterface;
 
     /**
      * @return int
      */
-    public function getUses();
+    public function getUses(): int;
 
     /**
      * @param int $uses
+     *
+     * @return static
      */
-    public function setUses($uses);
+    public function setUses($uses): CartPriceRuleVoucherCodeInterface;
 
     /**
      * @return CartPriceRuleInterface
@@ -54,6 +60,8 @@ interface CartPriceRuleVoucherCodeInterface extends ResourceInterface, Timestamp
 
     /**
      * @param CartPriceRuleInterface|null $cartPriceRule
+     *
+     * @return static
      */
-    public function setCartPriceRule($cartPriceRule = null);
+    public function setCartPriceRule(?CartPriceRuleInterface $cartPriceRule): CartPriceRuleVoucherCodeInterface;
 }

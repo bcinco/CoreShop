@@ -15,12 +15,12 @@ namespace CoreShop\Bundle\OrderBundle\Cart\Rule\Action;
 use CoreShop\Component\Order\Cart\Rule\Action\CartPriceRuleActionProcessorInterface;
 use CoreShop\Component\Order\Model\CartInterface;
 
-class DiscountPercentActionProcessor implements CartPriceRuleActionProcessorInterface
+final class DiscountPercentActionProcessor implements CartPriceRuleActionProcessorInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function applyRule(CartInterface $cart, array $configuration)
+    public function applyRule(CartInterface $cart, array $configuration): bool
     {
         return false;
     }
@@ -28,7 +28,7 @@ class DiscountPercentActionProcessor implements CartPriceRuleActionProcessorInte
     /**
      * {@inheritdoc}
      */
-    public function unApplyRule(CartInterface $cart, array $configuration)
+    public function unApplyRule(CartInterface $cart, array $configuration): bool
     {
         return false;
     }
@@ -36,7 +36,7 @@ class DiscountPercentActionProcessor implements CartPriceRuleActionProcessorInte
     /**
      * {@inheritdoc}
      */
-    public function getDiscount(CartInterface $cart, $withTax, array $configuration)
+    public function getDiscount(CartInterface $cart, $withTax, array $configuration): int
     {
         return (int) round(($configuration['percent'] / 100) * $cart->getSubtotal($withTax));
     }

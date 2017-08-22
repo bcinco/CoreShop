@@ -24,7 +24,7 @@ interface TaxedShippingCalculatorInterface
      * @param AddressInterface $address
      * @param bool $withTax
      *
-     * @return mixed
+     * @return int
      */
-    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, $withTax = true);
+    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, $withTax = true): int;
 }

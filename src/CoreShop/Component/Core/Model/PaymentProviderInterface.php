@@ -20,11 +20,13 @@ interface PaymentProviderInterface extends BasePaymentProviderInterface, StoresA
 {
     /**
      * @param GatewayConfig $gatewayConfig
+     *
+     * @return static
      */
-    public function setGatewayConfig(GatewayConfig $gatewayConfig);
+    public function setGatewayConfig(GatewayConfig $gatewayConfig): PaymentProviderInterface;
 
     /**
      * @return GatewayConfig
      */
-    public function getGatewayConfig();
+    public function getGatewayConfig(): GatewayConfig;
 }

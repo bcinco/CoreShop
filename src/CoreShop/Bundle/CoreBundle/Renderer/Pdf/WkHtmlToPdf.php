@@ -33,7 +33,7 @@ final class WkHtmlToPdf implements PdfRendererInterface
     /**
      * {@inheritdoc}
      */
-    public function fromString($string, $header = '', $footer = '', $config = [])
+    public function fromString(string $string, string $header = '', string $footer = '', array $config = []): string
     {
         $bodyHtml = $this->createHtmlFile($string);
         $headerHtml = $this->createHtmlFile($header);
@@ -62,7 +62,7 @@ final class WkHtmlToPdf implements PdfRendererInterface
      *
      * @return string
      */
-    private function createHtmlFile($string)
+    private function createHtmlFile($string): string
     {
         $tmpHtmlFile = $this->kernelCacheDir.'/'.uniqid().'.htm';
         file_put_contents($tmpHtmlFile, $string);
@@ -80,7 +80,7 @@ final class WkHtmlToPdf implements PdfRendererInterface
      *
      * @throws \Exception
      */
-    private function convert($httpSource, $config = [])
+    private function convert($httpSource, $config = []): string
     {
         $tmpPdfFile = $this->kernelCacheDir.'/'.uniqid().'.pdf';
         $options = ' ';
@@ -132,7 +132,7 @@ final class WkHtmlToPdf implements PdfRendererInterface
      *
      * @return bool|string
      */
-    private function getWkhtmltodfBinary()
+    private function getWkhtmltodfBinary(): string
     {
         return Console::getExecutable('wkhtmltopdf');
     }

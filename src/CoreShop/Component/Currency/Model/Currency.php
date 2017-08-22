@@ -47,13 +47,13 @@ class Currency extends AbstractResource implements CurrencyInterface
     /**
      * @return string
      */
-    public function __toString()
+    public function __toString(): string
     {
         return sprintf('%s (%s)', $this->getName(), $this->getId());
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
     public function getId()
     {
@@ -63,7 +63,7 @@ class Currency extends AbstractResource implements CurrencyInterface
     /**
      * {@inheritdoc}
      */
-    public function setId($id)
+    public function setId($id): CurrencyInterface
     {
         $this->id = $id;
 
@@ -71,19 +71,17 @@ class Currency extends AbstractResource implements CurrencyInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): ?string
     {
         return $this->name;
     }
 
     /**
-     * @param $name
-     *
-     * @return static
+     * {@inheritdoc}
      */
-    public function setName($name)
+    public function setName(string $name): CurrencyInterface
     {
         $this->name = $name;
 
@@ -91,19 +89,17 @@ class Currency extends AbstractResource implements CurrencyInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getIsoCode()
+    public function getIsoCode(): ?string
     {
         return $this->isoCode;
     }
 
     /**
-     * @param mixed $isoCode
-     *
-     * @return static
+     * {@inheritdoc}
      */
-    public function setIsoCode($isoCode)
+    public function setIsoCode(string $isoCode): CurrencyInterface
     {
         $this->isoCode = $isoCode;
 
@@ -111,19 +107,17 @@ class Currency extends AbstractResource implements CurrencyInterface
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
-    public function getNumericIsoCode()
+    public function getNumericIsoCode(): ?int
     {
         return $this->numericIsoCode;
     }
 
     /**
-     * @param int $numericIsoCode
-     *
-     * @return static
+     * {@inheritdoc}
      */
-    public function setNumericIsoCode($numericIsoCode)
+    public function setNumericIsoCode(int $numericIsoCode): CurrencyInterface
     {
         $this->numericIsoCode = $numericIsoCode;
 
@@ -131,19 +125,17 @@ class Currency extends AbstractResource implements CurrencyInterface
     }
 
     /**
-     * @return string
+     * {@inheritdoc}
      */
-    public function getSymbol()
+    public function getSymbol(): ?string
     {
         return $this->symbol;
     }
 
     /**
-     * @param string $symbol
-     *
-     * @return static
+     * {@inheritdoc}
      */
-    public function setSymbol($symbol)
+    public function setSymbol(string $symbol): CurrencyInterface
     {
         $this->symbol = $symbol;
 

@@ -18,7 +18,7 @@ interface CartDiscountCalculatorInterface
      * @param $subject
      * @param bool $withTax
      *
-     * @return mixed
+     * @return int
      */
-    public function getDiscount($subject, $withTax = true);
+    public function getDiscount($subject, $withTax = true): int;
 }

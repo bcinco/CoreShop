@@ -29,62 +29,74 @@ interface PaymentInterface extends \Payum\Core\Model\PaymentInterface, ResourceI
     /**
      * @return PaymentProviderInterface
      */
-    public function getPaymentProvider();
+    public function getPaymentProvider(): PaymentProviderInterface;
 
     /**
      * @param $paymentProvider
      *
-     * @return mixed
+     * @return static
      */
-    public function setPaymentProvider(PaymentProviderInterface $paymentProvider);
+    public function setPaymentProvider(PaymentProviderInterface $paymentProvider): PaymentInterface;
 
     /**
-     * @return mixed
+     * @return \DateTime
      */
-    public function getDatePayment();
+    public function getDatePayment(): \DateTime;
 
     /**
      * @param $datePayment
+     *
+     * @return static
      */
-    public function setDatePayment($datePayment);
+    public function setDatePayment($datePayment): PaymentInterface;
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getState();
+    public function getState(): string;
 
     /**
      * @param $state
+     *
+     * @return static
      */
-    public function setState($state);
+    public function setState($state): PaymentInterface;
 
     /**
      * @return CurrencyInterface
      */
-    public function getCurrency();
+    public function getCurrency(): CurrencyInterface;
 
     /**
      * @param CurrencyInterface $currency
+     *
+     * @return static
      */
-    public function setCurrency($currency);
+    public function setCurrency($currency): PaymentInterface;
 
     /**
      * @param int $amount
+     *
+     * @return static
      */
     public function setTotalAmount($amount);
 
     /**
      * @param $number
+     *
+     * @return static
      */
     public function setNumber($number);
 
     /**
      * @param int $orderId
+     *
+     * @return static
      */
-    public function setOrderId($orderId);
+    public function setOrderId($orderId): PaymentInterface;
 
     /**
      * @return int
      */
-    public function getOrderId();
+    public function getOrderId(): int;
 }

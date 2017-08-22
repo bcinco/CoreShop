@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Rule\Model;
 
@@ -17,22 +17,26 @@ use CoreShop\Component\Resource\Model\ResourceInterface;
 interface ConditionInterface extends ResourceInterface
 {
     /**
-     * @param string $type
-     */
-    public function setType($type);
-
-    /**
-     * @param array $configuration
-     */
-    public function setConfiguration(array $configuration);
-
-    /**
      * @return string
      */
-    public function getType();
+    public function getType(): ?string;
+
+    /**
+     * @param string $type
+     *
+     * @return static
+     */
+    public function setType(string $type): ConditionInterface;
 
     /**
      * @return array
      */
-    public function getConfiguration();
+    public function getConfiguration(): array;
+
+    /**
+     * @param array $configuration
+     *
+     * @return static
+     */
+    public function setConfiguration(array $configuration): ConditionInterface;
 }

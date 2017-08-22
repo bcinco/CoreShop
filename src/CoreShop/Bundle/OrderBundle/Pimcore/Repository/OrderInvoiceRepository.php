@@ -21,7 +21,7 @@ class OrderInvoiceRepository extends PimcoreRepository implements OrderInvoiceRe
     /**
      * {@inheritdoc}
      */
-    public function getDocuments(OrderInterface $order)
+    public function getDocuments(OrderInterface $order): array
     {
         return $this->findBy(['order__id' => $order->getId()]);
     }

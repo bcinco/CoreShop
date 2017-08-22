@@ -28,6 +28,7 @@ use CoreShop\Component\Store\Context\StoreContextInterface;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Constraints\Valid;
 
@@ -107,7 +108,7 @@ class ShippingCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function getIdentifier()
+    public function getIdentifier(): string
     {
         return 'shipping';
     }
@@ -115,7 +116,7 @@ class ShippingCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function doAutoForward()
+    public function doAutoForward(): bool
     {
         return false;
     }
@@ -123,7 +124,7 @@ class ShippingCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function validate(CartInterface $cart)
+    public function validate(CartInterface $cart): bool
     {
         return
             $cart->hasItems() &&
@@ -158,7 +159,7 @@ class ShippingCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function prepareStep(CartInterface $cart)
+    public function prepareStep(CartInterface $cart, Request $request): array
     {
         //Get Carriers
         $carriers = $this->getCarriers($cart);
@@ -174,7 +175,7 @@ class ShippingCheckoutStep implements CheckoutStepInterface
      *
      * @return array
      */
-    private function getCarriers(CartInterface $cart)
+    private function getCarriers(CartInterface $cart): array
     {
         $carriers = $this->shippableCarriersDiscovery->discoverCarriers($cart, $cart->getShippingAddress());
         $availableCarriers = [];
@@ -192,10 +193,11 @@ class ShippingCheckoutStep implements CheckoutStepInterface
 
     /**
      * @param $carriers
+     * @param $cart
      *
      * @return \Symfony\Component\Form\FormInterface
      */
-    private function createForm($carriers, $cart)
+    private function createForm($carriers, $cart): FormInterface
     {
         $form = $this->formFactory->createNamed('', FormType::class);
 

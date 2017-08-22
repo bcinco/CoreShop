@@ -49,7 +49,7 @@ class AddressCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function getIdentifier()
+    public function getIdentifier(): string
     {
         return 'address';
     }
@@ -57,7 +57,7 @@ class AddressCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function doAutoForward()
+    public function doAutoForward(): bool
     {
         return false;
     }
@@ -65,7 +65,7 @@ class AddressCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function validate(CartInterface $cart)
+    public function validate(CartInterface $cart): bool
     {
         return $cart->hasItems() && $cart->getShippingAddress() instanceof AddressInterface && $cart->getInvoiceAddress() instanceof AddressInterface;
     }
@@ -99,7 +99,7 @@ class AddressCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function prepareStep(CartInterface $cart)
+    public function prepareStep(CartInterface $cart, Request $request): array
     {
         $customer = $this->getCustomer();
 

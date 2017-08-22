@@ -65,7 +65,7 @@ class FilterCondition extends AbstractResource implements FilterConditionInterfa
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -73,15 +73,17 @@ class FilterCondition extends AbstractResource implements FilterConditionInterfa
     /**
      * {@inheritdoc}
      */
-    public function setType($type)
+    public function setType(string $type): FilterConditionInterface
     {
         $this->type = $type;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getField()
+    public function getField(): ?string
     {
         return $this->field;
     }
@@ -89,7 +91,7 @@ class FilterCondition extends AbstractResource implements FilterConditionInterfa
     /**
      * {@inheritdoc}
      */
-    public function setField($field)
+    public function setField(string $field): FilterConditionInterface
     {
         $this->field = $field;
 
@@ -99,7 +101,7 @@ class FilterCondition extends AbstractResource implements FilterConditionInterfa
     /**
      * {@inheritdoc}
      */
-    public function getLabel()
+    public function getLabel(): ?string
     {
         return $this->label;
     }
@@ -107,7 +109,7 @@ class FilterCondition extends AbstractResource implements FilterConditionInterfa
     /**
      * {@inheritdoc}
      */
-    public function setLabel($label)
+    public function setLabel(string $label): FilterConditionInterface
     {
         $this->label = $label;
 
@@ -117,7 +119,7 @@ class FilterCondition extends AbstractResource implements FilterConditionInterfa
     /**
      * {@inheritdoc}
      */
-    public function getQuantityUnit()
+    public function getQuantityUnit(): ?int
     {
         return $this->quantityUnit;
     }
@@ -125,7 +127,7 @@ class FilterCondition extends AbstractResource implements FilterConditionInterfa
     /**
      * {@inheritdoc}
      */
-    public function setQuantityUnit($quantityUnit)
+    public function setQuantityUnit(int $quantityUnit): FilterConditionInterface
     {
         $this->quantityUnit = $quantityUnit;
 
@@ -135,7 +137,7 @@ class FilterCondition extends AbstractResource implements FilterConditionInterfa
     /**
      * {@inheritdoc}
      */
-    public function getConfiguration()
+    public function getConfiguration(): array
     {
         return $this->configuration;
     }
@@ -143,7 +145,7 @@ class FilterCondition extends AbstractResource implements FilterConditionInterfa
     /**
      * {@inheritdoc}
      */
-    public function setConfiguration($configuration)
+    public function setConfiguration($configuration): FilterConditionInterface
     {
         $this->configuration = $configuration;
 
@@ -153,7 +155,7 @@ class FilterCondition extends AbstractResource implements FilterConditionInterfa
     /**
      * {@inheritdoc}
      */
-    public function getFilter()
+    public function getFilter(): ?FilterInterface
     {
         return $this->filter;
     }
@@ -161,7 +163,7 @@ class FilterCondition extends AbstractResource implements FilterConditionInterfa
     /**
      * {@inheritdoc}
      */
-    public function setFilter(FilterInterface $filter)
+    public function setFilter(FilterInterface $filter): FilterConditionInterface
     {
         $this->filter = $filter;
 

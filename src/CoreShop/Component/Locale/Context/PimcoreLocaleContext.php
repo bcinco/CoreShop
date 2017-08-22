@@ -32,7 +32,7 @@ class PimcoreLocaleContext implements LocaleContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getLocaleCode()
+    public function getLocaleCode(): string
     {
         $pimcoreLocale = $this->pimcoreLocaleService->getLocale();
 

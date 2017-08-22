@@ -54,7 +54,7 @@ final class StoreAwareCurrencyContext implements CurrencyContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getCurrency()
+    public function getCurrency(): CurrencyInterface
     {
         /** @var StoreInterface $store */
         $store = $this->storeContext->getStore();
@@ -78,7 +78,7 @@ final class StoreAwareCurrencyContext implements CurrencyContextInterface
      *
      * @return bool
      */
-    private function isAvailableCurrency(CurrencyInterface $currency, StoreInterface $store)
+    private function isAvailableCurrency(CurrencyInterface $currency, StoreInterface $store): bool
     {
         return in_array($currency->getIsoCode(), array_map(function (CurrencyInterface $currency) {
             return $currency->getIsoCode();
@@ -90,7 +90,7 @@ final class StoreAwareCurrencyContext implements CurrencyContextInterface
      *
      * @return CurrencyInterface[]
      */
-    private function getCurrenciesForStore(StoreInterface $store)
+    private function getCurrenciesForStore(StoreInterface $store): array
     {
         return $this->currencyRepository->findActiveForStore($store);
     }

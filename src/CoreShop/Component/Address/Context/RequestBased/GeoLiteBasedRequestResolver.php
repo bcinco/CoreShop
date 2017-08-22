@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Address\Context\RequestBased;
 
@@ -36,9 +36,9 @@ final class GeoLiteBasedRequestResolver implements RequestResolverInterface
     /**
      * {@inheritdoc}
      */
-    public function findCountry(Request $request)
+    public function findCountry(Request $request): CountryInterface
     {
-        $geoDbFile = realpath(PIMCORE_PRIVATE_VAR.'/config/GeoLite2-City.mmdb');
+        $geoDbFile = realpath(PIMCORE_PRIVATE_VAR . '/config/GeoLite2-City.mmdb');
         $record = null;
 
         if (file_exists($geoDbFile)) {
@@ -71,7 +71,7 @@ final class GeoLiteBasedRequestResolver implements RequestResolverInterface
      *
      * @return bool
      */
-    private function checkIfIpIsPrivate($clientIp)
+    private function checkIfIpIsPrivate($clientIp): bool
     {
         $priAddrs = [
             '10.0.0.0|10.255.255.255', // single class A network

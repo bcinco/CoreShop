@@ -20,7 +20,7 @@ final class ResourceLoader
      * @param $resources
      * @return array
      */
-    public function loadResources($resources)
+    public function loadResources($resources): array
     {
         $resourcesToLoad = [];
 

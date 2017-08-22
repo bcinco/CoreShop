@@ -31,7 +31,7 @@ final class FixedLocaleContext implements LocaleContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getLocaleCode()
+    public function getLocaleCode(): string
     {
         return $this->locale;
     }

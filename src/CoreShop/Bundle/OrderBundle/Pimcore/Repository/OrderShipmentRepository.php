@@ -21,7 +21,7 @@ class OrderShipmentRepository extends PimcoreRepository implements OrderShipment
     /**
      * {@inheritdoc}
      */
-    public function getDocuments(OrderInterface $order)
+    public function getDocuments(OrderInterface $order): array
     {
         return $this->findBy(['order__id' => $order->getId()]);
     }

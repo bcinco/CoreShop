@@ -63,7 +63,7 @@ class ConfigurationService implements ConfigurationServiceInterface
     /**
      * {@inheritdoc}
      */
-    public function set($key, $data)
+    public function set($key, $data): ConfigurationServiceInterface
     {
         $config = $this->get($key, true);
 
@@ -75,12 +75,14 @@ class ConfigurationService implements ConfigurationServiceInterface
         $config->setData($data);
         $this->entityManager->persist($config);
         $this->entityManager->flush();
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function remove($key)
+    public function remove($key): ConfigurationServiceInterface
     {
         $config = $this->get($key, true);
 
@@ -88,5 +90,7 @@ class ConfigurationService implements ConfigurationServiceInterface
             $this->entityManager->remove($config);
             $this->entityManager->flush();
         }
+
+        return $this;
     }
 }

@@ -12,44 +12,54 @@
 
 namespace CoreShop\Component\Resource\Model;
 
+use Doctrine\Common\Collections\Collection;
+
 interface TranslatableInterface
 {
     /**
-     * @return TranslationInterface[]
+     * @return Collection|TranslationInterface[]
      */
-    public function getTranslations();
+    public function getTranslations(): Collection;
 
     /**
-     * @param string|null $locale
+     * @param ?string $locale
      *
      * @return TranslationInterface
      */
-    public function getTranslation($locale = null);
+    public function getTranslation(?string $locale): TranslationInterface;
 
     /**
      * @param TranslationInterface $translation
      *
      * @return bool
      */
-    public function hasTranslation(TranslationInterface $translation);
+    public function hasTranslation(TranslationInterface $translation): bool;
 
     /**
      * @param TranslationInterface $translation
+     *
+     * @return static
      */
-    public function addTranslation(TranslationInterface $translation);
+    public function addTranslation(TranslationInterface $translation): TranslatableInterface;
 
     /**
      * @param TranslationInterface $translation
+     *
+     * @return static
      */
-    public function removeTranslation(TranslationInterface $translation);
+    public function removeTranslation(TranslationInterface $translation): TranslatableInterface;
 
     /**
      * @param string $locale
+     *
+     * @return static
      */
-    public function setCurrentLocale($locale);
+    public function setCurrentLocale($locale): TranslatableInterface;
 
     /**
      * @param string $locale
+     *
+     * @return static
      */
-    public function setFallbackLocale($locale);
+    public function setFallbackLocale($locale): TranslatableInterface;
 }

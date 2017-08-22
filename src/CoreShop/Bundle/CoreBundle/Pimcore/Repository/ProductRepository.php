@@ -21,7 +21,7 @@ class ProductRepository extends BaseProductRepository implements ProductReposito
     /**
      * {@inheritdoc}
      */
-    public function getLatestByShop(StoreInterface $store, $count = 8)
+    public function getLatestByShop(StoreInterface $store, $count = 8): array
     {
         return $this->findBy(['enabled=1'], ['o_creationDate DESC'], $count);
     }

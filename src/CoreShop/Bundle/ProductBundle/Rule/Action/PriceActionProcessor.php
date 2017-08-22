@@ -19,7 +19,7 @@ class PriceActionProcessor implements ProductPriceActionProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function getDiscount($subject, $price, array $configuration)
+    public function getDiscount($subject, int $price, array $configuration): ?int
     {
         return null;
     }
@@ -27,7 +27,7 @@ class PriceActionProcessor implements ProductPriceActionProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function getPrice($subject, array $configuration)
+    public function getPrice($subject, array $configuration): ?int
     {
         return $configuration['price'];
     }

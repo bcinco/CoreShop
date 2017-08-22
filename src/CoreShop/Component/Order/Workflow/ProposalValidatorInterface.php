@@ -21,7 +21,7 @@ interface ProposalValidatorInterface
      * @param $currentState
      * @param $newState
      *
-     * @return mixed
+     * @return bool
      */
-    public function isValidForState(ProposalInterface $proposal, $currentState, $newState);
+    public function isValidForState(ProposalInterface $proposal, $currentState, $newState): bool;
 }

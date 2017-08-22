@@ -20,5 +20,5 @@ interface ProductPriceRuleRepositoryInterface extends RepositoryInterface
     /**
      * @return ProductPriceRule[]
      */
-    public function findActive();
+    public function findActive(): array;
 }

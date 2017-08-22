@@ -48,7 +48,7 @@ class SequenceGenerator implements SequenceGeneratorInterface
     /**
      * {@inheritdoc}
      */
-    public function getNextSequenceForType($type)
+    public function getNextSequenceForType(string $type): int
     {
         $sequence = $this->getSequence($type);
         $sequence->incrementIndex();

@@ -37,7 +37,7 @@ class RuleValidationProcessor implements RuleValidationProcessorInterface
      *
      * @return bool
      */
-    public function isValid($subject, RuleInterface $rule)
+    public function isValid($subject, RuleInterface $rule): bool
     {
         return $this->ruleConditionsValidationProcessor->isValid($subject, $rule->getConditions());
     }

@@ -20,27 +20,31 @@ interface CurrencyInterface extends BaseCurrencyInterface
     /**
      * @return Collection|CountryInterface[]
      */
-    public function getCountries();
+    public function getCountries(): Collection;
 
     /**
      * @return bool
      */
-    public function hasCountries();
+    public function hasCountries(): bool;
 
     /**
      * @param CountryInterface $country
+     *
+     * @return static
      */
-    public function addCountry(CountryInterface $country);
+    public function addCountry(CountryInterface $country): CurrencyInterface;
 
     /**
      * @param CountryInterface $country
+     *
+     * @return static
      */
-    public function removeCountry(CountryInterface $country);
+    public function removeCountry(CountryInterface $country): CurrencyInterface;
 
     /**
      * @param CountryInterface $country
      *
      * @return bool
      */
-    public function hasCountry(CountryInterface $country);
+    public function hasCountry(CountryInterface $country): bool;
 }

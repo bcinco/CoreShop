@@ -32,7 +32,7 @@ class CompositeCartDiscountCalculator implements CartDiscountCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function getDiscount($subject, $withTax = true)
+    public function getDiscount($subject, $withTax = true): int
     {
         $discount = 0;
 

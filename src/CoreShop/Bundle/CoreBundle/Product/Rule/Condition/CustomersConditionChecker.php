@@ -16,7 +16,7 @@ use CoreShop\Component\Customer\Context\CustomerContextInterface;
 use CoreShop\Component\Customer\Context\CustomerNotFoundException;
 use CoreShop\Component\Rule\Condition\ConditionCheckerInterface;
 
-class CustomersConditionChecker implements ConditionCheckerInterface
+final class CustomersConditionChecker implements ConditionCheckerInterface
 {
     /**
      * @var CustomerContextInterface
@@ -34,7 +34,7 @@ class CustomersConditionChecker implements ConditionCheckerInterface
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, array $configuration)
+    public function isValid($subject, array $configuration): bool
     {
         try {
             $customer = $this->customerContext->getCustomer();

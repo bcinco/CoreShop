@@ -8,10 +8,11 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Address\Context\RequestBased;
 
+use CoreShop\Component\Address\Model\CountryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Zend\Stdlib\PriorityQueue;
 
@@ -29,7 +30,7 @@ final class CompositeRequestResolver implements RequestResolverInterface
 
     /**
      * @param RequestResolverInterface $requestResolver
-     * @param int                      $priority
+     * @param int $priority
      */
     public function addResolver(RequestResolverInterface $requestResolver, $priority = 0)
     {
@@ -39,7 +40,7 @@ final class CompositeRequestResolver implements RequestResolverInterface
     /**
      * {@inheritdoc}
      */
-    public function findCountry(Request $request)
+    public function findCountry(Request $request): CountryInterface
     {
         foreach ($this->requestResolvers as $requestResolver) {
             $country = $requestResolver->findCountry($request);

@@ -13,6 +13,7 @@
 namespace CoreShop\Component\Resource\Factory;
 
 use CoreShop\Component\Resource\Exception\UnexpectedTypeException;
+use CoreShop\Component\Resource\Model\ResourceInterface;
 use CoreShop\Component\Resource\Model\TranslatableInterface;
 use CoreShop\Component\Resource\Translation\Provider\TranslationLocaleProviderInterface;
 
@@ -43,7 +44,7 @@ final class TranslatableFactory implements TranslatableFactoryInterface
      *
      * @throws UnexpectedTypeException
      */
-    public function createNew()
+    public function createNew(): ResourceInterface
     {
         $resource = $this->factory->createNew();
 

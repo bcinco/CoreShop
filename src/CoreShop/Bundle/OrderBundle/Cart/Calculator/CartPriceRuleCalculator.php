@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\OrderBundle\Cart\Calculator;
 
@@ -33,13 +33,14 @@ class CartPriceRuleCalculator implements CartDiscountCalculatorInterface
     protected $ruleValidationProcessor;
 
     /**
-     * @param ServiceRegistryInterface         $actionServiceRegistry
+     * @param ServiceRegistryInterface $actionServiceRegistry
      * @param RuleValidationProcessorInterface $ruleValidationProcessor
      */
     public function __construct(
         ServiceRegistryInterface $actionServiceRegistry,
         RuleValidationProcessorInterface $ruleValidationProcessor
-    ) {
+    )
+    {
         $this->actionServiceRegistry = $actionServiceRegistry;
         $this->ruleValidationProcessor = $ruleValidationProcessor;
     }
@@ -47,15 +48,15 @@ class CartPriceRuleCalculator implements CartDiscountCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function getDiscount($subject, $withTax = true)
+    public function getDiscount($subject, $withTax = true): int
     {
         Assert::isInstanceOf($subject, CartInterface::class);
 
         $discount = 0;
 
         /**
-         * @var CartInterface
-         * @var $rules        RuleInterface[]
+         * @var $subject CartInterface
+         * @var $rules RuleInterface[]
          */
         $rules = $subject->getPriceRules();
 

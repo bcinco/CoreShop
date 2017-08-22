@@ -22,5 +22,5 @@ interface SequenceFactoryInterface extends FactoryInterface
      *
      * @return SequenceInterface
      */
-    public function createWithType($type);
+    public function createWithType(string $type): SequenceInterface;
 }

@@ -21,40 +21,47 @@ interface StoreInterface extends ResourceInterface, TimestampableInterface, Curr
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * @param string $name
+     *
+     * @return static
      */
-    public function setName($name);
+    public function setName(string $name): StoreInterface;
 
     /**
      * @return string
      */
-    public function getTemplate();
+    public function getTemplate(): ?string;
 
     /**
      * @param string $template
+     * @return static
      */
-    public function setTemplate($template);
+    public function setTemplate(string $template): StoreInterface;
 
     /**
      * @return bool
      */
-    public function getIsDefault();
+    public function getIsDefault(): ?bool;
 
     /**
      * @param bool $isDefault
+     *
+     * @return static
      */
-    public function setIsDefault($isDefault);
+    public function setIsDefault(bool $isDefault): StoreInterface;
 
     /**
      * @return int
      */
-    public function getSiteId();
+    public function getSiteId(): ?int;
 
     /**
      * @param int $siteId
+     *
+     * @return static
      */
-    public function setSiteId($siteId);
+    public function setSiteId(?int $siteId): StoreInterface;
 }

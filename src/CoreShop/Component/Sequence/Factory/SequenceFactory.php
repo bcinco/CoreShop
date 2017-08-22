@@ -13,6 +13,8 @@
 namespace CoreShop\Component\Sequence\Factory;
 
 use CoreShop\Component\Resource\Exception\UnsupportedMethodException;
+use CoreShop\Component\Resource\Model\ResourceInterface;
+use CoreShop\Component\Sequence\Model\SequenceInterface;
 
 class SequenceFactory implements SequenceFactoryInterface
 {
@@ -34,7 +36,7 @@ class SequenceFactory implements SequenceFactoryInterface
      *
      * @throws UnsupportedMethodException
      */
-    public function createNew()
+    public function createNew(): ResourceInterface
     {
         throw new UnsupportedMethodException('createNew');
     }
@@ -42,7 +44,7 @@ class SequenceFactory implements SequenceFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function createWithType($type)
+    public function createWithType(string $type): SequenceInterface
     {
         $sequence = new $this->className();
         $sequence->setType($type);

@@ -44,7 +44,7 @@ class ShippingRuleActionProcessor implements CarrierPriceActionProcessorInterfac
     /**
      * {@inheritdoc}
      */
-    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, array $configuration)
+    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, array $configuration): int
     {
         $shippingRule = $this->shippingRuleRepository->find($configuration['shippingRule']);
 
@@ -58,7 +58,7 @@ class ShippingRuleActionProcessor implements CarrierPriceActionProcessorInterfac
     /**
      * {@inheritdoc}
      */
-    public function getModification(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, $price, array $configuration)
+    public function getModification(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, int $price, array $configuration): int
     {
         $shippingRule = $this->shippingRuleRepository->find($configuration['shippingRule']);
 

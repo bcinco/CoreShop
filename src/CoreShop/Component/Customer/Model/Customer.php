@@ -18,7 +18,7 @@ use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
 use Pimcore\Model\Object\ClassDefinition\Data\Password;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-class Customer extends AbstractPimcoreModel implements CustomerInterface, PimcoreModelInterface, UserInterface
+class Customer extends AbstractPimcoreModel implements CustomerInterface, UserInterface
 {
     /**
      * {@inheritdoc}

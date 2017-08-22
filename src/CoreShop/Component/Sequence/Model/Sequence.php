@@ -44,7 +44,7 @@ class Sequence implements SequenceInterface
     /**
      * {@inheritdoc}
      */
-    public function getIndex()
+    public function getIndex(): ?int
     {
         return $this->index;
     }
@@ -52,7 +52,7 @@ class Sequence implements SequenceInterface
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): ?string
     {
         return $this->type;
     }
@@ -60,13 +60,20 @@ class Sequence implements SequenceInterface
     /**
      * {@inheritdoc}
      */
-    public function setType($type)
+    public function setType(string $type): SequenceInterface
     {
         $this->type = $type;
+
+        return $this;
     }
 
-    public function incrementIndex()
+    /**
+     * {@inheritdoc}
+     */
+    public function incrementIndex(): SequenceInterface
     {
         ++$this->index;
+
+        return $this;
     }
 }

@@ -46,7 +46,7 @@ class TaxedProductPriceCalculator implements TaxedProductPriceCalculatorInterfac
     /**
      * {@inheritdoc}
      */
-    public function getPrice(PurchasableInterface $product, $withTax = true) {
+    public function getPrice(PurchasableInterface $product, $withTax = true): int {
         if ($product instanceof ProductInterface) {
             $price = $this->priceCalculator->getPrice($product);
             $discount = $this->priceCalculator->getDiscount($product, $price);
@@ -67,7 +67,7 @@ class TaxedProductPriceCalculator implements TaxedProductPriceCalculatorInterfac
     /**
      * {@inheritdoc}
      */
-    public function getRetailPrice(PurchasableInterface $product, $withTax = true) {
+    public function getRetailPrice(PurchasableInterface $product, $withTax = true): int {
         $price = $product->getPrice();
 
         if ($withTax) {

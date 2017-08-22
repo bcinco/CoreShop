@@ -43,7 +43,7 @@ final class StoreContext implements StoreContextInterface
     /**
      * {@inheritdoc}
      */
-    public function getStore()
+    public function getStore(): StoreInterface
     {
         try {
             return $this->getStoreForRequest($this->getMasterRequest());
@@ -57,7 +57,7 @@ final class StoreContext implements StoreContextInterface
      *
      * @return StoreInterface
      */
-    private function getStoreForRequest(Request $request)
+    private function getStoreForRequest(Request $request): StoreInterface
     {
         $store = $this->requestResolver->findStore($request);
 
@@ -69,7 +69,7 @@ final class StoreContext implements StoreContextInterface
     /**
      * @return Request
      */
-    private function getMasterRequest()
+    private function getMasterRequest(): Request
     {
         $masterRequest = $this->requestStack->getMasterRequest();
         if (null === $masterRequest) {

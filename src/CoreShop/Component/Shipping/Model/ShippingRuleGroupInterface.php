@@ -20,30 +20,36 @@ interface ShippingRuleGroupInterface extends ResourceInterface, TimestampableInt
     /**
      * @return CarrierInterface
      */
-    public function getCarrier();
+    public function getCarrier(): ?CarrierInterface;
 
     /**
      * @param CarrierInterface|null $carrier
+     *
+     * @return static
      */
-    public function setCarrier(CarrierInterface $carrier = null);
+    public function setCarrier(CarrierInterface $carrier): ShippingRuleGroupInterface;
 
     /**
      * @return int
      */
-    public function getPriority();
+    public function getPriority(): ?int;
 
     /**
      * @param int $priority
+     *
+     * @return static
      */
-    public function setPriority($priority);
+    public function setPriority(int $priority): ShippingRuleGroupInterface;
 
     /**
      * @return ShippingRuleInterface
      */
-    public function getShippingRule();
+    public function getShippingRule(): ?ShippingRuleInterface;
 
     /**
      * @param ShippingRuleInterface $shippingRule
+     *
+     * @return static
      */
-    public function setShippingRule(ShippingRuleInterface $shippingRule);
+    public function setShippingRule(ShippingRuleInterface $shippingRule): ShippingRuleGroupInterface;
 }

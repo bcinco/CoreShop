@@ -21,114 +21,122 @@ interface FilterInterface extends ResourceInterface, TimestampableInterface
     /**
      * @return string
      */
-    public function getName();
+    public function getName(): ?string;
 
     /**
      * @param $name
      *
      * @return static
      */
-    public function setName($name);
+    public function setName(string $name): FilterInterface;
 
     /**
      * @return int
      */
-    public function getResultsPerPage();
+    public function getResultsPerPage(): ?int;
 
     /**
      * @param int $resultsPerPage
      *
      * @return static
      */
-    public function setResultsPerPage($resultsPerPage);
+    public function setResultsPerPage(int $resultsPerPage): FilterInterface;
 
     /**
      * @return string
      */
-    public function getOrderDirection();
+    public function getOrderDirection(): ?string;
 
     /**
      * @param string $orderDirection
      *
      * @return static
      */
-    public function setOrderDirection($orderDirection);
+    public function setOrderDirection(string $orderDirection): FilterInterface;
 
     /**
      * @return string
      */
-    public function getOrderKey();
+    public function getOrderKey(): ?string;
 
     /**
      * @param string $orderKey
      *
      * @return static
      */
-    public function setOrderKey($orderKey);
+    public function setOrderKey(string $orderKey): FilterInterface;
 
     /**
      * @return Collection|FilterConditionInterface[]
      */
-    public function getPreConditions();
+    public function getPreConditions(): Collection;
 
     /**
      * @return bool
      */
-    public function hasPreConditions();
+    public function hasPreConditions(): bool;
 
     /**
      * @param FilterConditionInterface $preCondition
+     *
+     * @return static
      */
-    public function addPreCondition(FilterConditionInterface $preCondition);
+    public function addPreCondition(FilterConditionInterface $preCondition): FilterInterface;
 
     /**
      * @param FilterConditionInterface $preCondition
+     *
+     * @return static
      */
-    public function removePreCondition(FilterConditionInterface $preCondition);
+    public function removePreCondition(FilterConditionInterface $preCondition): FilterInterface;
 
     /**
      * @param FilterConditionInterface $preCondition
      *
      * @return bool
      */
-    public function hasPreCondition(FilterConditionInterface $preCondition);
+    public function hasPreCondition(FilterConditionInterface $preCondition): bool;
 
     /**
      * @return Collection|array
      */
-    public function getConditions();
+    public function getConditions(): Collection;
 
     /**
      * @return bool
      */
-    public function hasConditions();
+    public function hasConditions(): bool;
 
     /**
      * @param FilterConditionInterface $condition
+     *
+     * @return static
      */
-    public function addCondition(FilterConditionInterface $condition);
+    public function addCondition(FilterConditionInterface $condition): FilterInterface;
 
     /**
      * @param FilterConditionInterface $condition
+     *
+     * @return static
      */
-    public function removeCondition(FilterConditionInterface $condition);
+    public function removeCondition(FilterConditionInterface $condition): FilterInterface;
 
     /**
      * @param FilterConditionInterface $condition
      *
      * @return bool
      */
-    public function hasCondition(FilterConditionInterface $condition);
+    public function hasCondition(FilterConditionInterface $condition): bool;
 
     /**
      * @return IndexInterface
      */
-    public function getIndex();
+    public function getIndex(): ?IndexInterface;
 
     /**
      * @param IndexInterface $index
      *
      * @return static
      */
-    public function setIndex(IndexInterface $index);
+    public function setIndex(IndexInterface $index): FilterInterface;
 }

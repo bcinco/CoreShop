@@ -36,7 +36,7 @@ class ProductPriceRuleFetcher implements ProductPriceRuleFetcherInterface
      * @param ProductInterface $subject
      * @return PriceRuleInterface[]
      */
-    public function getPriceRules(ProductInterface $subject)
+    public function getPriceRules(ProductInterface $subject): array
     {
         Assert::isInstanceOf($subject, ProductInterface::class);
         Assert::isInstanceOf($this->productPriceRuleRepository, ProductPriceRuleRepositoryInterface::class);

@@ -12,6 +12,7 @@
 
 namespace CoreShop\Component\Payment\Repository;
 
+use CoreShop\Component\Payment\Model\PaymentInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
 
 interface PaymentRepositoryInterface extends RepositoryInterface
@@ -19,7 +20,7 @@ interface PaymentRepositoryInterface extends RepositoryInterface
     /**
      * @param int $orderId
      *
-     * @return mixed
+     * @return PaymentInterface[]
      */
-    public function findForOrderId($orderId);
+    public function findForOrderId($orderId): array;
 }

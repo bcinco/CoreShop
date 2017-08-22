@@ -15,12 +15,12 @@ namespace CoreShop\Bundle\ProductBundle\Calculator;
 use CoreShop\Component\Product\Model\ProductInterface;
 use CoreShop\Component\Product\Calculator\ProductPriceCalculatorInterface;
 
-class PropertyPriceCalculator implements ProductPriceCalculatorInterface
+final class PropertyPriceCalculator implements ProductPriceCalculatorInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function getPrice(ProductInterface $subject)
+    public function getPrice(ProductInterface $subject): ?int
     {
         return $subject->getPrice();
     }
@@ -28,7 +28,7 @@ class PropertyPriceCalculator implements ProductPriceCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function getDiscount(ProductInterface $subject, $price)
+    public function getDiscount(ProductInterface $subject, int $price): int
     {
         return 0;
     }

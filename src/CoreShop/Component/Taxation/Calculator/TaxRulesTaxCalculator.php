@@ -39,7 +39,7 @@ class TaxRulesTaxCalculator implements TaxCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function applyTaxes($price)
+    public function applyTaxes(int $price): int
     {
         return (int) round($price * (1 + ($this->getTotalRate() / 100)));
     }
@@ -47,7 +47,7 @@ class TaxRulesTaxCalculator implements TaxCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function removeTaxes($price)
+    public function removeTaxes(int $price): int
     {
         return (int) round($price / (1 + $this->getTotalRate() / 100));
     }
@@ -55,7 +55,7 @@ class TaxRulesTaxCalculator implements TaxCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function getTotalRate()
+    public function getTotalRate(): float
     {
         $taxes = 0;
         if ($this->getComputationMethod() == self::ONE_AFTER_ANOTHER_METHOD) {
@@ -106,7 +106,7 @@ class TaxRulesTaxCalculator implements TaxCalculatorInterface
     /**
      * {@inheritdoc}
      */
-    public function getTaxRates()
+    public function getTaxRates(): array
     {
         return $this->taxRates;
     }

@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Order\Generator;
 
@@ -45,7 +45,7 @@ class CartPriceRuleVoucherCodeGenerator
      *
      * @return CartPriceRuleVoucherCodeInterface[]
      */
-    public function generateCodes(CartPriceRuleVoucherGeneratorInterface $generator)
+    public function generateCodes(CartPriceRuleVoucherGeneratorInterface $generator): array
     {
         $generatedVouchers = [];
 
@@ -59,7 +59,7 @@ class CartPriceRuleVoucherCodeGenerator
 
             case self::FORMAT_ALPHANUMERIC:
             default:
-                $lettersToUse = implode('', range(chr(65), chr(90))).implode('', range(chr(48), chr(57)));
+                $lettersToUse = implode('', range(chr(65), chr(90))) . implode('', range(chr(48), chr(57)));
                 break;
         }
 
@@ -94,16 +94,16 @@ class CartPriceRuleVoucherCodeGenerator
      *
      * @return string
      */
-    protected static function generateCode($letters, $length)
+    protected static function generateCode($letters, $length): string
     {
-        srand((float) microtime() * 1000000);
+        srand((float)microtime() * 1000000);
         $i = 0;
         $code = '';
 
         while ($i <= $length) {
             $num = rand() % 33;
             $tmp = substr($letters, $num, 1);
-            $code = $code.$tmp;
+            $code = $code . $tmp;
             ++$i;
         }
 

@@ -12,7 +12,7 @@
 
 namespace CoreShop\Component\Rule\Condition;
 
-class NestedConditionChecker implements ConditionCheckerInterface
+final class NestedConditionChecker implements ConditionCheckerInterface
 {
     /**
      * @var RuleConditionsValidationProcessorInterface
@@ -30,7 +30,7 @@ class NestedConditionChecker implements ConditionCheckerInterface
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, array $configuration)
+    public function isValid($subject, array $configuration): bool
     {
         $operator = $configuration['operator'];
 

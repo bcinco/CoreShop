@@ -56,7 +56,7 @@ class CartPriceRuleVoucherCode implements CartPriceRuleVoucherCodeInterface
     /**
      * {@inheritdoc}
      */
-    public function getCode()
+    public function getCode(): string
     {
         return $this->code;
     }
@@ -64,15 +64,17 @@ class CartPriceRuleVoucherCode implements CartPriceRuleVoucherCodeInterface
     /**
      * {@inheritdoc}
      */
-    public function setCode($code)
+    public function setCode($code): CartPriceRuleVoucherCodeInterface
     {
         $this->code = $code;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getUsed()
+    public function getUsed(): bool
     {
         return $this->used;
     }
@@ -80,15 +82,17 @@ class CartPriceRuleVoucherCode implements CartPriceRuleVoucherCodeInterface
     /**
      * {@inheritdoc}
      */
-    public function setUsed($used)
+    public function setUsed($used): CartPriceRuleVoucherCodeInterface
     {
         $this->used = $used;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getUses()
+    public function getUses(): int
     {
         return $this->uses;
     }
@@ -96,15 +100,17 @@ class CartPriceRuleVoucherCode implements CartPriceRuleVoucherCodeInterface
     /**
      * {@inheritdoc}
      */
-    public function setUses($uses)
+    public function setUses($uses): CartPriceRuleVoucherCodeInterface
     {
         $this->uses = $uses;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getCartPriceRule()
+    public function getCartPriceRule(): CartPriceRuleInterface
     {
         return $this->cartPriceRule;
     }
@@ -112,8 +118,10 @@ class CartPriceRuleVoucherCode implements CartPriceRuleVoucherCodeInterface
     /**
      * {@inheritdoc}
      */
-    public function setCartPriceRule($cartPriceRule = null)
+    public function setCartPriceRule(?CartPriceRuleInterface $cartPriceRule): CartPriceRuleVoucherCodeInterface
     {
         $this->cartPriceRule = $cartPriceRule;
+
+        return $this;
     }
 }

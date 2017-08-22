@@ -20,7 +20,7 @@ interface ConfigurationRepositoryInterface extends RepositoryInterface
     /**
      * @param $key
      *
-     * @return ConfigurationInterface
+     * @return null|ConfigurationInterface
      */
-    public function findByKey($key);
+    public function findByKey($key): ?ConfigurationInterface;
 }

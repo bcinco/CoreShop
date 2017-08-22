@@ -21,7 +21,7 @@ interface ProductPriceCalculatorInterface
      *
      * @return mixed
      */
-    public function getPrice(ProductInterface $subject);
+    public function getPrice(ProductInterface $subject): ?int;
 
     /**
      * @param $subject
@@ -29,5 +29,5 @@ interface ProductPriceCalculatorInterface
      *
      * @return mixed
      */
-    public function getDiscount(ProductInterface $subject, $price);
+    public function getDiscount(ProductInterface $subject, int $price): int;
 }

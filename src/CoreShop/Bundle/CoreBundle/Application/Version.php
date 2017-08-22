@@ -24,7 +24,7 @@ final class Version
     /**
      * @return string
      */
-    public static function getVersion()
+    public static function getVersion(): string
     {
         $version = sprintf('%s.%s.%s', self::MAJOR_VERSION, self::MINOR_VERSION, self::RELEASE_VERSION);
 
@@ -35,7 +35,7 @@ final class Version
         return $version;
     }
 
-    public static function getBuild()
+    public static function getBuild(): string
     {
         return self::BUILD_VERSION;
     }

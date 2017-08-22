@@ -24,7 +24,7 @@ class UserTypeChecker extends AbstractConditionChecker
     /**
      * {@inheritdoc}
      */
-    public function isNotificationRuleValid($subject, $params, array $configuration)
+    public function isNotificationRuleValid($subject, $params, array $configuration): bool
     {
         if ($subject instanceof CustomerInterface) {
             $paramsToExist = [

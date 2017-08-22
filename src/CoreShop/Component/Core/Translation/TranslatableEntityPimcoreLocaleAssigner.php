@@ -45,7 +45,7 @@ final class TranslatableEntityPimcoreLocaleAssigner implements TranslatableEntit
     /**
      * @return null|string
      */
-    private function getPimcoreLanguage()
+    private function getPimcoreLanguage(): ?string
     {
         $locale = null;
 

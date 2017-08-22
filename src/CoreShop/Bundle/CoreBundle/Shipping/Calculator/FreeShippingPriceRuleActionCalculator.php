@@ -19,12 +19,12 @@ use CoreShop\Component\Order\Model\CartPriceRuleInterface;
 use CoreShop\Component\Shipping\Model\CarrierInterface;
 use CoreShop\Component\Shipping\Model\ShippableInterface;
 
-class FreeShippingPriceRuleActionCalculator implements CarrierPriceCalculatorInterface
+final class FreeShippingPriceRuleActionCalculator implements CarrierPriceCalculatorInterface
 {
     /**
      * {@inheritdoc}
      */
-    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, $withTax = true)
+    public function getPrice(CarrierInterface $carrier, ShippableInterface $shippable, AddressInterface $address, $withTax = true): ?int
     {
         if ($shippable instanceof CartInterface) {
             if ($shippable->hasPriceRules()) {
@@ -40,6 +40,6 @@ class FreeShippingPriceRuleActionCalculator implements CarrierPriceCalculatorInt
             }
         }
 
-        return false;
+        return null;
     }
 }

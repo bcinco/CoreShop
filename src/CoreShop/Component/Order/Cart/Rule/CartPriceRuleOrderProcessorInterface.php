@@ -24,7 +24,7 @@ interface CartPriceRuleOrderProcessorInterface
      * @param CartInterface $cart
      * @param SaleInterface $sale
      *
-     * @return mixed
+     * @return bool
      */
-    public function process(CartPriceRuleInterface $cartPriceRule, $usedCode, CartInterface $cart, SaleInterface $sale);
+    public function process(CartPriceRuleInterface $cartPriceRule, $usedCode, CartInterface $cart, SaleInterface $sale): bool;
 }

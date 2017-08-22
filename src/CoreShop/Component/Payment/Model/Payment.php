@@ -12,6 +12,7 @@
 
 namespace CoreShop\Component\Payment\Model;
 
+use CoreShop\Component\Core\Model\Currency;
 use CoreShop\Component\Currency\Model\CurrencyInterface;
 use CoreShop\Component\Resource\Model\SetValuesTrait;
 use CoreShop\Component\Resource\Model\TimestampableTrait;
@@ -72,7 +73,7 @@ class Payment extends \Payum\Core\Model\Payment implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function getPaymentProvider()
+    public function getPaymentProvider(): PaymentProviderInterface
     {
         return $this->paymentProvider;
     }
@@ -80,9 +81,11 @@ class Payment extends \Payum\Core\Model\Payment implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function setPaymentProvider(PaymentProviderInterface $paymentProvider)
+    public function setPaymentProvider(PaymentProviderInterface $paymentProvider): PaymentInterface
     {
         $this->paymentProvider = $paymentProvider;
+
+        return $this;
     }
 
     /**
@@ -96,7 +99,7 @@ class Payment extends \Payum\Core\Model\Payment implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function getCurrency()
+    public function getCurrency(): CurrencyInterface
     {
         return $this->currency;
     }
@@ -104,15 +107,17 @@ class Payment extends \Payum\Core\Model\Payment implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): PaymentInterface
     {
         $this->currency = $currency;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getDatePayment()
+    public function getDatePayment(): \DateTime
     {
         return $this->datePayment;
     }
@@ -120,15 +125,17 @@ class Payment extends \Payum\Core\Model\Payment implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function setDatePayment($datePayment)
+    public function setDatePayment($datePayment): PaymentInterface
     {
         $this->datePayment = $datePayment;
+
+        return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getState()
+    public function getState(): string
     {
         return $this->state;
     }
@@ -136,9 +143,11 @@ class Payment extends \Payum\Core\Model\Payment implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function setState($state)
+    public function setState($state): PaymentInterface
     {
         $this->state = $state;
+
+        return $this;
     }
 
     /**
@@ -168,7 +177,7 @@ class Payment extends \Payum\Core\Model\Payment implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function getOrderId()
+    public function getOrderId(): int
     {
         return $this->orderId;
     }
@@ -176,8 +185,10 @@ class Payment extends \Payum\Core\Model\Payment implements PaymentInterface
     /**
      * {@inheritdoc}
      */
-    public function setOrderId($orderId)
+    public function setOrderId($orderId): PaymentInterface
     {
         $this->orderId = $orderId;
+
+        return $this;
     }
 }

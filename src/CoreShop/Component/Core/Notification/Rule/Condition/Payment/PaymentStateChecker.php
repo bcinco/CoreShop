@@ -33,7 +33,7 @@ class PaymentStateChecker extends \CoreShop\Component\Core\Notification\Rule\Con
     /**
      * {@inheritdoc}
      */
-    public function isNotificationRuleValid($subject, $params, array $configuration)
+    public function isNotificationRuleValid($subject, $params, array $configuration): bool
     {
         if ($subject instanceof PaymentInterface) {
             return parent::isNotificationRuleValid($this->orderRepository->find($subject->getOrderId()), $params, $configuration);

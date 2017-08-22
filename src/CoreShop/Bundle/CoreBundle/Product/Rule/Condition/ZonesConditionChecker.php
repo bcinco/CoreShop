@@ -17,7 +17,7 @@ use CoreShop\Component\Address\Model\ZoneInterface;
 use CoreShop\Component\Core\Model\CountryInterface;
 use CoreShop\Component\Rule\Condition\ConditionCheckerInterface;
 
-class ZonesConditionChecker implements ConditionCheckerInterface
+final class ZonesConditionChecker implements ConditionCheckerInterface
 {
     /**
      * @var CountryContextInterface
@@ -35,7 +35,7 @@ class ZonesConditionChecker implements ConditionCheckerInterface
     /**
      * {@inheritdoc}
      */
-    public function isValid($subject, array $configuration)
+    public function isValid($subject, array $configuration): bool
     {
         $country = $this->countryContext->getCountry();
 

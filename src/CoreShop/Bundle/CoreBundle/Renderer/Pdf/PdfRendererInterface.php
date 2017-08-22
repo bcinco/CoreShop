@@ -15,12 +15,12 @@ namespace CoreShop\Bundle\CoreBundle\Renderer\Pdf;
 interface PdfRendererInterface
 {
     /**
-     * @param $string
+     * @param string $string
      * @param string $header
      * @param string $footer
      * @param array  $config
      *
      * @return string
      */
-    public function fromString($string, $header = '', $footer = '', $config = []);
+    public function fromString(string $string, string $header = '', string $footer = '', array $config = []): string;
 }

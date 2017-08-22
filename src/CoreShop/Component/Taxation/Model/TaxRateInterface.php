@@ -22,27 +22,27 @@ interface TaxRateInterface extends ResourceInterface, TranslatableInterface, Tim
     /**
      * @param $language
      *
-     * @return mixed
+     * @return string
      */
-    public function getName($language = null);
+    public function getName(?string $language = null): ?string;
 
     /**
-     * @param $name
-     * @param $language
+     * @param string $name
+     * @param string|null $language
      *
-     * @return mixed
+     * @return static
      */
-    public function setName($name, $language = null);
+    public function setName(string $name, ?string $language = null): TaxRateInterface;
 
     /**
      * @return float
      */
-    public function getRate();
+    public function getRate(): ?float;
 
     /**
      * @param float $rate
      *
      * @return static
      */
-    public function setRate($rate);
+    public function setRate(float $rate): TaxRateInterface;
 }

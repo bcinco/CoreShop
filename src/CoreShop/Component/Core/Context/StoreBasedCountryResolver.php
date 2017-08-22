@@ -14,6 +14,7 @@ namespace CoreShop\Component\Core\Context;
 
 use CoreShop\Component\Address\Context\CountryNotFoundException;
 use CoreShop\Component\Address\Context\RequestBased\RequestResolverInterface;
+use CoreShop\Component\Address\Model\CountryInterface;
 use CoreShop\Component\Core\Model\StoreInterface;
 use CoreShop\Component\Store\Context\StoreContextInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +34,7 @@ final class StoreBasedCountryResolver implements RequestResolverInterface
     /**
      * {@inheritdoc}
      */
-    public function findCountry(Request $request)
+    public function findCountry(Request $request): CountryInterface
     {
         $store = $this->storeContext->getStore();
 

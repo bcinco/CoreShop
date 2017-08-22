@@ -56,7 +56,7 @@ class OrderItemToShipmentItemTransformer implements OrderDocumentItemTransformer
     /**
      * {@inheritdoc}
      */
-    public function transform(OrderDocumentInterface $shipment, OrderItemInterface $orderItem, OrderDocumentItemInterface $shipmentItem, $quantity)
+    public function transform(OrderDocumentInterface $shipment, OrderItemInterface $orderItem, OrderDocumentItemInterface $shipmentItem, $quantity): OrderDocumentItemInterface
     {
         /**
          * @var $shipment OrderInvoiceInterface

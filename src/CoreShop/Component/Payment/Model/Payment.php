@@ -43,11 +43,6 @@ class Payment extends \Payum\Core\Model\Payment implements PaymentInterface
     protected $state = PaymentInterface::STATE_NEW;
 
     /**
-     * @var array
-     */
-    protected $details = [];
-
-    /**
      * @var CurrencyInterface
      */
     protected $currency;
@@ -148,14 +143,6 @@ class Payment extends \Payum\Core\Model\Payment implements PaymentInterface
         $this->state = $state;
 
         return $this;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getDetails()
-    {
-        return $this->details;
     }
 
     /**

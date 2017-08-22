@@ -44,7 +44,7 @@ class Tool
      *
      * @return bool
      */
-    protected static function classInterfaceExists($class, $type)
+    protected static function classInterfaceExists($class, $type): bool
     {
         $functionName = $type.'_exists';
 

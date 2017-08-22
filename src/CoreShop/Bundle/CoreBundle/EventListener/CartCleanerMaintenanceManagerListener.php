@@ -42,7 +42,7 @@ final class CartCleanerMaintenanceManagerListener
     /**
      * @param MaintenanceEvent $maintenanceEvent
      */
-    public function registerCartCleanup(MaintenanceEvent $maintenanceEvent)
+    public function registerCartCleanup(MaintenanceEvent $maintenanceEvent): void
     {
         $lastMaintenance = $this->configurationService->get('system.cart.cleanup.last_run');
 

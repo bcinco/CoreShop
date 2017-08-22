@@ -22,7 +22,7 @@ final class StoreTypeExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add('baseCountry', CountryChoiceType::class);
     }
@@ -30,7 +30,7 @@ final class StoreTypeExtension extends AbstractTypeExtension
     /**
      * {@inheritdoc}
      */
-    public function getExtendedType()
+    public function getExtendedType(): string
     {
         return StoreType::class;
     }

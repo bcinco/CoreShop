@@ -13,15 +13,16 @@
 namespace CoreShop\Bundle\CoreBundle\Controller;
 
 use CoreShop\Bundle\ResourceBundle\Controller\ResourceController;
+use Symfony\Component\HttpFoundation\Response;
 
 class PaymentProviderController extends ResourceController
 {
     /**
      * Get Gateway Factories.
      *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function getConfigAction()
+    public function getConfigAction(): Response
     {
         $factoryResults = [];
 

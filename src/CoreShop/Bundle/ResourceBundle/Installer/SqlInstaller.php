@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\ResourceBundle\Installer;
 
@@ -35,7 +35,7 @@ final class SqlInstaller implements ResourceInstallerInterface
     /**
      * {@inheritdoc}
      */
-    public function installResources(OutputInterface $output, $applicationName = null)
+    public function installResources(OutputInterface $output, $applicationName = null): void
     {
         $parameter = $applicationName ? sprintf('%s.application.pimcore.admin.install.sql', $applicationName) : 'resources.admin.install.sql';
 

@@ -20,7 +20,7 @@ final class NotificationRuleConditionType extends RuleConditionType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options = [])
+    public function buildForm(FormBuilderInterface $builder, array $options = []): void
     {
         parent::buildForm($builder, $options);
 
@@ -36,7 +36,7 @@ final class NotificationRuleConditionType extends RuleConditionType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'coreshop_notification_rule_condition';
     }

@@ -20,7 +20,7 @@ final class ProductPriceRuleActionType extends RuleActionType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options = [])
+    public function buildForm(FormBuilderInterface $builder, array $options = []): void
     {
         parent::buildForm($builder, $options);
 
@@ -36,7 +36,7 @@ final class ProductPriceRuleActionType extends RuleActionType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'coreshop_product_price_rule_action';
     }

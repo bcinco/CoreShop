@@ -32,7 +32,7 @@ final class DataFixturesExecutor implements DataFixturesExecutorInterface
     /**
      * {@inheritdoc}
      */
-    public function execute(array $fixtures, $fixturesType)
+    public function execute(array $fixtures, $fixturesType): void
     {
         $event = new DataFixturesEvent($this->em, $fixturesType, $this->logger);
         $this->eventDispatcher->dispatch(FixturesEvents::DATA_FIXTURES_PRE_LOAD, $event);
@@ -49,7 +49,7 @@ final class DataFixturesExecutor implements DataFixturesExecutorInterface
     /**
      * {@inheritdoc}
      */
-    public function setLogger($logger)
+    public function setLogger($logger): void
     {
         $this->logger = $logger;
     }

@@ -42,7 +42,7 @@ final class FilterConditionType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         parent::buildForm($builder, $options);
 
@@ -85,7 +85,7 @@ final class FilterConditionType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
 
@@ -99,7 +99,7 @@ final class FilterConditionType extends AbstractResourceType
      * @param FormInterface $form
      * @param string        $configurationType
      */
-    protected function addConfigurationFields(FormInterface $form, $configurationType)
+    protected function addConfigurationFields(FormInterface $form, $configurationType): void
     {
         $form->add('configuration', $configurationType);
     }
@@ -110,7 +110,7 @@ final class FilterConditionType extends AbstractResourceType
      *
      * @return string|null
      */
-    protected function getRegistryIdentifier(FormInterface $form, $data = null)
+    protected function getRegistryIdentifier(FormInterface $form, $data = null): ?string
     {
         if (null !== $data && null !== $data->getType()) {
             return $data->getType();
@@ -126,7 +126,7 @@ final class FilterConditionType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'coreshop_filter_condition';
     }

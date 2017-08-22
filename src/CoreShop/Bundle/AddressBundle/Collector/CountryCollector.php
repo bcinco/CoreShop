@@ -45,7 +45,7 @@ final class CountryCollector extends DataCollector
     /**
      * @return CountryInterface
      */
-    public function getCountry()
+    public function getCountry(): CountryInterface
     {
         return $this->data['country'];
     }
@@ -53,7 +53,7 @@ final class CountryCollector extends DataCollector
     /**
      * @return bool
      */
-    public function isCountryChangeSupported()
+    public function isCountryChangeSupported(): bool
     {
         return $this->data['country_change_support'];
     }
@@ -61,7 +61,7 @@ final class CountryCollector extends DataCollector
     /**
      * {@inheritdoc}
      */
-    public function collect(Request $request, Response $response, \Exception $exception = null)
+    public function collect(Request $request, Response $response, \Exception $exception = null): void
     {
         try {
             $this->data['country'] = $this->countryContext->getCountry();
@@ -74,7 +74,7 @@ final class CountryCollector extends DataCollector
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return 'coreshop.country_collector';
     }

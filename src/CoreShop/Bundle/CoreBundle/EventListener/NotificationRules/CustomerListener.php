@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\CoreBundle\EventListener\NotificationRules;
 
@@ -20,7 +20,10 @@ use Webmozart\Assert\Assert;
 
 final class CustomerListener extends AbstractNotificationRuleListener
 {
-    public function applyPasswordRequestResetRule(RequestPasswordChangeEvent $event)
+    /**
+     * @param RequestPasswordChangeEvent $event
+     */
+    public function applyPasswordRequestResetRule(RequestPasswordChangeEvent $event): void
     {
         $this->rulesProcessor->applyRules('user', $event->getCustomer(), [
             'type' => 'password-reset',
@@ -30,7 +33,11 @@ final class CustomerListener extends AbstractNotificationRuleListener
         ]);
     }
 
-    public function applyRegisterCustomerRule(GenericEvent $event) {
+    /**
+     * @param GenericEvent $event
+     */
+    public function applyRegisterCustomerRule(GenericEvent $event): void
+    {
         Assert::isInstanceOf($event->getSubject(), CustomerInterface::class);
 
         $this->rulesProcessor->applyRules('user', $event->getSubject(), [

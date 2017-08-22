@@ -44,7 +44,7 @@ final class CartItemTaxProcessor implements CartProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function process(CartInterface $cart)
+    public function process(CartInterface $cart): void
     {
         $totalWithoutDiscount = $cart->getSubtotal(false);
         $totalWithDiscount = $cart->getSubtotal(false) - $cart->getDiscount(false);

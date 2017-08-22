@@ -22,6 +22,7 @@ use Pimcore\Bundle\AdminBundle\Controller\AdminController;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\Security\Core\Exception\AccessDeniedException;
 
@@ -121,9 +122,9 @@ class ResourceController extends AdminController
     /**
      * @param Request $request
      *
-     * @return JsonResponse
+     * @return Response
      */
-    public function listAction(Request $request)
+    public function listAction(Request $request): Response
     {
         $data = $this->repository->findAll();
 
@@ -133,9 +134,9 @@ class ResourceController extends AdminController
     /**
      * @param Request $request
      *
-     * @return JsonResponse
+     * @return Response
      */
-    public function getAction(Request $request)
+    public function getAction(Request $request): Response
     {
         $this->isGrantedOr403();
 
@@ -147,9 +148,9 @@ class ResourceController extends AdminController
     /**
      * @param Request $request
      *
-     * @return JsonResponse
+     * @return Response
      */
-    public function saveAction(Request $request)
+    public function saveAction(Request $request): Response
     {
         $this->isGrantedOr403();
 
@@ -179,9 +180,9 @@ class ResourceController extends AdminController
     /**
      * @param Request $request
      *
-     * @return JsonResponse
+     * @return Response
      */
-    public function addAction(Request $request)
+    public function addAction(Request $request): Response
     {
         $this->isGrantedOr403();
 
@@ -214,9 +215,9 @@ class ResourceController extends AdminController
     /**
      * @param Request $request
      *
-     * @return JsonResponse
+     * @return Response
      */
-    public function deleteAction(Request $request)
+    public function deleteAction(Request $request): Response
     {
         $this->isGrantedOr403();
 
@@ -245,7 +246,7 @@ class ResourceController extends AdminController
      *
      * @throws NotFoundHttpException
      */
-    protected function findOr404($id)
+    protected function findOr404($id): ResourceInterface
     {
         $model = $this->repository->find($id);
 

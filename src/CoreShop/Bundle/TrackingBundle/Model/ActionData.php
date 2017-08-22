@@ -47,7 +47,7 @@ class ActionData extends AbstractData
     /**
      * @return string
      */
-    public function getAffiliation()
+    public function getAffiliation(): string
     {
         return $this->affiliation;
     }
@@ -55,7 +55,7 @@ class ActionData extends AbstractData
     /**
      * @param string $affiliation
      */
-    public function setAffiliation($affiliation)
+    public function setAffiliation(string $affiliation): void
     {
         $this->affiliation = $affiliation;
     }
@@ -63,7 +63,7 @@ class ActionData extends AbstractData
     /**
      * @return float
      */
-    public function getRevenue()
+    public function getRevenue(): float
     {
         return $this->revenue;
     }
@@ -71,7 +71,7 @@ class ActionData extends AbstractData
     /**
      * @param float $revenue
      */
-    public function setRevenue($revenue)
+    public function setRevenue(float $revenue): void
     {
         $this->revenue = $revenue;
     }
@@ -79,7 +79,7 @@ class ActionData extends AbstractData
     /**
      * @return float
      */
-    public function getTax()
+    public function getTax(): float
     {
         return $this->tax;
     }
@@ -87,7 +87,7 @@ class ActionData extends AbstractData
     /**
      * @param float $tax
      */
-    public function setTax($tax)
+    public function setTax(float $tax): void
     {
         $this->tax = $tax;
     }
@@ -95,7 +95,7 @@ class ActionData extends AbstractData
     /**
      * @return float
      */
-    public function getShipping()
+    public function getShipping(): float
     {
         return $this->shipping;
     }
@@ -103,7 +103,7 @@ class ActionData extends AbstractData
     /**
      * @param float $shipping
      */
-    public function setShipping($shipping)
+    public function setShipping(float $shipping): void
     {
         $this->shipping = $shipping;
     }
@@ -111,7 +111,7 @@ class ActionData extends AbstractData
     /**
      * @return string
      */
-    public function getCoupon()
+    public function getCoupon(): string
     {
         return $this->coupon;
     }
@@ -119,7 +119,7 @@ class ActionData extends AbstractData
     /**
      * @param string $coupon
      */
-    public function setCoupon($coupon)
+    public function setCoupon(string $coupon): void
     {
         $this->coupon = $coupon;
     }
@@ -127,7 +127,7 @@ class ActionData extends AbstractData
     /**
      * @return string
      */
-    public function getList()
+    public function getList(): string
     {
         return $this->list;
     }
@@ -135,7 +135,7 @@ class ActionData extends AbstractData
     /**
      * @param string $list
      */
-    public function setList($list)
+    public function setList(string $list): void
     {
         $this->list = $list;
     }
@@ -143,7 +143,7 @@ class ActionData extends AbstractData
     /**
      * @return int
      */
-    public function getStep()
+    public function getStep(): int
     {
         return $this->step;
     }
@@ -151,7 +151,7 @@ class ActionData extends AbstractData
     /**
      * @param int $step
      */
-    public function setStep($step)
+    public function setStep(int $step): void
     {
         $this->step = $step;
     }
@@ -159,7 +159,7 @@ class ActionData extends AbstractData
     /**
      * @return string
      */
-    public function getOption()
+    public function getOption(): string
     {
         return $this->option;
     }
@@ -167,7 +167,7 @@ class ActionData extends AbstractData
     /**
      * @param string $option
      */
-    public function setOption($option)
+    public function setOption(string $option): void
     {
         $this->option = $option;
     }

@@ -41,7 +41,7 @@ final class IndexUpdaterService implements IndexUpdaterServiceInterface
         $this->workerServiceRegistry = $workerServiceRegistry;
     }
 
-    public function updateIndices($subject)
+    public function updateIndices($subject): void
     {
         $indices = $this->indexRepository->findAll();
 

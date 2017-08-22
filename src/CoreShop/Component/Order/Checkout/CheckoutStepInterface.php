@@ -46,7 +46,7 @@ interface CheckoutStepInterface
      *
      * @throws CheckoutException
      */
-    public function commitStep(CartInterface $cart, Request $request);
+    public function commitStep(CartInterface $cart, Request $request): bool;
 
     /**
      * Prepare Checkout Step.

@@ -40,7 +40,7 @@ final class RequestPasswordChangeEvent extends Event
     /**
      * @return CustomerInterface
      */
-    public function getCustomer()
+    public function getCustomer(): CustomerInterface
     {
         return $this->customer;
     }
@@ -48,7 +48,7 @@ final class RequestPasswordChangeEvent extends Event
     /**
      * @return string
      */
-    public function getResetLink()
+    public function getResetLink(): string
     {
         return $this->resetLink;
     }

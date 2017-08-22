@@ -22,7 +22,7 @@ interface CurrencyStorageInterface
      * @param StoreInterface $store
      * @param CurrencyInterface $currency
      */
-    public function set(StoreInterface $store, CurrencyInterface $currency);
+    public function set(StoreInterface $store, CurrencyInterface $currency): void;
 
     /**
      * @param StoreInterface $store

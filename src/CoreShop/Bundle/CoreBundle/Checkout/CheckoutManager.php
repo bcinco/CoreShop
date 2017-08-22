@@ -40,7 +40,7 @@ class CheckoutManager implements CheckoutManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function addCheckoutStep(CheckoutStepInterface $step, $priority)
+    public function addCheckoutStep(CheckoutStepInterface $step, $priority): void
     {
         $this->serviceRegistry->register($step->getIdentifier(), $priority, $step);
         $this->steps[] = $step->getIdentifier();
@@ -125,8 +125,8 @@ class CheckoutManager implements CheckoutManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function commitStep(CheckoutStepInterface $step, CartInterface $cart, Request $request)
+    public function commitStep(CheckoutStepInterface $step, CartInterface $cart, Request $request): void
     {
-        return $step->commitStep($cart, $request);
+        $step->commitStep($cart, $request);
     }
 }

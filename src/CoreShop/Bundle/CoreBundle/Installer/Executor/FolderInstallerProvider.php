@@ -60,7 +60,7 @@ final class FolderInstallerProvider
     /**
      * Installs all CoreShop needed Folders.
      */
-    public function installFolders()
+    public function installFolders(): void
     {
         $folders = [
             $this->cartFolder,

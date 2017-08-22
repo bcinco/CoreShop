@@ -18,7 +18,10 @@ use Webmozart\Assert\Assert;
 
 final class InvoiceListener extends AbstractNotificationRuleListener
 {
-    public function applyRule(GenericEvent $event)
+    /**
+     * @param GenericEvent $event
+     */
+    public function applyRule(GenericEvent $event): void
     {
         Assert::isInstanceOf($event->getSubject(), OrderInvoiceInterface::class);
 

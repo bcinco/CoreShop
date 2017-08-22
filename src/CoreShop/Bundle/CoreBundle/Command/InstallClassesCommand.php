@@ -21,7 +21,7 @@ final class InstallClassesCommand extends AbstractInstallCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('coreshop:install:classes')
@@ -36,7 +36,7 @@ EOT
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->runCommands(['coreshop:resources:install' => ['--application-name coreshop']], $output, false, true);
 

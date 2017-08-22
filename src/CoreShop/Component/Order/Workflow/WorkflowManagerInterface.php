@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Order\Workflow;
 
@@ -41,64 +41,58 @@ interface WorkflowManagerInterface
      * @param $type
      * @param $priority
      */
-    public function addValidator(ProposalValidatorInterface $proposalValidator, $type, $priority);
+    public function addValidator(ProposalValidatorInterface $proposalValidator, $type, $priority): void;
 
     /**
      * @param ProposalInterface $proposal
      * @param $currentState
      * @param $newState
      *
-     * @return mixed
+     * @return bool
      */
-    public function validateNewState(ProposalInterface $proposal, $currentState, $newState);
+    public function validateNewState(ProposalInterface $proposal, $currentState, $newState): bool;
 
     /**
      * @param ProposalInterface $proposal
      * @param $newState
      * @param $currentState
-     *
-     * @return mixed
      */
-    public function beforeWorkflowDispatch(ProposalInterface $proposal, $newState, $currentState);
+    public function beforeWorkflowDispatch(ProposalInterface $proposal, $newState, $currentState): void;
 
     /**
      * @param ProposalInterface $proposal
      * @param $newState
      * @param $oldState
-     *
-     * @return mixed
      */
-    public function successWorkflowDispatch(ProposalInterface $proposal, $newState, $oldState);
+    public function successWorkflowDispatch(ProposalInterface $proposal, $newState, $oldState): void;
 
     /**
      * @param ProposalInterface $proposal
      * @param $newState
      * @param $oldState
-     *
-     * @return mixed
      */
-    public function failureWorkflowDispatch(ProposalInterface $proposal, $newState, $oldState);
+    public function failureWorkflowDispatch(ProposalInterface $proposal, $newState, $oldState): void;
 
     /**
      * @param ProposalInterface $proposal
      *
-     * @return mixed
+     * @return array
      */
-    public function getStateHistory(ProposalInterface $proposal);
+    public function getStateHistory(ProposalInterface $proposal): array;
 
     /**
      * @param ProposalInterface $proposal
      *
-     * @return mixed
+     * @return array
      */
-    public function getCurrentState(ProposalInterface $proposal);
+    public function getCurrentState(ProposalInterface $proposal): ?array;
 
     /**
      * @param ProposalInterface $proposal
-     * @param string            $action
-     * @param array             $params
+     * @param string $action
+     * @param array $params
      *
-     * @return mixed
+     * @return bool
      */
-    public function changeState(ProposalInterface $proposal, $action, $params = []);
+    public function changeState(ProposalInterface $proposal, $action, $params = []): bool;
 }

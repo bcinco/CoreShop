@@ -25,7 +25,7 @@ final class CartCleanupCommand extends ContainerAwareCommand
     /**
      * configure command.
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('coreshop:cart:cleanup')
@@ -55,7 +55,7 @@ final class CartCleanupCommand extends ContainerAwareCommand
      *
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $cleanupTask = $this->getContainer()->get('coreshop.cart.cleanup');
 

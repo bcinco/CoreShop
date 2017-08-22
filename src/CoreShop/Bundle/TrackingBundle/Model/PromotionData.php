@@ -22,7 +22,7 @@ class PromotionData extends AbstractData
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -30,7 +30,7 @@ class PromotionData extends AbstractData
     /**
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -38,7 +38,7 @@ class PromotionData extends AbstractData
     /**
      * @return string
      */
-    public function getCreative()
+    public function getCreative(): string
     {
         return $this->creative;
     }
@@ -46,7 +46,7 @@ class PromotionData extends AbstractData
     /**
      * @param string $creative
      */
-    public function setCreative($creative)
+    public function setCreative(string $creative): void
     {
         $this->creative = $creative;
     }
@@ -54,7 +54,7 @@ class PromotionData extends AbstractData
     /**
      * @return string
      */
-    public function getPosition()
+    public function getPosition(): string
     {
         return $this->position;
     }
@@ -62,7 +62,7 @@ class PromotionData extends AbstractData
     /**
      * @param string $position
      */
-    public function setPosition($position)
+    public function setPosition(string $position): void
     {
         $this->position = $position;
     }

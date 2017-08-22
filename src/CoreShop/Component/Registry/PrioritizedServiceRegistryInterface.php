@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Component\Registry;
 
@@ -21,27 +21,27 @@ interface PrioritizedServiceRegistryInterface
 
     /**
      * @param string $identifier
-     * @param int    $priority
+     * @param int $priority
      * @param object $service
      *
      * @throws ExistingServiceException
      * @throws \InvalidArgumentException
      */
-    public function register($identifier, $priority, $service);
+    public function register($identifier, $priority, $service): void;
 
     /**
      * @param string $identifier
      *
      * @throws NonExistingServiceException
      */
-    public function unregister($identifier);
+    public function unregister($identifier): void;
 
     /**
      * @param string $identifier
      *
      * @return bool
      */
-    public function has($identifier);
+    public function has($identifier): bool;
 
     /**
      * @param string $identifier
@@ -68,7 +68,7 @@ interface PrioritizedServiceRegistryInterface
      *
      * @return array
      */
-    public function getAllPreviousTo($identifier);
+    public function getAllPreviousTo($identifier): array;
 
     /**
      * get previous item to $identifier.
@@ -86,5 +86,5 @@ interface PrioritizedServiceRegistryInterface
      *
      * @return int
      */
-    public function getIndex($identifier);
+    public function getIndex($identifier): int;
 }

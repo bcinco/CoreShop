@@ -33,7 +33,10 @@ class NotificationRuleEventListener
         $this->repository = $repository;
     }
 
-    public function preCreate(ResourceControllerEvent $event)
+    /**
+     * @param ResourceControllerEvent $event
+     */
+    public function preCreate(ResourceControllerEvent $event): void
     {
         $object = $event->getSubject();
 

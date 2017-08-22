@@ -29,7 +29,7 @@ final class CreateObjectClassCommand extends GeneratorCommand
     /**
      * configure command.
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('coreshop:generate:class')
@@ -55,7 +55,7 @@ final class CreateObjectClassCommand extends GeneratorCommand
     /**
      * {@inheritdoc}
      */
-    protected function getSkeletonDirs(BundleInterface $bundle = null)
+    protected function getSkeletonDirs(BundleInterface $bundle = null): string
     {
         $dirs = parent::getSkeletonDirs($bundle);
 
@@ -67,7 +67,7 @@ final class CreateObjectClassCommand extends GeneratorCommand
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         Cache::disable();
 
@@ -177,7 +177,7 @@ final class CreateObjectClassCommand extends GeneratorCommand
     }
 
 
-    protected function createGenerator()
+    protected function createGenerator(): PimcoreResourceClassGenerator
     {
         return new PimcoreResourceClassGenerator();
     }

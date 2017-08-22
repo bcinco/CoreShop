@@ -31,7 +31,7 @@ final class CompositeCountryContext implements CountryContextInterface
      * @param CountryContextInterface $countryContexts
      * @param int $priority
      */
-    public function addContext(CountryContextInterface $countryContexts, $priority = 0)
+    public function addContext(CountryContextInterface $countryContexts, $priority = 0): void
     {
         $this->countryContexts->insert($countryContexts, $priority);
     }

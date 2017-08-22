@@ -23,7 +23,7 @@ final class FixedLocaleContext implements LocaleContextInterface
     /**
      * @param string $locale
      */
-    public function setLocale($locale)
+    public function setLocale($locale): void
     {
         $this->locale = $locale;
     }

@@ -29,7 +29,7 @@ abstract class AbstractInstallCommand extends ContainerAwareCommand
     /**
      * {@inheritdoc}
      */
-    protected function initialize(InputInterface $input, OutputInterface $output)
+    protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         $application = $this->getApplication();
         $application->setCatchExceptions(false);
@@ -54,7 +54,7 @@ abstract class AbstractInstallCommand extends ContainerAwareCommand
     /**
      * @return string
      */
-    protected function getEnvironment()
+    protected function getEnvironment(): string
     {
         return $this->get('kernel')->getEnvironment();
     }
@@ -62,7 +62,7 @@ abstract class AbstractInstallCommand extends ContainerAwareCommand
     /**
      * @return bool
      */
-    protected function isDebug()
+    protected function isDebug(): bool
     {
         return $this->get('kernel')->isDebug();
     }
@@ -72,7 +72,7 @@ abstract class AbstractInstallCommand extends ContainerAwareCommand
      * @param array           $rows
      * @param OutputInterface $output
      */
-    protected function renderTable(array $headers, array $rows, OutputInterface $output)
+    protected function renderTable(array $headers, array $rows, OutputInterface $output): void
     {
         $table = new Table($output);
 
@@ -89,7 +89,7 @@ abstract class AbstractInstallCommand extends ContainerAwareCommand
      *
      * @return ProgressBar
      */
-    protected function createProgressBar(OutputInterface $output, $length = 10)
+    protected function createProgressBar(OutputInterface $output, $length = 10): ProgressBar
     {
         $progress = new ProgressBar($output);
         $progress->setBarCharacter('<info>░</info>');
@@ -107,7 +107,7 @@ abstract class AbstractInstallCommand extends ContainerAwareCommand
      * @param bool            $displayProgress
      * @param bool            $passOutput
      */
-    protected function runCommands(array $commands, OutputInterface $output, $displayProgress = true, $passOutput = false)
+    protected function runCommands(array $commands, OutputInterface $output, $displayProgress = true, $passOutput = false): void
     {
         $progress = null;
 
@@ -144,7 +144,7 @@ abstract class AbstractInstallCommand extends ContainerAwareCommand
      * @param string          $directory
      * @param OutputInterface $output
      */
-    protected function ensureDirectoryExistsAndIsWritable($directory, OutputInterface $output)
+    protected function ensureDirectoryExistsAndIsWritable($directory, OutputInterface $output): void
     {
         $checker = $this->get('coreshop.installer.checker.command_directory');
         $checker->setCommandName($this->getName());

@@ -22,7 +22,7 @@ final class FieldCollectionGetterFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('className', TextType::class, [
@@ -36,7 +36,7 @@ final class FieldCollectionGetterFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'coreshop_index_getter_field_collection';
     }

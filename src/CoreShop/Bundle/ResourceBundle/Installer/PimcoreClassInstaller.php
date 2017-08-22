@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\ResourceBundle\Installer;
 
@@ -37,7 +37,7 @@ final class PimcoreClassInstaller implements ResourceInstallerInterface
     /**
      * {@inheritdoc}
      */
-    public function installResources(OutputInterface $output, $applicationName = null)
+    public function installResources(OutputInterface $output, $applicationName = null): void
     {
         $parameter = $applicationName ? sprintf('%s.pimcore.classes', $applicationName) : 'coreshop.pimcore';
 
@@ -125,9 +125,10 @@ final class PimcoreClassInstaller implements ResourceInstallerInterface
     /**
      * @param $jsonFile
      * @param $brickName
-     * @return mixed|Object\Objectbrick\Definition
+     * @return null|Object\Objectbrick\Definition
      */
-    private function createBrick($jsonFile, $brickName) {
+    private function createBrick($jsonFile, $brickName): ?Object\Objectbrick\Definition
+    {
         try {
             $objectBrick = Object\Objectbrick\Definition::getByKey($brickName);
         } catch (\Exception $e) {
@@ -149,7 +150,7 @@ final class PimcoreClassInstaller implements ResourceInstallerInterface
      *
      * @return Object\ClassDefinition
      */
-    private function createClass($jsonFile, $className, $updateClass = false)
+    private function createClass($jsonFile, $className, $updateClass = false): ?Object\ClassDefinition
     {
         $tempClass = new Object\ClassDefinition();
         $id = $tempClass->getDao()->getIdByName($className);
@@ -200,9 +201,9 @@ final class PimcoreClassInstaller implements ResourceInstallerInterface
      * @param $name
      * @param null $jsonFile
      *
-     * @return mixed|null|Object\Fieldcollection\Definition
+     * @return null|Object\Fieldcollection\Definition
      */
-    private function createFieldCollection($jsonFile, $name)
+    private function createFieldCollection($jsonFile, $name): ?Object\Fieldcollection\Definition
     {
         try {
             $fieldCollection = Object\Fieldcollection\Definition::getByKey($name);

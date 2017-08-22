@@ -20,7 +20,7 @@ class CurrencyHelper extends Helper implements CurrencyHelperInterface
     /**
      * {@inheritdoc}
      */
-    public function convertCurrencyCodeToSymbol($code)
+    public function convertCurrencyCodeToSymbol($code): string
     {
         return Intl::getCurrencyBundle()->getCurrencySymbol($code);
     }

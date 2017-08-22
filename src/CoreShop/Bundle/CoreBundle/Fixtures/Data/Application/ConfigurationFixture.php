@@ -28,7 +28,7 @@ class ConfigurationFixture extends AbstractFixture implements ContainerAwareInte
     /**
      * {@inheritdoc}
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return '2.0';
     }
@@ -36,7 +36,7 @@ class ConfigurationFixture extends AbstractFixture implements ContainerAwareInte
     /**
      * {@inheritdoc}
      */
-    public function setContainer(ContainerInterface $container = null)
+    public function setContainer(ContainerInterface $container = null): void
     {
         $this->container = $container;
     }
@@ -44,7 +44,7 @@ class ConfigurationFixture extends AbstractFixture implements ContainerAwareInte
     /**
      * {@inheritdoc}
      */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $configurations = [
             'system.catalog.mode' => false,

@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class ProductSpecificPriceRuleActionCollectionType extends RuleActionCollectionType
 {
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
 
@@ -27,7 +27,7 @@ final class ProductSpecificPriceRuleActionCollectionType extends RuleActionColle
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'coreshop_product_specific_price_rule_action_collection';
     }

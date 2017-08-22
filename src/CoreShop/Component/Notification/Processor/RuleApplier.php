@@ -34,7 +34,7 @@ class RuleApplier implements RuleApplierInterface
     /**
      * {@inheritdoc}
      */
-    public function applyRule(NotificationRuleInterface $rule, $subject, $params)
+    public function applyRule(NotificationRuleInterface $rule, $subject, $params): void
     {
         foreach ($rule->getActions() as $action) {
             $processor = $this->actionServiceRegistry->get($action->getType());

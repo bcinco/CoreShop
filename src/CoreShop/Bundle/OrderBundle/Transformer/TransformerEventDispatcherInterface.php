@@ -19,12 +19,12 @@ interface TransformerEventDispatcherInterface
      * @param mixed $model
      * @param array  $params
      */
-    public function dispatchPreEvent($modelName, $model, $params = []);
+    public function dispatchPreEvent($modelName, $model, $params = []): void;
 
     /**
      * @param string $modelName
      * @param mixed $model
      * @param array  $params
      */
-    public function dispatchPostEvent($modelName, $model, $params = []);
+    public function dispatchPostEvent($modelName, $model, $params = []): void;
 }

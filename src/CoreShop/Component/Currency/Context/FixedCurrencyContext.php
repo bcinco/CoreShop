@@ -24,7 +24,7 @@ final class FixedCurrencyContext implements CurrencyContextInterface
     /**
      * @param CurrencyInterface $currency
      */
-    public function setCurrency($currency)
+    public function setCurrency($currency): void
     {
         $this->currency = $currency;
     }

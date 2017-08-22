@@ -8,22 +8,32 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\FrontendBundle\Controller;
 
 use CoreShop\Component\Core\Model\OrderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Webmozart\Assert\Assert;
 
 class MailController extends FrontendController
 {
-    public function mailAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function mailAction(Request $request): Response
     {
         return $this->renderTemplate('CoreShopFrontendBundle:Mail:mail.html.twig');
     }
 
-    public function orderConfirmationAction(Request $request) {
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function orderConfirmationAction(Request $request): Response
+    {
         $order = $request->get('object');
 
         Assert::isInstanceOf($order, OrderInterface::class);

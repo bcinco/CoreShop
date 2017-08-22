@@ -36,7 +36,7 @@ class MysqlRenderer extends AbstractRenderer
      *
      * @return string
      */
-    protected function renderIn(ConditionInterface $condition)
+    protected function renderIn(ConditionInterface $condition): string
     {
         $inValues = [];
 
@@ -58,7 +58,7 @@ class MysqlRenderer extends AbstractRenderer
      *
      * @return string
      */
-    protected function renderLike(ConditionInterface $condition)
+    protected function renderLike(ConditionInterface $condition): string
     {
         $values = $condition->getValues();
         $pattern = $values['pattern'];
@@ -86,7 +86,7 @@ class MysqlRenderer extends AbstractRenderer
      *
      * @return string
      */
-    protected function renderRange(ConditionInterface $condition)
+    protected function renderRange(ConditionInterface $condition): string
     {
         $values = $condition->getValues();
 
@@ -98,7 +98,7 @@ class MysqlRenderer extends AbstractRenderer
      *
      * @return string
      */
-    protected function renderConcat(ConditionInterface $condition)
+    protected function renderConcat(ConditionInterface $condition): string
     {
         $values = $condition->getValues();
         $conditions = [];
@@ -115,7 +115,7 @@ class MysqlRenderer extends AbstractRenderer
      *
      * @return string
      */
-    protected function renderCompare(ConditionInterface $condition)
+    protected function renderCompare(ConditionInterface $condition): string
     {
         $values = $condition->getValues();
         $value = $values['value'];

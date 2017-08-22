@@ -21,7 +21,7 @@ final class ShippingPriceCalculatorsPass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->has('coreshop.registry.shipping.price_calculators')) {
             return;

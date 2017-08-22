@@ -32,7 +32,7 @@ class CheckoutException extends \RuntimeException
     /**
      * @return string
      */
-    public function getTranslatableText()
+    public function getTranslatableText(): string
     {
         return $this->translatableText;
     }
@@ -40,7 +40,7 @@ class CheckoutException extends \RuntimeException
     /**
      * @param string $translatableText
      */
-    public function setTranslatableText($translatableText)
+    public function setTranslatableText($translatableText): void
     {
         $this->translatableText = $translatableText;
     }

@@ -41,7 +41,7 @@ class ConvertMoneyHelper extends Helper implements ConvertMoneyHelperInterface
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return 'coreshop_money_converter';
     }

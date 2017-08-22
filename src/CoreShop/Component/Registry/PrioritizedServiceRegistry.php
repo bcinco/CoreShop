@@ -47,7 +47,7 @@ final class PrioritizedServiceRegistry implements PrioritizedServiceRegistryInte
     /**
      * {@inheritdoc}
      */
-    public function all()
+    public function all(): array
     {
         return $this->priortyMap->toArray();
     }
@@ -55,7 +55,7 @@ final class PrioritizedServiceRegistry implements PrioritizedServiceRegistryInte
     /**
      * {@inheritdoc}
      */
-    public function register($identifier, $priority, $service)
+    public function register($identifier, $priority, $service): void
     {
         if ($this->has($identifier)) {
             throw new ExistingServiceException($this->context, $identifier);
@@ -77,7 +77,7 @@ final class PrioritizedServiceRegistry implements PrioritizedServiceRegistryInte
     /**
      * {@inheritdoc}
      */
-    public function unregister($identifier)
+    public function unregister($identifier): void
     {
         if (!$this->has($identifier)) {
             throw new NonExistingServiceException($this->context, $identifier, $this->priortyMap->getKeys());
@@ -89,7 +89,7 @@ final class PrioritizedServiceRegistry implements PrioritizedServiceRegistryInte
     /**
      * {@inheritdoc}
      */
-    public function has($identifier)
+    public function has($identifier): bool
     {
         return $this->priortyMap->has($identifier);
     }
@@ -166,7 +166,7 @@ final class PrioritizedServiceRegistry implements PrioritizedServiceRegistryInte
     /**
      * {@inheritdoc}
      */
-    public function getAllPreviousTo($identifier)
+    public function getAllPreviousTo($identifier): array
     {
         $keys = $this->priortyMap->getKeys();
         $prevIndex = $this->getPreviousIndex($identifier);
@@ -187,7 +187,7 @@ final class PrioritizedServiceRegistry implements PrioritizedServiceRegistryInte
     /**
      * {@inheritdoc}
      */
-    public function getIndex($identifier)
+    public function getIndex($identifier): int
     {
         $keys = $this->priortyMap->getKeys();
 

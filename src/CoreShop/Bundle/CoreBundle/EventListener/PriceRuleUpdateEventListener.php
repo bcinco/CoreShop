@@ -35,7 +35,7 @@ final class PriceRuleUpdateEventListener
     /**
      * @param ResourceControllerEvent $event
      */
-    public function storeConfigurationThatPriceRulesChanged(ResourceControllerEvent $event)
+    public function storeConfigurationThatPriceRulesChanged(ResourceControllerEvent $event): void
     {
         //coreshop.cart_price_rule.post_save
         //coreshop.product_price_rule.post_save

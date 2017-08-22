@@ -15,6 +15,7 @@ namespace CoreShop\Bundle\CoreBundle\Controller;
 use CoreShop\Bundle\CoreBundle\Application\Version;
 use Pimcore\Bundle\AdminBundle\Controller\AdminController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\FilterControllerEvent;
 
 class SettingsController extends AdminController
@@ -24,7 +25,7 @@ class SettingsController extends AdminController
      *
      * @throws \Exception
      */
-    public function onKernelController(FilterControllerEvent $event)
+    public function onKernelController(FilterControllerEvent $event): void
     {
         // permission check
         $access = $this->getUser()->getPermission('coreshop_permission_settings');
@@ -33,7 +34,11 @@ class SettingsController extends AdminController
         }
     }
 
-    public function getSettingsAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function getSettingsAction(Request $request): Response
     {
         $settings = [
             'bundle' => [

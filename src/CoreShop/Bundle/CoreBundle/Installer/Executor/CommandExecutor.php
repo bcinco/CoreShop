@@ -57,7 +57,7 @@ final class CommandExecutor
      *
      * @throws \Exception
      */
-    public function runCommand($command, $parameters = [], OutputInterface $output = null)
+    public function runCommand($command, $parameters = [], OutputInterface $output = null): CommandExecutor
     {
         $parameters = array_merge(
             ['command' => $command],
@@ -87,7 +87,7 @@ final class CommandExecutor
     /**
      * @return array
      */
-    private function getDefaultParameters()
+    private function getDefaultParameters(): array
     {
         $defaultParameters = ['--no-debug' => true];
 

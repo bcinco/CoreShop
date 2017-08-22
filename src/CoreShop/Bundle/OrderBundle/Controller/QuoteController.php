@@ -12,15 +12,15 @@
 
 namespace CoreShop\Bundle\OrderBundle\Controller;
 
-
-
+use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
+use Pimcore\Model\Object\Listing;
 
 class QuoteController extends AbstractSaleController
 {
     /**
      * {@inheritdoc}
      */
-    protected function getGridColumns()
+    protected function getGridColumns(): array
     {
         return [];
     }
@@ -28,7 +28,7 @@ class QuoteController extends AbstractSaleController
     /**
      * {@inheritdoc}
      */
-    protected function getSaleRepository()
+    protected function getSaleRepository(): PimcoreRepositoryInterface
     {
         return $this->get('coreshop.repository.quote');
     }
@@ -36,7 +36,7 @@ class QuoteController extends AbstractSaleController
     /**
      * {@inheritdoc}
      */
-    protected function getSalesList()
+    protected function getSalesList(): Listing
     {
         return $this->getSaleRepository()->getList();
     }
@@ -44,7 +44,7 @@ class QuoteController extends AbstractSaleController
     /**
      * {@inheritdoc}
      */
-    protected function getSaleClassName()
+    protected function getSaleClassName(): string
     {
         return 'coreshop.model.quote.pimcore_class_id';
     }
@@ -52,7 +52,7 @@ class QuoteController extends AbstractSaleController
     /**
      * {@inheritdoc}
      */
-    protected function getOrderKey()
+    protected function getOrderKey(): string
     {
         return 'quoteDate';
     }
@@ -60,7 +60,7 @@ class QuoteController extends AbstractSaleController
     /**
      * {@inheritdoc}
      */
-    protected function getSaleNumberField()
+    protected function getSaleNumberField(): string
     {
         return 'quoteNumber';
     }

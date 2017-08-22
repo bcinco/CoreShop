@@ -20,7 +20,7 @@ class UpdateDataFixturesFixture extends AbstractFixture
      *
      * @param array $classNames
      */
-    public function setDataFixtures($classNames)
+    public function setDataFixtures($classNames): void
     {
         $this->dataFixturesClassNames = $classNames;
     }
@@ -28,7 +28,7 @@ class UpdateDataFixturesFixture extends AbstractFixture
     /**
      * {@inheritdoc}
      */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         if (!empty($this->dataFixturesClassNames)) {
             $loadedAt = new \DateTime('now', new \DateTimeZone('UTC'));

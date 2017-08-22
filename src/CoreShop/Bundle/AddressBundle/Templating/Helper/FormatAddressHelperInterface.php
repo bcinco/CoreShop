@@ -18,7 +18,7 @@ interface FormatAddressHelperInterface
      * @param $address
      * @param bool $asHtml
      *
-     * @return mixed
+     * @return string
      */
-    public function formatAddress($address, $asHtml = true);
+    public function formatAddress($address, $asHtml = true): string;
 }

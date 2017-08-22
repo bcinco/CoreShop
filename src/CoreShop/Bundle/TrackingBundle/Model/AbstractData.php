@@ -12,7 +12,7 @@ class AbstractData
     /**
      * @return string
      */
-    public function getId()
+    public function getId(): string
     {
         return $this->id;
     }
@@ -20,7 +20,7 @@ class AbstractData
     /**
      * @param string $id
      */
-    public function setId($id)
+    public function setId(string $id): void
     {
         $this->id = $id;
     }

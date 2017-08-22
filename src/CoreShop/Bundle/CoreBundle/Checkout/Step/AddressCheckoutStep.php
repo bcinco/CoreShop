@@ -19,6 +19,7 @@ use CoreShop\Component\Order\Checkout\CheckoutException;
 use CoreShop\Component\Order\Checkout\CheckoutStepInterface;
 use CoreShop\Component\Order\Model\CartInterface;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
@@ -73,7 +74,7 @@ class AddressCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function commitStep(CartInterface $cart, Request $request)
+    public function commitStep(CartInterface $cart, Request $request): bool
     {
         $customer = $this->getCustomer();
         $form = $this->createForm($cart, $customer);
@@ -114,7 +115,7 @@ class AddressCheckoutStep implements CheckoutStepInterface
      *
      * @throws CheckoutException
      */
-    private function getCustomer()
+    private function getCustomer(): CustomerInterface
     {
         $customer = $this->tokenStorage->getToken()->getUser();
 
@@ -129,9 +130,9 @@ class AddressCheckoutStep implements CheckoutStepInterface
      * @param CartInterface     $cart
      * @param CustomerInterface $customer
      *
-     * @return \Symfony\Component\Form\FormInterface
+     * @return FormInterface
      */
-    private function createForm(CartInterface $cart, CustomerInterface $customer)
+    private function createForm(CartInterface $cart, CustomerInterface $customer): FormInterface
     {
         $addresses = $customer->getAddresses();
 

@@ -21,7 +21,7 @@ final class OrderDocumentCreationItemsType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('orderItemId', NumberType::class)
@@ -32,7 +32,7 @@ final class OrderDocumentCreationItemsType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'coreshop_order_document_creation_items';
     }

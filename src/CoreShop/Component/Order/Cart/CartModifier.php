@@ -44,7 +44,7 @@ class CartModifier implements CartModifierInterface
     /**
      * {@inheritdoc}
      */
-    public function addCartItem(CartInterface $cart, PurchasableInterface $product, $quantity = 1)
+    public function addCartItem(CartInterface $cart, PurchasableInterface $product, $quantity = 1): ?CartItemInterface
     {
         $this->cartManager->persistCart($cart);
 
@@ -54,7 +54,7 @@ class CartModifier implements CartModifierInterface
     /**
      * {@inheritdoc}
      */
-    public function removeCartItem(CartInterface $cart, CartItemInterface $cartItem)
+    public function removeCartItem(CartInterface $cart, CartItemInterface $cartItem): void
     {
         $cartItem->delete();
 
@@ -64,7 +64,7 @@ class CartModifier implements CartModifierInterface
     /**
      * {@inheritdoc}
      */
-    public function updateCartItemQuantity(CartInterface $cart, PurchasableInterface $product, $quantity = 0, $increaseAmount = false)
+    public function updateCartItemQuantity(CartInterface $cart, PurchasableInterface $product, $quantity = 0, $increaseAmount = false): ?CartItemInterface
     {
         $item = $cart->getItemForProduct($product);
 
@@ -72,7 +72,7 @@ class CartModifier implements CartModifierInterface
             if ($quantity <= 0) {
                 $this->removeCartItem($cart, $item);
 
-                return false;
+                return null;
             }
 
             $newQuantity = $quantity;
@@ -89,7 +89,7 @@ class CartModifier implements CartModifierInterface
             $item->save();
         } else {
             /**
-             * @var CartItemInterface
+             * @var $item CartItemInterface
              */
             $item = $this->cartItemFactory->createNew();
             $item->setKey(uniqid());

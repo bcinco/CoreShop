@@ -34,7 +34,7 @@ final class CartRecalculationUpdate
     /**
      * @param ObjectEvent $event
      */
-    public function recalculateCart(ObjectEvent $event)
+    public function recalculateCart(ObjectEvent $event): void
     {
         $cart = $event->getObject();
 

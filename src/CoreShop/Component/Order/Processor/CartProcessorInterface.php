@@ -18,5 +18,5 @@ interface CartProcessorInterface
     /**
      * @param CartInterface $cart
      */
-    public function process(CartInterface $cart);
+    public function process(CartInterface $cart): void;
 }

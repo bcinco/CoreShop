@@ -44,7 +44,7 @@ final class ResourceTranslationsType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
             /** @var TranslationInterface[] $translations */
@@ -69,7 +69,7 @@ final class ResourceTranslationsType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'entries' => $this->definedLocalesCodes,
@@ -87,7 +87,7 @@ final class ResourceTranslationsType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getParent()
+    public function getParent(): string
     {
         return FixedCollectionType::class;
     }
@@ -95,7 +95,7 @@ final class ResourceTranslationsType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'coreshop_translations';
     }

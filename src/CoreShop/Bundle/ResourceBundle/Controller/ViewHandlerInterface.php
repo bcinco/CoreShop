@@ -12,13 +12,15 @@
 
 namespace CoreShop\Bundle\ResourceBundle\Controller;
 
+use Symfony\Component\HttpFoundation\Response;
+
 interface ViewHandlerInterface
 {
     /**
      * @param mixed $data
      * @param array $options
      *
-     * @return mixed
+     * @return Response
      */
     public function handle($data, $options = []);
 }

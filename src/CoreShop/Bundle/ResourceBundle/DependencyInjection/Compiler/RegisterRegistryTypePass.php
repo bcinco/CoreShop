@@ -55,7 +55,7 @@ abstract class RegisterRegistryTypePass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->has($this->registry) || !$container->has($this->formRegistry)) {
             return;

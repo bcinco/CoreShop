@@ -21,7 +21,7 @@ final class RegisterInstallersPass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->has('coreshop.registry.resource.installers')) {
             return;

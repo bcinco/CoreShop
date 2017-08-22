@@ -46,7 +46,7 @@ class ServiceRegistry implements ServiceRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function all()
+    public function all(): array
     {
         return $this->services;
     }
@@ -54,7 +54,7 @@ class ServiceRegistry implements ServiceRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function register($identifier, $service)
+    public function register($identifier, $service): void
     {
         if ($this->has($identifier)) {
             throw new ExistingServiceException($this->context, $identifier);
@@ -76,7 +76,7 @@ class ServiceRegistry implements ServiceRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function unregister($identifier)
+    public function unregister($identifier): void
     {
         if (!$this->has($identifier)) {
             throw new NonExistingServiceException($this->context, $identifier, array_keys($this->services));
@@ -88,7 +88,7 @@ class ServiceRegistry implements ServiceRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function has($identifier)
+    public function has($identifier): bool
     {
         return isset($this->services[$identifier]);
     }

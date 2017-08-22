@@ -126,7 +126,7 @@ final class Migrate
      * @param string $newPimcoreClass
      * @throws \Exception
      */
-    public static function migrateData(string $oldPimcoreClass, string $newPimcoreClass)
+    public static function migrateData(string $oldPimcoreClass, string $newPimcoreClass): void
     {
         $oldClassDefinition = ClassDefinition::getByName($oldPimcoreClass);
         $newClassDefinition = ClassDefinition::getByName($newPimcoreClass);

@@ -78,7 +78,7 @@ class TaxCollector implements TaxCollectorInterface
      * @param $amount
      * @param $usedTaxes
      */
-    private function addTaxToArray($taxId, $amount, &$usedTaxes)
+    private function addTaxToArray($taxId, $amount, &$usedTaxes): void
     {
         /**
          * @var $tax TaxRateInterface

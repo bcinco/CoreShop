@@ -15,15 +15,16 @@ namespace CoreShop\Bundle\FrontendBundle\Controller;
 use CoreShop\Component\Core\Repository\CurrencyRepositoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CurrencyController extends FrontendController
 {
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function widgetAction(Request $request)
+    public function widgetAction(Request $request): Response
     {
         $currencies = $this->get('coreshop.repository.currency')->findActiveForStore($this->get('coreshop.context.shopper')->getStore());
 
@@ -35,9 +36,9 @@ class CurrencyController extends FrontendController
     /**
      * @param Request $request
      *
-     * @return RedirectResponse
+     * @return Response
      */
-    public function switchAction(Request $request)
+    public function switchAction(Request $request): Response
     {
         $currencyCode = $request->get('currencyCode');
         $currency = $this->getCurrencyRepository()->getByCode($currencyCode);
@@ -59,7 +60,7 @@ class CurrencyController extends FrontendController
     /**
      * @return CurrencyRepositoryInterface
      */
-    protected function getCurrencyRepository()
+    protected function getCurrencyRepository(): CurrencyRepositoryInterface
     {
         /**
          * @var CurrencyRepositoryInterface

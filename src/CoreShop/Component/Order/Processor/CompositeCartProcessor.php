@@ -31,7 +31,7 @@ final class CompositeCartProcessor implements CartProcessorInterface
      * @param CartProcessorInterface $cartProcessor
      * @param int $priority
      */
-    public function addProcessor(CartProcessorInterface $cartProcessor, $priority = 0)
+    public function addProcessor(CartProcessorInterface $cartProcessor, $priority = 0): void
     {
         $this->cartProcessors->insert($cartProcessor, $priority);
     }
@@ -39,7 +39,7 @@ final class CompositeCartProcessor implements CartProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function process(CartInterface $cart)
+    public function process(CartInterface $cart): void
     {
         foreach ($this->cartProcessors as $cartProcessor) {
             $cartProcessor->process($cart);

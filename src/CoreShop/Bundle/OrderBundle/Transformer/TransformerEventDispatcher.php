@@ -33,7 +33,7 @@ final class TransformerEventDispatcher implements TransformerEventDispatcherInte
     /**
      * {@inheritdoc}
      */
-    public function dispatchPreEvent($modelName, $model, $params = [])
+    public function dispatchPreEvent($modelName, $model, $params = []): void
     {
         $event = $this->getEvent($model, $params);
 
@@ -46,7 +46,7 @@ final class TransformerEventDispatcher implements TransformerEventDispatcherInte
     /**
      * {@inheritdoc}
      */
-    public function dispatchPostEvent($modelName, $model, $params = [])
+    public function dispatchPostEvent($modelName, $model, $params = []): void
     {
         $event = $this->getEvent($model, $params);
 
@@ -62,7 +62,7 @@ final class TransformerEventDispatcher implements TransformerEventDispatcherInte
      *
      * @return GenericEvent
      */
-    private function getEvent($model, $params)
+    private function getEvent($model, $params): GenericEvent
     {
         return new GenericEvent($model, $params);
     }

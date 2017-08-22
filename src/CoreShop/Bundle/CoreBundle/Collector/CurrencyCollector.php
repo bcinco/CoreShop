@@ -55,7 +55,7 @@ final class CurrencyCollector extends DataCollector
     /**
      * @return CurrencyInterface
      */
-    public function getCurrency()
+    public function getCurrency(): CurrencyInterface
     {
         return $this->data['currency'];
     }
@@ -63,7 +63,7 @@ final class CurrencyCollector extends DataCollector
     /**
      * @return CurrencyInterface[]
      */
-    public function getCurrencies()
+    public function getCurrencies(): array
     {
         return $this->data['currencies'];
     }
@@ -71,7 +71,7 @@ final class CurrencyCollector extends DataCollector
     /**
      * @return bool
      */
-    public function isCurrencyChangeSupported()
+    public function isCurrencyChangeSupported(): bool
     {
         return $this->data['currency_change_support'];
     }
@@ -79,7 +79,7 @@ final class CurrencyCollector extends DataCollector
     /**
      * {@inheritdoc}
      */
-    public function collect(Request $request, Response $response, \Exception $exception = null)
+    public function collect(Request $request, Response $response, \Exception $exception = null): void
     {
         try {
             $this->data['currency'] = $this->currencyContext->getCurrency();
@@ -91,7 +91,7 @@ final class CurrencyCollector extends DataCollector
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return 'coreshop.currency_collector';
     }

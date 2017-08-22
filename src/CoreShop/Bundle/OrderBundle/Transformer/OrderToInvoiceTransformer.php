@@ -181,7 +181,7 @@ class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
     /**
      * @param OrderInvoiceInterface $invoice
      */
-    private function calculateInvoice(OrderInvoiceInterface $invoice)
+    private function calculateInvoice(OrderInvoiceInterface $invoice): void
     {
         $this->calculateSubtotal($invoice, true);
         $this->calculateSubtotal($invoice, false);
@@ -201,7 +201,7 @@ class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
      * @param OrderInvoiceInterface $invoice
      * @param boolean $base Calculate Subtotal for Base Values
      */
-    private function calculateSubtotal(OrderInvoiceInterface $invoice, $base = true)
+    private function calculateSubtotal(OrderInvoiceInterface $invoice, $base = true): void
     {
         $discountPercentage = $invoice->getOrder()->getDiscountPercentage();
 
@@ -247,7 +247,7 @@ class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
      * @param OrderInvoiceInterface $invoice
      * @param boolean $base Calculate Shipping for Base Values
      */
-    private function calculateShipping(OrderInvoiceInterface $invoice, $base = true)
+    private function calculateShipping(OrderInvoiceInterface $invoice, $base = true): void
     {
         $shippingWithTax = 0;
         $shippingWithoutTax = 0;
@@ -293,7 +293,7 @@ class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
      * @param OrderInvoiceInterface $invoice
      * @param boolean $base Calculate Payment Fees for Base Values
      */
-    private function calculatePaymentFees(OrderInvoiceInterface $invoice, $base = true)
+    private function calculatePaymentFees(OrderInvoiceInterface $invoice, $base = true): void
     {
         $paymentFeeWithTax = 0;
         $paymentFeeWithoutTax = 0;
@@ -337,7 +337,7 @@ class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
      * @param OrderInvoiceInterface $invoice
      * @param boolean $base Calculate Discount for Base Values
      */
-    private function calculateDiscount(OrderInvoiceInterface $invoice, $base = true)
+    private function calculateDiscount(OrderInvoiceInterface $invoice, $base = true): void
     {
         $discountWithTax = 0;
         $discountWithoutTax = 0;
@@ -376,7 +376,7 @@ class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
      * @param OrderInvoiceInterface $invoice
      * @param boolean $base Calculate Totals for Base Values
      */
-    private function calculateTotal(OrderInvoiceInterface $invoice, $base = true)
+    private function calculateTotal(OrderInvoiceInterface $invoice, $base = true): void
     {
         if ($base) {
             $subtotalTax = $invoice->getBaseSubtotalTax();
@@ -431,9 +431,9 @@ class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
      * @param string $field
      * @param OrderInterface $order
      *
-     * @return float
+     * @return int
      */
-    private function getProcessedValue($field, OrderInterface $order)
+    private function getProcessedValue($field, OrderInterface $order): int
     {
         $invoices = $this->invoiceRepository->getDocuments($order);
         $processedValue = 0;
@@ -452,7 +452,7 @@ class OrderToInvoiceTransformer implements OrderDocumentTransformerInterface
      * @param $amount
      * @param boolean $base
      */
-    private function addTax(OrderInvoiceInterface $invoice, $name, $rate, $amount, $base = true)
+    private function addTax(OrderInvoiceInterface $invoice, $name, $rate, $amount, $base = true): void
     {
         if ($base) {
             $taxes = $invoice->getBaseTaxes();

@@ -13,10 +13,15 @@
 namespace CoreShop\Bundle\FrontendBundle\Controller;
 
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class LanguageController extends FrontendController
 {
-    public function widgetAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function widgetAction(Request $request): Response
     {
         return $this->renderTemplate('CoreShopFrontendBundle:Language:_widget.html.twig', [
             'languages' => ['de', 'en'], //$this->get('pimcore.locale')->getLocaleList()

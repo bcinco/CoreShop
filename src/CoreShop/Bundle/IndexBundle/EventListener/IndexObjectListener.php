@@ -32,7 +32,10 @@ final class IndexObjectListener
         $this->indexUpdaterService = $indexUpdaterService;
     }
 
-    public function onPostUpdate(ElementEventInterface $event)
+    /**
+     * @param ElementEventInterface $event
+     */
+    public function onPostUpdate(ElementEventInterface $event): void
     {
         if ($event instanceof ObjectEvent) {
             $object = $event->getObject();

@@ -16,15 +16,16 @@ use CoreShop\Bundle\ResourceBundle\Controller\ResourceController;
 use CoreShop\Component\Index\Filter\FilterConditionProcessorInterface;
 use CoreShop\Component\Index\Model\IndexInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class FilterController extends ResourceController
 {
     /**
      * Get Index Configurations.
      *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function getConfigAction()
+    public function getConfigAction(): Response
     {
         return $this->viewHandler->handle(
             [
@@ -34,7 +35,11 @@ class FilterController extends ResourceController
         );
     }
 
-    public function getFieldsForIndexAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function getFieldsForIndexAction(Request $request): Response
     {
         $index = $this->get('coreshop.repository.index')->find($request->get('index'));
 
@@ -54,7 +59,11 @@ class FilterController extends ResourceController
         return $this->viewHandler->handle(false);
     }
 
-    public function getValuesForFilterFieldAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function getValuesForFilterFieldAction(Request $request): Response
     {
         $index = $this->get('coreshop.repository.index')->find($request->get('index'));
 
@@ -87,7 +96,7 @@ class FilterController extends ResourceController
     /**
      * @return array
      */
-    protected function getConditionTypes()
+    protected function getConditionTypes(): array
     {
         return $this->getParameter('coreshop.filter.condition_types');
     }

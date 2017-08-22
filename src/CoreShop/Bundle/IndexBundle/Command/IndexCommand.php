@@ -24,7 +24,7 @@ final class IndexCommand extends ContainerAwareCommand
     /**
      * configure command.
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('coreshop:index')
@@ -39,7 +39,7 @@ final class IndexCommand extends ContainerAwareCommand
      *
      * @return int
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $indices = $this->getContainer()->get('coreshop.repository.index')->findAll();
         $classesToUpdate = [];

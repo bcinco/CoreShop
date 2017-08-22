@@ -40,7 +40,7 @@ class EnhancedEcommerce extends AbstractClientTracker
     /**
      * {@inheritdoc}
      */
-    protected function render($viewName, $data = [])
+    protected function render($viewName, $data = []): string
     {
         $view = $this->track(["viewName" => $viewName, "data" => $data]);
 
@@ -52,7 +52,7 @@ class EnhancedEcommerce extends AbstractClientTracker
     /**
      * {@inheritdoc}
      */
-    public function trackPurchasableView(PurchasableInterface $product)
+    public function trackPurchasableView(PurchasableInterface $product): void
     {
         $item = $this->getItemBuilder()->buildPurchasableViewItem($product);
 
@@ -67,7 +67,7 @@ class EnhancedEcommerce extends AbstractClientTracker
     /**
      * {@inheritdoc}
      */
-    public function trackPurchasableImpression(PurchasableInterface $product)
+    public function trackPurchasableImpression(PurchasableInterface $product): void
     {
         $item = $this->getItemBuilder()->buildPurchasableImpressionItem($product);
 
@@ -79,7 +79,7 @@ class EnhancedEcommerce extends AbstractClientTracker
     /**
      * {@inheritdoc}
      */
-    public function trackPurchasableActionAdd(PurchasableInterface $product, $quantity = 1)
+    public function trackPurchasableActionAdd(PurchasableInterface $product, $quantity = 1): void
     {
         $this->trackPurchasableAction($product, "add", $quantity);
     }
@@ -87,7 +87,7 @@ class EnhancedEcommerce extends AbstractClientTracker
     /**
      * {@inheritdoc}
      */
-    public function trackPurchasableActionRemove(PurchasableInterface $product, $quantity = 1)
+    public function trackPurchasableActionRemove(PurchasableInterface $product, $quantity = 1): void
     {
         $this->trackPurchasableAction($product, "remove", $quantity);
     }
@@ -95,7 +95,7 @@ class EnhancedEcommerce extends AbstractClientTracker
     /**
      * {@inheritdoc}
      */
-    protected function trackPurchasableAction(PurchasableInterface $product, $action, $quantity = 1)
+    protected function trackPurchasableAction(PurchasableInterface $product, $action, $quantity = 1): void
     {
         $item = $this->getItemBuilder()->buildPurchasableActionItem($product);
         $item->setQuantity($quantity);
@@ -108,7 +108,7 @@ class EnhancedEcommerce extends AbstractClientTracker
     /**
      * {@inheritdoc}
      */
-    public function trackCheckout(CartInterface $cart, $stepNumber = null, $checkoutOption = null)
+    public function trackCheckout(CartInterface $cart, $stepNumber = null, $checkoutOption = null): void
     {
         $items = $this->getItemBuilder()->buildCheckoutItemsByCart($cart);
         $products = [];
@@ -123,7 +123,7 @@ class EnhancedEcommerce extends AbstractClientTracker
     /**
      * {@inheritdoc}
      */
-    public function trackCheckoutStep(CartInterface $cart, $stepNumber = null, $checkoutOption = null)
+    public function trackCheckoutStep(CartInterface $cart, $stepNumber = null, $checkoutOption = null): void
     {
         $items = $this->getItemBuilder()->buildCheckoutItemsByCart($cart);
 
@@ -143,7 +143,7 @@ class EnhancedEcommerce extends AbstractClientTracker
     /**
      * {@inheritdoc}
      */
-    public function trackCheckoutAction(CartInterface $cart, $stepNumber = null, $checkoutOption = null)
+    public function trackCheckoutAction(CartInterface $cart, $stepNumber = null, $checkoutOption = null): void
     {
         $items = $this->getItemBuilder()->buildCheckoutItemsByCart($cart);
 
@@ -168,7 +168,7 @@ class EnhancedEcommerce extends AbstractClientTracker
     /**
      * {@inheritdoc}
      */
-    public function trackCheckoutComplete(OrderInterface $order)
+    public function trackCheckoutComplete(OrderInterface $order): void
     {
         $orderItem = $this->getItemBuilder()->buildOrderAction($order);
         $items = $this->getItemBuilder()->buildCheckoutItems($order);
@@ -185,7 +185,7 @@ class EnhancedEcommerce extends AbstractClientTracker
     /**
      * @return ItemBuilderInterface
      */
-    public function getItemBuilder()
+    public function getItemBuilder(): ItemBuilderInterface
     {
         return $this->itemBuilder;
     }
@@ -196,7 +196,7 @@ class EnhancedEcommerce extends AbstractClientTracker
      * @param ActionData $actionData
      * @return array
      */
-    protected function transformOrder(ActionData $actionData)
+    protected function transformOrder(ActionData $actionData): array
     {
         return [
             'id' => $actionData->getId(),
@@ -213,7 +213,7 @@ class EnhancedEcommerce extends AbstractClientTracker
      * @param ProductData $item
      * @return array
      */
-    protected function transformProductAction(ProductData $item)
+    protected function transformProductAction(ProductData $item): array
     {
         return $this->filterNullValues([
             'id' => $item->getId(),
@@ -234,7 +234,7 @@ class EnhancedEcommerce extends AbstractClientTracker
      * @param ImpressionData $item
      * @return array
      */
-    protected function transformProductImpression(ImpressionData $item)
+    protected function transformProductImpression(ImpressionData $item): array
     {
         return $this->filterNullValues([
             'id' => $item->getId(),

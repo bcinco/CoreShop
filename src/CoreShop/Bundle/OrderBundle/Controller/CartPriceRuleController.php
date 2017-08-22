@@ -14,13 +14,19 @@ namespace CoreShop\Bundle\OrderBundle\Controller;
 
 use CoreShop\Bundle\OrderBundle\Form\Type\CartPriceRuleGeneratorType;
 use CoreShop\Bundle\ResourceBundle\Controller\ResourceController;
+use CoreShop\Component\Order\Generator\CartPriceRuleVoucherCodeGenerator;
 use CoreShop\Component\Order\Model\CartPriceRuleInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CartPriceRuleController extends ResourceController
 {
-    public function getConfigAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function getConfigAction(Request $request): Response
     {
         $actions = $this->getConfigActions();
         $conditions = $this->getConfigConditions();
@@ -28,7 +34,11 @@ class CartPriceRuleController extends ResourceController
         return $this->viewHandler->handle(['actions' => array_keys($actions), 'conditions' => array_keys($conditions)]);
     }
 
-    public function getVoucherCodesAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function getVoucherCodesAction(Request $request): Response
     {
         $id = $request->get('id');
         $cartPriceRule = $this->repository->find($id);
@@ -40,7 +50,11 @@ class CartPriceRuleController extends ResourceController
         return $this->viewHandler->handle(['total' => count($cartPriceRule->getVoucherCodes()), 'data' => $cartPriceRule->getVoucherCodes(), 'success' => true], ['group' => 'Detailed']);
     }
 
-    public function generateVoucherCodesAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function generateVoucherCodesAction(Request $request): Response
     {
         $form = $this->get('form.factory')->createNamed('', CartPriceRuleGeneratorType::class);
 
@@ -62,7 +76,11 @@ class CartPriceRuleController extends ResourceController
         return $this->viewHandler->handle(['success' => false]);
     }
 
-    public function exportVoucherCodesAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function exportVoucherCodesAction(Request $request): Response
     {
         $id = $request->get('id');
         $priceRule = $this->repository->find($id);
@@ -103,17 +121,26 @@ class CartPriceRuleController extends ResourceController
         exit;
     }
 
-    protected function getVoucherCodeGenerator()
+    /**
+     * @return CartPriceRuleVoucherCodeGenerator
+     */
+    protected function getVoucherCodeGenerator(): CartPriceRuleVoucherCodeGenerator
     {
         return $this->get('coreshop.generator.cart_price_rule_voucher_codes');
     }
 
-    protected function getConfigActions()
+    /**
+     * @return array
+     */
+    protected function getConfigActions(): array
     {
         return $this->getParameter('coreshop.cart_price_rule.actions');
     }
 
-    protected function getConfigConditions()
+    /**
+     * @return array
+     */
+    protected function getConfigConditions(): array
     {
         return $this->getParameter('coreshop.cart_price_rule.conditions');
     }

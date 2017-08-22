@@ -32,7 +32,7 @@ final class CompositeRequestResolver implements RequestResolverInterface
      * @param RequestResolverInterface $requestResolver
      * @param int $priority
      */
-    public function addResolver(RequestResolverInterface $requestResolver, $priority = 0)
+    public function addResolver(RequestResolverInterface $requestResolver, $priority = 0): void
     {
         $this->requestResolvers->insert($requestResolver, $priority);
     }

@@ -82,7 +82,7 @@ class TaxedProductPriceCalculator implements TaxedProductPriceCalculatorInterfac
      * @param $price
      * @return int
      */
-    private function applyTaxes(PurchasableInterface $product, $price) {
+    private function applyTaxes(PurchasableInterface $product, $price): int {
         $taxCalculator = $this->taxCalculatorFactory->getTaxCalculator($product);
 
         if ($taxCalculator instanceof TaxCalculatorInterface) {

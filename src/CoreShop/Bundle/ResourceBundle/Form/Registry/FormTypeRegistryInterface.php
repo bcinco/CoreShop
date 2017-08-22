@@ -19,15 +19,15 @@ interface FormTypeRegistryInterface
      * @param string $typeIdentifier
      * @param string $formType
      */
-    public function add($identifier, $typeIdentifier, $formType);
+    public function add($identifier, $typeIdentifier, $formType): void;
 
     /**
      * @param string $identifier
      * @param string $typeIdentifier
      *
-     * @return string
+     * @return null|string
      */
-    public function get($identifier, $typeIdentifier);
+    public function get($identifier, $typeIdentifier): ?string;
 
     /**
      * @param string $identifier
@@ -35,5 +35,5 @@ interface FormTypeRegistryInterface
      *
      * @return bool
      */
-    public function has($identifier, $typeIdentifier);
+    public function has($identifier, $typeIdentifier): bool;
 }

@@ -15,6 +15,7 @@ namespace CoreShop\Bundle\ResourceBundle\Controller;
 use CoreShop\Component\Resource\Metadata\MetadataInterface;
 use CoreShop\Component\Resource\Model\ResourceInterface;
 use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Form\FormInterface;
 
 final class ResourceFormFactory implements ResourceFormFactoryInterface
 {
@@ -34,7 +35,7 @@ final class ResourceFormFactory implements ResourceFormFactoryInterface
     /**
      * {@inheritdoc}
      */
-    public function create(MetadataInterface $metadata, ResourceInterface $resource)
+    public function create(MetadataInterface $metadata, ResourceInterface $resource): FormInterface
     {
         $formType = $metadata->getClass('form');
 

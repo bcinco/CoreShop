@@ -34,7 +34,7 @@ final class Configuration implements ConfigurationInterface
     /**
      * {@inheritdoc}
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('coreshop_frontend');
@@ -45,7 +45,11 @@ final class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    private function addControllerSection(ArrayNodeDefinition $node) {
+    /**
+     * @param ArrayNodeDefinition $node
+     */
+    private function addControllerSection(ArrayNodeDefinition $node): void
+    {
         $node->children()
                 ->arrayNode('controllers')
                     ->addDefaultsIfNotSet()
@@ -70,7 +74,7 @@ final class Configuration implements ConfigurationInterface
     /**
      * @param ArrayNodeDefinition $node
      */
-    private function addPimcoreResourcesSection(ArrayNodeDefinition $node)
+    private function addPimcoreResourcesSection(ArrayNodeDefinition $node): void
     {
         $node->children()
             ->arrayNode('pimcore_admin')

@@ -24,5 +24,5 @@ interface ResourceFormFactoryInterface
      *
      * @return FormInterface
      */
-    public function create(MetadataInterface $metadata, ResourceInterface $resource);
+    public function create(MetadataInterface $metadata, ResourceInterface $resource): FormInterface;
 }

@@ -22,7 +22,7 @@ final class InvoiceStateConfigurationType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('invoiceState', ChoiceType::class, [
@@ -38,7 +38,7 @@ final class InvoiceStateConfigurationType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'coreshop_notification_condition_invoice_state';
     }

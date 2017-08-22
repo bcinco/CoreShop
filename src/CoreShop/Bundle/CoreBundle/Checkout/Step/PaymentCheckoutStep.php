@@ -62,7 +62,7 @@ class PaymentCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function commitStep(CartInterface $cart, Request $request)
+    public function commitStep(CartInterface $cart, Request $request): bool
     {
         $form = $this->createForm($cart);
 

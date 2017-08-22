@@ -53,7 +53,7 @@ final class ThemeResolver implements ThemeResolverInterface
     /**
      * {@inheritdoc}
      */
-    public function resolveTheme()
+    public function resolveTheme(): void
     {
         $themes = [];
 

@@ -36,7 +36,7 @@ final class FixedCountryContext implements CountryContextInterface
     /**
      * @param CountryInterface $country
      */
-    public function setCountry(CountryInterface $country)
+    public function setCountry(CountryInterface $country): void
     {
         $this->country = $country;
     }

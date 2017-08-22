@@ -19,5 +19,5 @@ interface CurrencyHelperInterface
      *
      * @return string
      */
-    public function convertCurrencyCodeToSymbol($code);
+    public function convertCurrencyCodeToSymbol($code): string;
 }

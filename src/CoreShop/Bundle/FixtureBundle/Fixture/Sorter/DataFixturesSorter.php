@@ -21,42 +21,9 @@ final class DataFixturesSorter
     protected $fixtures = [];
 
     /**
-     * Returns the array of data fixtures to execute.
-     *
-     * @param array $fixtures
-     *
-     * @return array $fixtures
-     */
-    public function sort(array $fixtures)
-    {
-        $this->fixtures        = $fixtures;
-        $this->orderedFixtures = [];
-
-        $usePrioritySorting     = $this->usePrioritySorting($fixtures);
-        $useDependenciesSorting = $this->useDependenciesSorting($fixtures);
-
-
-        if ($usePrioritySorting) {
-            $this->orderFixturesByNumber();
-        }
-
-        if ($useDependenciesSorting) {
-            $this->orderFixturesByDependencies($usePrioritySorting);
-        }
-
-        if (!($usePrioritySorting || $useDependenciesSorting)) {
-            $this->orderedFixtures = $fixtures;
-        }
-
-        return $this->orderedFixtures;
-    }
-
-    /**
      * Order fixtures by priority
-     *
-     * @return array
      */
-    protected function orderFixturesByNumber()
+    protected function orderFixturesByNumber(): void
     {
         $this->orderedFixtures = $this->fixtures;
         usort(
@@ -80,14 +47,44 @@ final class DataFixturesSorter
     }
 
     /**
+     * Returns the array of data fixtures to execute.
+     *
+     * @param array $fixtures
+     *
+     * @return array $fixtures
+     */
+    public function sort(array $fixtures): array
+    {
+        $this->fixtures = $fixtures;
+        $this->orderedFixtures = [];
+
+        $usePrioritySorting = $this->usePrioritySorting($fixtures);
+        $useDependenciesSorting = $this->useDependenciesSorting($fixtures);
+
+
+        if ($usePrioritySorting) {
+            $this->orderFixturesByNumber();
+        }
+
+        if ($useDependenciesSorting) {
+            $this->orderFixturesByDependencies($usePrioritySorting);
+        }
+
+        if (!($usePrioritySorting || $useDependenciesSorting)) {
+            $this->orderedFixtures = $fixtures;
+        }
+
+        return $this->orderedFixtures;
+    }
+
+    /**
      * @param bool $usedPrioritySorting
      *
-     * @return array
      * @throws CircularReferenceException
      *
      * @SuppressWarnings(PHPMD.NPathComplexity)
      */
-    protected function orderFixturesByDependencies($usedPrioritySorting)
+    protected function orderFixturesByDependencies($usedPrioritySorting): void
     {
         $sequenceForClasses = $orderedFixtures = [];
 
@@ -126,14 +123,14 @@ final class DataFixturesSorter
         }
 
         // Now we order fixtures by sequence
-        $sequence  = 1;
+        $sequence = 1;
         $lastCount = -1;
 
         while (($count = count($unsequencedClasses = $this->getUnsequencedClasses($sequenceForClasses))) > 0
             && $count !== $lastCount) {
             foreach ($unsequencedClasses as $key => $class) {
-                $fixture                 = $this->fixtures[$class];
-                $dependencies            = $fixture->getDependencies();
+                $fixture = $this->fixtures[$class];
+                $dependencies = $fixture->getDependencies();
                 $unsequencedDependencies = $this->getUnsequencedClasses($sequenceForClasses, $dependencies);
 
                 if (count($unsequencedDependencies) === 0) {
@@ -168,11 +165,11 @@ final class DataFixturesSorter
 
     /**
      * @param string $fixtureClass
-     * @param mixed  $dependenciesClasses
+     * @param mixed $dependenciesClasses
      *
      * @return bool
      */
-    protected function validateDependencies($fixtureClass, $dependenciesClasses)
+    protected function validateDependencies($fixtureClass, $dependenciesClasses): bool
     {
         if (!is_array($dependenciesClasses) || empty($dependenciesClasses)) {
             throw new \InvalidArgumentException(
@@ -207,12 +204,12 @@ final class DataFixturesSorter
     }
 
     /**
-     * @param array      $sequences
+     * @param array $sequences
      * @param null|array $classes
      *
      * @return array
      */
-    protected function getUnsequencedClasses(array $sequences, array $classes = null)
+    protected function getUnsequencedClasses(array $sequences, array $classes = null): array
     {
         $unsequencedClasses = array();
 
@@ -235,7 +232,7 @@ final class DataFixturesSorter
      *
      * @return bool
      */
-    protected function usePrioritySorting($fixtures)
+    protected function usePrioritySorting($fixtures): bool
     {
         foreach ($fixtures as $fixture) {
             if ($fixture instanceof OrderedFixtureInterface) {
@@ -251,7 +248,7 @@ final class DataFixturesSorter
      *
      * @return bool
      */
-    protected function useDependenciesSorting($fixtures)
+    protected function useDependenciesSorting($fixtures): bool
     {
         foreach ($fixtures as $fixture) {
             if ($fixture instanceof DependentFixtureInterface) {

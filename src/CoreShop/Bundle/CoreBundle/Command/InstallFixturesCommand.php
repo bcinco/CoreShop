@@ -20,7 +20,7 @@ final class InstallFixturesCommand extends AbstractInstallCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('coreshop:install:fixtures')
@@ -35,8 +35,10 @@ EOT
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->runCommands(['coreshop:fixture:data:load'], $output);
+
+        return 0;
     }
 }

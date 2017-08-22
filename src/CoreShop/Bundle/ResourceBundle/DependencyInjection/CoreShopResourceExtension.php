@@ -26,7 +26,7 @@ final class CoreShopResourceExtension extends AbstractModelExtension implements 
     /**
      * {@inheritdoc}
      */
-    public function load(array $config, ContainerBuilder $container)
+    public function load(array $config, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
@@ -49,7 +49,7 @@ final class CoreShopResourceExtension extends AbstractModelExtension implements 
     /**
      * {@inheritdoc}
      */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $fosRestConfig = [
             'format_listener' => [
@@ -135,7 +135,7 @@ final class CoreShopResourceExtension extends AbstractModelExtension implements 
         $container->prependExtensionConfig('stof_doctrine_extensions', $stofDoctrineExtensions);
     }
 
-    private function loadPersistence(array $drivers, array $resources, LoaderInterface $loader)
+    private function loadPersistence(array $drivers, array $resources, LoaderInterface $loader): void
     {
         foreach ($resources as $alias => $resource) {
             if (!in_array($resource['driver'], $drivers, true)) {

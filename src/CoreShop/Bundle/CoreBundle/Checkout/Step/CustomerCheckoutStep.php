@@ -82,11 +82,13 @@ class CustomerCheckoutStep implements CheckoutStepInterface
     /**
      * {@inheritdoc}
      */
-    public function commitStep(CartInterface $cart, Request $request)
+    public function commitStep(CartInterface $cart, Request $request): bool
     {
         if (!$this->validate($cart)) {
             throw new CheckoutException('no customer found', 'coreshop_checkout_customer_invalid');
         }
+
+        return true;
     }
 
     /**

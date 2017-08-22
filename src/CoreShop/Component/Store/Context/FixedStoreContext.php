@@ -24,7 +24,7 @@ final class FixedStoreContext implements StoreContextInterface
     /**
      * @param StoreInterface $store
      */
-    public function setStore($store)
+    public function setStore($store): void
     {
         $this->store = $store;
     }

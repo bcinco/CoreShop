@@ -16,14 +16,15 @@ use Pimcore\Bundle\AdminBundle\Controller\AdminController;
 use Pimcore\Model\Element\AbstractElement;
 use Pimcore\Model\Element\Service;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ResourceSettingsController extends AdminController
 {
     /**
      * @param Request $request
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function getNicePathAction(Request $request)
+    public function getNicePathAction(Request $request): Response
     {
         $targets = $this->decodeJson($request->get("targets"));
         $result = [];
@@ -40,9 +41,9 @@ class ResourceSettingsController extends AdminController
     }
 
     /**
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function getClassMapAction()
+    public function getClassMapAction(): Response
     {
         $classMapping = [];
 

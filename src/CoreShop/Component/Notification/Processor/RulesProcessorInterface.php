@@ -18,8 +18,6 @@ interface RulesProcessorInterface
      * @param $type
      * @param $subject
      * @param array $params
-     *
-     * @return mixed
      */
-    public function applyRules($type, $subject, $params = []);
+    public function applyRules($type, $subject, $params = []): void;
 }

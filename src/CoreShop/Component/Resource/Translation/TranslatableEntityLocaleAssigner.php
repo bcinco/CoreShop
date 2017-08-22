@@ -33,7 +33,7 @@ final class TranslatableEntityLocaleAssigner implements TranslatableEntityLocale
     /**
      * {@inheritdoc}
      */
-    public function assignLocale(TranslatableInterface $translatableEntity)
+    public function assignLocale(TranslatableInterface $translatableEntity): void
     {
         $localeCode = $this->translationLocaleProvider->getDefaultLocaleCode();
 

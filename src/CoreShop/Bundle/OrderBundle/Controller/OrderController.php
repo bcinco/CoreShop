@@ -21,19 +21,22 @@ use CoreShop\Component\Order\Repository\OrderShipmentRepositoryInterface;
 use CoreShop\Component\Order\Workflow\WorkflowManagerInterface;
 use CoreShop\Component\Payment\Model\PaymentInterface;
 use CoreShop\Component\Payment\Model\PaymentProviderInterface;
-use CoreShop\Component\Payment\Repository\PaymentRepositoryInterface;
 use CoreShop\Component\Resource\Factory\FactoryInterface;
 use CoreShop\Component\Resource\Pimcore\Model\PimcoreModelInterface;
+use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
 use CoreShop\Component\Resource\Repository\RepositoryInterface;
+use Doctrine\ORM\EntityManager;
+use Pimcore\Model\Object\Listing;
 use Pimcore\Model\User;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class OrderController extends AbstractSaleController
 {
     /**
      * {@inheritdoc}
      */
-    protected function getGridColumns()
+    protected function getGridColumns(): array
     {
         return [
             [
@@ -46,7 +49,11 @@ class OrderController extends AbstractSaleController
         ];
     }
 
-    public function getStatesAction()
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function getStatesAction(Request $request): Response
     {
         $states = [];
 
@@ -71,9 +78,9 @@ class OrderController extends AbstractSaleController
     /**
      * @param Request $request
      *
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function updatePaymentAction(Request $request)
+    public function updatePaymentAction(Request $request): Response
     {
         $payment = $this->getPaymentRepository()->find($request->get('id'));
 
@@ -90,9 +97,9 @@ class OrderController extends AbstractSaleController
     }
 
     /**
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function getPaymentProvidersAction()
+    public function getPaymentProvidersAction(): Response
     {
         $providers = $this->getPaymentProviderRepository()->findAll();
         $result = [];
@@ -110,9 +117,9 @@ class OrderController extends AbstractSaleController
     /**
      * @param Request $request
      *
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function addPaymentAction(Request $request)
+    public function addPaymentAction(Request $request): Response
     {
         $orderId = $request->get('o_id');
         $order = $this->getSaleRepository()->find($orderId);
@@ -162,7 +169,7 @@ class OrderController extends AbstractSaleController
      *
      * @return array
      */
-    protected function getStatesHistory(OrderInterface $order)
+    protected function getStatesHistory(OrderInterface $order): array
     {
         //Get History
         $manager = $this->getOrderStateManager();
@@ -199,7 +206,7 @@ class OrderController extends AbstractSaleController
      *
      * @return array
      */
-    protected function getPayments(OrderInterface $order)
+    protected function getPayments(OrderInterface $order): array
     {
         $payments = $order->getPayments();
         $return = [];
@@ -228,7 +235,11 @@ class OrderController extends AbstractSaleController
         return $return;
     }
 
-    protected function getDetails(SaleInterface $sale)
+    /**
+     * @param SaleInterface $sale
+     * @return array
+     */
+    protected function getDetails(SaleInterface $sale): array
     {
         $order = parent::getDetails($sale);
 
@@ -245,7 +256,11 @@ class OrderController extends AbstractSaleController
         return $order;
     }
 
-    protected function prepareSale(SaleInterface $sale)
+    /**
+     * @param SaleInterface $sale
+     * @return array
+     */
+    protected function prepareSale(SaleInterface $sale): array
     {
         $order = parent::prepareSale($sale);
 
@@ -263,7 +278,7 @@ class OrderController extends AbstractSaleController
      *
      * @return array
      */
-    protected function getInvoices($order)
+    protected function getInvoices($order): array
     {
         $invoices = $this->getOrderInvoiceRepository()->getDocuments($order);
         $invoiceArray = [];
@@ -280,7 +295,7 @@ class OrderController extends AbstractSaleController
      *
      * @return array
      */
-    protected function getShipments($order)
+    protected function getShipments($order): array
     {
         $invoices = $this->getOrderShipmentRepository()->getDocuments($order);
         $invoiceArray = [];
@@ -292,7 +307,11 @@ class OrderController extends AbstractSaleController
         return $invoiceArray;
     }
 
-    protected function getSummary(SaleInterface $sale)
+    /**
+     * @param SaleInterface $sale
+     * @return array
+     */
+    protected function getSummary(SaleInterface $sale): array
     {
         $summary = parent::getSummary($sale);
 
@@ -312,7 +331,7 @@ class OrderController extends AbstractSaleController
     /**
      * @return ProcessableInterface
      */
-    private function getInvoiceProcessableHelper()
+    private function getInvoiceProcessableHelper(): ProcessableInterface
     {
         return $this->get('coreshop.order.invoice.processable');
     }
@@ -320,7 +339,7 @@ class OrderController extends AbstractSaleController
     /**
      * @return ProcessableInterface
      */
-    private function getShipmentProcessableHelper()
+    private function getShipmentProcessableHelper(): ProcessableInterface
     {
         return $this->get('coreshop.order.shipment.processable');
     }
@@ -328,7 +347,7 @@ class OrderController extends AbstractSaleController
     /**
      * @return OrderInvoiceRepositoryInterface
      */
-    private function getOrderInvoiceRepository()
+    private function getOrderInvoiceRepository(): OrderInvoiceRepositoryInterface
     {
         return $this->get('coreshop.repository.order_invoice');
     }
@@ -336,7 +355,7 @@ class OrderController extends AbstractSaleController
     /**
      * @return OrderShipmentRepositoryInterface
      */
-    private function getOrderShipmentRepository()
+    private function getOrderShipmentRepository(): OrderShipmentRepositoryInterface
     {
         return $this->get('coreshop.repository.order_shipment');
     }
@@ -344,7 +363,7 @@ class OrderController extends AbstractSaleController
     /**
      * @return WorkflowManagerInterface
      */
-    private function getOrderStateManager()
+    private function getOrderStateManager(): WorkflowManagerInterface
     {
         return $this->get('coreshop.workflow.manager.order');
     }
@@ -352,23 +371,23 @@ class OrderController extends AbstractSaleController
     /**
      * @return RepositoryInterface
      */
-    private function getPaymentRepository()
+    private function getPaymentRepository(): RepositoryInterface
     {
         return $this->get('coreshop.repository.payment');
     }
 
     /**
-     * @return \Doctrine\ORM\EntityManager|object
+     * @return EntityManager
      */
-    private function getEntityManager()
+    private function getEntityManager(): EntityManager
     {
         return $this->get('doctrine.orm.entity_manager');
     }
 
     /**
-     * @return PaymentRepositoryInterface
+     * @return RepositoryInterface
      */
-    private function getPaymentProviderRepository()
+    private function getPaymentProviderRepository(): RepositoryInterface
     {
         return $this->get('coreshop.repository.payment_provider');
     }
@@ -376,16 +395,15 @@ class OrderController extends AbstractSaleController
     /**
      * @return FactoryInterface
      */
-    private function getPaymentFactory()
+    private function getPaymentFactory(): FactoryInterface
     {
         return $this->get('coreshop.factory.payment');
     }
 
-
     /**
      * {@inheritdoc}
      */
-    protected function getSaleRepository()
+    protected function getSaleRepository(): PimcoreRepositoryInterface
     {
         return $this->get('coreshop.repository.order');
     }
@@ -393,7 +411,7 @@ class OrderController extends AbstractSaleController
     /**
      * {@inheritdoc}
      */
-    protected function getSalesList()
+    protected function getSalesList(): Listing
     {
         return $this->getSaleRepository()->getList();
     }
@@ -401,7 +419,7 @@ class OrderController extends AbstractSaleController
     /**
      * {@inheritdoc}
      */
-    protected function getSaleClassName()
+    protected function getSaleClassName(): string
     {
         return 'coreshop.model.order.pimcore_class_id';
     }
@@ -409,7 +427,7 @@ class OrderController extends AbstractSaleController
     /**
      * {@inheritdoc}
      */
-    protected function getOrderKey()
+    protected function getOrderKey(): string
     {
         return 'orderDate';
     }
@@ -417,7 +435,7 @@ class OrderController extends AbstractSaleController
     /**
      * {@inheritdoc}
      */
-    protected function getSaleNumberField()
+    protected function getSaleNumberField(): string
     {
         return 'orderNumber';
     }

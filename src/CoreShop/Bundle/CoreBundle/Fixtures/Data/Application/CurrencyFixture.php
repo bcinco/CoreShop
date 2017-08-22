@@ -32,7 +32,7 @@ class CurrencyFixture extends AbstractFixture implements ContainerAwareInterface
     /**
      * {@inheritdoc}
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return '2.0';
     }
@@ -40,7 +40,7 @@ class CurrencyFixture extends AbstractFixture implements ContainerAwareInterface
     /**
      * {@inheritdoc}
      */
-    public function setContainer(ContainerInterface $container = null)
+    public function setContainer(ContainerInterface $container = null): void
     {
         $this->container = $container;
     }
@@ -48,7 +48,7 @@ class CurrencyFixture extends AbstractFixture implements ContainerAwareInterface
     /**
      * {@inheritdoc}
      */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $countries = CountryLoader::countries(true, true);
         $currencies = [];

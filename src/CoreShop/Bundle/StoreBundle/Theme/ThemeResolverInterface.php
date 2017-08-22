@@ -17,5 +17,5 @@ interface ThemeResolverInterface
     /**
      * Resolve Theme and set it to ThemeManager
      */
-    public function resolveTheme();
+    public function resolveTheme(): void;
 }

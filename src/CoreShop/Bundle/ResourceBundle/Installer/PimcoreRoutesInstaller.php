@@ -38,7 +38,7 @@ final class PimcoreRoutesInstaller implements ResourceInstallerInterface
     /**
      * {@inheritdoc}
      */
-    public function installResources(OutputInterface $output, $applicationName = null)
+    public function installResources(OutputInterface $output, $applicationName = null): void
     {
         $parameter = $applicationName ? sprintf('%s.application.pimcore.admin.install.routes', $applicationName) : 'resources.admin.install.routes';
 
@@ -90,7 +90,7 @@ final class PimcoreRoutesInstaller implements ResourceInstallerInterface
      * @param $properties
      * @return Staticroute
      */
-    private function installRoute($name, $properties)
+    private function installRoute($name, $properties): Staticroute
     {
         $route = new Staticroute();
 

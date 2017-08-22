@@ -36,7 +36,7 @@ final class CommandDirectoryChecker
         $this->filesystem = $filesystem;
     }
 
-    public function ensureDirectoryExists($directory, OutputInterface $output)
+    public function ensureDirectoryExists($directory, OutputInterface $output): void
     {
         if (is_dir($directory)) {
             return;
@@ -59,7 +59,7 @@ final class CommandDirectoryChecker
         }
     }
 
-    public function ensureDirectoryIsWritable($directory, OutputInterface $output)
+    public function ensureDirectoryIsWritable($directory, OutputInterface $output): void
     {
         if (is_writable($directory)) {
             return;
@@ -82,7 +82,7 @@ final class CommandDirectoryChecker
         }
     }
 
-    public function setCommandName($name)
+    public function setCommandName($name): void
     {
         $this->name = $name;
     }

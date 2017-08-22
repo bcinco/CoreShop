@@ -31,7 +31,7 @@ final class CompositeCurrencyContext implements CurrencyContextInterface
      * @param CurrencyContextInterface $currencyContext
      * @param int $priority
      */
-    public function addContext(CurrencyContextInterface $currencyContext, $priority = 0)
+    public function addContext(CurrencyContextInterface $currencyContext, $priority = 0): void
     {
         $this->currencyContexts->insert($currencyContext, $priority);
     }

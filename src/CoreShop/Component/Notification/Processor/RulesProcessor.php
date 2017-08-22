@@ -50,7 +50,7 @@ class RulesProcessor implements RulesProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function applyRules($type, $subject, $params = [])
+    public function applyRules($type, $subject, $params = []): void
     {
         $rules = $this->ruleRepository->findForType($type);
 

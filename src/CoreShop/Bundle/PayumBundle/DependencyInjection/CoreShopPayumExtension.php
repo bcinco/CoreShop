@@ -23,7 +23,7 @@ final class CoreShopPayumExtension extends AbstractModelExtension implements Pre
     /**
      * {@inheritdoc}
      */
-    public function load(array $config, ContainerBuilder $container)
+    public function load(array $config, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
@@ -36,7 +36,7 @@ final class CoreShopPayumExtension extends AbstractModelExtension implements Pre
     /**
      * {@inheritdoc}
      */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         if (!$container->hasExtension('coreshop_payment')) {
             return;

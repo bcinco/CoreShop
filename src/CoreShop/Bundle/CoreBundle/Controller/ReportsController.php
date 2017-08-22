@@ -14,14 +14,15 @@ namespace CoreShop\Bundle\CoreBundle\Controller;
 
 use Pimcore\Bundle\AdminBundle\Controller\AdminController;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ReportsController extends AdminController
 {
     /**
      * @param Request $request
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function getReportDataAction(Request $request)
+    public function getReportDataAction(Request $request): Response
     {
         $report = $request->get('report');
         $reportRegistry = $this->get('coreshop.registry.reports');

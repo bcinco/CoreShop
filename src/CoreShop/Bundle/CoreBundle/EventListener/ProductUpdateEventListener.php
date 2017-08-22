@@ -37,7 +37,7 @@ final class ProductUpdateEventListener
     /**
      * @param ObjectEvent $event
      */
-    public function storeConfigurationThatProductChanged(ObjectEvent $event)
+    public function storeConfigurationThatProductChanged(ObjectEvent $event): void
     {
         $object = $event->getObject();
 

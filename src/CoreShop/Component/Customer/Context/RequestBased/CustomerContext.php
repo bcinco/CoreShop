@@ -82,7 +82,7 @@ final class CustomerContext implements CustomerContextInterface
     /**
      * @param CustomerInterface|null $customer $store
      */
-    private function assertCustomerWasFound(CustomerInterface $customer = null)
+    private function assertCustomerWasFound(CustomerInterface $customer = null): void
     {
         if (null === $customer) {
             throw new \UnexpectedValueException('Customer was not found for given request');

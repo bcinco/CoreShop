@@ -22,7 +22,7 @@ final class RegisterPimcoreResourcesPass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         try {
             $resources = $container->getParameter('coreshop.pimcore');
@@ -68,7 +68,7 @@ final class RegisterPimcoreResourcesPass implements CompilerPassInterface
      * @param $class
      * @param $interface
      */
-    private function validateCoreShopPimcoreModel($class, $interface)
+    private function validateCoreShopPimcoreModel($class, $interface): void
     {
         //TODO: Needs to be solved different. Everytime you make a mistake on class-creation
         //this stops pimcore from being functional :/

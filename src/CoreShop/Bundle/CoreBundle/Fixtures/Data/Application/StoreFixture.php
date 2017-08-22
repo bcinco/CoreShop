@@ -29,7 +29,7 @@ class StoreFixture extends AbstractFixture implements ContainerAwareInterface, V
     /**
      * {@inheritdoc}
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return '2.0';
     }
@@ -37,7 +37,7 @@ class StoreFixture extends AbstractFixture implements ContainerAwareInterface, V
     /**
      * {@inheritdoc}
      */
-    public function setContainer(ContainerInterface $container = null)
+    public function setContainer(ContainerInterface $container = null): void
     {
         $this->container = $container;
     }
@@ -45,7 +45,7 @@ class StoreFixture extends AbstractFixture implements ContainerAwareInterface, V
     /**
      * {@inheritdoc}
      */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         if (!$this->container->get('coreshop.repository.store')->findStandard()) {
             /**

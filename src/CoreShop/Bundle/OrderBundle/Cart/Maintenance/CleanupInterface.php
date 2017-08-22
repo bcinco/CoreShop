@@ -22,30 +22,36 @@ interface CleanupInterface
     /**
      * @return int
      */
-    public function getExpirationDays();
+    public function getExpirationDays(): int;
 
     /**
      * @param int $expirationDays
+     *
+     * @return static
      */
-    public function setExpirationDays($expirationDays);
+    public function setExpirationDays(int $expirationDays): CleanupInterface;
 
     /**
      * @return boolean
      */
-    public function getCleanupAnonymous();
+    public function getCleanupAnonymous(): bool;
 
     /**
      * @param boolean $cleanupAnonymous
+     *
+     * @return static
      */
-    public function setCleanupAnonymous($cleanupAnonymous);
+    public function setCleanupAnonymous(bool $cleanupAnonymous): CleanupInterface;
 
     /**
      * @return boolean
      */
-    public function getCleanupUser();
+    public function getCleanupUser(): bool;
 
     /**
      * @param boolean $cleanupUser
+     *
+     * @return static
      */
-    public function setCleanupUser($cleanupUser);
+    public function setCleanupUser(bool $cleanupUser): CleanupInterface;
 }

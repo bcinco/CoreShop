@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\OrderBundle\Cart\Maintenance;
 
@@ -54,7 +54,8 @@ final class Cleanup implements CleanupInterface
     /**
      * {@inheritdoc}
      */
-    public function cleanup() {
+    public function cleanup(): void
+    {
         $list = $this->cartRepository->getList();
 
         $conditions = [];
@@ -86,7 +87,7 @@ final class Cleanup implements CleanupInterface
             $groupBind = ' OR ';
         }
 
-        $sql .= ' AND ('.implode($groupBind, $groupCondition).') ';
+        $sql .= ' AND (' . implode($groupBind, $groupCondition) . ') ';
 
         $list->setCondition($sql, $params);
         $carts = $list->load();
@@ -99,50 +100,56 @@ final class Cleanup implements CleanupInterface
     }
 
     /**
-     * @return int
+     * {@inheritdoc}
      */
-    public function getExpirationDays()
+    public function getExpirationDays(): int
     {
         return $this->expirationDays;
     }
 
     /**
-     * @param int $expirationDays
+     * {@inheritdoc}
      */
-    public function setExpirationDays($expirationDays)
+    public function setExpirationDays(int $expirationDays): CleanupInterface
     {
         $this->expirationDays = $expirationDays;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
-    public function getCleanupAnonymous()
+    public function getCleanupAnonymous(): bool
     {
         return $this->cleanupAnonymous;
     }
 
     /**
-     * @param mixed $cleanupAnonymous
+     * {@inheritdoc}
      */
-    public function setCleanupAnonymous($cleanupAnonymous)
+    public function setCleanupAnonymous(bool $cleanupAnonymous): CleanupInterface
     {
         $this->cleanupAnonymous = $cleanupAnonymous;
+
+        return $this;
     }
 
     /**
-     * @return mixed
+     * {@inheritdoc}
      */
-    public function getCleanupUser()
+    public function getCleanupUser(): bool
     {
         return $this->cleanupUser;
     }
 
     /**
-     * @param mixed $cleanupUser
+     * {@inheritdoc}
      */
-    public function setCleanupUser($cleanupUser)
+    public function setCleanupUser(bool $cleanupUser): CleanupInterface
     {
         $this->cleanupUser = $cleanupUser;
+
+        return $this;
     }
 }

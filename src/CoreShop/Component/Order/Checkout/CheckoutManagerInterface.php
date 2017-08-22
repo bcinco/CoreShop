@@ -21,7 +21,7 @@ interface CheckoutManagerInterface
      * @param CheckoutStepInterface $step
      * @param $priority
      */
-    public function addCheckoutStep(CheckoutStepInterface $step, $priority);
+    public function addCheckoutStep(CheckoutStepInterface $step, $priority): void;
 
     /**
      * @return array
@@ -92,5 +92,5 @@ interface CheckoutManagerInterface
      * @param CartInterface $cart
      * @param Request $request
      */
-    public function commitStep(CheckoutStepInterface $step, CartInterface $cart, Request $request);
+    public function commitStep(CheckoutStepInterface $step, CartInterface $cart, Request $request): void;
 }

@@ -38,7 +38,7 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
     /**
      * {@inheritdoc}
      */
-    public function getCommands(InputInterface $input, OutputInterface $output, QuestionHelper $questionHelper)
+    public function getCommands(InputInterface $input, OutputInterface $output, QuestionHelper $questionHelper): array
     {
         return array_merge($this->getRequiredCommands($input, $output, $questionHelper), [
             'cache:clear' => ['--no-warmup' => true]
@@ -52,7 +52,7 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
      *
      * @return array
      */
-    private function getRequiredCommands(InputInterface $input, OutputInterface $output, QuestionHelper $questionHelper)
+    private function getRequiredCommands(InputInterface $input, OutputInterface $output, QuestionHelper $questionHelper): array
     {
         if ($input->getOption('no-interaction')) {
             $commands['doctrine:schema:update'] = ['--force' => true];
@@ -68,7 +68,7 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
      *
      * @return array
      */
-    private function setupDatabase(InputInterface $input, OutputInterface $output, QuestionHelper $questionHelper)
+    private function setupDatabase(InputInterface $input, OutputInterface $output, QuestionHelper $questionHelper): array
     {
         $outputStyle = new SymfonyStyle($input, $output);
 
@@ -92,7 +92,7 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
     /**
      * @return bool
      */
-    private function isSchemaPresent()
+    private function isSchemaPresent(): bool
     {
         return in_array('coreshop_store', $this->getSchemaManager()->listTableNames());
     }
@@ -100,7 +100,7 @@ final class DatabaseSetupCommandsProvider implements DatabaseSetupCommandsProvid
     /**
      * @return AbstractSchemaManager
      */
-    private function getSchemaManager()
+    private function getSchemaManager(): AbstractSchemaManager
     {
         return $this->doctrineRegistry->getManager()->getConnection()->getSchemaManager();
     }

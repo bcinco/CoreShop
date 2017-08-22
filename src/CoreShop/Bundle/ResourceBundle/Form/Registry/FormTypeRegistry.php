@@ -22,7 +22,7 @@ final class FormTypeRegistry implements FormTypeRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function add($identifier, $typeIdentifier, $formType)
+    public function add($identifier, $typeIdentifier, $formType): void
     {
         $this->formTypes[$identifier][$typeIdentifier] = $formType;
     }
@@ -30,7 +30,7 @@ final class FormTypeRegistry implements FormTypeRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function get($identifier, $typeIdentifier)
+    public function get($identifier, $typeIdentifier): ?string
     {
         if (!$this->has($identifier, $typeIdentifier)) {
             return null;
@@ -42,7 +42,7 @@ final class FormTypeRegistry implements FormTypeRegistryInterface
     /**
      * {@inheritdoc}
      */
-    public function has($identifier, $typeIdentifier)
+    public function has($identifier, $typeIdentifier): bool
     {
         return isset($this->formTypes[$identifier][$typeIdentifier]);
     }

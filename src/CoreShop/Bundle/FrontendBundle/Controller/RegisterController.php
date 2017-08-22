@@ -21,15 +21,16 @@ use CoreShop\Component\Customer\Model\CustomerInterface;
 use Pimcore\File;
 use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 
 class RegisterController extends FrontendController
 {
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function registerAction(Request $request)
+    public function registerAction(Request $request): Response
     {
         $customer = $this->getCustomer();
 
@@ -95,9 +96,9 @@ class RegisterController extends FrontendController
 
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function passwordResetRequestAction(Request $request)
+    public function passwordResetRequestAction(Request $request): Response
     {
         $form = $this->get('form.factory')->createNamed('', RequestResetPasswordType::class);
 
@@ -132,7 +133,11 @@ class RegisterController extends FrontendController
         ]);
     }
 
-    public function passwordResetAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function passwordResetAction(Request $request): Response
     {
         $resetToken = $request->get('token');
 
@@ -170,7 +175,7 @@ class RegisterController extends FrontendController
     /**
      * @return bool|CustomerInterface|null
      */
-    protected function getCustomer()
+    protected function getCustomer(): ?CustomerInterface
     {
         try {
             return $this->get('coreshop.context.customer')->getCustomer();

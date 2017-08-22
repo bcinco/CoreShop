@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\FrontendBundle\Controller;
 
@@ -37,15 +37,16 @@ class SecurityController extends FrontendController
     protected $templatingEngine;
 
     /**
-     * @param AuthenticationUtils  $authenticationUtils
+     * @param AuthenticationUtils $authenticationUtils
      * @param FormFactoryInterface $formFactory
-     * @param EngineInterface      $templatingEngine
+     * @param EngineInterface $templatingEngine
      */
     public function __construct(
         AuthenticationUtils $authenticationUtils,
         FormFactoryInterface $formFactory,
         EngineInterface $templatingEngine
-    ) {
+    )
+    {
         $this->authenticationUtils = $authenticationUtils;
         $this->formFactory = $formFactory;
         $this->templatingEngine = $templatingEngine;
@@ -56,7 +57,7 @@ class SecurityController extends FrontendController
      *
      * @return Response
      */
-    public function loginAction(Request $request)
+    public function loginAction(Request $request): Response
     {
         $lastError = $this->authenticationUtils->getLastAuthenticationError();
         $lastUsername = $this->authenticationUtils->getLastUsername();
@@ -75,16 +76,18 @@ class SecurityController extends FrontendController
 
     /**
      * @param Request $request
+     * @return Response
      */
-    public function checkAction(Request $request)
+    public function checkAction(Request $request): Response
     {
         throw new \RuntimeException('You must configure the check path to be handled by the firewall.');
     }
 
     /**
      * @param Request $request
+     * @return Response
      */
-    public function logoutAction(Request $request)
+    public function logoutAction(Request $request): Response
     {
         throw new \RuntimeException('You must configure the logout path to be handled by the firewall.');
     }

@@ -13,6 +13,7 @@
 namespace CoreShop\Component\Sequence\Generator;
 
 use CoreShop\Component\Sequence\Factory\SequenceFactoryInterface;
+use CoreShop\Component\Sequence\Model\SequenceInterface;
 use CoreShop\Component\Sequence\Repository\SequenceRepositoryInterface;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -62,9 +63,9 @@ class SequenceGenerator implements SequenceGeneratorInterface
     /**
      * @param $type
      *
-     * @return \coreShop\Component\Sequence\Model\SequenceInterface
+     * @return SequenceInterface
      */
-    private function getSequence($type)
+    private function getSequence($type): SequenceInterface
     {
         $sequence = $this->sequenceRepository->findForType($type);
 

@@ -28,7 +28,11 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class OrderInvoiceController extends PimcoreController
 {
-    public function getInvoiceAbleItemsAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function getInvoiceAbleItemsAction(Request $request): Response
     {
         $orderId = $request->get('id');
         $order = $this->getOrderRepository()->find($orderId);
@@ -71,10 +75,9 @@ class OrderInvoiceController extends PimcoreController
 
     /**
      * @param Request $request
-     *
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function createInvoiceAction(Request $request)
+    public function createInvoiceAction(Request $request): Response
     {
         $items = $request->get('items');
         $orderId = $request->get('id');
@@ -98,10 +101,9 @@ class OrderInvoiceController extends PimcoreController
 
     /**
      * @param Request $request
-     *
      * @return Response
      */
-    public function renderAction(Request $request)
+    public function renderAction(Request $request): Response
     {
         $invoiceId = $request->get('id');
         $invoice = $this->getOrderInvoiceRepository()->find($invoiceId);
@@ -123,7 +125,7 @@ class OrderInvoiceController extends PimcoreController
     /**
      * @return ProcessableInterface
      */
-    private function getProcessableHelper()
+    private function getProcessableHelper(): ProcessableInterface
     {
         return $this->get('coreshop.order.invoice.processable');
     }
@@ -131,7 +133,7 @@ class OrderInvoiceController extends PimcoreController
     /**
      * @return PimcoreRepositoryInterface
      */
-    private function getOrderRepository()
+    private function getOrderRepository(): PimcoreRepositoryInterface
     {
         return $this->get('coreshop.repository.order');
     }
@@ -139,7 +141,7 @@ class OrderInvoiceController extends PimcoreController
     /**
      * @return OrderDocumentRendererInterface
      */
-    private function getOrderDocumentRenderer()
+    private function getOrderDocumentRenderer(): OrderDocumentRendererInterface
     {
         return $this->get('coreshop.renderer.order.pdf');
     }
@@ -147,7 +149,7 @@ class OrderInvoiceController extends PimcoreController
     /**
      * @return PimcoreRepositoryInterface
      */
-    private function getOrderInvoiceRepository()
+    private function getOrderInvoiceRepository(): PimcoreRepositoryInterface
     {
         return $this->get('coreshop.repository.order_invoice');
     }
@@ -155,7 +157,7 @@ class OrderInvoiceController extends PimcoreController
     /**
      * @return PimcoreFactoryInterface
      */
-    private function getInvoiceFactory()
+    private function getInvoiceFactory(): PimcoreFactoryInterface
     {
         return $this->get('coreshop.factory.order_invoice');
     }
@@ -163,7 +165,7 @@ class OrderInvoiceController extends PimcoreController
     /**
      * @return OrderDocumentTransformerInterface
      */
-    private function getOrderToInvoiceTransformer()
+    private function getOrderToInvoiceTransformer(): OrderDocumentTransformerInterface
     {
         return $this->get('coreshop.order.transformer.order_to_invoice');
     }

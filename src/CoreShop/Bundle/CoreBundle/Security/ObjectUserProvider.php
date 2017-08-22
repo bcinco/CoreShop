@@ -48,7 +48,7 @@ class ObjectUserProvider implements UserProviderInterface
     /**
      * Check if Class is of right type.
      */
-    protected function checkClass()
+    protected function checkClass(): void
     {
         if (!class_exists($this->className)) {
             throw new InvalidArgumentException(sprintf('User class %s does not exist', $this->className));

@@ -91,7 +91,8 @@ final class CartManager implements CartManagerInterface
     /**
      * @return AttributeBagInterface
      */
-    protected function getBag() {
+    protected function getBag(): AttributeBagInterface
+    {
         if (null === $this->sessionBag) {
             $this->sessionBag = $this->session->getBag('cart');
         }
@@ -126,7 +127,7 @@ final class CartManager implements CartManagerInterface
     /**
      * @return CartInterface|null
      */
-    private function getSessionCart()
+    private function getSessionCart(): ?CartInterface
     {
         $cart = null;
 

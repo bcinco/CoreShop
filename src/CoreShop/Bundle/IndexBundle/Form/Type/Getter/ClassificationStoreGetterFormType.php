@@ -22,7 +22,7 @@ final class ClassificationStoreGetterFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('groupConfigId', IntegerType::class, [
@@ -41,7 +41,7 @@ final class ClassificationStoreGetterFormType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'coreshop_index_getter_classification_store';
     }

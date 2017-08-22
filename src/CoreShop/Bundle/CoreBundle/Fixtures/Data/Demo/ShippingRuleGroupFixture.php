@@ -30,7 +30,7 @@ class ShippingRuleGroupFixture extends AbstractFixture implements ContainerAware
     /**
      * {@inheritdoc}
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return '2.0';
     }
@@ -38,7 +38,7 @@ class ShippingRuleGroupFixture extends AbstractFixture implements ContainerAware
     /**
      * {@inheritdoc}
      */
-    public function setContainer(ContainerInterface $container = null)
+    public function setContainer(ContainerInterface $container = null): void
     {
         $this->container = $container;
     }
@@ -46,7 +46,7 @@ class ShippingRuleGroupFixture extends AbstractFixture implements ContainerAware
     /**
      * {@inheritdoc}
      */
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             ShippingRuleFixture::class,
@@ -57,7 +57,7 @@ class ShippingRuleGroupFixture extends AbstractFixture implements ContainerAware
     /**
      * {@inheritdoc}
      */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         if (!count($this->container->get('coreshop.repository.shipping_rule_group')->findAll())) {
             $carrier = $this->getReference('carrier');

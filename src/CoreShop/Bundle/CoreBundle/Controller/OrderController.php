@@ -22,7 +22,7 @@ class OrderController extends BaseOrderController
     /**
      * {@inheritdoc}
      */
-    protected function prepareSale(SaleInterface $sale)
+    protected function prepareSale(SaleInterface $sale): array
     {
         $order = parent::prepareSale($sale);
 
@@ -33,7 +33,10 @@ class OrderController extends BaseOrderController
         return $order;
     }
 
-    protected function getDetails(SaleInterface $sale)
+    /**
+     * {@inheritdoc}
+     */
+    protected function getDetails(SaleInterface $sale): array
     {
         $order = parent::getDetails($sale);
 

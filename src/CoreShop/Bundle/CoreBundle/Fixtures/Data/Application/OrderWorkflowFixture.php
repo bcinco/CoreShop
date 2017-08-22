@@ -31,7 +31,7 @@ class OrderWorkflowFixture extends AbstractFixture implements ContainerAwareInte
     /**
      * {@inheritdoc}
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return '2.0';
     }
@@ -39,7 +39,7 @@ class OrderWorkflowFixture extends AbstractFixture implements ContainerAwareInte
     /**
      * {@inheritdoc}
      */
-    public function setContainer(ContainerInterface $container = null)
+    public function setContainer(ContainerInterface $container = null): void
     {
         $this->container = $container;
     }
@@ -47,7 +47,7 @@ class OrderWorkflowFixture extends AbstractFixture implements ContainerAwareInte
     /**
      * {@inheritdoc}
      */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $object = $this->getWorkflowObject();
         $object->save();
@@ -56,7 +56,7 @@ class OrderWorkflowFixture extends AbstractFixture implements ContainerAwareInte
     /**
      * @return \Pimcore\Model\Workflow
      */
-    private function getWorkflowObject()
+    private function getWorkflowObject(): Workflow
     {
         $pimClass = $this->container->getParameter('coreshop.model.order.class');
 

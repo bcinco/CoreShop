@@ -27,7 +27,7 @@ final class PimcoreDriver extends AbstractDriver
     /**
      * {@inheritdoc}
      */
-    public function getType()
+    public function getType(): string
     {
         return CoreShopResourceBundle::DRIVER_DOCTRINE_ORM;
     }
@@ -35,7 +35,7 @@ final class PimcoreDriver extends AbstractDriver
     /**
      * {@inheritdoc}
      */
-    public function load(ContainerBuilder $container, MetadataInterface $metadata)
+    public function load(ContainerBuilder $container, MetadataInterface $metadata): void
     {
         parent::load($container, $metadata);
 
@@ -52,7 +52,7 @@ final class PimcoreDriver extends AbstractDriver
      * @param ContainerBuilder $container
      * @param MetadataInterface $metadata
      */
-    protected function addPimcoreController(ContainerBuilder $container, MetadataInterface $metadata)
+    protected function addPimcoreController(ContainerBuilder $container, MetadataInterface $metadata): void
     {
         $definition = new Definition($metadata->getClass('pimcore_controller'));
         $definition
@@ -70,7 +70,7 @@ final class PimcoreDriver extends AbstractDriver
      * @param ContainerBuilder $container
      * @param MetadataInterface $metadata
      */
-    protected function addPimcoreClass(ContainerBuilder $container, MetadataInterface $metadata)
+    protected function addPimcoreClass(ContainerBuilder $container, MetadataInterface $metadata): void
     {
         $container->setParameter(sprintf('%s.folder.%s', $metadata->getApplicationName(), $metadata->getName()), $metadata->getParameter('path'));
 
@@ -93,7 +93,7 @@ final class PimcoreDriver extends AbstractDriver
     /**
      * {@inheritdoc}
      */
-    protected function addRepository(ContainerBuilder $container, MetadataInterface $metadata)
+    protected function addRepository(ContainerBuilder $container, MetadataInterface $metadata): void
     {
         $repositoryClassParameterName = sprintf('%s.repository.%s.class', $metadata->getApplicationName(), $metadata->getName());
         $repositoryClass = PimcoreRepository::class;
@@ -117,7 +117,7 @@ final class PimcoreDriver extends AbstractDriver
     /**
      * {@inheritdoc}
      */
-    protected function addManager(ContainerBuilder $container, MetadataInterface $metadata)
+    protected function addManager(ContainerBuilder $container, MetadataInterface $metadata): void
     {
         $serviceName = 'pimcore.dao.object_manager';
 

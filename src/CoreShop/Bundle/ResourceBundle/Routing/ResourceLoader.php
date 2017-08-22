@@ -18,6 +18,7 @@ use Symfony\Component\Config\Definition\Processor;
 use Symfony\Component\Config\Loader\LoaderInterface;
 use Symfony\Component\Config\Loader\LoaderResolverInterface;
 use Symfony\Component\Routing\Route;
+use Symfony\Component\Routing\RouteCollection;
 use Symfony\Component\Yaml\Yaml;
 
 final class ResourceLoader implements LoaderInterface
@@ -45,7 +46,7 @@ final class ResourceLoader implements LoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function load($resource, $type = null)
+    public function load($resource, $type = null): RouteCollection
     {
         $processor = new Processor();
         $configurationDefinition = new Configuration();
@@ -107,7 +108,7 @@ final class ResourceLoader implements LoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function supports($resource, $type = null)
+    public function supports($resource, $type = null): bool
     {
         return 'coreshop.resources' === $type;
     }
@@ -115,7 +116,7 @@ final class ResourceLoader implements LoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function getResolver()
+    public function getResolver(): void
     {
         // Intentionally left blank.
     }
@@ -123,7 +124,7 @@ final class ResourceLoader implements LoaderInterface
     /**
      * {@inheritdoc}
      */
-    public function setResolver(LoaderResolverInterface $resolver)
+    public function setResolver(LoaderResolverInterface $resolver): void
     {
         // Intentionally left blank.
     }
@@ -137,7 +138,7 @@ final class ResourceLoader implements LoaderInterface
      *
      * @return Route
      */
-    private function createRoute(MetadataInterface $metadata, array $configuration, $path, $actionName, array $methods)
+    private function createRoute(MetadataInterface $metadata, array $configuration, $path, $actionName, array $methods): Route
     {
         $defaults = [
             '_controller' => $metadata->getServiceId('admin_controller').sprintf(':%sAction', $actionName),
@@ -153,7 +154,7 @@ final class ResourceLoader implements LoaderInterface
      *
      * @return string
      */
-    private function getRouteName(MetadataInterface $metadata, array $configuration, $actionName)
+    private function getRouteName(MetadataInterface $metadata, array $configuration, $actionName): string
     {
         $sectionPrefix = isset($configuration['section']) ? $configuration['section'].'_' : '';
 

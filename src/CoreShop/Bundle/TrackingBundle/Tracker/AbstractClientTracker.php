@@ -24,7 +24,7 @@ abstract class AbstractClientTracker implements TrackerInterface
      * @param array $config
      * @return string
      */
-    public function track($config)
+    public function track($config): string
     {
         $viewName = $config['viewName'];
         $data = $config['data'];
@@ -47,7 +47,7 @@ abstract class AbstractClientTracker implements TrackerInterface
      * @param array $protectedKeys
      * @return array
      */
-    protected function filterNullValues($data, $protectedKeys = [])
+    protected function filterNullValues($data, $protectedKeys = []): array
     {
         $result = [];
         foreach ($data as $key => $value) {

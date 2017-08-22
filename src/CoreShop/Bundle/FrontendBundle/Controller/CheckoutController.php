@@ -12,12 +12,17 @@
 
 namespace CoreShop\Bundle\FrontendBundle\Controller;
 
+use CoreShop\Component\Order\Manager\CartManagerInterface;
+use CoreShop\Component\Order\Model\CartInterface;
 use CoreShop\Component\Core\Model\OrderInterface;
 use CoreShop\Component\Order\Checkout\CheckoutManagerInterface;
 use CoreShop\Component\Order\Checkout\CheckoutStepInterface;
+use CoreShop\Component\Order\Transformer\ProposalTransformerInterface;
+use CoreShop\Component\Resource\Factory\PimcoreFactoryInterface;
 use Payum\Core\Payum;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Webmozart\Assert\Assert;
 
 class CheckoutController extends FrontendController
@@ -38,9 +43,9 @@ class CheckoutController extends FrontendController
     /**
      * @param Request $request
      *
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
      */
-    public function processAction(Request $request)
+    public function processAction(Request $request): Response
     {
         /**
          * @var CheckoutStepInterface
@@ -98,14 +103,18 @@ class CheckoutController extends FrontendController
      * @param CheckoutStepInterface $step
      * @param $stepIdentifier
      * @param $dataForStep
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     protected function renderResponseForCheckoutStep(Request $request, CheckoutStepInterface $step, $stepIdentifier, $dataForStep)
     {
         return $this->renderTemplate(sprintf('@CoreShopFrontend/Checkout/steps/%s.html.twig', $stepIdentifier), $dataForStep);
     }
 
-    public function doCheckoutAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function doCheckoutAction(Request $request): Response
     {
         /*
          * after the last step, we come here
@@ -149,9 +158,9 @@ class CheckoutController extends FrontendController
     /**
      * @param Request $request
      *
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
      */
-    public function errorAction(Request $request)
+    public function errorAction(Request $request): Response
     {
         $orderId = $request->getSession()->get('coreshop_order_id', null);
 
@@ -180,9 +189,9 @@ class CheckoutController extends FrontendController
     /**
      * @param Request $request
      *
-     * @return RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return RedirectResponse|Response
      */
-    public function thankYouAction(Request $request)
+    public function thankYouAction(Request $request): Response
     {
         $orderId = $request->getSession()->get('coreshop_order_id', null);
 
@@ -202,33 +211,33 @@ class CheckoutController extends FrontendController
     }
 
     /**
-     * @return \CoreShop\Component\Order\Model\CartInterface
+     * @return CartInterface
      */
-    protected function getCart()
+    protected function getCart(): CartInterface
     {
         return $this->getCartManager()->getCart();
     }
 
     /**
-     * @return \CoreShop\Bundle\OrderBundle\Manager\CartManager
+     * @return CartManagerInterface
      */
-    protected function getCartManager()
+    protected function getCartManager(): CartManagerInterface
     {
         return $this->get('coreshop.cart.manager');
     }
 
     /**
-     * @return \CoreShop\Bundle\OrderBundle\Transformer\CartToOrderTransformer
+     * @return ProposalTransformerInterface
      */
-    protected function getCartToOrderTransformer()
+    protected function getCartToOrderTransformer(): ProposalTransformerInterface
     {
         return $this->get('coreshop.order.transformer.cart_to_order');
     }
 
     /**
-     * @return \CoreShop\Component\Resource\Factory\PimcoreFactory
+     * @return PimcoreFactoryInterface
      */
-    protected function getOrderFactory()
+    protected function getOrderFactory(): PimcoreFactoryInterface
     {
         return $this->get('coreshop.factory.order');
     }
@@ -236,7 +245,7 @@ class CheckoutController extends FrontendController
     /**
      * @return Payum
      */
-    protected function getPayum()
+    protected function getPayum(): Payum
     {
         return $this->get('payum');
     }

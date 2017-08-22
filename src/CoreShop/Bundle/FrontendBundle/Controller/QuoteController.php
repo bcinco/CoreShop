@@ -16,10 +16,15 @@ use CoreShop\Component\Customer\Context\CustomerNotFoundException;
 use CoreShop\Component\Customer\Model\CustomerInterface;
 use CoreShop\Component\Order\Model\QuoteInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class QuoteController extends FrontendController
 {
-    public function showAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function showAction(Request $request): Response
     {
         $quote = $this->get('coreshop.repository.quote')->find($request->get('quote'));
 

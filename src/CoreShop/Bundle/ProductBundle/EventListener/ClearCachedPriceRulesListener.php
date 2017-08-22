@@ -23,7 +23,7 @@ final class ClearCachedPriceRulesListener
     /**
      * @param ResourceControllerEvent $event
      */
-    public function clearCachedRules(ResourceControllerEvent $event)
+    public function clearCachedRules(ResourceControllerEvent $event): void
     {
         /**
          * @var $rule RuleInterface

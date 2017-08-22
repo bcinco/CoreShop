@@ -41,7 +41,7 @@ class FormatMoneyHelper extends Helper implements FormatMoneyHelperInterface
     /**
      * {@inheritdoc}
      */
-    public function getName()
+    public function getName(): string
     {
         return 'coreshop_format_money';
     }

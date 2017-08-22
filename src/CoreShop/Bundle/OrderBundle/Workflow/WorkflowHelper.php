@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\OrderBundle\Workflow;
 
@@ -23,7 +23,10 @@ use Pimcore\Event\Model\WorkflowEvent;
  */
 final class WorkflowHelper
 {
-    public static function beforeDispatchOrderChange(WorkflowEvent $event)
+    /**
+     * @param WorkflowEvent $event
+     */
+    public static function beforeDispatchOrderChange(WorkflowEvent $event): void
     {
         $pimcoreManager = $event->getWorkflowManager();
 
@@ -43,7 +46,10 @@ final class WorkflowHelper
         $workflowManager->beforeWorkflowDispatch($event->getWorkflowManager()->getElement(), $newState, $currentState);
     }
 
-    public static function successDispatchOrderChange(WorkflowEvent $event)
+    /**
+     * @param WorkflowEvent $event
+     */
+    public static function successDispatchOrderChange(WorkflowEvent $event): void
     {
         $pimcoreManager = $event->getWorkflowManager();
 
@@ -63,7 +69,10 @@ final class WorkflowHelper
         $workflowManager->successWorkflowDispatch($event->getWorkflowManager()->getElement(), $newState, $oldState);
     }
 
-    public static function failureDispatchOrderChange(WorkflowEvent $event)
+    /**
+     * @param WorkflowEvent $event
+     */
+    public static function failureDispatchOrderChange(WorkflowEvent $event): void
     {
         $pimcoreManager = $event->getWorkflowManager();
 

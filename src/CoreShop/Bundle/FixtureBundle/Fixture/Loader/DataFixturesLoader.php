@@ -38,7 +38,7 @@ class DataFixturesLoader extends ContainerAwareLoader
     /**
      * @inheritdoc
      */
-    public function getFixtures()
+    public function getFixtures(): array
     {
         $sorter   = new DataFixturesSorter();
         $fixtures = $sorter->sort($this->getAllFixtures());
@@ -76,7 +76,7 @@ class DataFixturesLoader extends ContainerAwareLoader
      *
      * @return bool
      */
-    protected function isFixtureAlreadyLoaded($fixtureObject)
+    protected function isFixtureAlreadyLoaded($fixtureObject): bool
     {
         if (!$this->loadedFixtures) {
             $this->loadedFixtures = [];
@@ -109,7 +109,7 @@ class DataFixturesLoader extends ContainerAwareLoader
     /**
      * @return array
      */
-    protected function getAllFixtures()
+    protected function getAllFixtures(): array
     {
         if (!$this->ref) {
             $this->ref = new \ReflectionProperty('Doctrine\Common\DataFixtures\Loader', 'fixtures');

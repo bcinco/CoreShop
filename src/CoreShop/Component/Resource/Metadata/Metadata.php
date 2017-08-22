@@ -61,7 +61,7 @@ final class Metadata implements MetadataInterface
      * @param string $alias
      * @param array  $parameters
      *
-     * @return static
+     * @return MetadataInterface
      */
     public static function fromAliasAndConfiguration($alias, array $parameters): MetadataInterface
     {

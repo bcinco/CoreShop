@@ -12,6 +12,7 @@
 
 namespace CoreShop\Bundle\FrontendBundle\Controller;
 
+use CoreShop\Component\Core\Configuration\ConfigurationServiceInterface;
 use CoreShop\Component\Core\Context\ShopperContextInterface;
 use CoreShop\Component\Core\Model\CategoryInterface;
 use CoreShop\Component\Core\Repository\CategoryRepositoryInterface;
@@ -19,18 +20,17 @@ use CoreShop\Component\Index\Condition\Condition;
 use CoreShop\Component\Index\Listing\ListingInterface;
 use CoreShop\Component\Index\Model\FilterInterface;
 use CoreShop\Component\Resource\Model\AbstractObject;
-use CoreShop\Component\Store\Model\StoreInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\Security\Core\Exception\AccessDeniedException;
+use Symfony\Component\HttpFoundation\Response;
 use Zend\Paginator\Paginator;
 
 class CategoryController extends FrontendController
 {
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function menuAction(Request $request)
+    public function menuAction(Request $request): Response
     {
         $categories = $this->getRepository()->findForStore($this->getContext()->getStore());
 
@@ -41,9 +41,9 @@ class CategoryController extends FrontendController
 
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function menuLeftAction(Request $request)
+    public function menuLeftAction(Request $request): Response
     {
         $categories = $this->getRepository()->findForStore($this->getContext()->getStore());
 
@@ -54,9 +54,9 @@ class CategoryController extends FrontendController
 
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse|\Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function indexAction(Request $request)
+    public function indexAction(Request $request): Response
     {
         $listModeDefault = $this->getConfigurationService()->getForStore('system.category.list.mode');
         $gridPerPageAllowed = $this->getConfigurationService()->getForStore("system.category.grid.per_page");
@@ -154,7 +154,7 @@ class CategoryController extends FrontendController
      *
      * @return array
      */
-    protected function parseSorting($sortString)
+    protected function parseSorting($sortString): array
     {
         $allowed = ['name', 'price'];
         $sort = [
@@ -184,15 +184,15 @@ class CategoryController extends FrontendController
     /**
      * @return CategoryRepositoryInterface
      */
-    protected function getRepository()
+    protected function getRepository(): CategoryRepositoryInterface
     {
         return $this->get('coreshop.repository.category');
     }
 
     /**
-     * @return \CoreShop\Component\Core\Configuration\ConfigurationService
+     * @return ConfigurationServiceInterface
      */
-    protected function getConfigurationService()
+    protected function getConfigurationService(): ConfigurationServiceInterface
     {
         return $this->get('coreshop.configuration.service');
     }
@@ -200,7 +200,7 @@ class CategoryController extends FrontendController
     /**
      * @return ShopperContextInterface
      */
-    protected function getContext()
+    protected function getContext(): ShopperContextInterface
     {
         return $this->get('coreshop.context.shopper');
     }

@@ -4,7 +4,6 @@ namespace CoreShop\Bundle\TrackingBundle\Model;
 
 class ProductData extends AbstractProductData
 {
-
     /**
      * @var string
      */
@@ -18,7 +17,7 @@ class ProductData extends AbstractProductData
     /**
      * @return string
      */
-    public function getCoupon()
+    public function getCoupon(): string
     {
         return $this->coupon;
     }
@@ -26,7 +25,7 @@ class ProductData extends AbstractProductData
     /**
      * @param string $coupon
      */
-    public function setCoupon($coupon)
+    public function setCoupon(string $coupon): void
     {
         $this->coupon = $coupon;
     }
@@ -34,7 +33,7 @@ class ProductData extends AbstractProductData
     /**
      * @return int
      */
-    public function getQuantity()
+    public function getQuantity(): int
     {
         return $this->quantity;
     }
@@ -42,7 +41,7 @@ class ProductData extends AbstractProductData
     /**
      * @param int $quantity
      */
-    public function setQuantity($quantity)
+    public function setQuantity(int $quantity): void
     {
         $this->quantity = $quantity;
     }

@@ -36,7 +36,7 @@ final class CartBlamerListener
     /**
      * @param InteractiveLoginEvent $interactiveLoginEvent
      */
-    public function onInteractiveLogin(InteractiveLoginEvent $interactiveLoginEvent)
+    public function onInteractiveLogin(InteractiveLoginEvent $interactiveLoginEvent): void
     {
         $user = $interactiveLoginEvent->getAuthenticationToken()->getUser();
         if (!$user instanceof CustomerInterface) {
@@ -49,7 +49,7 @@ final class CartBlamerListener
     /**
      * @param GenericEvent $event
      */
-    public function onRegisterEvent(GenericEvent $event)
+    public function onRegisterEvent(GenericEvent $event): void
     {
         $user = $event->getSubject();
 
@@ -63,7 +63,7 @@ final class CartBlamerListener
     /**
      * @param CustomerInterface $user
      */
-    private function blame(CustomerInterface $user)
+    private function blame(CustomerInterface $user): void
     {
         $cart = $this->getCart();
 
@@ -79,7 +79,7 @@ final class CartBlamerListener
     /**
      * @return CartInterface
      */
-    private function getCart()
+    private function getCart(): CartInterface
     {
         return $this->cartManager->getCart();
     }

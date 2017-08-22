@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\CoreBundle\EventListener\NotificationRules;
 
@@ -18,7 +18,10 @@ use CoreShop\Component\Order\Workflow\ProposalWorkflowEvent;
 
 final class OrderWorkflowListener extends AbstractNotificationRuleListener
 {
-    public function applyRule(ProposalWorkflowEvent $event)
+    /**
+     * @param ProposalWorkflowEvent $event
+     */
+    public function applyRule(ProposalWorkflowEvent $event): void
     {
         $order = $event->getProposal();
 

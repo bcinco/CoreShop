@@ -123,7 +123,7 @@ class OrderItemToInvoiceItemTransformer implements OrderDocumentItemTransformerI
      * @param $quantity
      * @param bool $base
      */
-    protected function setDocumentItemTaxes(OrderItemInterface $orderItem, OrderInvoiceItemInterface $docItem, $quantity, $base = true)
+    protected function setDocumentItemTaxes(OrderItemInterface $orderItem, OrderInvoiceItemInterface $docItem, $quantity, $base = true): void
     {
         $itemTaxes = new Fieldcollection();
         $totalTax = 0;

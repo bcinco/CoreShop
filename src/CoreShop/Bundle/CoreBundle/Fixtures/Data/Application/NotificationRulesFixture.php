@@ -30,7 +30,7 @@ final class NotificationRulesFixture extends AbstractFixture implements Containe
     /**
      * {@inheritdoc}
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return '2.0';
     }
@@ -38,7 +38,7 @@ final class NotificationRulesFixture extends AbstractFixture implements Containe
     /**
      * {@inheritdoc}
      */
-    public function setContainer(ContainerInterface $container = null)
+    public function setContainer(ContainerInterface $container = null): void
     {
         $this->container = $container;
     }
@@ -46,7 +46,7 @@ final class NotificationRulesFixture extends AbstractFixture implements Containe
     /**
      * {@inheritdoc}
      */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         $installResourcesDirectory = $this->container->getParameter('coreshop.installer.resources');
         $jsonFile = $this->container->get('kernel')->locateResource(sprintf('%s/data/%s.json', $installResourcesDirectory, 'notification-rules'));

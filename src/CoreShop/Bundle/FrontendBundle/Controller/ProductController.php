@@ -8,16 +8,21 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\FrontendBundle\Controller;
 
 use CoreShop\Component\Product\Model\ProductInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ProductController extends FrontendController
 {
-    public function latestAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function latestAction(Request $request): Response
     {
         $productRepository = $this->get('coreshop.repository.product');
 
@@ -26,7 +31,11 @@ class ProductController extends FrontendController
         ]);
     }
 
-    public function detailAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function detailAction(Request $request): Response
     {
         $productRepository = $this->get('coreshop.repository.product');
         $product = $productRepository->find($request->get('product'));

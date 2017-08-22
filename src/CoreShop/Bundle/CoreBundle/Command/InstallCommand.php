@@ -44,7 +44,7 @@ final class InstallCommand extends AbstractInstallCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->setName('coreshop:install')
@@ -59,7 +59,7 @@ EOT
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $outputStyle = new SymfonyStyle($input, $output);
         $outputStyle->writeln('<info>Installing CoreShop...</info>');
@@ -88,6 +88,8 @@ EOT
         $outputStyle->writeln(sprintf(
             'You can now open your store at the following path under the website root: <info>/</info>'
         ));
+
+        return 0;
     }
 
     /**
@@ -95,7 +97,7 @@ EOT
      *
      * @return string
      */
-    private function getProperFinalMessage($errored)
+    private function getProperFinalMessage($errored): string
     {
         if ($errored) {
             return 'CoreShop has been installed, but some error occurred.';
@@ -107,7 +109,7 @@ EOT
     /**
      * @return string
      */
-    private function getCoreShopLogo()
+    private function getCoreShopLogo(): string
     {
         return '   
                                     <info>;##:</info>

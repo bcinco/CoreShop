@@ -82,7 +82,7 @@ final class CountryContext implements CountryContextInterface
     /**
      * @param CountryInterface|null $country
      */
-    private function assertCountryWasFound(CountryInterface $country = null)
+    private function assertCountryWasFound(CountryInterface $country = null): void
     {
         if (null === $country) {
             throw new \UnexpectedValueException('Country was not found for given request');

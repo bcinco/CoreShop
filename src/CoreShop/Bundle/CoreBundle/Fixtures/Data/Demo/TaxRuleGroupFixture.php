@@ -32,7 +32,7 @@ class TaxRuleGroupFixture extends AbstractFixture implements ContainerAwareInter
     /**
      * {@inheritdoc}
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return '2.0';
     }
@@ -40,7 +40,7 @@ class TaxRuleGroupFixture extends AbstractFixture implements ContainerAwareInter
     /**
      * {@inheritdoc}
      */
-    public function setContainer(ContainerInterface $container = null)
+    public function setContainer(ContainerInterface $container = null): void
     {
         $this->container = $container;
     }
@@ -48,7 +48,7 @@ class TaxRuleGroupFixture extends AbstractFixture implements ContainerAwareInter
     /**
      * {@inheritdoc}
      */
-    public function getDependencies()
+    public function getDependencies(): array
     {
         return [
             TaxRateFixture::class
@@ -58,7 +58,7 @@ class TaxRuleGroupFixture extends AbstractFixture implements ContainerAwareInter
     /**
      * {@inheritdoc}
      */
-    public function load(ObjectManager $manager)
+    public function load(ObjectManager $manager): void
     {
         if (!count($this->container->get('coreshop.repository.tax_rule_group')->findAll())) {
             /**

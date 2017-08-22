@@ -18,10 +18,15 @@ use CoreShop\Component\Address\Model\AddressInterface;
 use CoreShop\Component\Customer\Model\CustomerInterface;
 use CoreShop\Component\Order\Model\OrderInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class CustomerController extends FrontendController
 {
-    public function headerAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function headerAction(Request $request): Response
     {
         return $this->renderTemplate('CoreShopFrontendBundle:Customer:_header.html.twig', [
             'catalogMode' => false,
@@ -29,7 +34,11 @@ class CustomerController extends FrontendController
         ]);
     }
 
-    public function footerAction()
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function footerAction(Request $request): Response
     {
         return $this->renderTemplate('CoreShopFrontendBundle:Customer:_footer.html.twig', [
             'catalogMode' => false,
@@ -37,7 +46,11 @@ class CustomerController extends FrontendController
         ]);
     }
 
-    public function profileAction()
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function profileAction(Request $request): Response
     {
         $customer = $this->getCustomer();
 
@@ -50,7 +63,11 @@ class CustomerController extends FrontendController
         ]);
     }
 
-    public function ordersAction()
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function ordersAction(Request $request): Response
     {
         $customer = $this->getCustomer();
 
@@ -64,7 +81,11 @@ class CustomerController extends FrontendController
         ]);
     }
 
-    public function orderDetailAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function orderDetailAction(Request $request): Response
     {
         $orderId = $request->get('order');
         $customer = $this->getCustomer();
@@ -89,7 +110,11 @@ class CustomerController extends FrontendController
         ]);
     }
 
-    public function addressesAction()
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function addressesAction(Request $request): Response
     {
         $customer = $this->getCustomer();
 
@@ -102,7 +127,11 @@ class CustomerController extends FrontendController
         ]);
     }
 
-    public function addressAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function addressAction(Request $request): Response
     {
         $customer = $this->getCustomer();
 
@@ -148,7 +177,11 @@ class CustomerController extends FrontendController
         ]);
     }
 
-    public function addressDeleteAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function addressDeleteAction(Request $request): Response
     {
         $customer = $this->getCustomer();
 
@@ -172,7 +205,12 @@ class CustomerController extends FrontendController
         return $this->redirectToRoute('coreshop_customer_addresses');
     }
 
-    public function settingsAction(Request $request) {
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function settingsAction(Request $request): Response
+    {
         $customer = $this->getCustomer();
 
         if (!$customer instanceof CustomerInterface) {
@@ -198,7 +236,10 @@ class CustomerController extends FrontendController
         ]);
     }
 
-    protected function getCustomer()
+    /**
+     * @return CustomerInterface|null
+     */
+    protected function getCustomer(): ?CustomerInterface
     {
         try {
             return $this->get('coreshop.context.customer')->getCustomer();

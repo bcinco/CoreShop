@@ -7,7 +7,12 @@ use Symfony\Component\HttpKernel\Bundle\BundleInterface;
 
 final class PimcoreResourceClassGenerator extends Generator
 {
-    public function generateResourceClass(BundleInterface $bundle, $modelName, $inheritFrom)
+    /**
+     * @param BundleInterface $bundle
+     * @param $modelName
+     * @param $inheritFrom
+     */
+    public function generateResourceClass(BundleInterface $bundle, $modelName, $inheritFrom): void
     {
         $dir = $bundle->getPath();
         $modelFile = $dir.'/Model/'.$modelName.'.php';

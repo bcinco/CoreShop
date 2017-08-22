@@ -34,7 +34,7 @@ class DataFixturesEvent extends Event
      *
      * @return ObjectManager
      */
-    public function getObjectManager()
+    public function getObjectManager(): ObjectManager
     {
         return $this->manager;
     }
@@ -44,7 +44,7 @@ class DataFixturesEvent extends Event
      *
      * @return string
      */
-    public function getFixturesType()
+    public function getFixturesType(): string
     {
         return $this->fixturesType;
     }
@@ -54,7 +54,7 @@ class DataFixturesEvent extends Event
      *
      * @param string $message
      */
-    public function log($message)
+    public function log($message): void
     {
         if (null !== $this->logger) {
             $logger = $this->logger;
@@ -67,7 +67,7 @@ class DataFixturesEvent extends Event
      *
      * @return bool
      */
-    public function isMainFixtures()
+    public function isMainFixtures(): bool
     {
         return DataFixturesExecutorInterface::MAIN_FIXTURES === $this->getFixturesType();
     }
@@ -77,7 +77,7 @@ class DataFixturesEvent extends Event
      *
      * @return bool
      */
-    public function isDemoFixtures()
+    public function isDemoFixtures(): bool
     {
         return DataFixturesExecutorInterface::DEMO_FIXTURES === $this->getFixturesType();
     }

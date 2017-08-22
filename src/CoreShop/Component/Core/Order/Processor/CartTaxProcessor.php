@@ -36,7 +36,7 @@ final class CartTaxProcessor implements CartProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function process(CartInterface $cart)
+    public function process(CartInterface $cart): void
     {
         $usedTaxes = [];
 

@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\TaxationBundle\Form\Type;
 
@@ -20,22 +20,27 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class TaxRuleGroupType extends AbstractResourceType
 {
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    /**
+     * {@inheritdoc}
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class)
             ->add('active', CheckboxType::class)
             ->add('taxRules',
                 CollectionType::class, [
-                'entry_type' => TaxRuleType::class,
-                'allow_add' => true,
-                'allow_delete' => true,
-                'by_reference' => false,
-            ])
-        ;
+                    'entry_type' => TaxRuleType::class,
+                    'allow_add' => true,
+                    'allow_delete' => true,
+                    'by_reference' => false,
+                ]);
     }
 
-    public function getBlockPrefix()
+    /**
+     * {@inheritdoc}
+     */
+    public function getBlockPrefix(): string
     {
         return 'coreshop_taxation_tax_rule_group';
     }

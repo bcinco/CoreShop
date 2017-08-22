@@ -23,7 +23,7 @@ final class TranslatableEntityLocalePass implements CompilerPassInterface
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         $translatableEntityLocaleAssignerDefinition = new Definition(TranslatableEntityPimcoreLocaleAssigner::class);
         $translatableEntityLocaleAssignerDefinition->addArgument(new Reference('pimcore.locale'));

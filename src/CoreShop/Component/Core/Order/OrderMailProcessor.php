@@ -65,7 +65,7 @@ class OrderMailProcessor implements OrderMailProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function sendOrderMail($emailDocument, OrderInterface $order, $sendInvoices = false, $sendShipments = false, $params = [])
+    public function sendOrderMail($emailDocument, OrderInterface $order, $sendInvoices = false, $sendShipments = false, $params = []): bool
     {
         if (!$emailDocument instanceof Document\Email) {
             return false;
@@ -128,7 +128,7 @@ class OrderMailProcessor implements OrderMailProcessorInterface
      * @param Document\Email $emailDocument
      * @param string|array   $recipients
      */
-    private function addRecipients($mail, $emailDocument, $recipients = '')
+    private function addRecipients($mail, $emailDocument, $recipients = ''): void
     {
         $toRecipients = [];
         if (is_array($recipients)) {

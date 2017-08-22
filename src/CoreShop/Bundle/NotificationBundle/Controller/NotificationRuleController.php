@@ -16,10 +16,15 @@ use CoreShop\Bundle\ResourceBundle\Controller\ResourceController;
 use CoreShop\Component\Notification\Model\NotificationRuleInterface;
 use Doctrine\Common\Collections\Criteria;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class NotificationRuleController extends ResourceController
 {
-    public function getConfigAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function getConfigAction(Request $request): Response
     {
         $conditions = [];
         $actions = [];
@@ -69,7 +74,11 @@ class NotificationRuleController extends ResourceController
         ]);
     }
 
-    public function sortAction(Request $request)
+    /**
+     * @param Request $request
+     * @return Response
+     */
+    public function sortAction(Request $request): Response
     {
         $rule = $request->get('rule');
         $toRule = $request->get('toRule');

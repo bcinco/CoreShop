@@ -38,7 +38,7 @@ final class PimcoreDocumentsInstaller implements ResourceInstallerInterface
     /**
      * {@inheritdoc}
      */
-    public function installResources(OutputInterface $output, $applicationName = null)
+    public function installResources(OutputInterface $output, $applicationName = null): void
     {
         $parameter = $applicationName ? sprintf('%s.application.pimcore.admin.install.documents', $applicationName) : 'resources.admin.install.documents';
 
@@ -114,7 +114,7 @@ final class PimcoreDocumentsInstaller implements ResourceInstallerInterface
      * @param $properties
      * @return Document
      */
-    private function installDocument($language, $properties)
+    private function installDocument($language, $properties): ?Document
     {
         $path = "/" . $language . "/" . $properties['path'] . "/" . $properties['key'];
 
@@ -179,5 +179,7 @@ final class PimcoreDocumentsInstaller implements ResourceInstallerInterface
                 return $document;
             }
         }
+
+        return null;
     }
 }

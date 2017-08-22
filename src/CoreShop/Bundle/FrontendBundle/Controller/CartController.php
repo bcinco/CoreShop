@@ -16,11 +16,15 @@ use CoreShop\Component\Order\Cart\CartModifierInterface;
 use CoreShop\Component\Order\Cart\Rule\CartPriceRuleProcessorInterface;
 use CoreShop\Component\Order\Cart\Rule\CartPriceRuleUnProcessorInterface;
 use CoreShop\Component\Order\Manager\CartManagerInterface;
+use CoreShop\Component\Order\Model\CartInterface;
 use CoreShop\Component\Order\Model\CartItemInterface;
 use CoreShop\Component\Order\Model\CartPriceRuleVoucherCodeInterface;
 use CoreShop\Component\Order\Repository\CartPriceRuleVoucherRepositoryInterface;
 use CoreShop\Component\Core\Model\ProductInterface;
+use CoreShop\Component\Order\Transformer\ProposalTransformerInterface;
+use CoreShop\Component\Resource\Factory\PimcoreFactoryInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class CartController extends FrontendController
@@ -28,9 +32,9 @@ class CartController extends FrontendController
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function widgetAction(Request $request)
+    public function widgetAction(Request $request): Response
     {
         return $this->renderTemplate('CoreShopFrontendBundle:Cart:_widget.html.twig', [
             'cart' => $this->getCart(),
@@ -39,9 +43,9 @@ class CartController extends FrontendController
 
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function widgetSummaryAction(Request $request)
+    public function widgetSummaryAction(Request $request): Response
     {
         return $this->renderTemplate('CoreShopFrontendBundle:Cart:_widgetSummary.html.twig', [
             'cart' => $this->getCart(),
@@ -52,9 +56,9 @@ class CartController extends FrontendController
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return Response
      */
-    public function addItemAction(Request $request)
+    public function addItemAction(Request $request): Response
     {
         $product = $this->get('coreshop.repository.product')->find($request->get('product'));
 
@@ -74,9 +78,9 @@ class CartController extends FrontendController
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return Response
      */
-    public function removeItemAction(Request $request)
+    public function removeItemAction(Request $request): Response
     {
         $cartItem = $this->get('coreshop.repository.cart_item')->find($request->get('cartItem'));
 
@@ -98,9 +102,9 @@ class CartController extends FrontendController
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function summaryAction(Request $request)
+    public function summaryAction(Request $request): Response
     {
         return $this->renderTemplate('CoreShopFrontendBundle:Cart:summary.html.twig', [
             'cart' => $this->getCart(),
@@ -112,9 +116,9 @@ class CartController extends FrontendController
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return Response
      */
-    public function addPriceRuleAction(Request $request)
+    public function addPriceRuleAction(Request $request): Response
     {
         $code = $request->get('code');
         $cart = $this->getCartManager()->getCart();
@@ -148,9 +152,9 @@ class CartController extends FrontendController
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     * @return Response
      */
-    public function removePriceRuleAction(Request $request)
+    public function removePriceRuleAction(Request $request): Response
     {
         $code = $request->get('code');
         $cart = $this->getCartManager()->getCart();
@@ -170,9 +174,9 @@ class CartController extends FrontendController
 
     /**
      * @param Request $request
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
-    public function createQuoteAction(Request $request)
+    public function createQuoteAction(Request $request): Response
     {
         $quote = $this->getQuoteFactory()->createNew();
         $quote = $this->getCartToQuoteTransformer()->transform($this->getCart(), $quote);
@@ -181,14 +185,17 @@ class CartController extends FrontendController
     }
 
     /**
-     * @return \CoreShop\Component\Resource\Factory\PimcoreFactory
+     * @return PimcoreFactoryInterface
      */
-    protected function getQuoteFactory()
+    protected function getQuoteFactory(): PimcoreFactoryInterface
     {
         return $this->get('coreshop.factory.quote');
     }
 
-    protected function getCartToQuoteTransformer()
+    /**
+     * @return ProposalTransformerInterface
+     */
+    protected function getCartToQuoteTransformer(): ProposalTransformerInterface
     {
         return $this->get('coreshop.order.transformer.cart_to_quote');
     }
@@ -196,7 +203,7 @@ class CartController extends FrontendController
     /**
      * @return CartPriceRuleProcessorInterface
      */
-    protected function getCartPriceRuleProcessor()
+    protected function getCartPriceRuleProcessor(): CartPriceRuleProcessorInterface
     {
         return $this->get('coreshop.cart_price_rule.processor');
     }
@@ -204,7 +211,7 @@ class CartController extends FrontendController
     /**
      * @return CartPriceRuleUnProcessorInterface
      */
-    protected function getCartPriceRuleUnProcessor()
+    protected function getCartPriceRuleUnProcessor(): CartPriceRuleUnProcessorInterface
     {
         return $this->get('coreshop.cart_price_rule.un_processor');
     }
@@ -212,7 +219,7 @@ class CartController extends FrontendController
     /**
      * @return CartModifierInterface
      */
-    protected function getCartModifier()
+    protected function getCartModifier(): CartModifierInterface
     {
         return $this->get('coreshop.cart.modifier');
     }
@@ -220,15 +227,15 @@ class CartController extends FrontendController
     /**
      * @return CartPriceRuleVoucherRepositoryInterface
      */
-    protected function getCartPriceRuleVoucherRepository()
+    protected function getCartPriceRuleVoucherRepository(): CartPriceRuleVoucherRepositoryInterface
     {
         return $this->get('coreshop.repository.cart_price_rule_voucher_code');
     }
 
     /**
-     * @return \CoreShop\Component\Order\Model\CartInterface
+     * @return CartInterface
      */
-    protected function getCart()
+    protected function getCart(): CartInterface
     {
         return $this->getCartManager()->getCart();
     }
@@ -236,7 +243,7 @@ class CartController extends FrontendController
     /**
      * @return CartManagerInterface
      */
-    protected function getCartManager()
+    protected function getCartManager(): CartManagerInterface
     {
         return $this->get('coreshop.cart.manager');
     }

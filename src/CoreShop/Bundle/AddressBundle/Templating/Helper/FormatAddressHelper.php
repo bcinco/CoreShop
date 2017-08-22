@@ -30,12 +30,9 @@ class FormatAddressHelper implements FormatAddressHelperInterface
     }
 
     /**
-     * @param $address
-     * @param bool $asHtml
-     *
-     * @return mixed
+     * {@inheritdoc}
      */
-    public function formatAddress($address, $asHtml = true)
+    public function formatAddress($address, $asHtml = true): string
     {
         return $this->addressFormatter->formatAddress($address, $asHtml);
     }

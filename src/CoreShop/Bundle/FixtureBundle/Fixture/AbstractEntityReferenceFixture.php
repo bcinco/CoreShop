@@ -18,7 +18,7 @@ abstract class AbstractEntityReferenceFixture extends AbstractFixture implements
      * @return array
      * @see getObjectReferencesByIds
      */
-    protected function getObjectReferences(ObjectManager $objectManager, $className)
+    protected function getObjectReferences(ObjectManager $objectManager, $className): array
     {
         $identifier = $objectManager->getClassMetadata($className)->getIdentifier();
         $idField    = reset($identifier);
@@ -49,7 +49,7 @@ abstract class AbstractEntityReferenceFixture extends AbstractFixture implements
      * @param array $ids
      * @return array
      */
-    protected function getObjectReferencesByIds(ObjectManager $objectManager, $className, array $ids)
+    protected function getObjectReferencesByIds(ObjectManager $objectManager, $className, array $ids): array
     {
         $entities = [];
 

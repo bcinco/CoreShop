@@ -23,17 +23,15 @@ interface CartModifierInterface
      * @param PurchasableInterface $product
      * @param int $quantity
      *
-     * @return mixed
+     * @return CartItemInterface
      */
-    public function addCartItem(CartInterface $cart, PurchasableInterface $product, $quantity = 1);
+    public function addCartItem(CartInterface $cart, PurchasableInterface $product, $quantity = 1): ?CartItemInterface;
 
     /**
      * @param CartInterface $cart
      * @param CartItemInterface $cartItem
-     *
-     * @return mixed
      */
-    public function removeCartItem(CartInterface $cart, CartItemInterface $cartItem);
+    public function removeCartItem(CartInterface $cart, CartItemInterface $cartItem): void;
 
     /**
      * @param CartInterface $cart
@@ -41,7 +39,7 @@ interface CartModifierInterface
      * @param int $quantity
      * @param bool $increaseAmount
      *
-     * @return mixed
+     * @return CartItemInterface
      */
-    public function updateCartItemQuantity(CartInterface $cart, PurchasableInterface $product, $quantity = 0, $increaseAmount = false);
+    public function updateCartItemQuantity(CartInterface $cart, PurchasableInterface $product, $quantity = 0, $increaseAmount = false): ?CartItemInterface;
 }

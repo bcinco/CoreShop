@@ -8,7 +8,7 @@
  *
  * @copyright  Copyright (c) 2015-2017 Dominik Pfaffenbauer (https://www.pfaffenbauer.at)
  * @license    https://www.coreshop.org/license     GNU General Public License version 3 (GPLv3)
-*/
+ */
 
 namespace CoreShop\Bundle\ResourceBundle\EventListener;
 
@@ -21,7 +21,7 @@ final class ORMRepositoryClassSubscriber extends AbstractDoctrineSubscriber
     /**
      * @return array
      */
-    public function getSubscribedEvents()
+    public function getSubscribedEvents(): array
     {
         return [
             Events::loadClassMetadata,
@@ -31,7 +31,7 @@ final class ORMRepositoryClassSubscriber extends AbstractDoctrineSubscriber
     /**
      * @param LoadClassMetadataEventArgs $eventArgs
      */
-    public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs)
+    public function loadClassMetadata(LoadClassMetadataEventArgs $eventArgs): void
     {
         $this->setCustomRepositoryClass($eventArgs->getClassMetadata());
     }
@@ -39,7 +39,7 @@ final class ORMRepositoryClassSubscriber extends AbstractDoctrineSubscriber
     /**
      * @param ClassMetadata $metadata
      */
-    private function setCustomRepositoryClass(ClassMetadata $metadata)
+    private function setCustomRepositoryClass(ClassMetadata $metadata): void
     {
         try {
             $resourceMetadata = $this->resourceRegistry->getByClass($metadata->getName());

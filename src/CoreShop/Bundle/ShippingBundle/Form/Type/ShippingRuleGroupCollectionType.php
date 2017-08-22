@@ -21,12 +21,7 @@ class ShippingRuleGroupCollectionType extends AbstractType
     /**
      * {@inheritdoc}
      */
-    public function getParent()
-    {
-        return CollectionType::class;
-    }
-
-    public function configureOptions(OptionsResolver $resolver)
+    public function configureOptions(OptionsResolver $resolver): void
     {
         parent::configureOptions($resolver);
 
@@ -36,5 +31,13 @@ class ShippingRuleGroupCollectionType extends AbstractType
             'allow_delete' => true,
             'by_reference' => true,
         ]);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getParent(): string
+    {
+        return CollectionType::class;
     }
 }

@@ -9,5 +9,5 @@ interface LoadedFixtureVersionAwareInterface
      *
      * @param $version
      */
-    public function setLoadedVersion($version = null);
+    public function setLoadedVersion($version = null): void;
 }

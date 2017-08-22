@@ -16,15 +16,16 @@ use CoreShop\Bundle\ResourceBundle\Controller\ResourceController;
 use CoreShop\Component\Core\Configuration\ConfigurationServiceInterface;
 use CoreShop\Component\Core\Helper\ArrayHelper;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 class ConfigurationController extends ResourceController
 {
     /**
      * @param Request $request
      *
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function saveAllAction(Request $request)
+    public function saveAllAction(Request $request): Response
     {
         $values = $this->decodeJson($request->get('values'));
         $values = array_htmlspecialchars($values);
@@ -55,9 +56,9 @@ class ConfigurationController extends ResourceController
     }
 
     /**
-     * @return \Symfony\Component\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function getAllAction()
+    public function getAllAction(): Response
     {
         $stores = $this->get('coreshop.repository.store')->findAll();
         $valueArray = [];
@@ -82,7 +83,7 @@ class ConfigurationController extends ResourceController
     /**
      * @return ConfigurationServiceInterface
      */
-    private function getConfigurationService()
+    private function getConfigurationService(): ConfigurationServiceInterface
     {
         return $this->get('coreshop.configuration.service');
     }

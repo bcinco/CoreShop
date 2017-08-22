@@ -42,7 +42,7 @@ class AbstractProductData extends AbstractData
     /**
      * @return string
      */
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
@@ -50,7 +50,7 @@ class AbstractProductData extends AbstractData
     /**
      * @param string $name
      */
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
     }
@@ -58,7 +58,7 @@ class AbstractProductData extends AbstractData
     /**
      * @return string
      */
-    public function getList()
+    public function getList(): string
     {
         return $this->list;
     }
@@ -66,7 +66,7 @@ class AbstractProductData extends AbstractData
     /**
      * @param string $list
      */
-    public function setList($list)
+    public function setList(string $list): void
     {
         $this->list = $list;
     }
@@ -74,7 +74,7 @@ class AbstractProductData extends AbstractData
     /**
      * @return string
      */
-    public function getBrand()
+    public function getBrand(): string
     {
         return $this->brand;
     }
@@ -82,7 +82,7 @@ class AbstractProductData extends AbstractData
     /**
      * @param string $brand
      */
-    public function setBrand($brand)
+    public function setBrand(string $brand): void
     {
         $this->brand = $brand;
     }
@@ -90,7 +90,7 @@ class AbstractProductData extends AbstractData
     /**
      * @return string
      */
-    public function getCategory()
+    public function getCategory(): string
     {
         return $this->category;
     }
@@ -98,7 +98,7 @@ class AbstractProductData extends AbstractData
     /**
      * @param string $category
      */
-    public function setCategory($category)
+    public function setCategory(string $category): void
     {
         $this->category = $category;
     }
@@ -106,7 +106,7 @@ class AbstractProductData extends AbstractData
     /**
      * @return string
      */
-    public function getVariant()
+    public function getVariant(): string
     {
         return $this->variant;
     }
@@ -114,7 +114,7 @@ class AbstractProductData extends AbstractData
     /**
      * @param string $variant
      */
-    public function setVariant($variant)
+    public function setVariant(string $variant): void
     {
         $this->variant = $variant;
     }
@@ -122,7 +122,7 @@ class AbstractProductData extends AbstractData
     /**
      * @return int
      */
-    public function getPosition()
+    public function getPosition(): int
     {
         return $this->position;
     }
@@ -130,7 +130,7 @@ class AbstractProductData extends AbstractData
     /**
      * @param int $position
      */
-    public function setPosition($position)
+    public function setPosition(int $position): void
     {
         $this->position = $position;
     }
@@ -138,7 +138,7 @@ class AbstractProductData extends AbstractData
     /**
      * @return float
      */
-    public function getPrice()
+    public function getPrice(): float
     {
         return $this->price;
     }
@@ -146,7 +146,7 @@ class AbstractProductData extends AbstractData
     /**
      * @param float $price
      */
-    public function setPrice($price)
+    public function setPrice(float $price): void
     {
         $this->price = $price;
     }

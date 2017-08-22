@@ -36,7 +36,7 @@ final class CartDiscountProcessor implements CartProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function process(CartInterface $cart)
+    public function process(CartInterface $cart): void
     {
         $cart->setDiscount($this->cartDiscountCalculator->getDiscount($cart, true), true);
         $cart->setDiscount($this->cartDiscountCalculator->getDiscount($cart, false), false);

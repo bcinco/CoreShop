@@ -19,5 +19,5 @@ interface IndexUpdaterServiceInterface
      *
      * @param $subject
      */
-    public function updateIndices($subject);
+    public function updateIndices($subject): void;
 }

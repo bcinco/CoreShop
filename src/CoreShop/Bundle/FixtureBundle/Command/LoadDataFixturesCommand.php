@@ -23,7 +23,7 @@ class LoadDataFixturesCommand extends ContainerAwareCommand
     /**
      * {@inheritdoc}
      */
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName(static::COMMAND_NAME)
             ->setDescription('Load data fixtures.')
@@ -57,7 +57,7 @@ class LoadDataFixturesCommand extends ContainerAwareCommand
     /**
      * {@inheritdoc}
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $fixtures = null;
         try {
@@ -85,7 +85,7 @@ class LoadDataFixturesCommand extends ContainerAwareCommand
      * @return array
      * @throws \RuntimeException if loading of data fixtures should be terminated
      */
-    protected function getFixtures(InputInterface $input, OutputInterface $output)
+    protected function getFixtures(InputInterface $input, OutputInterface $output): array
     {
         $loader = $this->getContainer()->get('coreshop.fixture.data.loader');
         $bundles = $input->getOption('bundles');
@@ -116,7 +116,7 @@ class LoadDataFixturesCommand extends ContainerAwareCommand
      * @param OutputInterface $output
      * @param array           $fixtures
      */
-    protected function outputFixtures(InputInterface $input, OutputInterface $output, $fixtures)
+    protected function outputFixtures(InputInterface $input, OutputInterface $output, $fixtures): void
     {
         $output->writeln(
             sprintf(
@@ -136,7 +136,7 @@ class LoadDataFixturesCommand extends ContainerAwareCommand
      * @param OutputInterface $output
      * @param array           $fixtures
      */
-    protected function processFixtures(InputInterface $input, OutputInterface $output, $fixtures)
+    protected function processFixtures(InputInterface $input, OutputInterface $output, $fixtures): void
     {
         $output->writeln(
             sprintf(
@@ -158,7 +158,7 @@ class LoadDataFixturesCommand extends ContainerAwareCommand
      * @param InputInterface $input
      * @return string
      */
-    protected function getTypeOfFixtures(InputInterface $input)
+    protected function getTypeOfFixtures(InputInterface $input): string
     {
         return $input->getOption('fixtures-type');
     }
@@ -167,7 +167,7 @@ class LoadDataFixturesCommand extends ContainerAwareCommand
      * @param InputInterface $input
      * @return string
      */
-    protected function getFixtureRelativePath(InputInterface $input)
+    protected function getFixtureRelativePath(InputInterface $input): string
     {
         $fixtureRelativePath = $this->getTypeOfFixtures($input) == self::DEMO_FIXTURES_TYPE
             ? self::DEMO_FIXTURES_PATH

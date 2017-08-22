@@ -24,7 +24,7 @@ final class CartPriceRuleGeneratorType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('amount', IntegerType::class)
@@ -46,7 +46,7 @@ final class CartPriceRuleGeneratorType extends AbstractResourceType
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'coreshop_cart_price_rule_generator';
     }

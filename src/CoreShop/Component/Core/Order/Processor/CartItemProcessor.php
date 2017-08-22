@@ -35,7 +35,7 @@ final class CartItemProcessor implements CartProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function process(CartInterface $cart)
+    public function process(CartInterface $cart): void
     {
         /**
          * @var $item CartItemInterface

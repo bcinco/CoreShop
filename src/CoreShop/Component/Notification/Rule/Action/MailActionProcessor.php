@@ -21,7 +21,7 @@ class MailActionProcessor implements NotificationRuleProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function apply($subject, NotificationRuleInterface $rule, array $configuration, $params = [])
+    public function apply($subject, NotificationRuleInterface $rule, array $configuration, $params = []): void
     {
         $language = null;
         $mails = $configuration['mails'];

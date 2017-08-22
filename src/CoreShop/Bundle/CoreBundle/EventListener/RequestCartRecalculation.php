@@ -58,7 +58,7 @@ final class RequestCartRecalculation
      *
      * @param GetResponseEvent $event
      */
-    public function onKernelRequest(GetResponseEvent $event) {
+    public function onKernelRequest(GetResponseEvent $event): void {
         if (!$event->isMasterRequest()) {
             return;
         }

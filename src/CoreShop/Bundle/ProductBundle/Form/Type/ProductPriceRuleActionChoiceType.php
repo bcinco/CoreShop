@@ -14,12 +14,12 @@ namespace CoreShop\Bundle\ProductBundle\Form\Type;
 
 use CoreShop\Bundle\RuleBundle\Form\Type\RuleActionChoiceType;
 
-class ProductPriceRuleActionChoiceType extends RuleActionChoiceType
+final class ProductPriceRuleActionChoiceType extends RuleActionChoiceType
 {
     /**
      * {@inheritdoc}
      */
-    public function getBlockPrefix()
+    public function getBlockPrefix(): string
     {
         return 'coreshop_product_price_rule_action_choice';
     }

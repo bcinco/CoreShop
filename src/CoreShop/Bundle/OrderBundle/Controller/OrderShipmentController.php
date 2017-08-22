@@ -21,7 +21,7 @@ use CoreShop\Component\Order\Model\OrderShipmentInterface;
 use CoreShop\Component\Order\Model\PurchasableInterface;
 use CoreShop\Component\Order\Processable\ProcessableInterface;
 use CoreShop\Component\Order\Renderer\OrderDocumentRendererInterface;
-use CoreShop\Component\Resource\Factory\FactoryInterface;
+use CoreShop\Component\Resource\Factory\PimcoreFactoryInterface;
 use CoreShop\Component\Resource\Repository\PimcoreRepositoryInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -31,10 +31,9 @@ class OrderShipmentController extends PimcoreController
 {
     /**
      * @param Request $request
-     *
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function getShipAbleItemsAction(Request $request)
+    public function getShipAbleItemsAction(Request $request): Response
     {
         $orderId = $request->get('id');
         $order = $this->getOrderRepository()->find($orderId);
@@ -77,10 +76,9 @@ class OrderShipmentController extends PimcoreController
 
     /**
      * @param Request $request
-     *
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function createShipmentAction(Request $request)
+    public function createShipmentAction(Request $request): Response
     {
         $orderId = $request->get('id');
 
@@ -124,10 +122,9 @@ class OrderShipmentController extends PimcoreController
 
     /**
      * @param Request $request
-     *
      * @return Response
      */
-    public function renderAction(Request $request)
+    public function renderAction(Request $request): Response
     {
         $invoiceId = $request->get('id');
         $invoice = $this->getOrderShipmentRepository()->find($invoiceId);
@@ -149,7 +146,7 @@ class OrderShipmentController extends PimcoreController
     /**
      * @return OrderDocumentRendererInterface
      */
-    protected function getOrderDocumentRenderer()
+    protected function getOrderDocumentRenderer(): OrderDocumentRendererInterface
     {
         return $this->get('coreshop.renderer.order.pdf');
     }
@@ -157,7 +154,7 @@ class OrderShipmentController extends PimcoreController
     /**
      * @return PimcoreRepositoryInterface
      */
-    protected function getOrderShipmentRepository()
+    protected function getOrderShipmentRepository(): PimcoreRepositoryInterface
     {
         return $this->get('coreshop.repository.order_shipment');
     }
@@ -165,7 +162,7 @@ class OrderShipmentController extends PimcoreController
     /**
      * @return ProcessableInterface
      */
-    protected function getProcessableHelper()
+    protected function getProcessableHelper(): ProcessableInterface
     {
         return $this->get('coreshop.order.shipment.processable');
     }
@@ -173,15 +170,15 @@ class OrderShipmentController extends PimcoreController
     /**
      * @return PimcoreRepositoryInterface
      */
-    protected function getOrderRepository()
+    protected function getOrderRepository(): PimcoreRepositoryInterface
     {
         return $this->get('coreshop.repository.order');
     }
 
     /**
-     * @return FactoryInterface
+     * @return PimcoreFactoryInterface
      */
-    protected function getShipmentFactory()
+    protected function getShipmentFactory(): PimcoreFactoryInterface
     {
         return $this->get('coreshop.factory.order_shipment');
     }
@@ -189,7 +186,7 @@ class OrderShipmentController extends PimcoreController
     /**
      * @return OrderToShipmentTransformer
      */
-    protected function getOrderToShipmentTransformer()
+    protected function getOrderToShipmentTransformer(): OrderToShipmentTransformer
     {
         return $this->get('coreshop.order.transformer.order_to_shipment');
     }

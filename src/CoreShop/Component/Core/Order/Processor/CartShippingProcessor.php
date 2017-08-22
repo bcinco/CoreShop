@@ -59,7 +59,7 @@ final class CartShippingProcessor implements CartProcessorInterface
     /**
      * {@inheritdoc}
      */
-    public function process(CartInterface $cart)
+    public function process(CartInterface $cart): void
     {
         if ($cart instanceof \CoreShop\Component\Core\Model\CartInterface) {
             //TODO: Should we add something like a default carrier determination?

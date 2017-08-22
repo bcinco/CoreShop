@@ -25,7 +25,7 @@ abstract class AbstractModelExtension extends Extension
      * @param array $resources
      * @param ContainerBuilder $container
      */
-    protected function registerResources($applicationName, $driver, array $resources, ContainerBuilder $container)
+    protected function registerResources($applicationName, $driver, array $resources, ContainerBuilder $container): void
     {
         $container->setParameter(sprintf('%s.driver.%s', $this->getAlias(), $driver), true);
         $container->setParameter(sprintf('%s.driver', $this->getAlias()), $driver);
@@ -62,7 +62,7 @@ abstract class AbstractModelExtension extends Extension
      * @param array $models
      * @param ContainerBuilder $container
      */
-    protected function registerPimcoreModels($applicationName, array $models, ContainerBuilder $container)
+    protected function registerPimcoreModels($applicationName, array $models, ContainerBuilder $container): void
     {
         $container->setParameter(sprintf('%s.driver.%s', $this->getAlias(), 'pimcore'), true);
         $container->setParameter(sprintf('%s.driver', $this->getAlias()), 'pimcore');
@@ -88,7 +88,7 @@ abstract class AbstractModelExtension extends Extension
      * @param $bundleResources
      * @param ContainerBuilder $container
      */
-    protected function registerPimcoreResources($applicationName, $bundleResources, ContainerBuilder $container)
+    protected function registerPimcoreResources($applicationName, $bundleResources, ContainerBuilder $container): void
     {
         $resourceTypes = ['js', 'css'];
 

@@ -44,7 +44,7 @@ abstract class AbstractNotificationRulePass extends RegisterRegistryTypePass
     /**
      * {@inheritdoc}
      */
-    public function process(ContainerBuilder $container)
+    public function process(ContainerBuilder $container): void
     {
         if (!$container->has($this->registry) || !$container->has($this->formRegistry)) {
             return;

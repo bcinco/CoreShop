@@ -31,13 +31,14 @@ use CoreShop\Component\Taxation\Model\TaxItemInterface;
 use Pimcore\Admin\Helper\QueryParams;
 use Pimcore\Model\Object;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 abstract class AbstractSaleController extends PimcoreController
 {
     /**
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function getGridConfigurationAction()
+    public function getGridConfigurationAction(): Response
     {
         $defaultConfiguration = [
             [
@@ -199,9 +200,9 @@ abstract class AbstractSaleController extends PimcoreController
 
     /**
      * @param Request $request
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function listAction(Request $request)
+    public function listAction(Request $request): Response
     {
         $list = $this->getSalesList();
         $list->setLimit($request->get('limit', 30));
@@ -242,9 +243,9 @@ abstract class AbstractSaleController extends PimcoreController
 
     /**
      * @param Request $request
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function detailAction(Request $request)
+    public function detailAction(Request $request): Response
     {
         $saleId = $request->get('id');
         $sale = $this->getSaleRepository()->find($saleId);
@@ -260,9 +261,9 @@ abstract class AbstractSaleController extends PimcoreController
 
     /**
      * @param Request $request
-     * @return \Pimcore\Bundle\AdminBundle\HttpFoundation\JsonResponse
+     * @return Response
      */
-    public function findSaleAction(Request $request)
+    public function findSaleAction(Request $request): Response
     {
         $number = $request->get('number');
 
@@ -283,9 +284,9 @@ abstract class AbstractSaleController extends PimcoreController
     /**
      * @param SaleInterface $sale
      *
-     * @return array<string,string|integer>[]
+     * @return array
      */
-    protected function prepareSale(SaleInterface $sale)
+    protected function prepareSale(SaleInterface $sale): array
     {
         $date = intval($sale->getSaleDate()->getTimestamp());
 
@@ -317,7 +318,7 @@ abstract class AbstractSaleController extends PimcoreController
      *
      * @return array
      */
-    protected function prepareAddress($address, $type)
+    protected function prepareAddress($address, $type): array
     {
         $prefix = 'address' . ucfirst($type);
         $values = [];
@@ -355,7 +356,7 @@ abstract class AbstractSaleController extends PimcoreController
      * @param SaleInterface $sale
      * @return array
      */
-    protected function getDetails(SaleInterface $sale)
+    protected function getDetails(SaleInterface $sale): array
     {
         $jsonSale = $this->getDataForObject($sale);
 
@@ -420,7 +421,7 @@ abstract class AbstractSaleController extends PimcoreController
      *
      * @return array
      */
-    protected function getSummary(SaleInterface $sale)
+    protected function getSummary(SaleInterface $sale): array
     {
         $summary = [];
 
@@ -474,7 +475,7 @@ abstract class AbstractSaleController extends PimcoreController
      *
      * @return array
      */
-    protected function getItemDetails(SaleInterface $sale)
+    protected function getItemDetails(SaleInterface $sale): array
     {
         $details = $sale->getItems();
         $items = [];
@@ -492,7 +493,7 @@ abstract class AbstractSaleController extends PimcoreController
      * @param SaleItemInterface $item
      * @return array<string,integer|null|string>
      */
-    protected function prepareSaleItem(SaleItemInterface $item)
+    protected function prepareSaleItem(SaleItemInterface $item): array
     {
         return [
             'o_id' => $item->getId(),
@@ -513,7 +514,7 @@ abstract class AbstractSaleController extends PimcoreController
      *
      * @return array
      */
-    protected function getDataForObject(Object\Concrete $data)
+    protected function getDataForObject(Object\Concrete $data): array
     {
         $objectData = [];
         Object\Service::loadAllObjectFields($data);
@@ -559,7 +560,7 @@ abstract class AbstractSaleController extends PimcoreController
      *
      * @return array
      */
-    protected function getCurrency(CurrencyInterface $currency)
+    protected function getCurrency(CurrencyInterface $currency): array
     {
         return [
             'name' => $currency->getName(),
@@ -571,7 +572,7 @@ abstract class AbstractSaleController extends PimcoreController
      * @param StoreInterface $store
      * @return array<string,integer|string>
      */
-    protected function getStore(StoreInterface $store)
+    protected function getStore(StoreInterface $store): array
     {
         return [
             "id" => $store->getId(),
@@ -582,37 +583,37 @@ abstract class AbstractSaleController extends PimcoreController
     /**
      * @return PimcoreRepositoryInterface
      */
-    protected abstract function getSaleRepository();
+    protected abstract function getSaleRepository(): PimcoreRepositoryInterface;
 
     /**
-     * @return \Pimcore\Model\Object\Listing
+     * @return Object\Listing
      */
-    protected abstract function getSalesList();
+    protected abstract function getSalesList(): Object\Listing;
 
     /**
      * @return string
      */
-    protected abstract function getSaleClassName();
+    protected abstract function getSaleClassName(): string;
 
     /**
      * @return array
      */
-    protected abstract function getGridColumns();
+    protected abstract function getGridColumns(): array;
 
     /**
      * @return string
      */
-    protected abstract function getOrderKey();
+    protected abstract function getOrderKey(): string;
 
     /**
      * @return string
      */
-    protected abstract function getSaleNumberField();
+    protected abstract function getSaleNumberField(): string;
 
     /**
      * @return AddressFormatterInterface
      */
-    private function getAddressFormatter()
+    protected function getAddressFormatter(): AddressFormatterInterface
     {
         return $this->get('coreshop.address.formatter');
     }

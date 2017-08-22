@@ -48,7 +48,7 @@ final class CoreShopCoreExtension extends AbstractModelExtension implements Prep
     /**
      * {@inheritdoc}
      */
-    public function load(array $config, ContainerBuilder $container)
+    public function load(array $config, ContainerBuilder $container): void
     {
         $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
         $loader = new YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
@@ -77,7 +77,7 @@ final class CoreShopCoreExtension extends AbstractModelExtension implements Prep
     /**
      * {@inheritdoc}
      */
-    public function prepend(ContainerBuilder $container)
+    public function prepend(ContainerBuilder $container): void
     {
         $config = $container->getExtensionConfig($this->getAlias());
         $config = $this->processConfiguration($this->getConfiguration([], $container), $config);
@@ -93,7 +93,7 @@ final class CoreShopCoreExtension extends AbstractModelExtension implements Prep
      * @param ContainerBuilder $container
      * @param $config
      */
-    private function registerCheckout(ContainerBuilder $container, $config)
+    private function registerCheckout(ContainerBuilder $container, $config): void
     {
         $availableCheckoutManagers = [];
 

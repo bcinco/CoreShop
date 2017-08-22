@@ -85,7 +85,7 @@ final class WorkflowManager implements WorkflowManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function addValidator(ProposalValidatorInterface $proposalValidator, $type, $priority)
+    public function addValidator(ProposalValidatorInterface $proposalValidator, $type, $priority): void
     {
         $this->serviceRegistry->register($type, $priority, $proposalValidator);
     }
@@ -93,7 +93,7 @@ final class WorkflowManager implements WorkflowManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function validateNewState(ProposalInterface $proposal, $currentState, $newState)
+    public function validateNewState(ProposalInterface $proposal, $currentState, $newState): bool
     {
         /**
          * @var $validator ProposalValidatorInterface
@@ -110,7 +110,7 @@ final class WorkflowManager implements WorkflowManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function beforeWorkflowDispatch(ProposalInterface $proposal, $newState, $currentState)
+    public function beforeWorkflowDispatch(ProposalInterface $proposal, $newState, $currentState): void
     {
         Assert::isInstanceOf($proposal, $this->class);
 
@@ -126,7 +126,7 @@ final class WorkflowManager implements WorkflowManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function successWorkflowDispatch(ProposalInterface $proposal, $newState, $oldState)
+    public function successWorkflowDispatch(ProposalInterface $proposal, $newState, $oldState): void
     {
         Assert::isInstanceOf($proposal, $this->class);
 
@@ -136,7 +136,7 @@ final class WorkflowManager implements WorkflowManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function failureWorkflowDispatch(ProposalInterface $proposal, $newState, $oldState)
+    public function failureWorkflowDispatch(ProposalInterface $proposal, $newState, $oldState): void
     {
         Assert::isInstanceOf($proposal, $this->class);
 
@@ -146,7 +146,7 @@ final class WorkflowManager implements WorkflowManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function getCurrentState(ProposalInterface $proposal)
+    public function getCurrentState(ProposalInterface $proposal): ?array
     {
         Assert::isInstanceOf($proposal, $this->class);
 
@@ -170,13 +170,13 @@ final class WorkflowManager implements WorkflowManagerInterface
             $info['status']['translatedLabel'] = $this->translator->trans($info['state']['label']);
         }
 
-        return !empty($info) ? $info : false;
+        return !empty($info) ? $info : null;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getStateHistory(ProposalInterface $proposal)
+    public function getStateHistory(ProposalInterface $proposal): array
     {
         /* @var \Pimcore\Model\Element\Note\Listing $noteList */
         $noteList = new Note\Listing();
@@ -191,7 +191,7 @@ final class WorkflowManager implements WorkflowManagerInterface
     /**
      * {@inheritdoc}
      */
-    public function changeState(ProposalInterface $proposal, $action, $params = [])
+    public function changeState(ProposalInterface $proposal, $action, $params = []): bool
     {
         Assert::isInstanceOf($proposal, $this->class);
 

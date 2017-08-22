@@ -15,6 +15,7 @@ namespace CoreShop\Bundle\ResourceBundle\Controller;
 use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 
 final class ViewHandler implements ViewHandlerInterface
 {
@@ -34,7 +35,7 @@ final class ViewHandler implements ViewHandlerInterface
     /**
      * {@inheritdoc}
      */
-    public function handle($data, $options = [])
+    public function handle($data, $options = []): Response
     {
         $context = SerializationContext::create();
         $context->setSerializeNull(true);

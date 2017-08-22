@@ -77,7 +77,7 @@ final class CurrencyConverter implements CurrencyConverterInterface
      *
      * @return ExchangeRateInterface
      */
-    private function getExchangeRate($fromCode, $toCode): int
+    private function getExchangeRate($fromCode, $toCode): ExchangeRateInterface
     {
         $fromToIndex = $this->createIndex($fromCode, $toCode);
 

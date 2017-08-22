@@ -18,7 +18,7 @@
     }
   ],
   "require": {
-    "php": "^7.0",
+    "php": ">=7.1",
     "coreshop/order-bundle": "^2.0",
     "coreshop/payment-bundle": "^2.0",
     "payum/payum-bundle": "^2.2",

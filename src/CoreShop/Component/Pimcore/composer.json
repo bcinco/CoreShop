@@ -18,7 +18,7 @@
     }
   ],
   "require": {
-    "php": "^7.0",
+    "php": ">=7.1",
     "pimcore/core-version": "^5.0"
   },
   "config": {

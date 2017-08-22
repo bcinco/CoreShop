@@ -18,7 +18,7 @@
     }
   ],
   "require": {
-    "php": "^7.0",
+    "php": ">=7.1",
     "coreshop/order-bundle": "^2.0",
     "coreshop/customer-bundle": "^2.0",
     "coreshop/product-bundle": "^2.0",

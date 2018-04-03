@@ -1,7 +1,7 @@
 # CoreShop Custom
 
-CoreShop uses Pimcore Data Objects to persist Customer Information. But, it adds a little wrapper around it to be mire
-dynamic and configurable. It uses a Factory and Repository Pattern to do that.
+CoreShop uses Pimcore Data Objects to persist Customer Information. A little wrapper is added around it to be more
+dynamic and configurable, using both Factory and Repository patterns.
 
 ## Create
 
@@ -14,7 +14,7 @@ $customer = $customerFactory->createNew();
 
 No we have our customer and we can set all needed values.
 
-If you now want to save it, just call the save function
+If you now want to save it, just call the save function:
 
 ```php
 $customer->save();
